@@ -2,10 +2,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import re
 
 import pandas as pd
-import geopandas as gpd
 import plotly.express as px
 import streamlit as st
 
@@ -70,10 +70,10 @@ Interpretation: Higher values indicate higher relative stress (worse conditions)
 lower values indicate lower relative stress. Values are comparable across marzes
 within the same time window.
 
-
 **Important:** Most maps should be interpreted using **rates** (per-capita) rather than raw counts, because marzes have different population sizes.
 """
     )
+
 
 @st.cache_data
 def load_panel() -> pd.DataFrame:
@@ -90,32 +90,36 @@ def load_panel() -> pd.DataFrame:
 
 
 @st.cache_data
-def load_geo() -> gpd.GeoDataFrame:
+def load_geojson_with_marz_property() -> dict:
+    """
+    Load geoBoundaries ADM1 GeoJSON and inject a normalized properties.marz field.
+    (This removes the need for GeoPandas/GDAL in Streamlit Cloud.)
+    """
     if not GEOJSON_PATH.exists():
         raise FileNotFoundError(f"Missing GeoJSON: {GEOJSON_PATH}")
 
-    gdf = gpd.read_file(GEOJSON_PATH)
+    with open(GEOJSON_PATH, "r", encoding="utf-8") as f:
+        gj = json.load(f)
 
-    # geoBoundaries ADM1 uses shapeName for region name
-    if "shapeName" not in gdf.columns:
-        raise RuntimeError(
-            f"Expected 'shapeName' in GeoJSON properties. Found columns: {list(gdf.columns)}"
-        )
+    feats = gj.get("features", [])
+    if not feats:
+        raise RuntimeError("GeoJSON has no features.")
 
-    gdf = gdf[["shapeName", "geometry"]].copy()
-    gdf["marz"] = gdf["shapeName"].apply(norm_marz_name).astype(str)
-    gdf = gdf.drop(columns=["shapeName"])
+    # Ensure each feature has a normalized marz name used for plotly matching
+    for feat in feats:
+        props = feat.get("properties", {})
+        shape_name = props.get("shapeName")
+        if shape_name is None:
+            raise RuntimeError("Expected properties.shapeName in geoBoundaries ADM1 GeoJSON.")
+        props["marz"] = norm_marz_name(shape_name)
+        feat["properties"] = props
 
-    if gdf.crs is None:
-        gdf = gdf.set_crs("EPSG:4326")
-    else:
-        gdf = gdf.to_crs("EPSG:4326")
-
-    return gdf
+    return gj
 
 
 df = load_panel()
-gdf = load_geo()
+geojson = load_geojson_with_marz_property()
+
 years = sorted(df["year"].unique().tolist())
 latest_year = max(years)
 
@@ -185,7 +189,6 @@ Raw number of hospitals in the marz.
 
 st.info(indicator_help.get(value_col, ""))
 
-
 if value_col not in df.columns:
     st.error(f"Column not found in dataset: {value_col}")
     st.stop()
@@ -195,34 +198,31 @@ if mode == "Single year":
     df_view = df[df["year"] == year][["marz", value_col]].copy()
     title = f"{pretty_title} — {year}"
 else:
-    # Average over all years present in your dataset (typically 2016–2022)
     df_view = df.groupby("marz", as_index=False)[value_col].mean(numeric_only=True)
     title = f"Average {pretty_title} — 2016–2022"
 
-# Always merge data INTO the geometry (stable mapping)
-view_gdf = gdf.merge(df_view, on="marz", how="left")
-view_gdf = view_gdf.reset_index(drop=True)
-view_gdf["fid"] = view_gdf.index.astype(int)
+# Diagnostics: check matching between dataset and geojson marzes
+geo_marzes = sorted({f["properties"]["marz"] for f in geojson["features"]})
+data_marzes = sorted(df_view["marz"].unique().tolist())
 
-# Diagnostics: tell you exactly what's missing (helps instantly)
-missing = view_gdf.loc[view_gdf[value_col].isna(), "marz"].tolist()
-if missing:
-    st.warning(f"Missing values for {value_col} in: {', '.join(missing)}")
+missing_in_data = [m for m in geo_marzes if m not in data_marzes]
+missing_in_geo = [m for m in data_marzes if m not in geo_marzes]
 
-# Build geojson from the merged gdf (features contain properties.marz)
-geojson = view_gdf.__geo_interface__
+if missing_in_data:
+    st.warning(f"Marzes in GeoJSON but missing in data: {', '.join(missing_in_data)}")
+if missing_in_geo:
+    st.warning(f"Marzes in data but missing in GeoJSON: {', '.join(missing_in_geo)}")
 
-# Hover fields (NEVER pass True/False to hover_data — it can break)
+# Hover fields
 hover_data = {value_col: True}
 if value_col == "stress_index":
     hover_data = {value_col: ":.3f"}
 
-# Compute a reasonable center (avoid weird zoom)
-centroid = view_gdf.to_crs("EPSG:4326").geometry.unary_union.centroid
-center = {"lat": float(centroid.y), "lon": float(centroid.x)}
+# Armenia center (simple constant; avoids needing GeoPandas centroid)
+center = {"lat": 40.2, "lon": 44.8}
 
 fig = px.choropleth_mapbox(
-    view_gdf,
+    df_view,
     geojson=geojson,
     locations="marz",
     featureidkey="properties.marz",
@@ -248,7 +248,7 @@ with map_col:
 
 with table_col:
     st.subheader("Ranking")
-    ranking = view_gdf[["marz", value_col]].dropna().sort_values(value_col, ascending=False)
+    ranking = df_view[["marz", value_col]].dropna().sort_values(value_col, ascending=False)
 
     st.write("Top (highest values)")
     st.dataframe(ranking.head(10), use_container_width=True, hide_index=True)
@@ -258,7 +258,6 @@ with table_col:
 
 st.divider()
 
-# Optional: show raw rows for selected marz over time
 st.subheader("Explore one marz over time")
 chosen_marz = st.selectbox("Marz", sorted(df["marz"].unique().tolist()))
 sub = df[df["marz"] == chosen_marz].sort_values("year")
