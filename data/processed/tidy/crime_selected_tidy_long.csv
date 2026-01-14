@@ -1,0 +1,325 @@
+category,marz,year,value
+Robbery,Yerevan,2016,3480.0
+Robbery,Yerevan,2017,3670.0
+Robbery,Yerevan,2018,5704.0
+Robbery,Yerevan,2019,7093.0
+Robbery,Yerevan,2020,5850.0
+Robbery,Yerevan,2021,7249.0
+Robbery,Yerevan,2022,6361.0
+Robbery,Yerevan,2023,4436.0
+Robbery,Yerevan,2024,4046.0
+Robbery,Aragatsotn,2016,145.0
+Robbery,Aragatsotn,2017,155.0
+Robbery,Aragatsotn,2018,172.0
+Robbery,Aragatsotn,2019,244.0
+Robbery,Aragatsotn,2020,224.0
+Robbery,Aragatsotn,2021,242.0
+Robbery,Aragatsotn,2022,205.0
+Robbery,Aragatsotn,2023,127.0
+Robbery,Aragatsotn,2024,142.0
+Robbery,Ararat,2016,272.0
+Robbery,Ararat,2017,286.0
+Robbery,Ararat,2018,444.0
+Robbery,Ararat,2019,547.0
+Robbery,Ararat,2020,515.0
+Robbery,Ararat,2021,631.0
+Robbery,Ararat,2022,554.0
+Robbery,Ararat,2023,355.0
+Robbery,Ararat,2024,256.0
+Robbery,Armavir,2016,291.0
+Robbery,Armavir,2017,313.0
+Robbery,Armavir,2018,499.0
+Robbery,Armavir,2019,547.0
+Robbery,Armavir,2020,519.0
+Robbery,Armavir,2021,504.0
+Robbery,Armavir,2022,494.0
+Robbery,Armavir,2023,347.0
+Robbery,Armavir,2024,299.0
+Robbery,Gegharkunik,2016,126.0
+Robbery,Gegharkunik,2017,138.0
+Robbery,Gegharkunik,2018,183.0
+Robbery,Gegharkunik,2019,262.0
+Robbery,Gegharkunik,2020,192.0
+Robbery,Gegharkunik,2021,225.0
+Robbery,Gegharkunik,2022,224.0
+Robbery,Gegharkunik,2023,132.0
+Robbery,Gegharkunik,2024,125.0
+Robbery,Lori,2016,322.0
+Robbery,Lori,2017,316.0
+Robbery,Lori,2018,389.0
+Robbery,Lori,2019,470.0
+Robbery,Lori,2020,619.0
+Robbery,Lori,2021,669.0
+Robbery,Lori,2022,553.0
+Robbery,Lori,2023,446.0
+Robbery,Lori,2024,472.0
+Robbery,Kotayk,2016,552.0
+Robbery,Kotayk,2017,569.0
+Robbery,Kotayk,2018,846.0
+Robbery,Kotayk,2019,873.0
+Robbery,Kotayk,2020,954.0
+Robbery,Kotayk,2021,1003.0
+Robbery,Kotayk,2022,772.0
+Robbery,Kotayk,2023,440.0
+Robbery,Kotayk,2024,411.0
+Robbery,Shirak,2016,187.0
+Robbery,Shirak,2017,230.0
+Robbery,Shirak,2018,238.0
+Robbery,Shirak,2019,269.0
+Robbery,Shirak,2020,252.0
+Robbery,Shirak,2021,212.0
+Robbery,Shirak,2022,218.0
+Robbery,Shirak,2023,250.0
+Robbery,Shirak,2024,218.0
+Robbery,Syunik,2016,138.0
+Robbery,Syunik,2017,115.0
+Robbery,Syunik,2018,143.0
+Robbery,Syunik,2019,161.0
+Robbery,Syunik,2020,143.0
+Robbery,Syunik,2021,178.0
+Robbery,Syunik,2022,209.0
+Robbery,Syunik,2023,145.0
+Robbery,Syunik,2024,167.0
+Robbery,Vayots Dzor,2016,24.0
+Robbery,Vayots Dzor,2017,48.0
+Robbery,Vayots Dzor,2018,45.0
+Robbery,Vayots Dzor,2019,65.0
+Robbery,Vayots Dzor,2020,44.0
+Robbery,Vayots Dzor,2021,105.0
+Robbery,Vayots Dzor,2022,95.0
+Robbery,Vayots Dzor,2023,51.0
+Robbery,Vayots Dzor,2024,84.0
+Robbery,Tavush,2016,140.0
+Robbery,Tavush,2017,123.0
+Robbery,Tavush,2018,188.0
+Robbery,Tavush,2019,201.0
+Robbery,Tavush,2020,211.0
+Robbery,Tavush,2021,200.0
+Robbery,Tavush,2022,169.0
+Robbery,Tavush,2023,139.0
+Robbery,Tavush,2024,170.0
+Robbery,Total Ra,2016,5677.0
+Robbery,Total Ra,2017,5963.0
+Robbery,Total Ra,2018,8851.0
+Robbery,Total Ra,2019,10732.0
+Robbery,Total Ra,2020,9523.0
+Robbery,Total Ra,2021,11218.0
+Robbery,Total Ra,2022,9854.0
+Robbery,Total Ra,2023,6868.0
+Robbery,Total Ra,2024,6390.0
+Hooliganism,Yerevan,2016,127.0
+Hooliganism,Yerevan,2017,119.0
+Hooliganism,Yerevan,2018,137.0
+Hooliganism,Yerevan,2019,228.0
+Hooliganism,Yerevan,2020,231.0
+Hooliganism,Yerevan,2021,231.0
+Hooliganism,Yerevan,2022,301.0
+Hooliganism,Yerevan,2023,315.0
+Hooliganism,Yerevan,2024,304.0
+Hooliganism,Aragatsotn,2016,10.0
+Hooliganism,Aragatsotn,2017,4.0
+Hooliganism,Aragatsotn,2018,3.0
+Hooliganism,Aragatsotn,2019,8.0
+Hooliganism,Aragatsotn,2020,3.0
+Hooliganism,Aragatsotn,2021,2.0
+Hooliganism,Aragatsotn,2022,9.0
+Hooliganism,Aragatsotn,2023,18.0
+Hooliganism,Aragatsotn,2024,30.0
+Hooliganism,Ararat,2016,6.0
+Hooliganism,Ararat,2017,6.0
+Hooliganism,Ararat,2018,12.0
+Hooliganism,Ararat,2019,12.0
+Hooliganism,Ararat,2020,16.0
+Hooliganism,Ararat,2021,13.0
+Hooliganism,Ararat,2022,27.0
+Hooliganism,Ararat,2023,45.0
+Hooliganism,Ararat,2024,66.0
+Hooliganism,Armavir,2016,13.0
+Hooliganism,Armavir,2017,9.0
+Hooliganism,Armavir,2018,13.0
+Hooliganism,Armavir,2019,15.0
+Hooliganism,Armavir,2020,19.0
+Hooliganism,Armavir,2021,18.0
+Hooliganism,Armavir,2022,13.0
+Hooliganism,Armavir,2023,43.0
+Hooliganism,Armavir,2024,57.0
+Hooliganism,Gegharkunik,2016,4.0
+Hooliganism,Gegharkunik,2017,6.0
+Hooliganism,Gegharkunik,2018,14.0
+Hooliganism,Gegharkunik,2019,5.0
+Hooliganism,Gegharkunik,2020,6.0
+Hooliganism,Gegharkunik,2021,2.0
+Hooliganism,Gegharkunik,2022,13.0
+Hooliganism,Gegharkunik,2023,11.0
+Hooliganism,Gegharkunik,2024,17.0
+Hooliganism,Lori,2016,3.0
+Hooliganism,Lori,2017,10.0
+Hooliganism,Lori,2018,21.0
+Hooliganism,Lori,2019,17.0
+Hooliganism,Lori,2020,14.0
+Hooliganism,Lori,2021,23.0
+Hooliganism,Lori,2022,37.0
+Hooliganism,Lori,2023,54.0
+Hooliganism,Lori,2024,91.0
+Hooliganism,Kotayk,2016,7.0
+Hooliganism,Kotayk,2017,20.0
+Hooliganism,Kotayk,2018,11.0
+Hooliganism,Kotayk,2019,19.0
+Hooliganism,Kotayk,2020,15.0
+Hooliganism,Kotayk,2021,10.0
+Hooliganism,Kotayk,2022,12.0
+Hooliganism,Kotayk,2023,27.0
+Hooliganism,Kotayk,2024,35.0
+Hooliganism,Shirak,2016,11.0
+Hooliganism,Shirak,2017,14.0
+Hooliganism,Shirak,2018,11.0
+Hooliganism,Shirak,2019,11.0
+Hooliganism,Shirak,2020,14.0
+Hooliganism,Shirak,2021,10.0
+Hooliganism,Shirak,2022,28.0
+Hooliganism,Shirak,2023,45.0
+Hooliganism,Shirak,2024,52.0
+Hooliganism,Syunik,2016,5.0
+Hooliganism,Syunik,2017,10.0
+Hooliganism,Syunik,2018,4.0
+Hooliganism,Syunik,2019,3.0
+Hooliganism,Syunik,2020,6.0
+Hooliganism,Syunik,2021,10.0
+Hooliganism,Syunik,2022,5.0
+Hooliganism,Syunik,2023,13.0
+Hooliganism,Syunik,2024,17.0
+Hooliganism,Vayots Dzor,2016,5.0
+Hooliganism,Vayots Dzor,2017,1.0
+Hooliganism,Vayots Dzor,2018,3.0
+Hooliganism,Vayots Dzor,2019,4.0
+Hooliganism,Vayots Dzor,2020,6.0
+Hooliganism,Vayots Dzor,2021,
+Hooliganism,Vayots Dzor,2022,1.0
+Hooliganism,Vayots Dzor,2023,8.0
+Hooliganism,Vayots Dzor,2024,7.0
+Hooliganism,Tavush,2016,4.0
+Hooliganism,Tavush,2017,3.0
+Hooliganism,Tavush,2018,5.0
+Hooliganism,Tavush,2019,4.0
+Hooliganism,Tavush,2020,8.0
+Hooliganism,Tavush,2021,3.0
+Hooliganism,Tavush,2022,7.0
+Hooliganism,Tavush,2023,21.0
+Hooliganism,Tavush,2024,27.0
+Hooliganism,Total Ra,2016,195.0
+Hooliganism,Total Ra,2017,202.0
+Hooliganism,Total Ra,2018,234.0
+Hooliganism,Total Ra,2019,326.0
+Hooliganism,Total Ra,2020,338.0
+Hooliganism,Total Ra,2021,322.0
+Hooliganism,Total Ra,2022,453.0
+Hooliganism,Total Ra,2023,600.0
+Hooliganism,Total Ra,2024,703.0
+Related to drugs,Yerevan,2016,478.0
+Related to drugs,Yerevan,2017,739.0
+Related to drugs,Yerevan,2018,506.0
+Related to drugs,Yerevan,2019,567.0
+Related to drugs,Yerevan,2020,713.0
+Related to drugs,Yerevan,2021,920.0
+Related to drugs,Yerevan,2022,1307.0
+Related to drugs,Yerevan,2023,2986.0
+Related to drugs,Yerevan,2024,1768.0
+Related to drugs,Aragatsotn,2016,36.0
+Related to drugs,Aragatsotn,2017,36.0
+Related to drugs,Aragatsotn,2018,17.0
+Related to drugs,Aragatsotn,2019,16.0
+Related to drugs,Aragatsotn,2020,20.0
+Related to drugs,Aragatsotn,2021,36.0
+Related to drugs,Aragatsotn,2022,78.0
+Related to drugs,Aragatsotn,2023,169.0
+Related to drugs,Aragatsotn,2024,166.0
+Related to drugs,Ararat,2016,71.0
+Related to drugs,Ararat,2017,54.0
+Related to drugs,Ararat,2018,28.0
+Related to drugs,Ararat,2019,51.0
+Related to drugs,Ararat,2020,77.0
+Related to drugs,Ararat,2021,111.0
+Related to drugs,Ararat,2022,138.0
+Related to drugs,Ararat,2023,208.0
+Related to drugs,Ararat,2024,131.0
+Related to drugs,Armavir,2016,69.0
+Related to drugs,Armavir,2017,78.0
+Related to drugs,Armavir,2018,42.0
+Related to drugs,Armavir,2019,86.0
+Related to drugs,Armavir,2020,117.0
+Related to drugs,Armavir,2021,154.0
+Related to drugs,Armavir,2022,234.0
+Related to drugs,Armavir,2023,678.0
+Related to drugs,Armavir,2024,591.0
+Related to drugs,Gegharkunik,2016,26.0
+Related to drugs,Gegharkunik,2017,43.0
+Related to drugs,Gegharkunik,2018,21.0
+Related to drugs,Gegharkunik,2019,32.0
+Related to drugs,Gegharkunik,2020,31.0
+Related to drugs,Gegharkunik,2021,44.0
+Related to drugs,Gegharkunik,2022,49.0
+Related to drugs,Gegharkunik,2023,87.0
+Related to drugs,Gegharkunik,2024,48.0
+Related to drugs,Lori,2016,58.0
+Related to drugs,Lori,2017,58.0
+Related to drugs,Lori,2018,51.0
+Related to drugs,Lori,2019,61.0
+Related to drugs,Lori,2020,58.0
+Related to drugs,Lori,2021,74.0
+Related to drugs,Lori,2022,98.0
+Related to drugs,Lori,2023,170.0
+Related to drugs,Lori,2024,127.0
+Related to drugs,Kotayk,2016,85.0
+Related to drugs,Kotayk,2017,85.0
+Related to drugs,Kotayk,2018,47.0
+Related to drugs,Kotayk,2019,46.0
+Related to drugs,Kotayk,2020,52.0
+Related to drugs,Kotayk,2021,60.0
+Related to drugs,Kotayk,2022,70.0
+Related to drugs,Kotayk,2023,195.0
+Related to drugs,Kotayk,2024,156.0
+Related to drugs,Shirak,2016,87.0
+Related to drugs,Shirak,2017,87.0
+Related to drugs,Shirak,2018,75.0
+Related to drugs,Shirak,2019,80.0
+Related to drugs,Shirak,2020,64.0
+Related to drugs,Shirak,2021,72.0
+Related to drugs,Shirak,2022,133.0
+Related to drugs,Shirak,2023,344.0
+Related to drugs,Shirak,2024,395.0
+Related to drugs,Syunik,2016,65.0
+Related to drugs,Syunik,2017,56.0
+Related to drugs,Syunik,2018,63.0
+Related to drugs,Syunik,2019,121.0
+Related to drugs,Syunik,2020,61.0
+Related to drugs,Syunik,2021,44.0
+Related to drugs,Syunik,2022,121.0
+Related to drugs,Syunik,2023,149.0
+Related to drugs,Syunik,2024,170.0
+Related to drugs,Vayots Dzor,2016,6.0
+Related to drugs,Vayots Dzor,2017,6.0
+Related to drugs,Vayots Dzor,2018,8.0
+Related to drugs,Vayots Dzor,2019,7.0
+Related to drugs,Vayots Dzor,2020,5.0
+Related to drugs,Vayots Dzor,2021,11.0
+Related to drugs,Vayots Dzor,2022,16.0
+Related to drugs,Vayots Dzor,2023,29.0
+Related to drugs,Vayots Dzor,2024,54.0
+Related to drugs,Tavush,2016,27.0
+Related to drugs,Tavush,2017,29.0
+Related to drugs,Tavush,2018,19.0
+Related to drugs,Tavush,2019,21.0
+Related to drugs,Tavush,2020,28.0
+Related to drugs,Tavush,2021,18.0
+Related to drugs,Tavush,2022,24.0
+Related to drugs,Tavush,2023,55.0
+Related to drugs,Tavush,2024,33.0
+Related to drugs,Total Ra,2016,1008.0
+Related to drugs,Total Ra,2017,1271.0
+Related to drugs,Total Ra,2018,877.0
+Related to drugs,Total Ra,2019,1088.0
+Related to drugs,Total Ra,2020,1226.0
+Related to drugs,Total Ra,2021,1544.0
+Related to drugs,Total Ra,2022,2268.0
+Related to drugs,Total Ra,2023,5070.0
+Related to drugs,Total Ra,2024,3639.0

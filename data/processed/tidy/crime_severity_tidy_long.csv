@@ -1,0 +1,541 @@
+category,marz,year,value
+"Number of registered crimes, total",Yerevan,2016,9339.0
+"Number of registered crimes, total",Yerevan,2017,10324.0
+"Number of registered crimes, total",Yerevan,2018,13067.0
+"Number of registered crimes, total",Yerevan,2019,14961.0
+"Number of registered crimes, total",Yerevan,2020,13892.0
+"Number of registered crimes, total",Yerevan,2021,16438.0
+"Number of registered crimes, total",Yerevan,2022,21604.0
+"Number of registered crimes, total",Yerevan,2023,20231.0
+"Number of registered crimes, total",Yerevan,2024,18397.0
+"Number of registered crimes, total",Aragatsotn,2016,655.0
+"Number of registered crimes, total",Aragatsotn,2017,738.0
+"Number of registered crimes, total",Aragatsotn,2018,685.0
+"Number of registered crimes, total",Aragatsotn,2019,764.0
+"Number of registered crimes, total",Aragatsotn,2020,835.0
+"Number of registered crimes, total",Aragatsotn,2021,838.0
+"Number of registered crimes, total",Aragatsotn,2022,1161.0
+"Number of registered crimes, total",Aragatsotn,2023,1521.0
+"Number of registered crimes, total",Aragatsotn,2024,1524.0
+"Number of registered crimes, total",Ararat,2016,1225.0
+"Number of registered crimes, total",Ararat,2017,1233.0
+"Number of registered crimes, total",Ararat,2018,1430.0
+"Number of registered crimes, total",Ararat,2019,1590.0
+"Number of registered crimes, total",Ararat,2020,1856.0
+"Number of registered crimes, total",Ararat,2021,1922.0
+"Number of registered crimes, total",Ararat,2022,2167.0
+"Number of registered crimes, total",Ararat,2023,2539.0
+"Number of registered crimes, total",Ararat,2024,2696.0
+"Number of registered crimes, total",Armavir,2016,1308.0
+"Number of registered crimes, total",Armavir,2017,1377.0
+"Number of registered crimes, total",Armavir,2018,1601.0
+"Number of registered crimes, total",Armavir,2019,1677.0
+"Number of registered crimes, total",Armavir,2020,1707.0
+"Number of registered crimes, total",Armavir,2021,1851.0
+"Number of registered crimes, total",Armavir,2022,2161.0
+"Number of registered crimes, total",Armavir,2023,3051.0
+"Number of registered crimes, total",Armavir,2024,3464.0
+"Number of registered crimes, total",Gegharkunik,2016,821.0
+"Number of registered crimes, total",Gegharkunik,2017,729.0
+"Number of registered crimes, total",Gegharkunik,2018,903.0
+"Number of registered crimes, total",Gegharkunik,2019,1066.0
+"Number of registered crimes, total",Gegharkunik,2020,1035.0
+"Number of registered crimes, total",Gegharkunik,2021,1250.0
+"Number of registered crimes, total",Gegharkunik,2022,1339.0
+"Number of registered crimes, total",Gegharkunik,2023,1659.0
+"Number of registered crimes, total",Gegharkunik,2024,1398.0
+"Number of registered crimes, total",Lori,2016,1305.0
+"Number of registered crimes, total",Lori,2017,1360.0
+"Number of registered crimes, total",Lori,2018,1652.0
+"Number of registered crimes, total",Lori,2019,1578.0
+"Number of registered crimes, total",Lori,2020,1797.0
+"Number of registered crimes, total",Lori,2021,1974.0
+"Number of registered crimes, total",Lori,2022,2613.0
+"Number of registered crimes, total",Lori,2023,2672.0
+"Number of registered crimes, total",Lori,2024,2821.0
+"Number of registered crimes, total",Kotayk,2016,1577.0
+"Number of registered crimes, total",Kotayk,2017,1660.0
+"Number of registered crimes, total",Kotayk,2018,2179.0
+"Number of registered crimes, total",Kotayk,2019,1929.0
+"Number of registered crimes, total",Kotayk,2020,2180.0
+"Number of registered crimes, total",Kotayk,2021,2428.0
+"Number of registered crimes, total",Kotayk,2022,2519.0
+"Number of registered crimes, total",Kotayk,2023,3102.0
+"Number of registered crimes, total",Kotayk,2024,3310.0
+"Number of registered crimes, total",Shirak,2016,1087.0
+"Number of registered crimes, total",Shirak,2017,1332.0
+"Number of registered crimes, total",Shirak,2018,1309.0
+"Number of registered crimes, total",Shirak,2019,1421.0
+"Number of registered crimes, total",Shirak,2020,1259.0
+"Number of registered crimes, total",Shirak,2021,1324.0
+"Number of registered crimes, total",Shirak,2022,1752.0
+"Number of registered crimes, total",Shirak,2023,2658.0
+"Number of registered crimes, total",Shirak,2024,2802.0
+"Number of registered crimes, total",Syunik,2016,638.0
+"Number of registered crimes, total",Syunik,2017,612.0
+"Number of registered crimes, total",Syunik,2018,649.0
+"Number of registered crimes, total",Syunik,2019,783.0
+"Number of registered crimes, total",Syunik,2020,744.0
+"Number of registered crimes, total",Syunik,2021,896.0
+"Number of registered crimes, total",Syunik,2022,977.0
+"Number of registered crimes, total",Syunik,2023,1411.0
+"Number of registered crimes, total",Syunik,2024,1649.0
+"Number of registered crimes, total",Vayots Dzor,2016,177.0
+"Number of registered crimes, total",Vayots Dzor,2017,240.0
+"Number of registered crimes, total",Vayots Dzor,2018,258.0
+"Number of registered crimes, total",Vayots Dzor,2019,239.0
+"Number of registered crimes, total",Vayots Dzor,2020,203.0
+"Number of registered crimes, total",Vayots Dzor,2021,303.0
+"Number of registered crimes, total",Vayots Dzor,2022,422.0
+"Number of registered crimes, total",Vayots Dzor,2023,419.0
+"Number of registered crimes, total",Vayots Dzor,2024,683.0
+"Number of registered crimes, total",Tavush,2016,632.0
+"Number of registered crimes, total",Tavush,2017,679.0
+"Number of registered crimes, total",Tavush,2018,945.0
+"Number of registered crimes, total",Tavush,2019,842.0
+"Number of registered crimes, total",Tavush,2020,960.0
+"Number of registered crimes, total",Tavush,2021,1021.0
+"Number of registered crimes, total",Tavush,2022,897.0
+"Number of registered crimes, total",Tavush,2023,1403.0
+"Number of registered crimes, total",Tavush,2024,1488.0
+"Number of registered crimes, total",Total Ra,2016,18764.0
+"Number of registered crimes, total",Total Ra,2017,20284.0
+"Number of registered crimes, total",Total Ra,2018,24678.0
+"Number of registered crimes, total",Total Ra,2019,26850.0
+"Number of registered crimes, total",Total Ra,2020,26468.0
+"Number of registered crimes, total",Total Ra,2021,30245.0
+"Number of registered crimes, total",Total Ra,2022,37612.0
+"Number of registered crimes, total",Total Ra,2023,40666.0
+"Number of registered crimes, total",Total Ra,2024,40232.0
+Number of minor offense,Yerevan,2016,4527.0
+Number of minor offense,Yerevan,2017,5693.0
+Number of minor offense,Yerevan,2018,7085.0
+Number of minor offense,Yerevan,2019,7939.0
+Number of minor offense,Yerevan,2020,7248.0
+Number of minor offense,Yerevan,2021,9245.0
+Number of minor offense,Yerevan,2022,12365.0
+Number of minor offense,Yerevan,2023,9152.0
+Number of minor offense,Yerevan,2024,8045.0
+Number of minor offense,Aragatsotn,2016,322.0
+Number of minor offense,Aragatsotn,2017,358.0
+Number of minor offense,Aragatsotn,2018,301.0
+Number of minor offense,Aragatsotn,2019,375.0
+Number of minor offense,Aragatsotn,2020,446.0
+Number of minor offense,Aragatsotn,2021,474.0
+Number of minor offense,Aragatsotn,2022,574.0
+Number of minor offense,Aragatsotn,2023,854.0
+Number of minor offense,Aragatsotn,2024,837.0
+Number of minor offense,Ararat,2016,647.0
+Number of minor offense,Ararat,2017,707.0
+Number of minor offense,Ararat,2018,758.0
+Number of minor offense,Ararat,2019,869.0
+Number of minor offense,Ararat,2020,1098.0
+Number of minor offense,Ararat,2021,1194.0
+Number of minor offense,Ararat,2022,1279.0
+Number of minor offense,Ararat,2023,1342.0
+Number of minor offense,Ararat,2024,1464.0
+Number of minor offense,Armavir,2016,651.0
+Number of minor offense,Armavir,2017,671.0
+Number of minor offense,Armavir,2018,774.0
+Number of minor offense,Armavir,2019,848.0
+Number of minor offense,Armavir,2020,879.0
+Number of minor offense,Armavir,2021,923.0
+Number of minor offense,Armavir,2022,1026.0
+Number of minor offense,Armavir,2023,1462.0
+Number of minor offense,Armavir,2024,1977.0
+Number of minor offense,Gegharkunik,2016,414.0
+Number of minor offense,Gegharkunik,2017,400.0
+Number of minor offense,Gegharkunik,2018,482.0
+Number of minor offense,Gegharkunik,2019,494.0
+Number of minor offense,Gegharkunik,2020,511.0
+Number of minor offense,Gegharkunik,2021,621.0
+Number of minor offense,Gegharkunik,2022,628.0
+Number of minor offense,Gegharkunik,2023,793.0
+Number of minor offense,Gegharkunik,2024,703.0
+Number of minor offense,Lori,2016,747.0
+Number of minor offense,Lori,2017,793.0
+Number of minor offense,Lori,2018,782.0
+Number of minor offense,Lori,2019,755.0
+Number of minor offense,Lori,2020,855.0
+Number of minor offense,Lori,2021,958.0
+Number of minor offense,Lori,2022,1388.0
+Number of minor offense,Lori,2023,1238.0
+Number of minor offense,Lori,2024,1212.0
+Number of minor offense,Kotayk,2016,755.0
+Number of minor offense,Kotayk,2017,877.0
+Number of minor offense,Kotayk,2018,1212.0
+Number of minor offense,Kotayk,2019,857.0
+Number of minor offense,Kotayk,2020,1031.0
+Number of minor offense,Kotayk,2021,1266.0
+Number of minor offense,Kotayk,2022,1275.0
+Number of minor offense,Kotayk,2023,1588.0
+Number of minor offense,Kotayk,2024,1881.0
+Number of minor offense,Shirak,2016,555.0
+Number of minor offense,Shirak,2017,701.0
+Number of minor offense,Shirak,2018,613.0
+Number of minor offense,Shirak,2019,629.0
+Number of minor offense,Shirak,2020,579.0
+Number of minor offense,Shirak,2021,667.0
+Number of minor offense,Shirak,2022,924.0
+Number of minor offense,Shirak,2023,1272.0
+Number of minor offense,Shirak,2024,1376.0
+Number of minor offense,Syunik,2016,327.0
+Number of minor offense,Syunik,2017,334.0
+Number of minor offense,Syunik,2018,294.0
+Number of minor offense,Syunik,2019,347.0
+Number of minor offense,Syunik,2020,353.0
+Number of minor offense,Syunik,2021,480.0
+Number of minor offense,Syunik,2022,415.0
+Number of minor offense,Syunik,2023,434.0
+Number of minor offense,Syunik,2024,664.0
+Number of minor offense,Vayots Dzor,2016,122.0
+Number of minor offense,Vayots Dzor,2017,179.0
+Number of minor offense,Vayots Dzor,2018,152.0
+Number of minor offense,Vayots Dzor,2019,126.0
+Number of minor offense,Vayots Dzor,2020,97.0
+Number of minor offense,Vayots Dzor,2021,183.0
+Number of minor offense,Vayots Dzor,2022,173.0
+Number of minor offense,Vayots Dzor,2023,174.0
+Number of minor offense,Vayots Dzor,2024,346.0
+Number of minor offense,Tavush,2016,314.0
+Number of minor offense,Tavush,2017,330.0
+Number of minor offense,Tavush,2018,429.0
+Number of minor offense,Tavush,2019,446.0
+Number of minor offense,Tavush,2020,532.0
+Number of minor offense,Tavush,2021,509.0
+Number of minor offense,Tavush,2022,410.0
+Number of minor offense,Tavush,2023,596.0
+Number of minor offense,Tavush,2024,655.0
+Number of minor offense,Total Ra,2016,9381.0
+Number of minor offense,Total Ra,2017,11043.0
+Number of minor offense,Total Ra,2018,12882.0
+Number of minor offense,Total Ra,2019,13685.0
+Number of minor offense,Total Ra,2020,13629.0
+Number of minor offense,Total Ra,2021,16520.0
+Number of minor offense,Total Ra,2022,20457.0
+Number of minor offense,Total Ra,2023,18905.0
+Number of minor offense,Total Ra,2024,19160.0
+Number of moderately serious offense,Yerevan,2016,2917.0
+Number of moderately serious offense,Yerevan,2017,2956.0
+Number of moderately serious offense,Yerevan,2018,3742.0
+Number of moderately serious offense,Yerevan,2019,4260.0
+Number of moderately serious offense,Yerevan,2020,4247.0
+Number of moderately serious offense,Yerevan,2021,4440.0
+Number of moderately serious offense,Yerevan,2022,5795.0
+Number of moderately serious offense,Yerevan,2023,6769.0
+Number of moderately serious offense,Yerevan,2024,6341.0
+Number of moderately serious offense,Aragatsotn,2016,259.0
+Number of moderately serious offense,Aragatsotn,2017,310.0
+Number of moderately serious offense,Aragatsotn,2018,291.0
+Number of moderately serious offense,Aragatsotn,2019,300.0
+Number of moderately serious offense,Aragatsotn,2020,261.0
+Number of moderately serious offense,Aragatsotn,2021,259.0
+Number of moderately serious offense,Aragatsotn,2022,411.0
+Number of moderately serious offense,Aragatsotn,2023,439.0
+Number of moderately serious offense,Aragatsotn,2024,483.0
+Number of moderately serious offense,Ararat,2016,417.0
+Number of moderately serious offense,Ararat,2017,364.0
+Number of moderately serious offense,Ararat,2018,475.0
+Number of moderately serious offense,Ararat,2019,476.0
+Number of moderately serious offense,Ararat,2020,509.0
+Number of moderately serious offense,Ararat,2021,519.0
+Number of moderately serious offense,Ararat,2022,605.0
+Number of moderately serious offense,Ararat,2023,859.0
+Number of moderately serious offense,Ararat,2024,859.0
+Number of moderately serious offense,Armavir,2016,457.0
+Number of moderately serious offense,Armavir,2017,505.0
+Number of moderately serious offense,Armavir,2018,621.0
+Number of moderately serious offense,Armavir,2019,576.0
+Number of moderately serious offense,Armavir,2020,571.0
+Number of moderately serious offense,Armavir,2021,643.0
+Number of moderately serious offense,Armavir,2022,789.0
+Number of moderately serious offense,Armavir,2023,1037.0
+Number of moderately serious offense,Armavir,2024,942.0
+Number of moderately serious offense,Gegharkunik,2016,320.0
+Number of moderately serious offense,Gegharkunik,2017,249.0
+Number of moderately serious offense,Gegharkunik,2018,311.0
+Number of moderately serious offense,Gegharkunik,2019,396.0
+Number of moderately serious offense,Gegharkunik,2020,382.0
+Number of moderately serious offense,Gegharkunik,2021,500.0
+Number of moderately serious offense,Gegharkunik,2022,487.0
+Number of moderately serious offense,Gegharkunik,2023,606.0
+Number of moderately serious offense,Gegharkunik,2024,517.0
+Number of moderately serious offense,Lori,2016,399.0
+Number of moderately serious offense,Lori,2017,424.0
+Number of moderately serious offense,Lori,2018,625.0
+Number of moderately serious offense,Lori,2019,561.0
+Number of moderately serious offense,Lori,2020,582.0
+Number of moderately serious offense,Lori,2021,666.0
+Number of moderately serious offense,Lori,2022,822.0
+Number of moderately serious offense,Lori,2023,1035.0
+Number of moderately serious offense,Lori,2024,1063.0
+Number of moderately serious offense,Kotayk,2016,501.0
+Number of moderately serious offense,Kotayk,2017,560.0
+Number of moderately serious offense,Kotayk,2018,669.0
+Number of moderately serious offense,Kotayk,2019,630.0
+Number of moderately serious offense,Kotayk,2020,737.0
+Number of moderately serious offense,Kotayk,2021,766.0
+Number of moderately serious offense,Kotayk,2022,906.0
+Number of moderately serious offense,Kotayk,2023,1059.0
+Number of moderately serious offense,Kotayk,2024,1079.0
+Number of moderately serious offense,Shirak,2016,357.0
+Number of moderately serious offense,Shirak,2017,443.0
+Number of moderately serious offense,Shirak,2018,475.0
+Number of moderately serious offense,Shirak,2019,545.0
+Number of moderately serious offense,Shirak,2020,427.0
+Number of moderately serious offense,Shirak,2021,456.0
+Number of moderately serious offense,Shirak,2022,534.0
+Number of moderately serious offense,Shirak,2023,804.0
+Number of moderately serious offense,Shirak,2024,839.0
+Number of moderately serious offense,Syunik,2016,188.0
+Number of moderately serious offense,Syunik,2017,194.0
+Number of moderately serious offense,Syunik,2018,219.0
+Number of moderately serious offense,Syunik,2019,253.0
+Number of moderately serious offense,Syunik,2020,230.0
+Number of moderately serious offense,Syunik,2021,228.0
+Number of moderately serious offense,Syunik,2022,313.0
+Number of moderately serious offense,Syunik,2023,498.0
+Number of moderately serious offense,Syunik,2024,464.0
+Number of moderately serious offense,Vayots Dzor,2016,38.0
+Number of moderately serious offense,Vayots Dzor,2017,50.0
+Number of moderately serious offense,Vayots Dzor,2018,80.0
+Number of moderately serious offense,Vayots Dzor,2019,87.0
+Number of moderately serious offense,Vayots Dzor,2020,79.0
+Number of moderately serious offense,Vayots Dzor,2021,72.0
+Number of moderately serious offense,Vayots Dzor,2022,175.0
+Number of moderately serious offense,Vayots Dzor,2023,193.0
+Number of moderately serious offense,Vayots Dzor,2024,226.0
+Number of moderately serious offense,Tavush,2016,250.0
+Number of moderately serious offense,Tavush,2017,293.0
+Number of moderately serious offense,Tavush,2018,421.0
+Number of moderately serious offense,Tavush,2019,306.0
+Number of moderately serious offense,Tavush,2020,300.0
+Number of moderately serious offense,Tavush,2021,363.0
+Number of moderately serious offense,Tavush,2022,346.0
+Number of moderately serious offense,Tavush,2023,614.0
+Number of moderately serious offense,Tavush,2024,602.0
+Number of moderately serious offense,Total Ra,2016,6103.0
+Number of moderately serious offense,Total Ra,2017,6348.0
+Number of moderately serious offense,Total Ra,2018,7929.0
+Number of moderately serious offense,Total Ra,2019,8390.0
+Number of moderately serious offense,Total Ra,2020,8325.0
+Number of moderately serious offense,Total Ra,2021,8912.0
+Number of moderately serious offense,Total Ra,2022,11183.0
+Number of moderately serious offense,Total Ra,2023,13913.0
+Number of moderately serious offense,Total Ra,2024,13415.0
+Number of serious offences,Yerevan,2016,1800.0
+Number of serious offences,Yerevan,2017,1591.0
+Number of serious offences,Yerevan,2018,2115.0
+Number of serious offences,Yerevan,2019,2609.0
+Number of serious offences,Yerevan,2020,2256.0
+Number of serious offences,Yerevan,2021,2551.0
+Number of serious offences,Yerevan,2022,2944.0
+Number of serious offences,Yerevan,2023,3426.0
+Number of serious offences,Yerevan,2024,2846.0
+Number of serious offences,Aragatsotn,2016,70.0
+Number of serious offences,Aragatsotn,2017,65.0
+Number of serious offences,Aragatsotn,2018,87.0
+Number of serious offences,Aragatsotn,2019,82.0
+Number of serious offences,Aragatsotn,2020,122.0
+Number of serious offences,Aragatsotn,2021,100.0
+Number of serious offences,Aragatsotn,2022,127.0
+Number of serious offences,Aragatsotn,2023,199.0
+Number of serious offences,Aragatsotn,2024,181.0
+Number of serious offences,Ararat,2016,157.0
+Number of serious offences,Ararat,2017,154.0
+Number of serious offences,Ararat,2018,183.0
+Number of serious offences,Ararat,2019,232.0
+Number of serious offences,Ararat,2020,233.0
+Number of serious offences,Ararat,2021,190.0
+Number of serious offences,Ararat,2022,246.0
+Number of serious offences,Ararat,2023,258.0
+Number of serious offences,Ararat,2024,242.0
+Number of serious offences,Armavir,2016,189.0
+Number of serious offences,Armavir,2017,187.0
+Number of serious offences,Armavir,2018,198.0
+Number of serious offences,Armavir,2019,241.0
+Number of serious offences,Armavir,2020,233.0
+Number of serious offences,Armavir,2021,255.0
+Number of serious offences,Armavir,2022,294.0
+Number of serious offences,Armavir,2023,493.0
+Number of serious offences,Armavir,2024,457.0
+Number of serious offences,Gegharkunik,2016,82.0
+Number of serious offences,Gegharkunik,2017,69.0
+Number of serious offences,Gegharkunik,2018,101.0
+Number of serious offences,Gegharkunik,2019,171.0
+Number of serious offences,Gegharkunik,2020,134.0
+Number of serious offences,Gegharkunik,2021,127.0
+Number of serious offences,Gegharkunik,2022,192.0
+Number of serious offences,Gegharkunik,2023,169.0
+Number of serious offences,Gegharkunik,2024,111.0
+Number of serious offences,Lori,2016,144.0
+Number of serious offences,Lori,2017,132.0
+Number of serious offences,Lori,2018,232.0
+Number of serious offences,Lori,2019,247.0
+Number of serious offences,Lori,2020,337.0
+Number of serious offences,Lori,2021,326.0
+Number of serious offences,Lori,2022,341.0
+Number of serious offences,Lori,2023,349.0
+Number of serious offences,Lori,2024,447.0
+Number of serious offences,Kotayk,2016,297.0
+Number of serious offences,Kotayk,2017,215.0
+Number of serious offences,Kotayk,2018,292.0
+Number of serious offences,Kotayk,2019,422.0
+Number of serious offences,Kotayk,2020,397.0
+Number of serious offences,Kotayk,2021,376.0
+Number of serious offences,Kotayk,2022,309.0
+Number of serious offences,Kotayk,2023,413.0
+Number of serious offences,Kotayk,2024,315.0
+Number of serious offences,Shirak,2016,162.0
+Number of serious offences,Shirak,2017,177.0
+Number of serious offences,Shirak,2018,208.0
+Number of serious offences,Shirak,2019,231.0
+Number of serious offences,Shirak,2020,233.0
+Number of serious offences,Shirak,2021,191.0
+Number of serious offences,Shirak,2022,259.0
+Number of serious offences,Shirak,2023,478.0
+Number of serious offences,Shirak,2024,504.0
+Number of serious offences,Syunik,2016,109.0
+Number of serious offences,Syunik,2017,78.0
+Number of serious offences,Syunik,2018,112.0
+Number of serious offences,Syunik,2019,148.0
+Number of serious offences,Syunik,2020,129.0
+Number of serious offences,Syunik,2021,161.0
+Number of serious offences,Syunik,2022,207.0
+Number of serious offences,Syunik,2023,203.0
+Number of serious offences,Syunik,2024,237.0
+Number of serious offences,Vayots Dzor,2016,16.0
+Number of serious offences,Vayots Dzor,2017,10.0
+Number of serious offences,Vayots Dzor,2018,26.0
+Number of serious offences,Vayots Dzor,2019,26.0
+Number of serious offences,Vayots Dzor,2020,26.0
+Number of serious offences,Vayots Dzor,2021,43.0
+Number of serious offences,Vayots Dzor,2022,45.0
+Number of serious offences,Vayots Dzor,2023,39.0
+Number of serious offences,Vayots Dzor,2024,57.0
+Number of serious offences,Tavush,2016,56.0
+Number of serious offences,Tavush,2017,51.0
+Number of serious offences,Tavush,2018,89.0
+Number of serious offences,Tavush,2019,82.0
+Number of serious offences,Tavush,2020,118.0
+Number of serious offences,Tavush,2021,143.0
+Number of serious offences,Tavush,2022,128.0
+Number of serious offences,Tavush,2023,142.0
+Number of serious offences,Tavush,2024,160.0
+Number of serious offences,Total Ra,2016,3082.0
+Number of serious offences,Total Ra,2017,2729.0
+Number of serious offences,Total Ra,2018,3643.0
+Number of serious offences,Total Ra,2019,4491.0
+Number of serious offences,Total Ra,2020,4218.0
+Number of serious offences,Total Ra,2021,4463.0
+Number of serious offences,Total Ra,2022,5092.0
+Number of serious offences,Total Ra,2023,6169.0
+Number of serious offences,Total Ra,2024,5557.0
+Number of particulary serious offences,Yerevan,2016,95.0
+Number of particulary serious offences,Yerevan,2017,84.0
+Number of particulary serious offences,Yerevan,2018,125.0
+Number of particulary serious offences,Yerevan,2019,153.0
+Number of particulary serious offences,Yerevan,2020,141.0
+Number of particulary serious offences,Yerevan,2021,202.0
+Number of particulary serious offences,Yerevan,2022,500.0
+Number of particulary serious offences,Yerevan,2023,884.0
+Number of particulary serious offences,Yerevan,2024,1165.0
+Number of particulary serious offences,Aragatsotn,2016,4.0
+Number of particulary serious offences,Aragatsotn,2017,5.0
+Number of particulary serious offences,Aragatsotn,2018,6.0
+Number of particulary serious offences,Aragatsotn,2019,7.0
+Number of particulary serious offences,Aragatsotn,2020,6.0
+Number of particulary serious offences,Aragatsotn,2021,5.0
+Number of particulary serious offences,Aragatsotn,2022,49.0
+Number of particulary serious offences,Aragatsotn,2023,29.0
+Number of particulary serious offences,Aragatsotn,2024,23.0
+Number of particulary serious offences,Ararat,2016,4.0
+Number of particulary serious offences,Ararat,2017,8.0
+Number of particulary serious offences,Ararat,2018,14.0
+Number of particulary serious offences,Ararat,2019,13.0
+Number of particulary serious offences,Ararat,2020,16.0
+Number of particulary serious offences,Ararat,2021,19.0
+Number of particulary serious offences,Ararat,2022,37.0
+Number of particulary serious offences,Ararat,2023,80.0
+Number of particulary serious offences,Ararat,2024,131.0
+Number of particulary serious offences,Armavir,2016,11.0
+Number of particulary serious offences,Armavir,2017,14.0
+Number of particulary serious offences,Armavir,2018,8.0
+Number of particulary serious offences,Armavir,2019,12.0
+Number of particulary serious offences,Armavir,2020,24.0
+Number of particulary serious offences,Armavir,2021,30.0
+Number of particulary serious offences,Armavir,2022,52.0
+Number of particulary serious offences,Armavir,2023,59.0
+Number of particulary serious offences,Armavir,2024,88.0
+Number of particulary serious offences,Gegharkunik,2016,5.0
+Number of particulary serious offences,Gegharkunik,2017,11.0
+Number of particulary serious offences,Gegharkunik,2018,9.0
+Number of particulary serious offences,Gegharkunik,2019,5.0
+Number of particulary serious offences,Gegharkunik,2020,8.0
+Number of particulary serious offences,Gegharkunik,2021,2.0
+Number of particulary serious offences,Gegharkunik,2022,32.0
+Number of particulary serious offences,Gegharkunik,2023,91.0
+Number of particulary serious offences,Gegharkunik,2024,67.0
+Number of particulary serious offences,Lori,2016,15.0
+Number of particulary serious offences,Lori,2017,11.0
+Number of particulary serious offences,Lori,2018,13.0
+Number of particulary serious offences,Lori,2019,15.0
+Number of particulary serious offences,Lori,2020,23.0
+Number of particulary serious offences,Lori,2021,24.0
+Number of particulary serious offences,Lori,2022,62.0
+Number of particulary serious offences,Lori,2023,50.0
+Number of particulary serious offences,Lori,2024,99.0
+Number of particulary serious offences,Kotayk,2016,24.0
+Number of particulary serious offences,Kotayk,2017,8.0
+Number of particulary serious offences,Kotayk,2018,6.0
+Number of particulary serious offences,Kotayk,2019,20.0
+Number of particulary serious offences,Kotayk,2020,15.0
+Number of particulary serious offences,Kotayk,2021,20.0
+Number of particulary serious offences,Kotayk,2022,29.0
+Number of particulary serious offences,Kotayk,2023,42.0
+Number of particulary serious offences,Kotayk,2024,35.0
+Number of particulary serious offences,Shirak,2016,13.0
+Number of particulary serious offences,Shirak,2017,11.0
+Number of particulary serious offences,Shirak,2018,13.0
+Number of particulary serious offences,Shirak,2019,16.0
+Number of particulary serious offences,Shirak,2020,20.0
+Number of particulary serious offences,Shirak,2021,10.0
+Number of particulary serious offences,Shirak,2022,35.0
+Number of particulary serious offences,Shirak,2023,104.0
+Number of particulary serious offences,Shirak,2024,83.0
+Number of particulary serious offences,Syunik,2016,14.0
+Number of particulary serious offences,Syunik,2017,6.0
+Number of particulary serious offences,Syunik,2018,24.0
+Number of particulary serious offences,Syunik,2019,35.0
+Number of particulary serious offences,Syunik,2020,32.0
+Number of particulary serious offences,Syunik,2021,27.0
+Number of particulary serious offences,Syunik,2022,42.0
+Number of particulary serious offences,Syunik,2023,276.0
+Number of particulary serious offences,Syunik,2024,284.0
+Number of particulary serious offences,Vayots Dzor,2016,1.0
+Number of particulary serious offences,Vayots Dzor,2017,1.0
+Number of particulary serious offences,Vayots Dzor,2018,
+Number of particulary serious offences,Vayots Dzor,2019,
+Number of particulary serious offences,Vayots Dzor,2020,1.0
+Number of particulary serious offences,Vayots Dzor,2021,5.0
+Number of particulary serious offences,Vayots Dzor,2022,29.0
+Number of particulary serious offences,Vayots Dzor,2023,13.0
+Number of particulary serious offences,Vayots Dzor,2024,54.0
+Number of particulary serious offences,Tavush,2016,12.0
+Number of particulary serious offences,Tavush,2017,5.0
+Number of particulary serious offences,Tavush,2018,6.0
+Number of particulary serious offences,Tavush,2019,8.0
+Number of particulary serious offences,Tavush,2020,10.0
+Number of particulary serious offences,Tavush,2021,6.0
+Number of particulary serious offences,Tavush,2022,13.0
+Number of particulary serious offences,Tavush,2023,51.0
+Number of particulary serious offences,Tavush,2024,71.0
+Number of particulary serious offences,Total Ra,2016,198.0
+Number of particulary serious offences,Total Ra,2017,164.0
+Number of particulary serious offences,Total Ra,2018,224.0
+Number of particulary serious offences,Total Ra,2019,284.0
+Number of particulary serious offences,Total Ra,2020,296.0
+Number of particulary serious offences,Total Ra,2021,350.0
+Number of particulary serious offences,Total Ra,2022,880.0
+Number of particulary serious offences,Total Ra,2023,1679.0
+Number of particulary serious offences,Total Ra,2024,2100.0
