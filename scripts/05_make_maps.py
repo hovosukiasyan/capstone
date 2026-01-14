@@ -17,39 +17,41 @@ OUT_DIR = PROJECT_ROOT / "data" / "processed" / "maps"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
+# Canonical spellings across all sources
+CANON = {
+    "Gegarkunik": "Gegharkunik",
+    "Gegharkunik": "Gegharkunik",
+    "Yerevan city": "Yerevan",
+    "City Yerevan": "Yerevan",
+}
+
+
 def norm_marz_name(x: str) -> str:
     s = str(x).strip()
     s = re.sub(r"\s+", " ", s).strip()
+    s = CANON.get(s, s)
+
     s_lower = s.lower()
     s_lower = s_lower.replace(" marz", "")
     s_lower = s_lower.replace(" city", "")
     s_lower = s_lower.replace("city ", "")
     s_lower = s_lower.strip()
-    s_norm = " ".join([w.capitalize() for w in s_lower.split()])
+
+    s_norm = " ".join(w.capitalize() for w in s_lower.split())
     if s_norm.lower() == "yerevan":
         return "Yerevan"
     return s_norm
 
 
 def find_name_column(gdf: gpd.GeoDataFrame) -> str:
-    """
-    Try to locate the admin-1 name field inside GeoJSON properties.
-    We'll try common keys first; if none, print available columns.
-    """
-    candidates = [
-        "shapeName", "shapeNAME", "NAME_1", "name_1", "ADM1_NAME", "adm1_name",
-        "name", "NAME", "shapeGroup", "shapeGroupName"
-    ]
-    for c in candidates:
+    # geoBoundaries uses shapeName for ADM1
+    if "shapeName" in gdf.columns:
+        return "shapeName"
+    # fallback candidates
+    for c in ["NAME_1", "name_1", "ADM1_NAME", "name", "NAME"]:
         if c in gdf.columns:
             return c
-
-    # If not found, fail with helpful info
-    raise RuntimeError(
-        "Could not find a marz-name column in GeoJSON. Available columns:\n"
-        + str(list(gdf.columns))
-        + "\nOpen the GeoJSON and tell me which property contains marz names."
-    )
+    raise RuntimeError(f"Cannot find marz name property in GeoJSON. Columns: {list(gdf.columns)}")
 
 
 def save_choropleth(
@@ -58,19 +60,28 @@ def save_choropleth(
     title: str,
     out_path: Path,
 ) -> None:
-    fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8.5, 8.5))
+
+    # Grey for missing regions
+    missing_kwds = {"color": "#D9D9D9", "label": "Missing"}
+
     gdf.plot(
         column=col,
         ax=ax,
         legend=True,
-        missing_kwds={"color": "lightgrey", "label": "Missing"},
+        missing_kwds=missing_kwds,
         edgecolor="white",
-        linewidth=0.6,
+        linewidth=0.7,
     )
+
     ax.set_title(title)
     ax.set_axis_off()
+
+    # Add small footnote
+    fig.text(0.01, 0.01, "Source: ArmStat (PxWeb) + geoBoundaries ADM1", fontsize=8)
+
     plt.tight_layout()
-    fig.savefig(out_path, dpi=220)
+    fig.savefig(out_path, dpi=240)
     plt.close(fig)
     print(f"[OK] saved map -> {out_path}")
 
@@ -83,16 +94,11 @@ def main() -> None:
     if not GEOJSON_PATH.exists():
         raise FileNotFoundError(f"GeoJSON not found: {GEOJSON_PATH}")
     if not DATA_PATH.exists():
-        raise FileNotFoundError(
-            f"Dataset not found: {DATA_PATH}\n"
-            "Make sure you saved your final dataset as:\n"
-            "data/processed/panel/marz_year_panel_common_with_stress.csv"
-        )
+        raise FileNotFoundError(f"Dataset not found: {DATA_PATH}")
 
-    # Load geospatial boundaries
+    # Load boundaries
     gdf = gpd.read_file(GEOJSON_PATH)
     name_col = find_name_column(gdf)
-
     gdf["marz"] = gdf[name_col].apply(norm_marz_name)
 
     # Load stats
@@ -100,7 +106,7 @@ def main() -> None:
     df["marz"] = df["marz"].apply(norm_marz_name)
     df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
 
-    # Indicators we want to map (you can add more later)
+    # Indicators to map (you can add more later)
     indicators = [
         ("poverty_rate", "Poverty rate (%)"),
         ("crime_rate_per_100k", "Crime rate per 100k"),
@@ -109,11 +115,17 @@ def main() -> None:
         ("stress_index", "Stress Index (z-score composite)"),
     ]
 
-    # ---- A) Map a single year (latest in your common panel)
+    # Single-year (latest in the dataset)
     year_latest = int(df["year"].max())
     df_year = df[df["year"] == year_latest].copy()
 
     merged_year = gdf.merge(df_year, on="marz", how="left")
+
+    # Debug: show missing regions for stress_index (should be none now)
+    if "stress_index" in merged_year.columns:
+        missing = merged_year.loc[merged_year["stress_index"].isna(), "marz"].tolist()
+        if missing:
+            print("[WARN] Missing stress_index for these marzes on the map:", missing)
 
     for col, label in indicators:
         if col not in merged_year.columns:
@@ -127,8 +139,9 @@ def main() -> None:
             out_path=out,
         )
 
-    # ---- B) Map average over 2016–2022 (or whatever exists)
-    df_avg = df.groupby("marz", as_index=False)[[c for c, _ in indicators if c in df.columns]].mean(numeric_only=True)
+    # Average across all years in this dataset (2016–2022)
+    cols_present = [c for c, _ in indicators if c in df.columns]
+    df_avg = df.groupby("marz", as_index=False)[cols_present].mean(numeric_only=True)
     merged_avg = gdf.merge(df_avg, on="marz", how="left")
 
     for col, label in indicators:
