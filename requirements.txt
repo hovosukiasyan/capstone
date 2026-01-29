@@ -2,4 +2,7 @@ streamlit
 pandas
 plotly
 numpy
+scipy
+scikit-learn
+torch
 pytest
