@@ -1,0 +1,1037 @@
+variable,variable_label,value,value_label
+h2_2,Where does he/she live?,1,Yerevan
+h2_2,Where does he/she live?,2,The other city of Armenia
+h2_2,Where does he/she live?,3,village of  Armenia
+h2_2,Where does he/she live?,4,Russia
+h2_2,Where does he/she live?,5,other CIS
+h2_2,Where does he/she live?,6,other European country
+h2_2,Where does he/she live?,7,"USA, Canada"
+h2_2,Where does he/she live?,8,other
+h2_3,How regular you receive money or assistance?,1,monthly
+h2_3,How regular you receive money or assistance?,2,quartile
+h2_3,How regular you receive money or assistance?,3,annually
+h2_3,How regular you receive money or assistance?,Sysmiss,
+h2_5,How much did you get during the last  12 months?,1,dram
+h2_5,How much did you get during the last  12 months?,2,rouble
+h2_5,How much did you get during the last  12 months?,3,US$
+h2_5,How much did you get during the last  12 months?,4,Euro
+h2_5,How much did you get during the last  12 months?,Sysmiss,
+h2_6,"If you get transferred money outside the country, than how did you get it?",1,bank
+h2_6,"If you get transferred money outside the country, than how did you get it?",2,post office
+h2_6,"If you get transferred money outside the country, than how did you get it?",3,other
+h2_6,"If you get transferred money outside the country, than how did you get it?",Sysmiss,
+h2_7,For what purpose was the received amount used?,1,for individual personal current consumption expenses(includi
+h2_7,For what purpose was the received amount used?,2,for individual personal construction or purchase of real and
+h2_7,For what purpose was the received amount used?,3,construction or purchase of real estate for sender
+h2_7,For what purpose was the received amount used?,Sysmiss,
+date,"Number of the month(1,2,....12)",1,January
+date,"Number of the month(1,2,....12)",2,February
+date,"Number of the month(1,2,....12)",3,March
+date,"Number of the month(1,2,....12)",4,April
+date,"Number of the month(1,2,....12)",5,May
+date,"Number of the month(1,2,....12)",6,June
+date,"Number of the month(1,2,....12)",7,July
+date,"Number of the month(1,2,....12)",8,August
+date,"Number of the month(1,2,....12)",9,September
+date,"Number of the month(1,2,....12)",10,October
+date,"Number of the month(1,2,....12)",11,November
+date,"Number of the month(1,2,....12)",12,December
+marz,Code of marz,1,Yerevan
+marz,Code of marz,2,Aragatsotn
+marz,Code of marz,3,Ararat
+marz,Code of marz,4,Armavir
+marz,Code of marz,5,Gegharkunik
+marz,Code of marz,6,Lori
+marz,Code of marz,7,Kotayk
+marz,Code of marz,8,Shirak
+marz,Code of marz,9,Sjunik
+marz,Code of marz,10,Vayots Dzor
+marz,Code of marz,11,Tavush
+typev,Type of the area,1,Yerevan
+typev,Type of the area,2,other urban
+typev,Type of the area,3,rural
+a3,Does your household have children under the state care or which attend any special educational institution?,1,Yes
+a3,Does your household have children under the state care or which attend any special educational institution?,2,No
+c1,Type of housing,1,private house
+c1,Type of housing,2,apartment
+c1,Type of housing,3,hostel
+c1,Type of housing,4,"railcar/container, other temporary lodging"
+c1,Type of housing,5,other
+c2,Does the household own this dwelling or  it rented?,1,owned
+c2,Does the household own this dwelling or  it rented?,2,state or municipality rented
+c2,Does the household own this dwelling or  it rented?,3,private person rented
+c2,Does the household own this dwelling or  it rented?,4,departmental rented
+c2,Does the household own this dwelling or  it rented?,5,other
+c3_3,"If the household rents the dwelling from by a private person, how much is will be the monthly rent (euro)",Sysmiss,
+c6,Did you change your place of dwelling during the last 5 years?,1,yes
+c6,Did you change your place of dwelling during the last 5 years?,2,no
+c7,Why did the household move?,1,for improvement  housing conditions
+c7,Why did the household move?,2,for family reasons
+c7,Why did the household move?,3,because of debts
+c7,Why did the household move?,4,job reasons
+c7,Why did the household move?,5,because of earthquake
+c7,Why did the household move?,6,refugees(if you consider yourself a refudee)
+c7,Why did the household move?,7,other
+c7,Why did the household move?,Sysmiss,
+c8_1,Centralized water supply (as source of  water supply ),1,yes
+c8_1,Centralized water supply (as source of  water supply ),2,no
+c8_1,Centralized water supply (as source of  water supply ),3,"yes, but not working"
+c8_2,"Hot running water (tank, Ariston, geyser)  (as source of  water supply )",1,yes
+c8_2,"Hot running water (tank, Ariston, geyser)  (as source of  water supply )",2,no
+c8_2,"Hot running water (tank, Ariston, geyser)  (as source of  water supply )",3,"yes, but not working"
+c8_3,Centralized sanitation compaund  (as source of  water supply ),1,yes
+c8_3,Centralized sanitation compaund  (as source of  water supply ),2,no
+c8_3,Centralized sanitation compaund  (as source of  water supply ),3,"yes, but not working"
+c8_4,Local sanitation compaund /hole with waste products/  (as source of  water supply ),1,yes
+c8_4,Local sanitation compaund /hole with waste products/  (as source of  water supply ),2,no
+c8_4,Local sanitation compaund /hole with waste products/  (as source of  water supply ),3,"yes, but not working"
+c8_5,Outside toilet,1,yes
+c8_5,Outside toilet,2,no
+c8_5,Outside toilet,3,"yes, but not working"
+c8_6,Centralized gas supply,1,yes
+c8_6,Centralized gas supply,2,no
+c8_6,Centralized gas supply,3,"yes, but not working"
+c8_7,Bathtub or shower,1,yes
+c8_7,Bathtub or shower,2,no
+c8_7,Bathtub or shower,3,"yes, but not working"
+c8_8,Kitchen,1,yes
+c8_8,Kitchen,2,no
+c8_8,Kitchen,3,"yes, but not working"
+c8_9,Telephone,1,yes
+c8_9,Telephone,2,no
+c8_9,Telephone,3,"yes, but not working"
+c8_11,Radioreceiver,1,yes
+c8_11,Radioreceiver,2,no
+c8_11,Radioreceiver,3,"yes, but not working"
+c8_12,Electricity,1,yes
+c8_12,Electricity,2,no
+c8_12,Electricity,3,"yes, but not working"
+c8_10,Mobile phone,1,yes
+c8_10,Mobile phone,2,no
+c8_10,Mobile phone,3,"yes, but not working"
+c8_13,Computer,1,yes
+c8_13,Computer,2,no
+c8_13,Computer,3,"yes, but not working"
+c8_14,Internet,1,yes
+c8_14,Internet,2,no
+c8_14,Internet,3,"yes, but not working"
+c9,What  sources  of  water do you use?,1,centralized water supply
+c9,What  sources  of  water do you use?,2,"spring water, wells"
+c9,What  sources  of  water do you use?,3,own system
+c9,What  sources  of  water do you use?,4,"river, lake"
+c9,What  sources  of  water do you use?,5,delivered (imported) water
+c9,What  sources  of  water do you use?,6,bought water
+c9,What  sources  of  water do you use?,7,rain water
+c9,What  sources  of  water do you use?,8,other
+c10,Where is your water tap located ?,1,indoor
+c10,Where is your water tap located ?,2,in the yard
+c10,Where is your water tap located ?,3,in  the street
+c10,Where is your water tap located ?,Sysmiss,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,3,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,7,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,8,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,10,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,11,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,12,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,14,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,15,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,16,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,18,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,20,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,21,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,22,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,23,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,24,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,25,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,26,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,27,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,28,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,29,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,30,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,31,
+c11_1,If you have centralized water delivery system how many hours a day will you  have potable water,Sysmiss,
+c12_1,What main type of energy options  do you use to heat your house,1,Central heating
+c12_1,What main type of energy options  do you use to heat your house,2,Electricity
+c12_1,What main type of energy options  do you use to heat your house,3,Natural gas
+c12_1,What main type of energy options  do you use to heat your house,4,Liquefiedgas
+c12_1,What main type of energy options  do you use to heat your house,5,Oil and diesel
+c12_1,What main type of energy options  do you use to heat your house,6,Wood
+c12_1,What main type of energy options  do you use to heat your house,9,Other
+c12_2,What supplementary type of energy options  do you use to heat your house,1,Central heating
+c12_2,What supplementary type of energy options  do you use to heat your house,2,Electricity
+c12_2,What supplementary type of energy options  do you use to heat your house,3,Natural gas
+c12_2,What supplementary type of energy options  do you use to heat your house,4,Liquefiedgas
+c12_2,What supplementary type of energy options  do you use to heat your house,5,Oil and diesel
+c12_2,What supplementary type of energy options  do you use to heat your house,6,Wood
+c12_2,What supplementary type of energy options  do you use to heat your house,9,Other
+c12_2,What supplementary type of energy options  do you use to heat your house,Sysmiss,
+c13_1,What equipment did you mostly use to heat your house (Electric stove),1,
+c13_1,What equipment did you mostly use to heat your house (Electric stove),Sysmiss,
+c13_2,What equipment did you mostly use to heat your house (Electric heater (oil battery)),2,
+c13_2,What equipment did you mostly use to heat your house (Electric heater (oil battery)),Sysmiss,
+c13_3,What equipment did you mostly use to heat your house (Gas stove (kitchen)),3,
+c13_3,What equipment did you mostly use to heat your house (Gas stove (kitchen)),Sysmiss,
+c13_4,What equipment did you mostly use to heat your house (Self-made heater),4,
+c13_4,What equipment did you mostly use to heat your house (Self-made heater),Sysmiss,
+c13_5,"What equipment did you mostly use to heat your house (Manufactured heater (Iranian, European, other))",5,
+c13_5,"What equipment did you mostly use to heat your house (Manufactured heater (Iranian, European, other))",Sysmiss,
+c13_6,"What equipment did you mostly use to heat your house (Local-individual boiler (BAXI, and the like))",6,
+c13_6,"What equipment did you mostly use to heat your house (Local-individual boiler (BAXI, and the like))",Sysmiss,
+c13_7,What equipment did you mostly use to heat your house (Local-collective boiler for the block),7,
+c13_7,What equipment did you mostly use to heat your house (Local-collective boiler for the block),Sysmiss,
+c13_8,What equipment did you mostly use to heat your house (Centralized heating),8,
+c13_8,What equipment did you mostly use to heat your house (Centralized heating),Sysmiss,
+c13_9,"What equipment did you mostly use to heat your house (Other, specify)",9,
+c13_9,"What equipment did you mostly use to heat your house (Other, specify)",Sysmiss,
+c15,How does the household get rid of garbage?,1,rubbish evacuation system
+c15,How does the household get rid of garbage?,2,1. collected by a dust-cart
+c15,How does the household get rid of garbage?,3,dumped by household members
+c15,How does the household get rid of garbage?,4,burned by household members
+c15,How does the household get rid of garbage?,5,buried by household members
+c15,How does the household get rid of garbage?,6,other
+c16_1,Not enough floor space (as complaint about housing or environment),1,
+c16_1,Not enough floor space (as complaint about housing or environment),2,
+c16_2,Noise from neighbors or from outside  (as complaint about housing or environment),1,
+c16_2,Noise from neighbors or from outside  (as complaint about housing or environment),2,
+c16_3,Lack of light  (as complaint about housing or environment),1,
+c16_3,Lack of light  (as complaint about housing or environment),2,
+c16_4,Lack of heating  (as complaint about housing or environment),1,
+c16_4,Lack of heating  (as complaint about housing or environment),2,
+c16_4,Lack of heating  (as complaint about housing or environment),3,
+c16_5,Humidity  (as complaint about housing or environment),1,
+c16_5,Humidity  (as complaint about housing or environment),2,
+c16_5,Humidity  (as complaint about housing or environment),3,
+c16_6,Leaking roof  (as complaint about housing or environment),1,
+c16_6,Leaking roof  (as complaint about housing or environment),2,
+c16_6,Leaking roof  (as complaint about housing or environment),3,
+c16_7,Dilapidated  walls and floor  (as complaint about housing or environment),1,
+c16_7,Dilapidated  walls and floor  (as complaint about housing or environment),2,
+c16_7,Dilapidated  walls and floor  (as complaint about housing or environment),3,
+c16_8,Dilapidated window frames and doors  (as complaint about housing or environment),1,
+c16_8,Dilapidated window frames and doors  (as complaint about housing or environment),2,
+c16_8,Dilapidated window frames and doors  (as complaint about housing or environment),3,
+c16_9,Heavy traffic  (as complaint about housing or environment),1,
+c16_9,Heavy traffic  (as complaint about housing or environment),2,
+c16_9,Heavy traffic  (as complaint about housing or environment),3,
+c16_10,Industrial pollution  (as complaint about housing or environment),1,
+c16_10,Industrial pollution  (as complaint about housing or environment),2,
+c16_10,Industrial pollution  (as complaint about housing or environment),3,
+c16_11,The elevator is frequently out of orde  (as complaint about housing or environment),1,
+c16_11,The elevator is frequently out of orde  (as complaint about housing or environment),2,
+c16_11,The elevator is frequently out of orde  (as complaint about housing or environment),3,
+c16_12,Bad water supply  (as complaint about housing or environment),1,
+c16_12,Bad water supply  (as complaint about housing or environment),2,
+c16_12,Bad water supply  (as complaint about housing or environment),3,
+c16_13,Bad garbage evacuation  (as complaint about housing or environment),1,
+c16_13,Bad garbage evacuation  (as complaint about housing or environment),2,
+c16_13,Bad garbage evacuation  (as complaint about housing or environment),3,
+c16_14,Bad service of common use areas and yard areas in multiple dwelling  (as complaint about housing or environment),1,
+c16_14,Bad service of common use areas and yard areas in multiple dwelling  (as complaint about housing or environment),2,
+c16_14,Bad service of common use areas and yard areas in multiple dwelling  (as complaint about housing or environment),3,
+c16_15,Lack of green areas (as complaint about housing or environment),1,
+c16_15,Lack of green areas (as complaint about housing or environment),2,
+c16_15,Lack of green areas (as complaint about housing or environment),3,
+c16_16,Other  (as complaint about housing or environment),1,
+c16_16,Other  (as complaint about housing or environment),2,
+c16_16,Other  (as complaint about housing or environment),3,
+c17,Estimate your dwelling conditions?,1,very good
+c17,Estimate your dwelling conditions?,2,good
+c17,Estimate your dwelling conditions?,3,satisfactory
+c17,Estimate your dwelling conditions?,4,bad
+c17,Estimate your dwelling conditions?,5,very bad
+c18,"Did you renovate your dwelling (i.e., construction work, carpentry, painting)",1,"yes, during the last year"
+c18,"Did you renovate your dwelling (i.e., construction work, carpentry, painting)",2,"yes,years ago"
+c18,"Did you renovate your dwelling (i.e., construction work, carpentry, painting)",3,no
+c20_3,"How much money did the household spend?, (Euro)",Sysmiss,
+c21,Are you at the moment building a house for your permanent living?,1,
+c21,Are you at the moment building a house for your permanent living?,2,
+c22_3,How much money have you spent for building the new house?(Euro),Sysmiss,
+c23,Do you have another dwelling owned besides the one where you live?,1,"1. Yes, I give it for rent"
+c23,Do you have another dwelling owned besides the one where you live?,2,"Yes, it is used as an area for our own use"
+c23,Do you have another dwelling owned besides the one where you live?,3,other
+c23,Do you have another dwelling owned besides the one where you live?,4,no
+c24_2,"If yes, how much money do you receive from renting per month? (US$)",Sysmiss,
+c24_3,"If yes, how much money do you receive from renting per month? (Euro)",Sysmiss,
+c25_1,HH member has access  to computer at home,1,
+c25_1,HH member has access  to computer at home,Sysmiss,
+c25_2,HH member has access to computer in other place,1,
+c25_2,HH member has access to computer in other place,Sysmiss,
+c25_3,HH member has access to Internet at home permanent,1,
+c25_3,HH member has access to Internet at home permanent,Sysmiss,
+c25_4,HH has access to Internet  at home non permanent,1,
+c25_4,HH has access to Internet  at home non permanent,Sysmiss,
+c25_5,HH members has access to Internet at working place,1,
+c25_5,HH members has access to Internet at working place,Sysmiss,
+c25_6,HH members has access to Internet at educational institution,1,
+c25_6,HH members has access to Internet at educational institution,Sysmiss,
+c25_7,HH members has access to Internet at others h/h,1,
+c25_7,HH members has access to Internet at others h/h,Sysmiss,
+c25_8,HH members has access to Internet at public centre of Internet access (free),1,
+c25_8,HH members has access to Internet at public centre of Internet access (free),Sysmiss,
+c25_9,HH members has access to Internet at public centre of Internet access (paid),1,
+c25_9,HH members has access to Internet at public centre of Internet access (paid),Sysmiss,
+c25_10,HH members has access to Internet through cellphone from any locality,1,
+c25_10,HH members has access to Internet through cellphone from any locality,Sysmiss,
+c25_11,HH members has access to Internet  from other place through moving set,1,
+c25_11,HH members has access to Internet  from other place through moving set,Sysmiss,
+c26,Does someone in  household own a car or truck?,1,Yes
+c26,Does someone in  household own a car or truck?,2,No
+c26,Does someone in  household own a car or truck?,Sysmiss,
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",1,Cars
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",2,Minivan/Buses
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",3,Taxi
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",4,Train
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",5,Carts
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",6,Horse/donkey
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",7,Bicycle
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",8,Walking
+c28_1_1,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation",Sysmiss,
+c28_1_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month",1,
+c28_1_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month",2,
+c28_1_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month",3,
+c28_1_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month",4,
+c28_1_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month",Sysmiss,
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,1,Cars
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,2,Minivan/Buses
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,3,Taxi
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,4,Train
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,5,Carts
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,6,Horse/donkey
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,7,Bicycle
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,8,Walking
+c28_2_1,Selling agricultural products or production Usual Mode of Road Transportation,Sysmiss,
+c28_2_2,Selling agricultural products or production Days per Month,1,
+c28_2_2,Selling agricultural products or production Days per Month,2,
+c28_2_2,Selling agricultural products or production Days per Month,3,
+c28_2_2,Selling agricultural products or production Days per Month,4,
+c28_2_2,Selling agricultural products or production Days per Month,5,
+c28_2_2,Selling agricultural products or production Days per Month,6,
+c28_2_2,Selling agricultural products or production Days per Month,7,
+c28_2_2,Selling agricultural products or production Days per Month,8,
+c28_2_2,Selling agricultural products or production Days per Month,10,
+c28_2_2,Selling agricultural products or production Days per Month,12,
+c28_2_2,Selling agricultural products or production Days per Month,15,
+c28_2_2,Selling agricultural products or production Days per Month,20,
+c28_2_2,Selling agricultural products or production Days per Month,25,
+c28_2_2,Selling agricultural products or production Days per Month,30,
+c28_2_2,Selling agricultural products or production Days per Month,Sysmiss,
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,1,Cars
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,2,Minivan/Buses
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,3,Taxi
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,4,Train
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,5,Carts
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,6,Horse/donkey
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,7,Bicycle
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,8,Walking
+c28_3_1_1,Going to a job outside of your community Usual Mode of Road Transportation,Sysmiss,
+c28_3_1_2,Going to a job outside of your community Days per Month,1,
+c28_3_1_2,Going to a job outside of your community Days per Month,2,
+c28_3_1_2,Going to a job outside of your community Days per Month,3,
+c28_3_1_2,Going to a job outside of your community Days per Month,4,
+c28_3_1_2,Going to a job outside of your community Days per Month,6,
+c28_3_1_2,Going to a job outside of your community Days per Month,7,
+c28_3_1_2,Going to a job outside of your community Days per Month,8,
+c28_3_1_2,Going to a job outside of your community Days per Month,10,
+c28_3_1_2,Going to a job outside of your community Days per Month,12,
+c28_3_1_2,Going to a job outside of your community Days per Month,14,
+c28_3_1_2,Going to a job outside of your community Days per Month,15,
+c28_3_1_2,Going to a job outside of your community Days per Month,18,
+c28_3_1_2,Going to a job outside of your community Days per Month,20,
+c28_3_1_2,Going to a job outside of your community Days per Month,21,
+c28_3_1_2,Going to a job outside of your community Days per Month,22,
+c28_3_1_2,Going to a job outside of your community Days per Month,23,
+c28_3_1_2,Going to a job outside of your community Days per Month,24,
+c28_3_1_2,Going to a job outside of your community Days per Month,25,
+c28_3_1_2,Going to a job outside of your community Days per Month,26,
+c28_3_1_2,Going to a job outside of your community Days per Month,27,
+c28_3_1_2,Going to a job outside of your community Days per Month,28,
+c28_3_1_2,Going to a job outside of your community Days per Month,29,
+c28_3_1_2,Going to a job outside of your community Days per Month,30,
+c28_3_1_2,Going to a job outside of your community Days per Month,Sysmiss,
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,1,Cars
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,2,Minivan/Buses
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,3,Taxi
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,4,Train
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,5,Carts
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,6,Horse/donkey
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,7,Bicycle
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,8,Walking
+c28_3_2_1,Going to a job outside of your community Usual Mode of Road Transportation,Sysmiss,
+c28_3_2_2,Going to a job outside of your community Days per Month,1,
+c28_3_2_2,Going to a job outside of your community Days per Month,2,
+c28_3_2_2,Going to a job outside of your community Days per Month,7,
+c28_3_2_2,Going to a job outside of your community Days per Month,8,
+c28_3_2_2,Going to a job outside of your community Days per Month,10,
+c28_3_2_2,Going to a job outside of your community Days per Month,15,
+c28_3_2_2,Going to a job outside of your community Days per Month,18,
+c28_3_2_2,Going to a job outside of your community Days per Month,20,
+c28_3_2_2,Going to a job outside of your community Days per Month,21,
+c28_3_2_2,Going to a job outside of your community Days per Month,22,
+c28_3_2_2,Going to a job outside of your community Days per Month,23,
+c28_3_2_2,Going to a job outside of your community Days per Month,24,
+c28_3_2_2,Going to a job outside of your community Days per Month,25,
+c28_3_2_2,Going to a job outside of your community Days per Month,26,
+c28_3_2_2,Going to a job outside of your community Days per Month,27,
+c28_3_2_2,Going to a job outside of your community Days per Month,28,
+c28_3_2_2,Going to a job outside of your community Days per Month,30,
+c28_3_2_2,Going to a job outside of your community Days per Month,Sysmiss,
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,1,Cars
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,2,Minivan/Buses
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,3,Taxi
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,4,Train
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,5,Carts
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,6,Horse/donkey
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,7,Bicycle
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,8,Walking
+c28_3_3_1,Going to a job outside of your community Usual Mode of Road Transportation,Sysmiss,
+c28_3_3_3,Going to a job outside of your community Distance (km),4,
+c28_3_3_3,Going to a job outside of your community Distance (km),7,
+c28_3_3_3,Going to a job outside of your community Distance (km),10,
+c28_3_3_3,Going to a job outside of your community Distance (km),14,
+c28_3_3_3,Going to a job outside of your community Distance (km),15,
+c28_3_3_3,Going to a job outside of your community Distance (km),20,
+c28_3_3_3,Going to a job outside of your community Distance (km),30,
+c28_3_3_3,Going to a job outside of your community Distance (km),35,
+c28_3_3_3,Going to a job outside of your community Distance (km),40,
+c28_3_3_3,Going to a job outside of your community Distance (km),41,
+c28_3_3_3,Going to a job outside of your community Distance (km),55,
+c28_3_3_3,Going to a job outside of your community Distance (km),Sysmiss,
+c28_4_1,Other Usual Mode of Road Transportation,1,Cars
+c28_4_1,Other Usual Mode of Road Transportation,2,Minivan/Buses
+c28_4_1,Other Usual Mode of Road Transportation,3,Taxi
+c28_4_1,Other Usual Mode of Road Transportation,4,Train
+c28_4_1,Other Usual Mode of Road Transportation,5,Carts
+c28_4_1,Other Usual Mode of Road Transportation,6,Horse/donkey
+c28_4_1,Other Usual Mode of Road Transportation,7,Bicycle
+c28_4_1,Other Usual Mode of Road Transportation,8,Walking
+c28_4_1,Other Usual Mode of Road Transportation,Sysmiss,
+c28_4_2,Other Days per Month,1,
+c28_4_2,Other Days per Month,2,
+c28_4_2,Other Days per Month,3,
+c28_4_2,Other Days per Month,4,
+c28_4_2,Other Days per Month,5,
+c28_4_2,Other Days per Month,6,
+c28_4_2,Other Days per Month,7,
+c28_4_2,Other Days per Month,8,
+c28_4_2,Other Days per Month,10,
+c28_4_2,Other Days per Month,12,
+c28_4_2,Other Days per Month,14,
+c28_4_2,Other Days per Month,15,
+c28_4_2,Other Days per Month,16,
+c28_4_2,Other Days per Month,17,
+c28_4_2,Other Days per Month,18,
+c28_4_2,Other Days per Month,20,
+c28_4_2,Other Days per Month,21,
+c28_4_2,Other Days per Month,22,
+c28_4_2,Other Days per Month,23,
+c28_4_2,Other Days per Month,24,
+c28_4_2,Other Days per Month,25,
+c28_4_2,Other Days per Month,30,
+c28_4_2,Other Days per Month,Sysmiss,
+c29_1_1,Health Post Transportation Mode,1,Cars
+c29_1_1,Health Post Transportation Mode,2,Minivan/Buses
+c29_1_1,Health Post Transportation Mode,3,Taxi
+c29_1_1,Health Post Transportation Mode,4,Train
+c29_1_1,Health Post Transportation Mode,5,Carts
+c29_1_1,Health Post Transportation Mode,6,Horse/donkey
+c29_1_1,Health Post Transportation Mode,7,Bicycle
+c29_1_1,Health Post Transportation Mode,8,Walking
+c29_1_1,Health Post Transportation Mode,Sysmiss,
+c29_2_1,Hospitals (Emergency) Transportation Mode,1,
+c29_2_1,Hospitals (Emergency) Transportation Mode,2,
+c29_2_1,Hospitals (Emergency) Transportation Mode,3,
+c29_2_1,Hospitals (Emergency) Transportation Mode,4,
+c29_2_1,Hospitals (Emergency) Transportation Mode,6,
+c29_2_1,Hospitals (Emergency) Transportation Mode,8,
+c29_2_1,Hospitals (Emergency) Transportation Mode,Sysmiss,
+c29_2_2,Hospitals (Emergency) Distance (km),1,Cars
+c29_2_2,Hospitals (Emergency) Distance (km),2,Minivan/Buses
+c29_2_2,Hospitals (Emergency) Distance (km),3,Taxi
+c29_2_2,Hospitals (Emergency) Distance (km),4,Train
+c29_2_2,Hospitals (Emergency) Distance (km),5,Carts
+c29_2_2,Hospitals (Emergency) Distance (km),6,Horse/donkey
+c29_2_2,Hospitals (Emergency) Distance (km),7,Bicycle
+c29_2_2,Hospitals (Emergency) Distance (km),8,Walking
+c29_3_1,Pharmacy Transportation Mode,1,
+c29_3_1,Pharmacy Transportation Mode,2,
+c29_3_1,Pharmacy Transportation Mode,3,
+c29_3_1,Pharmacy Transportation Mode,5,
+c29_3_1,Pharmacy Transportation Mode,8,
+c29_3_1,Pharmacy Transportation Mode,Sysmiss,
+c29_3_2,Pharmacy Distance (km),1,Cars
+c29_3_2,Pharmacy Distance (km),2,Minivan/Buses
+c29_3_2,Pharmacy Distance (km),3,Taxi
+c29_3_2,Pharmacy Distance (km),4,Train
+c29_3_2,Pharmacy Distance (km),5,Carts
+c29_3_2,Pharmacy Distance (km),6,Horse/donkey
+c29_3_2,Pharmacy Distance (km),7,Bicycle
+c29_3_2,Pharmacy Distance (km),8,Walking
+c29_4_1,Village office Transportation Mode,1,Cars
+c29_4_1,Village office Transportation Mode,2,Minivan/Buses
+c29_4_1,Village office Transportation Mode,3,Taxi
+c29_4_1,Village office Transportation Mode,4,Train
+c29_4_1,Village office Transportation Mode,5,Carts
+c29_4_1,Village office Transportation Mode,6,Horse/donkey
+c29_4_1,Village office Transportation Mode,7,Bicycle
+c29_4_1,Village office Transportation Mode,8,Walking
+c29_4_1,Village office Transportation Mode,Sysmiss,
+c29_5_1,Kindergarten Transportation Mode,1,Cars
+c29_5_1,Kindergarten Transportation Mode,2,Minivan/Buses
+c29_5_1,Kindergarten Transportation Mode,3,Taxi
+c29_5_1,Kindergarten Transportation Mode,4,Train
+c29_5_1,Kindergarten Transportation Mode,5,Carts
+c29_5_1,Kindergarten Transportation Mode,6,Horse/donkey
+c29_5_1,Kindergarten Transportation Mode,7,Bicycle
+c29_5_1,Kindergarten Transportation Mode,8,Bicycle
+c29_5_1,Kindergarten Transportation Mode,Sysmiss,
+c29_6_1,Complete secondary school Transportation Mode,1,Cars
+c29_6_1,Complete secondary school Transportation Mode,2,Minivan/Buses
+c29_6_1,Complete secondary school Transportation Mode,3,Taxi
+c29_6_1,Complete secondary school Transportation Mode,4,Train
+c29_6_1,Complete secondary school Transportation Mode,5,Carts
+c29_6_1,Complete secondary school Transportation Mode,6,Horse/donkey
+c29_6_1,Complete secondary school Transportation Mode,7,Bicycle
+c29_6_1,Complete secondary school Transportation Mode,8,Walking
+c29_6_1,Complete secondary school Transportation Mode,Sysmiss,
+c29_7_1,Primary general school Transportation Mode,1,Cars
+c29_7_1,Primary general school Transportation Mode,2,Minivan/Buses
+c29_7_1,Primary general school Transportation Mode,3,Taxi
+c29_7_1,Primary general school Transportation Mode,4,Train
+c29_7_1,Primary general school Transportation Mode,5,Carts
+c29_7_1,Primary general school Transportation Mode,6,Horse/donkey
+c29_7_1,Primary general school Transportation Mode,7,Horse/donkey
+c29_7_1,Primary general school Transportation Mode,8,Walking
+c29_7_1,Primary general school Transportation Mode,Sysmiss,
+c29_7_3,Primary general school Duration (minutes),3,
+c29_7_3,Primary general school Duration (minutes),5,
+c29_7_3,Primary general school Duration (minutes),6,
+c29_7_3,Primary general school Duration (minutes),7,
+c29_7_3,Primary general school Duration (minutes),8,
+c29_7_3,Primary general school Duration (minutes),9,
+c29_7_3,Primary general school Duration (minutes),10,
+c29_7_3,Primary general school Duration (minutes),12,
+c29_7_3,Primary general school Duration (minutes),13,
+c29_7_3,Primary general school Duration (minutes),14,
+c29_7_3,Primary general school Duration (minutes),15,
+c29_7_3,Primary general school Duration (minutes),16,
+c29_7_3,Primary general school Duration (minutes),20,
+c29_7_3,Primary general school Duration (minutes),Sysmiss,
+c29_8_1,Markets to sell your produce Transportation Mode,1,Cars
+c29_8_1,Markets to sell your produce Transportation Mode,2,Minivan/Buses
+c29_8_1,Markets to sell your produce Transportation Mode,3,Taxi
+c29_8_1,Markets to sell your produce Transportation Mode,4,Train
+c29_8_1,Markets to sell your produce Transportation Mode,5,Carts
+c29_8_1,Markets to sell your produce Transportation Mode,6,Horse/donkey
+c29_8_1,Markets to sell your produce Transportation Mode,7,Bicycle
+c29_8_1,Markets to sell your produce Transportation Mode,8,Walking
+c29_8_1,Markets to sell your produce Transportation Mode,Sysmiss,
+c29_9_1,Bank/Financial Services Transportation Mode,1,Cars
+c29_9_1,Bank/Financial Services Transportation Mode,2,Minivan/Buses
+c29_9_1,Bank/Financial Services Transportation Mode,3,Taxi
+c29_9_1,Bank/Financial Services Transportation Mode,4,Train
+c29_9_1,Bank/Financial Services Transportation Mode,5,Carts
+c29_9_1,Bank/Financial Services Transportation Mode,6,Horse/donkey
+c29_9_1,Bank/Financial Services Transportation Mode,7,Bicycle
+c29_9_1,Bank/Financial Services Transportation Mode,8,Walking
+c29_9_1,Bank/Financial Services Transportation Mode,Sysmiss,
+c30_1_1,Estimation of  the quality of roads within your settlement or community-Poor,1,
+c30_1_1,Estimation of  the quality of roads within your settlement or community-Poor,Sysmiss,
+c30_1_2,Estimation of  the quality of roads within your settlement or community-Average,1,
+c30_1_2,Estimation of  the quality of roads within your settlement or community-Average,Sysmiss,
+c30_1_3,Estimation of  the quality of roads within your settlement or community-Good,1,
+c30_1_3,Estimation of  the quality of roads within your settlement or community-Good,Sysmiss,
+c30_1_4,Estimation of  the quality of roads within your settlement or community-Excellent,1,
+c30_1_4,Estimation of  the quality of roads within your settlement or community-Excellent,Sysmiss,
+c30_2_1,Estimation of  the quality of  roads to regional towns or markets-Poor,1,
+c30_2_1,Estimation of  the quality of  roads to regional towns or markets-Poor,Sysmiss,
+c30_2_2,Estimation of  the quality of roads to regional towns or markets-Average,1,
+c30_2_2,Estimation of  the quality of roads to regional towns or markets-Average,Sysmiss,
+c30_2_3,Estimation of  the quality of roads to regional towns or markets-Good,1,
+c30_2_3,Estimation of  the quality of roads to regional towns or markets-Good,Sysmiss,
+c30_2_4,Estimation of  the quality of roads to regional towns or markets-Excellent,1,
+c30_2_4,Estimation of  the quality of roads to regional towns or markets-Excellent,Sysmiss,
+c30_3_1,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Poor",1,
+c30_3_1,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Poor",Sysmiss,
+c30_3_2,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Average",1,
+c30_3_2,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Average",Sysmiss,
+c30_3_3,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Good",1,
+c30_3_3,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Good",Sysmiss,
+c30_3_4,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Excellent",Sysmiss,
+f1q,Does any member of the household own or work on the land (including back yards and the summer-house plots),1,yes
+f1q,Does any member of the household own or work on the land (including back yards and the summer-house plots),2,no
+f3_1q,Why the household doesn`t use his land?  (-Too far from the village),1,
+f3_1q,Why the household doesn`t use his land?  (-Too far from the village),Sysmiss,
+f3_2q,Why the household doesn`t use his land? (-Land is of very poor quality),1,
+f3_2q,Why the household doesn`t use his land? (-Land is of very poor quality),Sysmiss,
+f3_3q,Why the household doesn`t use his land? (-No irrigation available),1,
+f3_3q,Why the household doesn`t use his land? (-No irrigation available),Sysmiss,
+f3_4q,Why the household doesn`t use his land? (-Not profitable to cultivate),1,
+f3_4q,Why the household doesn`t use his land? (-Not profitable to cultivate),Sysmiss,
+f3_5q,Why the household doesn`t use his land? (-Cannot get necessary inputs),1,
+f3_5q,Why the household doesn`t use his land? (-Cannot get necessary inputs),Sysmiss,
+f3_6q,Why the household doesn`t use his land? (-Im not in good health or too old),1,
+f3_6q,Why the household doesn`t use his land? (-Im not in good health or too old),Sysmiss,
+f3_7q,Why the household doesn`t use his land? (-Other),1,
+f3_7q,Why the household doesn`t use his land? (-Other),Sysmiss,
+f4q,"During the past year, was any farming or irrigation training offered in your community or nearby communities?",1,Yes
+f4q,"During the past year, was any farming or irrigation training offered in your community or nearby communities?",2,No
+f4q,"During the past year, was any farming or irrigation training offered in your community or nearby communities?",3,Dont know
+f4q,"During the past year, was any farming or irrigation training offered in your community or nearby communities?",Sysmiss,
+f5q,Did you attend any of the trainings?,1,yes
+f5q,Did you attend any of the trainings?,2,no
+f5q,Did you attend any of the trainings?,Sysmiss,
+f6_4_1q,How much of your land did you water through the Irrigation water and wells or other drinking water /(Kitchen plot),Sysmiss,
+f6_4_2q,How much of your land did you water through the Irrigation water and wells or other drinking water /(Other plots),Sysmiss,
+f6_6_2q,Other associations of watering sourses /(Other plots),Sysmiss,
+f7q,Is the household a member of a water users company?,1,yes
+f7q,Is the household a member of a water users company?,2,no
+f7q,Is the household a member of a water users company?,Sysmiss,
+f8q,"If not, please specify why?",1,There is no similar company in our village
+f8q,"If not, please specify why?",2,I did not want to join the company
+f8q,"If not, please specify why?",3,Other
+f8q,"If not, please specify why?",Sysmiss,
+f9q,Did you get enough irrigation water on time?,1,"yes, enough and timely"
+f9q,Did you get enough irrigation water on time?,2,"enough, but not timely"
+f9q,Did you get enough irrigation water on time?,3,"timely, but not enough"
+f9q,Did you get enough irrigation water on time?,4,not timely and not enough
+f9q,Did you get enough irrigation water on time?,5,no
+f9q,Did you get enough irrigation water on time?,Sysmiss,
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",1,Pump accidents
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",2,The poor condition of the pipes
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",3,Failure to pay
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",4,No inter-community supply schedule
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",5,Arbitrary approach by the system representatives
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",6,Local system issues
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",7,other
+f10_1q,"If the household has an interruption in the supply of irrigation water, what is the reasons were?",Sysmiss,
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",1,Pump accidents
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",2,The poor condition of the pipes
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",3,Failure to pay
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",4,No inter-community supply schedule
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",5,Arbitrary approach by the system representatives
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",6,Local system issues
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",7,other
+f10_2q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",Sysmiss,
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",1,Pump accidents
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",2,The poor condition of the pipes
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",3,Failure to pay
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",4,No inter-community supply schedule
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",5,Arbitrary approach by the system representatives
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",6,Local system issues
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",7,other
+f10_3q,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?",Sysmiss,
+f11q,Did the household pay for irrigation water?,1,Yes
+f11q,Did the household pay for irrigation water?,2,Partially
+f11q,Did the household pay for irrigation water?,3,No
+f11q,Did the household pay for irrigation water?,Sysmiss,
+f12_1q,Why the household did not pay fully or paid partially,1,Incorrect fee estimates
+f12_1q,Why the household did not pay fully or paid partially,2,Insufficient water supply
+f12_1q,Why the household did not pay fully or paid partially,3,Not timely supply
+f12_1q,Why the household did not pay fully or paid partially,4,Lack of confidence in supplier
+f12_1q,Why the household did not pay fully or paid partially,5,Lack of funds
+f12_1q,Why the household did not pay fully or paid partially,6,other
+f12_1q,Why the household did not pay fully or paid partially,Sysmiss,
+f12_2q,Why the household did not pay fully or paid partially,1,Incorrect fee estimates
+f12_2q,Why the household did not pay fully or paid partially,2,Insufficient water supply
+f12_2q,Why the household did not pay fully or paid partially,3,Not timely supply
+f12_2q,Why the household did not pay fully or paid partially,4,Lack of confidence in supplier
+f12_2q,Why the household did not pay fully or paid partially,5,Lack of funds
+f12_2q,Why the household did not pay fully or paid partially,6,other
+f12_2q,Why the household did not pay fully or paid partially,Sysmiss,
+f12_3q,Why the household did not pay fully or paid partially,1,Incorrect fee estimates
+f12_3q,Why the household did not pay fully or paid partially,2,Insufficient water supply
+f12_3q,Why the household did not pay fully or paid partially,3,Not timely supply
+f12_3q,Why the household did not pay fully or paid partially,4,Lack of confidence in supplier
+f12_3q,Why the household did not pay fully or paid partially,5,Lack of funds
+f12_3q,Why the household did not pay fully or paid partially,6,other
+f12_3q,Why the household did not pay fully or paid partially,Sysmiss,
+f13q,Did the household  find that the operation of it`s irrigation system changed compared to 2015?,1,Yes
+f13q,Did the household  find that the operation of it`s irrigation system changed compared to 2015?,2,No
+f13q,Did the household  find that the operation of it`s irrigation system changed compared to 2015?,Sysmiss,
+f14q,In what way did it change?,1,Improved significantly
+f14q,In what way did it change?,2,Improved some
+f14q,In what way did it change?,3,Worsened some
+f14q,In what way did it change?,4,Worsened significantly
+f14q,In what way did it change?,Sysmiss,
+f15q,Did the area of land you irrigated in 2015 change compare to 2011?,1,Yes
+f15q,Did the area of land you irrigated in 2015 change compare to 2011?,2,No
+f15q,Did the area of land you irrigated in 2015 change compare to 2011?,Sysmiss,
+f16q,In what way did it change?,1,Enlarged significantly
+f16q,In what way did it change?,2,Enlarged to some extent
+f16q,In what way did it change?,3,Somewhat reduced
+f16q,In what way did it change?,4,Significantly reduced
+f16q,In what way did it change?,Sysmiss,
+f1_1a,"ID number of the household member, who take part in this activities",1,
+f1_1a,"ID number of the household member, who take part in this activities",2,
+f1_1a,"ID number of the household member, who take part in this activities",3,
+f1_1a,"ID number of the household member, who take part in this activities",4,
+f1_1a,"ID number of the household member, who take part in this activities",5,
+f1_1a,"ID number of the household member, who take part in this activities",Sysmiss,
+f1_2a,"ID number of the household member, who take part in this activities",1,
+f1_2a,"ID number of the household member, who take part in this activities",2,
+f1_2a,"ID number of the household member, who take part in this activities",3,
+f1_2a,"ID number of the household member, who take part in this activities",4,
+f1_2a,"ID number of the household member, who take part in this activities",5,
+f1_2a,"ID number of the household member, who take part in this activities",6,
+f1_2a,"ID number of the household member, who take part in this activities",7,
+f1_2a,"ID number of the household member, who take part in this activities",8,
+f1_2a,"ID number of the household member, who take part in this activities",9,
+f1_2a,"ID number of the household member, who take part in this activities",Sysmiss,
+f1_3a,"ID number of the household member, who take part in this activities",1,
+f1_3a,"ID number of the household member, who take part in this activities",2,
+f1_3a,"ID number of the household member, who take part in this activities",3,
+f1_3a,"ID number of the household member, who take part in this activities",4,
+f1_3a,"ID number of the household member, who take part in this activities",5,
+f1_3a,"ID number of the household member, who take part in this activities",6,
+f1_3a,"ID number of the household member, who take part in this activities",7,
+f1_3a,"ID number of the household member, who take part in this activities",Sysmiss,
+f1_4a,"ID number of the household member, who take part in this activities",1,
+f1_4a,"ID number of the household member, who take part in this activities",4,
+f1_4a,"ID number of the household member, who take part in this activities",5,
+f1_4a,"ID number of the household member, who take part in this activities",6,
+f1_4a,"ID number of the household member, who take part in this activities",7,
+f1_4a,"ID number of the household member, who take part in this activities",10,
+f1_4a,"ID number of the household member, who take part in this activities",Sysmiss,
+f1_5a,"ID number of the household member, who take part in this activities",5,
+f1_5a,"ID number of the household member, who take part in this activities",6,
+f1_5a,"ID number of the household member, who take part in this activities",8,
+f1_5a,"ID number of the household member, who take part in this activities",12,
+f1_5a,"ID number of the household member, who take part in this activities",Sysmiss,
+f17q,Is the household engaged in cattle breeding??,1,Yes
+f17q,Is the household engaged in cattle breeding??,2,No
+f2_1a,"ID number of the household member, who take part in this activities",1,
+f2_1a,"ID number of the household member, who take part in this activities",2,
+f2_1a,"ID number of the household member, who take part in this activities",3,
+f2_1a,"ID number of the household member, who take part in this activities",4,
+f2_1a,"ID number of the household member, who take part in this activities",5,
+f2_1a,"ID number of the household member, who take part in this activities",8,
+f2_1a,"ID number of the household member, who take part in this activities",Sysmiss,
+f2_2a,"ID number of the household member, who take part in this activities",1,
+f2_2a,"ID number of the household member, who take part in this activities",2,
+f2_2a,"ID number of the household member, who take part in this activities",3,
+f2_2a,"ID number of the household member, who take part in this activities",4,
+f2_2a,"ID number of the household member, who take part in this activities",5,
+f2_2a,"ID number of the household member, who take part in this activities",6,
+f2_2a,"ID number of the household member, who take part in this activities",Sysmiss,
+f2_3a,"ID number of the household member, who take part in this activities",1,
+f2_3a,"ID number of the household member, who take part in this activities",2,
+f2_3a,"ID number of the household member, who take part in this activities",3,
+f2_3a,"ID number of the household member, who take part in this activities",4,
+f2_3a,"ID number of the household member, who take part in this activities",5,
+f2_3a,"ID number of the household member, who take part in this activities",6,
+f2_3a,"ID number of the household member, who take part in this activities",7,
+f2_3a,"ID number of the household member, who take part in this activities",9,
+f2_3a,"ID number of the household member, who take part in this activities",10,
+f2_3a,"ID number of the household member, who take part in this activities",Sysmiss,
+f2_4a,"ID number of the household member, who take part in this activities",3,
+f2_4a,"ID number of the household member, who take part in this activities",4,
+f2_4a,"ID number of the household member, who take part in this activities",5,
+f2_4a,"ID number of the household member, who take part in this activities",6,
+f2_4a,"ID number of the household member, who take part in this activities",7,
+f2_4a,"ID number of the household member, who take part in this activities",12,
+f2_4a,"ID number of the household member, who take part in this activities",Sysmiss,
+f2_5a,"ID number of the household member, who take part in this activities",5,
+f2_5a,"ID number of the household member, who take part in this activities",6,
+f2_5a,"ID number of the household member, who take part in this activities",7,
+f2_5a,"ID number of the household member, who take part in this activities",8,
+f2_5a,"ID number of the household member, who take part in this activities",Sysmiss,
+g1_1a,"ID number of the household member, who take part in this activities",1,
+g1_1a,"ID number of the household member, who take part in this activities",2,
+g1_1a,"ID number of the household member, who take part in this activities",3,
+g1_1a,"ID number of the household member, who take part in this activities",4,
+g1_1a,"ID number of the household member, who take part in this activities",5,
+g1_1a,"ID number of the household member, who take part in this activities",6,
+g1_1a,"ID number of the household member, who take part in this activities",8,
+g1_1a,"ID number of the household member, who take part in this activities",Sysmiss,
+g1_2a,"ID number of the household member, who take part in this activities",1,
+g1_2a,"ID number of the household member, who take part in this activities",2,
+g1_2a,"ID number of the household member, who take part in this activities",3,
+g1_2a,"ID number of the household member, who take part in this activities",4,
+g1_2a,"ID number of the household member, who take part in this activities",5,
+g1_2a,"ID number of the household member, who take part in this activities",6,
+g1_2a,"ID number of the household member, who take part in this activities",7,
+g1_2a,"ID number of the household member, who take part in this activities",8,
+g1_2a,"ID number of the household member, who take part in this activities",Sysmiss,
+g1_3a,"ID number of the household member, who take part in this activities",1,
+g1_3a,"ID number of the household member, who take part in this activities",2,
+g1_3a,"ID number of the household member, who take part in this activities",3,
+g1_3a,"ID number of the household member, who take part in this activities",4,
+g1_3a,"ID number of the household member, who take part in this activities",5,
+g1_3a,"ID number of the household member, who take part in this activities",6,
+g1_3a,"ID number of the household member, who take part in this activities",7,
+g1_3a,"ID number of the household member, who take part in this activities",8,
+g1_3a,"ID number of the household member, who take part in this activities",9,
+g1_3a,"ID number of the household member, who take part in this activities",10,
+g1_3a,"ID number of the household member, who take part in this activities",Sysmiss,
+g1_4a,"ID number of the household member, who take part in this activities",3,
+g1_4a,"ID number of the household member, who take part in this activities",4,
+g1_4a,"ID number of the household member, who take part in this activities",5,
+g1_4a,"ID number of the household member, who take part in this activities",6,
+g1_4a,"ID number of the household member, who take part in this activities",7,
+g1_4a,"ID number of the household member, who take part in this activities",9,
+g1_4a,"ID number of the household member, who take part in this activities",10,
+g1_4a,"ID number of the household member, who take part in this activities",12,
+g1_4a,"ID number of the household member, who take part in this activities",Sysmiss,
+g1_5a,"ID number of the household member, who take part in this activities",5,
+g1_5a,"ID number of the household member, who take part in this activities",6,
+g1_5a,"ID number of the household member, who take part in this activities",7,
+g1_5a,"ID number of the household member, who take part in this activities",8,
+g1_5a,"ID number of the household member, who take part in this activities",Sysmiss,
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,1,lack of wholesale markets
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,2,paying irrigation fees
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,3,purchasing of agricultural techniques
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,4,acquisition of seeds or seedling
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,5,shortage of seeds
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,6,lack of work force
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,7,remuneration for work
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,8,transportation of products to the market
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,9,dealing with intermediary
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,10,sale of food products
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,11,other
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,12,did not experience
+f18_1q,Three  main difficulties of the household which was experienced during the last season?,Sysmiss,
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,1,lack of wholesale markets
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,2,paying irrigation fees
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,3,purchasing of agricultural techniques
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,4,acquisition of seeds or seedling
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,5,shortage of seeds
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,6,lack of work force
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,7,remuneration for work
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,8,transportation of products to the market
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,9,dealing with intermediary
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,10,sale of food products
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,11,other
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,12,did not experience
+f18_2q,Three  main difficulties of the household which was experienced during the last season?,Sysmiss,
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,1,lack of wholesale markets
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,2,paying irrigation fees
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,3,purchasing of agricultural techniques
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,4,acquisition of seeds or seedling
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,5,shortage of seeds
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,6,lack of work force
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,7,remuneration for work
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,8,transportation of products to the market
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,9,dealing with intermediary
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,10,sale of food products
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,11,other
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,12,did not experience
+f18_3q,Three  main difficulties of the household which was experienced during the last season?,Sysmiss,
+f19q,Did the household take credit or have debt for agricultural activities during  the last season?,1,yes
+f19q,Did the household take credit or have debt for agricultural activities during  the last season?,2,no
+f19q,Did the household take credit or have debt for agricultural activities during  the last season?,Sysmiss,
+f21q,"If yes, from whom?",1,bank
+f21q,"If yes, from whom?",2,governmental project
+f21q,"If yes, from whom?",3,international organization
+f21q,"If yes, from whom?",4,parents
+f21q,"If yes, from whom?",5,friends or others
+f21q,"If yes, from whom?",6,other
+f21q,"If yes, from whom?",Sysmiss,
+h1,Did the household send any money or goods to an absent household member or any other person during the last 12 months?,1,yes
+h1,Did the household send any money or goods to an absent household member or any other person during the last 12 months?,2,no
+h2,Did the household receive money or goods from an absent household member or any other person during the last 12 months?,1,yes
+h2,Did the household receive money or goods from an absent household member or any other person during the last 12 months?,2,no
+j1,Did any of household members lend money within the last 12 months?,1,
+j1,Did any of household members lend money within the last 12 months?,2,
+j1_1,To RA residents,1,
+j1_1,To RA residents,Sysmiss,
+j1_2,To RA non-residents,Sysmiss,
+j2_2_1,how much  money was lent to RA non-residents (AMD)?,Sysmiss,
+j2_2_2,how much  money was lent to RA non-residents (ruble)?,Sysmiss,
+j2_2_3,how much  money was lent to RA non-residents (US$)?,Sysmiss,
+j2_2_4,how much  money was lentto RA non-residents (euro)?,Sysmiss,
+j3_2,To RA non-residents,Sysmiss,
+j4,Did any of household members barrow money within the last 12 months?,1,
+j4,Did any of household members barrow money within the last 12 months?,2,
+j4_1,To RA residents,1,
+j4_1,To RA residents,Sysmiss,
+j4_2,To RA non-residents,2,
+j4_2,To RA non-residents,Sysmiss,
+j5_4,"Did any of household members  borrow money within the last 12, indicate the amount(euro)?",Sysmiss,
+m1,Is the  family registered in the poverty family benefit system?,1,"yes, my f amily receives benefit"
+m1,Is the  family registered in the poverty family benefit system?,2,"yes, but my family doesnt receive benefit"
+m1,Is the  family registered in the poverty family benefit system?,3,"yes, my family receives non regular benefit"
+m1,Is the  family registered in the poverty family benefit system?,4,no
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",1,
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",2,
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",3,
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",4,
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",99,
+m4,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?",Sysmiss,
+m2,"If no, what is the main reason?",1,I considered myself well-off
+m2,"If no, what is the main reason?",2,I am well-provided
+m2,"If no, what is the main reason?",3,I am not informed
+m2,"If no, what is the main reason?",4,bad attitude of the social workers
+m2,"If no, what is the main reason?",5,difficult to get required documents
+m2,"If no, what is the main reason?",6,I have been rejected once
+m2,"If no, what is the main reason?",7,other
+m2,"If no, what is the main reason?",Sysmiss,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",1,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",2,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",3,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",4,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",5,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",6,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",7,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",8,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",9,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",10,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",11,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",12,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",13,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",14,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",15,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",16,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",17,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",18,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",19,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",20,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",22,
+m3,"If family receives benefit, please specify for how many years you were entitled to?",Sysmiss,
+m5,Were you informed about the reasons for the termination/refusal of the benefits?,1,"yes, verbally"
+m5,Were you informed about the reasons for the termination/refusal of the benefits?,2,"yes, in written form"
+m5,Were you informed about the reasons for the termination/refusal of the benefits?,3,no
+m5,Were you informed about the reasons for the termination/refusal of the benefits?,4,difficult to answer
+m5,Were you informed about the reasons for the termination/refusal of the benefits?,Sysmiss,
+m6,Were the reasons for the termination/refusal of the benefits clear to household?,1,"yes, I accept the explanation"
+m6,Were the reasons for the termination/refusal of the benefits clear to household?,2,"yes, but  appeal"
+m6,Were the reasons for the termination/refusal of the benefits clear to household?,3,"no, I applied for further explanations"
+m6,Were the reasons for the termination/refusal of the benefits clear to household?,4,difficult to answer
+m6,Were the reasons for the termination/refusal of the benefits clear to household?,Sysmiss,
+m7,Was it easy to collect the documentation necessary for the registration?,1,yes
+m7,Was it easy to collect the documentation necessary for the registration?,2,not so easy
+m7,Was it easy to collect the documentation necessary for the registration?,3,very difficult
+m7,Was it easy to collect the documentation necessary for the registration?,Sysmiss,
+m8,Did you pay for documents and certificates you were asked to provide?,1,yes
+m8,Did you pay for documents and certificates you were asked to provide?,2,no
+m8,Did you pay for documents and certificates you were asked to provide?,3,do not want to answer
+m8,Did you pay for documents and certificates you were asked to provide?,Sysmiss,
+m9,Were  you satisfied with the work of the regional social inspector?,1,"yes, I have received explanations to all my questions"
+m9,Were  you satisfied with the work of the regional social inspector?,2,at some extent
+m9,Were  you satisfied with the work of the regional social inspector?,3,no
+m9,Were  you satisfied with the work of the regional social inspector?,4,difficult to answer
+m9,Were  you satisfied with the work of the regional social inspector?,Sysmiss,
+m10,Did  you  inform the SSM about changes in household taken place after the registration?,1,yes
+m10,Did  you  inform the SSM about changes in household taken place after the registration?,2,no
+m10,Did  you  inform the SSM about changes in household taken place after the registration?,3,there is no changes
+m10,Did  you  inform the SSM about changes in household taken place after the registration?,Sysmiss,
+m11,Do you consider that the poverty benefit system is justified?,1,yes
+m11,Do you consider that the poverty benefit system is justified?,2,no
+m11,Do you consider that the poverty benefit system is justified?,3,not sure
+m11,Do you consider that the poverty benefit system is justified?,4,do not know
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,1,almost all
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,2,more than  a half
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,3,a half of them
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,4,less than a half
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,5,a few of them
+m12,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?,6,do not know
+m13,Did  you receive humanitarian assistance during the last 12 months?,1,yes
+m13,Did  you receive humanitarian assistance during the last 12 months?,2,no
+m14_1_1,Did  you  receive  the food,1,yes
+m14_1_1,Did  you  receive  the food,2,no
+m14_1_1,Did  you  receive  the food,Sysmiss,
+m14_1_2,For how many times did  you receive the food,1,
+m14_1_2,For how many times did  you receive the food,2,
+m14_1_2,For how many times did  you receive the food,3,
+m14_1_2,For how many times did  you receive the food,4,
+m14_1_2,For how many times did  you receive the food,10,
+m14_1_2,For how many times did  you receive the food,12,
+m14_1_2,For how many times did  you receive the food,50,
+m14_1_2,For how many times did  you receive the food,120,
+m14_1_2,For how many times did  you receive the food,165,
+m14_1_2,For how many times did  you receive the food,300,
+m14_1_2,For how many times did  you receive the food,365,
+m14_1_2,For how many times did  you receive the food,Sysmiss,
+m14_2_1,Did  the household receive  the wearing,1,yes
+m14_2_1,Did  the household receive  the wearing,2,no
+m14_2_1,Did  the household receive  the wearing,Sysmiss,
+m14_2_2,For how many times  did  you receive  the  wearing,1,
+m14_2_2,For how many times  did  you receive  the  wearing,2,
+m14_2_2,For how many times  did  you receive  the  wearing,Sysmiss,
+m14_3_1,Did  you  receive  the stationery,1,
+m14_3_1,Did  you  receive  the stationery,Sysmiss,
+m14_3_2,For how many times  did  you receive  the  stationery,1,
+m14_3_2,For how many times  did  you receive  the  stationery,2,
+m14_3_2,For how many times  did  you receive  the  stationery,3,
+m14_3_2,For how many times  did  you receive  the  stationery,Sysmiss,
+m14_4_1,Did  you  receive  the medications,1,
+m14_4_1,Did  you  receive  the medications,Sysmiss,
+m14_4_2,For how many times  did  you receive the medications,1,
+m14_4_2,For how many times  did  you receive the medications,2,
+m14_4_2,For how many times  did  you receive the medications,3,
+m14_4_2,For how many times  did  you receive the medications,5,
+m14_4_2,For how many times  did  you receive the medications,6,
+m14_4_2,For how many times  did  you receive the medications,7,
+m14_4_2,For how many times  did  you receive the medications,10,
+m14_4_2,For how many times  did  you receive the medications,12,
+m14_4_2,For how many times  did  you receive the medications,Sysmiss,
+m14_5_1,Did  you  receive  the other,1,
+m14_5_1,Did  you  receive  the other,Sysmiss,
+m14_5_2,For how many times  did  you receive other,1,
+m14_5_2,For how many times  did  you receive other,2,
+m14_5_2,For how many times  did  you receive other,3,
+m14_5_2,For how many times  did  you receive other,Sysmiss,
+m15_1_2,How much money does our family  need monthly to live very well ?,1,AMD
+m15_1_2,How much money does our family  need monthly to live very well ?,2,ruble
+m15_1_2,How much money does our family  need monthly to live very well ?,3,US$
+m15_1_2,How much money does our family  need monthly to live very well ?,4,euro
+m15_1_2,How much money does our family  need monthly to live very well ?,Sysmiss,
+m15_2_2,How much money does your family  need monthly to live  well ?,1,AMD
+m15_2_2,How much money does your family  need monthly to live  well ?,2,ruble
+m15_2_2,How much money does your family  need monthly to live  well ?,3,US$
+m15_2_2,How much money does your family  need monthly to live  well ?,4,euro
+m15_2_2,How much money does your family  need monthly to live  well ?,Sysmiss,
+m15_3_2,"How much money does your family  need monthly to ""make ends meat"" (survive)?",1,AMD
+m15_3_2,"How much money does your family  need monthly to ""make ends meat"" (survive)?",2,ruble
+m15_3_2,"How much money does your family  need monthly to ""make ends meat"" (survive)?",3,US$
+m15_3_2,"How much money does your family  need monthly to ""make ends meat"" (survive)?",4,euro
+m15_3_2,"How much money does your family  need monthly to ""make ends meat"" (survive)?",Sysmiss,
+p2,How much kerosene in liters did  the household  consume?(liter),Sysmiss,
+p7,How much  other energy carriers (in kg) did the household consume?,5,
+p7,How much  other energy carriers (in kg) did the household consume?,15,
+p7,How much  other energy carriers (in kg) did the household consume?,20,
+p7,How much  other energy carriers (in kg) did the household consume?,30,
+p7,How much  other energy carriers (in kg) did the household consume?,40,
+p7,How much  other energy carriers (in kg) did the household consume?,50,
+p7,How much  other energy carriers (in kg) did the household consume?,60,
+p7,How much  other energy carriers (in kg) did the household consume?,70,
+p7,How much  other energy carriers (in kg) did the household consume?,Sysmiss,
+p8_1,Does  the household   have car(s)?,1,yes
+p8_1,Does  the household   have car(s)?,2,no
+z1,"Were you or any member of your household eligible to receive salary, pension or any social benefit, that you have not received during the month?",1,yes
+z1,"Were you or any member of your household eligible to receive salary, pension or any social benefit, that you have not received during the month?",2,no
+n1,Did you hire workers for holding household during the last 12 months?,1,yes
+n1,Did you hire workers for holding household during the last 12 months?,2,no
+z2_7,Food which is usually consumed daily in little quantity---mustard,1,
+z2_7,Food which is usually consumed daily in little quantity---mustard,3,
+z2_7,Food which is usually consumed daily in little quantity---mustard,5,
+z2_7,Food which is usually consumed daily in little quantity---mustard,10,
+z2_7,Food which is usually consumed daily in little quantity---mustard,15,
+z2_7,Food which is usually consumed daily in little quantity---mustard,16,
+z2_7,Food which is usually consumed daily in little quantity---mustard,20,
+z2_7,Food which is usually consumed daily in little quantity---mustard,25,
+z2_7,Food which is usually consumed daily in little quantity---mustard,30,
+z2_7,Food which is usually consumed daily in little quantity---mustard,35,
+z2_7,Food which is usually consumed daily in little quantity---mustard,40,
+z2_7,Food which is usually consumed daily in little quantity---mustard,50,
+z2_7,Food which is usually consumed daily in little quantity---mustard,70,
+z2_7,Food which is usually consumed daily in little quantity---mustard,100,
+z2_7,Food which is usually consumed daily in little quantity---mustard,130,
+z2_7,Food which is usually consumed daily in little quantity---mustard,200,
+z2_7,Food which is usually consumed daily in little quantity---mustard,Sysmiss,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,1,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,2,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,3,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,4,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,5,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,6,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,7,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,8,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,10,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,12,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,15,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,16,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,20,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,30,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,40,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,50,
+z2_9,Food which is usually consumed daily in little quantity---bouillon cubes,Sysmiss,
