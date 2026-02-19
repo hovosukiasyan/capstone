@@ -1,0 +1,322 @@
+original_name,short_name,full_question
+recno,recno,Special relation record number of hh
+date,date,"Number of the month(1,2,....12)"
+marz,region,Code of marz
+members,household_size,Number of the members of the household
+typev,area_type,Type of the area
+weight,weight,weight
+year,year,year
+a3,household_has_special_education_children,Does your household have children under the state care or which attend any special educational institution?
+c1,housing_type,Type of housing
+c2,dwelling_ownership,Does the household own this dwelling or  it rented?
+c3_1,monthly_rent_amd,"If the household rents the dwelling from by a private person, how much is will be the monthly rent (AMD)"
+c3_2,monthly_rent_usd,"If the household rents the dwelling from by a private person, how much is will be the monthly rent (US$)"
+c3_3,monthly_rent_eur,"If the household rents the dwelling from by a private person, how much is will be the monthly rent (euro)"
+c4,number_of_rooms,"How many rooms does the household occupy (exclude bathroom, toilet, kitchen)? (room)"
+c5,dwelling_space_sqm,The total space
+c6,moved_last_5_years,Did you change your place of dwelling during the last 5 years?
+c7,reason_moved,Why did the household move?
+c8_1,has_centralized_water,Centralized water supply (as source of  water supply )
+c8_2,has_hot_water,"Hot running water (tank, Ariston, geyser)  (as source of  water supply )"
+c8_3,has_centralized_sanitation,Centralized sanitation compaund  (as source of  water supply )
+c8_4,has_local_sanitation,Local sanitation compaund /hole with waste products/  (as source of  water supply )
+c8_5,has_outside_toilet,Outside toilet
+c8_6,has_gas,Centralized gas supply
+c8_7,has_bathtub_shower,Bathtub or shower
+c8_8,has_kitchen,Kitchen
+c8_9,has_telephone,Telephone
+c8_11,has_radio,Radioreceiver
+c8_12,has_electricity,Electricity
+c8_10,has_mobile,Mobile phone
+c8_13,has_computer,Computer
+c8_14,has_internet,Internet
+c9,water_source,What  sources  of  water do you use?
+c10,water_tap_location,Where is your water tap located ?
+c10_1,water_tap_distance,"If your water tap located in the street,what will be the distance"
+c11_1,potable_water_hours_day,If you have centralized water delivery system how many hours a day will you  have potable water
+c11_2,potable_water_24h,"If you have centralized water delivery system how many hours a day will you  have potable water, all day = 24 hours)"
+c12_1,main_heating_energy,What main type of energy options  do you use to heat your house
+c12_2,supplementary_heating_energy,What supplementary type of energy options  do you use to heat your house
+c13_1,heating_equipment_electric_stove,What equipment did you mostly use to heat your house (Electric stove)
+c13_2,heating_equipment_oil_heater,What equipment did you mostly use to heat your house (Electric heater (oil battery))
+c13_3,heating_equipment_gas_stove,What equipment did you mostly use to heat your house (Gas stove (kitchen))
+c13_4,heating_equipment_self_made,What equipment did you mostly use to heat your house (Self-made heater)
+c13_5,heating_equipment_manufactured,"What equipment did you mostly use to heat your house (Manufactured heater (Iranian, European, other))"
+c13_6,heating_equipment_boiler,"What equipment did you mostly use to heat your house (Local-individual boiler (BAXI, and the like))"
+c13_7,heating_equipment_collective_boiler,What equipment did you mostly use to heat your house (Local-collective boiler for the block)
+c13_8,heating_equipment_centralized,What equipment did you mostly use to heat your house (Centralized heating)
+c13_9,heating_equipment_other,"What equipment did you mostly use to heat your house (Other, specify)"
+c14,heating_spend_last_winter_amd,How much money did you spend on the heating of your house during the last winter? (AMD)
+c15,garbage_disposal,How does the household get rid of garbage?
+c16_1,complaint_floor_space,Not enough floor space (as complaint about housing or environment)
+c16_2,complaint_noise,Noise from neighbors or from outside  (as complaint about housing or environment)
+c16_3,complaint_light,Lack of light  (as complaint about housing or environment)
+c16_4,complaint_heating,Lack of heating  (as complaint about housing or environment)
+c16_5,complaint_humidity,Humidity  (as complaint about housing or environment)
+c16_6,complaint_leaking_roof,Leaking roof  (as complaint about housing or environment)
+c16_7,complaint_walls_floor,Dilapidated  walls and floor  (as complaint about housing or environment)
+c16_8,complaint_windows_doors,Dilapidated window frames and doors  (as complaint about housing or environment)
+c16_9,complaint_traffic,Heavy traffic  (as complaint about housing or environment)
+c16_10,complaint_pollution,Industrial pollution  (as complaint about housing or environment)
+c16_11,complaint_elevator,The elevator is frequently out of orde  (as complaint about housing or environment)
+c16_12,complaint_water_supply,Bad water supply  (as complaint about housing or environment)
+c16_13,complaint_garbage,Bad garbage evacuation  (as complaint about housing or environment)
+c16_14,complaint_common_areas,Bad service of common use areas and yard areas in multiple dwelling  (as complaint about housing or environment)
+c16_15,complaint_green_areas,Lack of green areas (as complaint about housing or environment)
+c16_16,complaint_other,Other  (as complaint about housing or environment)
+c17,dwelling_condition_estimate,Estimate your dwelling conditions?
+c18,dwelling_renovated,"Did you renovate your dwelling (i.e., construction work, carpentry, painting)"
+c19,renovation_years_ago,How many years ago did you renovate your dwelling?
+c20_1,renovation_spend_amd,"How much money did the household spend?,(AMD)"
+c20_2,renovation_spend_usd,"How much money did the household spend?, (US$)"
+c20_3,renovation_spend_eur,"How much money did the household spend?, (Euro)"
+c21,building_new_house,Are you at the moment building a house for your permanent living?
+c22_1,new_house_spend_amd,How much money have you spent for building the new house?(Dram)
+c22_2,new_house_spend_usd,How much money have you spent for building the new house?(US$)
+c22_3,new_house_spend_eur,How much money have you spent for building the new house?(Euro)
+c23,has_other_dwelling,Do you have another dwelling owned besides the one where you live?
+c24_1,rent_income_amd,"If yes, how much money do you receive from renting per month? (AMD)"
+c24_2,rent_income_usd,"If yes, how much money do you receive from renting per month? (US$)"
+c24_3,rent_income_eur,"If yes, how much money do you receive from renting per month? (Euro)"
+c25_1,computer_access_home,HH member has access  to computer at home
+c25_2,computer_access_elsewhere,HH member has access to computer in other place
+c25_3,internet_home_permanent,HH member has access to Internet at home permanent
+c25_4,internet_home_non_permanent,HH has access to Internet  at home non permanent
+c25_5,internet_work,HH members has access to Internet at working place
+c25_6,internet_education,HH members has access to Internet at educational institution
+c25_7,internet_other_household,HH members has access to Internet at others h/h
+c25_8,internet_public_free,HH members has access to Internet at public centre of Internet access (free)
+c25_9,internet_public_paid,HH members has access to Internet at public centre of Internet access (paid)
+c25_10,internet_cellphone,HH members has access to Internet through cellphone from any locality
+c25_11,internet_other_place,HH members has access to Internet  from other place through moving set
+c26,household_owns_car,Does someone in  household own a car or truck?
+c27_1,vehicle_costs_fuel_12m,Approximately how much did you spend on the following vehicle-related costs during the last 12 months? Fuel e.g.
+c27_1_1,vehicle_petrol,Petrol
+c27_1_2,vehicle_compressed_gas,Compressed gas
+c27_1_3,vehicle_diesel,Diesel oil
+c27_2,vehicle_maintenance_12m,"Maintenance, including spare parts and labor"
+c27_3,transport_fares_12m,"Fares for buses, minibuses, and taxis"
+c28_1_1,buying_fertilizers_seedlings_seeds_etc,"Buying fertilizers, seedlings, seeds, etc. Usual Mode of Road Transportation"
+c28_1_2,buying_fertilizers_seedlings_seeds_etc_2,"Buying fertilizers, seedlings, seeds, etc. Days per Month"
+c28_1_3,buying_fertilizers_seedlings_seeds_etc_3,"Buying fertilizers, seedlings, seeds, etc. Distance (km)"
+c28_2_1,selling_agricultural_products_production_usual,Selling agricultural products or production Usual Mode of Road Transportation
+c28_2_2,selling_agricultural_products_production_days,Selling agricultural products or production Days per Month
+c28_2_3,selling_agricultural_products_production_distance,Selling agricultural products or production Distance (km)
+c28_3_1_1,going_job_outside_community_usual,Going to a job outside of your community Usual Mode of Road Transportation
+c28_3_1_2,going_job_outside_community_days,Going to a job outside of your community Days per Month
+c28_3_1_3,going_job_outside_community_distance,Going to a job outside of your community Distance (km)
+c28_3_2_1,going_job_outside_community_usual_2,Going to a job outside of your community Usual Mode of Road Transportation
+c28_3_2_2,going_job_outside_community_days_2,Going to a job outside of your community Days per Month
+c28_3_2_3,going_job_outside_community_distance_2,Going to a job outside of your community Distance (km)
+c28_3_3_1,going_job_outside_community_usual_3,Going to a job outside of your community Usual Mode of Road Transportation
+c28_3_3_2,going_job_outside_community_days_3,Going to a job outside of your community Days per Month
+c28_3_3_3,going_job_outside_community_distance_3,Going to a job outside of your community Distance (km)
+c28_4_1,other_usual_mode_road_transportation,Other Usual Mode of Road Transportation
+c28_4_2,other_days_per_month,Other Days per Month
+c28_4_3,other_distance,Other Distance (km)
+c29_1_1,health_post_transportation_mode,Health Post Transportation Mode
+c29_1_2,health_post_transportation_distance,Health Post Transportation Distance (km)
+c29_1_3,health_post_transportation_duration,Health Post Transportation Duration (minutes)
+c29_2_1,hospitals_transportation_mode,Hospitals (Emergency) Transportation Mode
+c29_2_2,hospitals_distance,Hospitals (Emergency) Distance (km)
+c29_2_3,hospitals_duration,Hospitals (Emergency) Duration (minutes)
+c29_3_1,pharmacy_transportation_mode,Pharmacy Transportation Mode
+c29_3_2,pharmacy_distance,Pharmacy Distance (km)
+c29_3_3,pharmacy_duration,Pharmacy Duration (minutes)
+c29_4_1,village_office_transportation_mode,Village office Transportation Mode
+c29_4_2,village_office_distance,Village office Distance (km)
+c29_4_3,village_office_duration,Village office Duration (minutes)
+c29_5_1,kindergarten_transportation_mode,Kindergarten Transportation Mode
+c29_5_2,kindergarten_distance,Kindergarten Distance (km)
+c29_5_3,kindergarten_duration,Kindergarten Duration (minutes)
+c29_6_1,complete_secondary_school_transportation_mode,Complete secondary school Transportation Mode
+c29_6_2,complete_secondary_school_distance,Complete secondary school Distance (km)
+c29_6_3,complete_secondary_school_duration,Complete secondary school Duration (minutes)
+c29_7_1,primary_general_school_transportation_mode,Primary general school Transportation Mode
+c29_7_2,primary_general_school_distance,Primary general school Distance (km)
+c29_7_3,primary_general_school_duration,Primary general school Duration (minutes)
+c29_8_1,markets_sell_produce_transportation_mode,Markets to sell your produce Transportation Mode
+c29_8_2,markets_sell_produce_distance,Markets to sell your produce Distance (km)
+c29_8_3,markets_sell_produce_duration,Markets to sell your produce Duration (minutes)
+c29_9_1,bankfinancial_services_transportation_mode,Bank/Financial Services Transportation Mode
+c29_9_2,bankfinancial_services_distance,Bank/Financial Services Distance (km)
+c29_9_3,bankfinancial_services_duration,Bank/Financial Services Duration (minutes)
+c30_1_1,roads_within_settlement_communitypoor,Estimation of  the quality of roads within your settlement or community-Poor
+c30_1_2,roads_within_settlement_communityaverage,Estimation of  the quality of roads within your settlement or community-Average
+c30_1_3,roads_within_settlement_communitygood,Estimation of  the quality of roads within your settlement or community-Good
+c30_1_4,roads_within_settlement_communityexcellent,Estimation of  the quality of roads within your settlement or community-Excellent
+c30_2_1,roads_regional_towns_marketspoor,Estimation of  the quality of  roads to regional towns or markets-Poor
+c30_2_2,roads_regional_towns_marketsaverage,Estimation of  the quality of roads to regional towns or markets-Average
+c30_2_3,roads_regional_towns_marketsgood,Estimation of  the quality of roads to regional towns or markets-Good
+c30_2_4,roads_regional_towns_marketsexcellent,Estimation of  the quality of roads to regional towns or markets-Excellent
+c30_3_1,buses_minivans_any_other_available,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Poor"
+c30_3_2,buses_minivans_any_other_available_2,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Average"
+c30_3_3,buses_minivans_any_other_available_3,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Good"
+c30_3_4,buses_minivans_any_other_available_4,"Estimation of  the quality of buses, minivans, and any other available transportation services:-Excellent"
+f1q,any_member_household_own_work,Does any member of the household own or work on the land (including back yards and the summer-house plots)
+f2_1_1q,total_area_own_land_household,What is the total area of the own land of the household (Area in  sq.m)?
+f2_1_2q,total_area_own_land_household_2,"What is the total area of the own land of the household(In fact used for crop production, sq.m)?"
+f2_1_3q,total_area_own_land_household_3,"What is the total area of the own land of the household (In fact irrigated, sq.m)?"
+f2_1_1_1q,total_area_kitchen_plot_household,What is the total area of the kitchen plot of the household (Area in  sq.m)?
+f2_1_1_2q,total_area_kitchen_plot_household_2,"What is the total area of the kitchen plot of the household (In fact used for crop production, sq.m)?"
+f2_1_1_3q,total_area_kitchen_plot_household_3,"What is the total area of the kitchen plot of the household (In fact irrigated, sq.m)?"
+f2_2_1q,total_area_rented_other_cultivated,What is the total area rented or other cultivated land (Area in  sq.m)
+f2_2_2q,total_area_rented_other_cultivated_2,"What is the total area rented or other cultivated land (In fact used for crop production, sq.m)"
+f2_2_3q,total_area_rented_other_cultivated_3,"What is the total area rented or other cultivated land (In fact irrigated, sq.m)"
+f3_1q,household_doesnt_use_his_land,Why the household doesn`t use his land?  (-Too far from the village)
+f3_2q,household_doesnt_use_his_land_2,Why the household doesn`t use his land? (-Land is of very poor quality)
+f3_3q,household_doesnt_use_his_land_3,Why the household doesn`t use his land? (-No irrigation available)
+f3_4q,household_doesnt_use_his_land_4,Why the household doesn`t use his land? (-Not profitable to cultivate)
+f3_5q,household_doesnt_use_his_land_5,Why the household doesn`t use his land? (-Cannot get necessary inputs)
+f3_6q,household_doesnt_use_his_land_6,Why the household doesn`t use his land? (-Im not in good health or too old)
+f3_7q,household_doesnt_use_his_land_7,Why the household doesn`t use his land? (-Other)
+f4q,year_any_farming_irrigation_training,"During the past year, was any farming or irrigation training offered in your community or nearby communities?"
+f5q,attend_any_trainings,Did you attend any of the trainings?
+f6_1_1q,land_watering_through_iirrigation_system,How much of your land did you watering  through the Iirrigation system (canal)  /(Kitchen plot)
+f6_1_2q,land_water_through_iirrigation_system,How much of your land did you water through the the Iirrigation system (canal) /(Other plots)
+f6_2_1q,land_water_through_deep_other,How much of your land did you water through the Deep  or other well or  drinking water /(Kitchen plot)
+f6_2_2q,land_water_through_deep_other_2,How much of your land did you water through the Deep  or other well or  drinking water /(Other plots)
+f6_3_1q,land_water_through_exclusively_natural,"How much of your land did you water through the Exclusively natural sources, rivers/ rain water  /(Kitchen plot)"
+f6_3_2q,land_water_through_exclusively_natural_2,"How much of your land did you water through the Exclusively natural sources, rivers/ rain water /(Other plots)"
+f6_4_1q,land_water_through_irrigation_water,How much of your land did you water through the Irrigation water and wells or other drinking water /(Kitchen plot)
+f6_4_2q,land_water_through_irrigation_water_2,How much of your land did you water through the Irrigation water and wells or other drinking water /(Other plots)
+f6_5_1q,land_water_through_irrigation_natural,"How much of your land did you water through the Irrigation and natural sources, rivers/rain water /(Kitchen plot)"
+f6_5_2q,land_water_through_irrigation_natural_2,"How much of your land did you water through the Irrigation and natural sources, rivers/rain water /(Other plots)"
+f6_6_1q,other_associations_watering_sourses,Other associations of watering sourses /(Kitchen plot)
+f6_6_2q,other_associations_watering_sourses_2,Other associations of watering sourses /(Other plots)
+f6_7_1q,collect_rain_water_thaw_water,"Collect rain water, thaw water    /(Kitchen plot )"
+f6_7_2q,collect_rain_water_thaw_water_2,"Collect rain water, thaw water  /(Other plots)"
+f6_8_1q,only_rain_water,Only rain water  /(Kitchen plot )
+f6_8_2q,only_rain_water_2,Only rain water  /(Other plots)
+f7q,member_water_users_company,Is the household a member of a water users company?
+f8q,if_not_please_specify_why,"If not, please specify why?"
+f9q,get_enough_irrigation_water_time,Did you get enough irrigation water on time?
+f10_1q,if_household_interruption_supply_irrigation,"If the household has an interruption in the supply of irrigation water, what is the reasons were?"
+f10_2q,if_household_interruption_supply_irrigation_2,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?"
+f10_3q,if_household_interruption_supply_irrigation_3,"If  the household has an interruption in the supply of irrigation water, what is the reasons were?"
+f11q,pay_irrigation_water,Did the household pay for irrigation water?
+f12_1q,household_not_pay_fully_paid,Why the household did not pay fully or paid partially
+f12_2q,household_not_pay_fully_paid_2,Why the household did not pay fully or paid partially
+f12_3q,household_not_pay_fully_paid_3,Why the household did not pay fully or paid partially
+f13q,find_that_operation_its_irrigation,Did the household  find that the operation of it`s irrigation system changed compared to 2015?
+f14q,what_way_change,In what way did it change?
+f15q,area_land_irrigated_2015_change,Did the area of land you irrigated in 2015 change compare to 2011?
+f16q,what_way_change_2,In what way did it change?
+f1_1a,id_number_household_member_who,"ID number of the household member, who take part in this activities"
+f1_2a,id_number_household_member_who_2,"ID number of the household member, who take part in this activities"
+f1_3a,id_number_household_member_who_3,"ID number of the household member, who take part in this activities"
+f1_4a,id_number_household_member_who_4,"ID number of the household member, who take part in this activities"
+f1_5a,id_number_household_member_who_5,"ID number of the household member, who take part in this activities"
+f17q,engaged_cattle_breeding,Is the household engaged in cattle breeding??
+f2_1a,id_number_household_member_who_6,"ID number of the household member, who take part in this activities"
+f2_2a,id_number_household_member_who_7,"ID number of the household member, who take part in this activities"
+f2_3a,id_number_household_member_who_8,"ID number of the household member, who take part in this activities"
+f2_4a,id_number_household_member_who_9,"ID number of the household member, who take part in this activities"
+f2_5a,id_number_household_member_who_10,"ID number of the household member, who take part in this activities"
+g1_1a,id_number_household_member_who_11,"ID number of the household member, who take part in this activities"
+g1_2a,id_number_household_member_who_12,"ID number of the household member, who take part in this activities"
+g1_3a,id_number_household_member_who_13,"ID number of the household member, who take part in this activities"
+g1_4a,id_number_household_member_who_14,"ID number of the household member, who take part in this activities"
+g1_5a,id_number_household_member_who_15,"ID number of the household member, who take part in this activities"
+f18_1q,household_which_experienced_during_last,Three  main difficulties of the household which was experienced during the last season?
+f18_2q,household_which_experienced_during_last_2,Three  main difficulties of the household which was experienced during the last season?
+f18_3q,household_which_experienced_during_last_3,Three  main difficulties of the household which was experienced during the last season?
+f19q,take_credit_debt_agricultural_activities,Did the household take credit or have debt for agricultural activities during  the last season?
+f20q,if_yes_how_much,"If yes, how much? (AMD)"
+f21q,if_yes_whom,"If yes, from whom?"
+h1,household_sent_money_goods_12m,Did the household send any money or goods to an absent household member or any other person during the last 12 months?
+h2,household_received_money_goods_12m,Did the household receive money or goods from an absent household member or any other person during the last 12 months?
+j1,lent_money_12m,Did any of household members lend money within the last 12 months?
+j1_1,lent_to_residents,To RA residents
+j1_2,lent_to_nonresidents,To RA non-residents
+j2_1_1,money_lent_ra_residents,how much  money was lent to RA residents (AMD)?
+j2_1_2,money_lent_ra_residents_2,how much  money was lent to RA residents (ruble)?
+j2_1_3,money_lent_ra_residents_3,how much  money was lent to RA residents (US$)?
+j2_1_4,money_lentto_ra_residents,how much  money was lentto RA residents (euro)?
+j2_2_1,money_lent_ra_nonresidents,how much  money was lent to RA non-residents (AMD)?
+j2_2_2,money_lent_ra_nonresidents_2,how much  money was lent to RA non-residents (ruble)?
+j2_2_3,money_lent_ra_nonresidents_3,how much  money was lent to RA non-residents (US$)?
+j2_2_4,money_lentto_ra_nonresidents,how much  money was lentto RA non-residents (euro)?
+j3,family_debt_amount,How much debt does your family have at the moment ?
+j3_1,debt_to_residents,To RA residents
+j3_2,debt_to_nonresidents,To RA non-residents
+j4,borrowed_money_12m,Did any of household members barrow money within the last 12 months?
+j4_1,borrowed_from_residents,To RA residents
+j4_2,borrowed_from_nonresidents,To RA non-residents
+j5_1,household_members_borrow_money_within,"Did any of household members  borrow money within the last 12, indicate the amount(AMD)?"
+j5_2,household_members_borrow_money_within_2,"Did any of household members  borrow money within the last 12, indicate the amount(ruble)?"
+j5_3,household_members_borrow_money_within_3,"Did any of household members  borrow money within the last 12, indicate the amount(US$)?"
+j5_4,household_members_borrow_money_within_4,"Did any of household members  borrow money within the last 12, indicate the amount(euro)?"
+m1,registered_poverty_benefit,Is the  family registered in the poverty family benefit system?
+m4,emergency_benefit_times_12m,"If family receives emergency benefit during last 12 month, please specify for how many times you were entitled to?"
+m2,reason_not_registered_benefit,"If no, what is the main reason?"
+m3,benefit_years_entitled,"If family receives benefit, please specify for how many years you were entitled to?"
+m5,informed_benefit_termination_reasons,Were you informed about the reasons for the termination/refusal of the benefits?
+m6,benefit_termination_reasons_clear,Were the reasons for the termination/refusal of the benefits clear to household?
+m7,easy_collect_documents,Was it easy to collect the documentation necessary for the registration?
+m8,paid_for_documents,Did you pay for documents and certificates you were asked to provide?
+m9,satisfied_regional_inspector,Were  you satisfied with the work of the regional social inspector?
+m10,informed_ssm_changes,Did  you  inform the SSM about changes in household taken place after the registration?
+m11,benefit_system_justified,Do you consider that the poverty benefit system is justified?
+m12,share_families_really_vulnerable,In your  opinion what part of the families receiving assistance through the family benefit system are really vulnerable?
+m13,humanitarian_assistance_12m,Did  you receive humanitarian assistance during the last 12 months?
+m14_1_1,receive_food,Did  you  receive  the food
+m14_1_2,how_many_times_receive_food,For how many times did  you receive the food
+m14_2_1,receive_wearing,Did  the household receive  the wearing
+m14_2_2,how_many_times_receive_wearing,For how many times  did  you receive  the  wearing
+m14_3_1,receive_stationery,Did  you  receive  the stationery
+m14_3_2,how_many_times_receive_stationery,For how many times  did  you receive  the  stationery
+m14_4_1,receive_medications,Did  you  receive  the medications
+m14_4_2,how_many_times_receive_medications,For how many times  did  you receive the medications
+m14_5_1,receive_other,Did  you  receive  the other
+m14_5_2,how_many_times_receive_other,For how many times  did  you receive other
+m15_1_1,money_family_need_monthly_live,How much money does  your family   need monthly to live very well ?
+m15_1_2,money_our_family_need_monthly,How much money does our family  need monthly to live very well ?
+m15_2_1,drm_in_amd,drm  'In AMD'
+m15_2_2,money_family_need_monthly_live_2,How much money does your family  need monthly to live  well ?
+m15_3_1,drm_in_amd_2,drm  'In AMD'
+m15_3_2,money_family_need_monthly_make,"How much money does your family  need monthly to ""make ends meat"" (survive)?"
+m15_1_1drm,amd,In AMD
+m15_2_1drm,amd_2,In AMD
+m15_3_1drm,amd_3,In AMD
+p1,liquid_gas_consumed_kg,"How much  liquid gas did  the household  consume?  (excluding quantity purchased for cars, kg)"
+p2,kerosene_consumed_liters,How much kerosene in liters did  the household  consume?(liter)
+p3,diesel_consumed_liters,"How much diesel oil did  the household  consume?  (excluding quantity purchased for cars, liter)"
+p4,coal_consumed,"How much coal did  the household  consume?, liter)"
+p5_1,firewood_consumed_m3,How much  firewood (in m3) did  the household  consume?
+p5_2,firewood_own_stored_m3,From which stored up by household  (in m3)
+p6,pressed_dung_consumed_kg,How much  pressed dung (in kg) did the household consume?
+p7,other_energy_consumed_kg,How much  other energy carriers (in kg) did the household consume?
+p8_1,household_has_car,Does  the household   have car(s)?
+p8_2_1,car_fuel_petrol_liters,"If yes, what kind of fuel does  the household  consume for  car? (Petrol,  liter)"
+p8_2_2,car_fuel_diesel_liters,"If yes, what kind of fuel does  the household consume for  car? (Diesel oil,  liter)"
+p8_2_3,car_fuel_compressed_gas_dram,"If yes, what kind of fuel does  the household consume for  car? ( Compressed gas,  dram)"
+z1,eligible_salary_pension_not_received,"Were you or any member of your household eligible to receive salary, pension or any social benefit, that you have not received during the month?"
+n1,hired_household_workers_12m,Did you hire workers for holding household during the last 12 months?
+z2_1,food_which_usually_consumed_daily,Food which is usually consumed daily in little quantity-- salt
+z2_2,food_which_usually_consumed_daily_2,Food which is usually consumed daily in little quantity---pepper
+z2_3,food_which_usually_consumed_daily_3,Food which is usually consumed daily in little quantity---coffee
+z2_4,food_which_usually_consumed_daily_4,Food which is usually consumed daily in little quantity---vinegar
+z2_5,food_which_usually_consumed_daily_5,Food which is usually consumed daily in little quantity--spice
+z2_6,food_which_usually_consumed_daily_6,Food which is usually consumed daily in little quantity---cocoa
+z2_7,food_which_usually_consumed_daily_7,Food which is usually consumed daily in little quantity---mustard
+z2_8,food_which_usually_consumed_daily_8,Food which is usually consumed daily in little quantity---tea
+z2_9,food_which_usually_consumed_daily_9,Food which is usually consumed daily in little quantity---bouillon cubes
+sample_weight,sample_weight,(no label)
+n_members,household_member_count,(no label)
+mean_age,household_mean_age,(no label)
+income_total,household_income_total,(no label)
+income_sources,household_income_source_count,(no label)
+h2_1,transfers_received_member_id,ID of the household member by whom the money or good were received
+h2_2,transfers_sender_location,Where does he/she live?
+h2_3,transfers_frequency,How regular you receive money or assistance?
+h2_4,transfers_amount_12m,How much did you get during the last  12 monts?
+h2_4drm,transfers_amount_amd,in dram
+h2_5,transfers_currency,How much did you get during the last  12 months?
+h2_6,transfers_transfer_method,"If you get transferred money outside the country, than how did you get it?"
+h2_7,transfers_purpose,For what purpose was the received amount used?
+h2_8,transfers_food_value_12m,What was the total value of food or goods received during the last 12 months?(food products)
+h2_9,transfers_nonfood_value_12m,What was the total value of food or goods received during the last 12 months?(non-food products)
+food_purchases_total,food_purchases_total,(no label)
+services_goods_total,services_goods_total,(no label)
+goods_services_total,goods_services_total,(no label)

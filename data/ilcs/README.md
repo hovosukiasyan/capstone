@@ -48,7 +48,17 @@ A single table with one row per household (5,184 rows) is built by joining hh + 
   python scripts/ilcs_build_ml_dataset.py --postgres --csv-only
   ```
 
-Key derived columns in the ML table: `sample_weight`, `n_members`, `mean_age`, `income_total`, `income_sources`, and (if available) `food_purchases_total`, `services_goods_total`, `goods_services_total`, plus all original hh and h2 columns.
+Key derived columns in the ML table: `sample_weight`, `household_member_count`, `household_mean_age`, `household_income_total`, `household_income_source_count`, and (if available) `food_purchases_total`, `services_goods_total`, `goods_services_total`, plus all original hh and h2 columns (renamed to short names; see below).
+
+**Rename columns to readable short names (postprocessing):** After building the ML CSV, run:
+
+```bash
+python scripts/ilcs_rename_ml_columns.py
+```
+
+This reads `ml_households_variable_labels.csv`, turns each variable’s question text into a short name (up to 5 words, e.g. marz→region, typev→area_type, c1→housing_type), renames columns in `ml_households.csv`, and writes **`column_name_mapping.csv`** (original_name, short_name, full_question) for reference. Key IDs like `recno`, `date`, `year`, `weight` are left unchanged.
+
+**Missing-data visualization:** Use the notebook **`notebooks/ilcs_missing_data_visualization.ipynb`** to inspect missing value counts and shares per column and to decide imputation strategies before modeling.
 
 ---
 
@@ -58,8 +68,9 @@ The ML table (`ml_households.csv`) contains many **categorical variables** store
 
 | File | Description |
 |------|--------------|
-| **`ml_households_codebook.csv`** | One row per (variable, value): **variable**, **variable_label**, **value**, **value_label**. Use it to decode codes (e.g. marz 1 → Yerevan, typev 3 → rural). |
-| **`ml_households_variable_labels.csv`** | One row per variable: **variable**, **variable_label**. Short reference for “what does this column mean?” without value details. |
+| **`ml_households_codebook.csv`** | One row per (variable, value): **variable**, **variable_label**, **value**, **value_label**. Use it to decode codes (e.g. marz 1 → Yerevan). Variable names here are the **original** names; use `column_name_mapping.csv` to map from current (short) column names. |
+| **`ml_households_variable_labels.csv`** | One row per variable: **variable**, **variable_label**. Short reference for “what does this column mean?” (original variable names). |
+| **`column_name_mapping.csv`** | **original_name**, **short_name**, **full_question**. Maps renamed ML columns back to original names and full question text. |
 
 **Source:** Both are extracted from `ARM_2015_ILCS_v02_M.xml` for variables that appear in the ML table and come from the **hh** (housing) and **h2** (household income) questionnaires.
 
