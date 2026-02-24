@@ -60,6 +60,14 @@ This reads `ml_households_variable_labels.csv`, turns each variable’s question
 
 **Missing-data visualization:** Use the notebook **`notebooks/ilcs_missing_data_visualization.ipynb`** to inspect missing value counts and shares per column and to decide imputation strategies before modeling.
 
+**Usable-column subset (0–25% missing):** To get a raw dataset with only columns that have at most 25% missing (e.g. for t-SNE, clustering, or ML), run:
+
+```bash
+python scripts/ilcs_subset_usable_columns.py
+```
+
+This reads `ml_households.csv`, keeps only columns with ≤25% missing, and writes **`ml_households_usable.csv`** (same rows, ~88 columns). Use this file as the main input for downstream analysis.
+
 ---
 
 ## Reference files for the ML dataset (codebooks)
