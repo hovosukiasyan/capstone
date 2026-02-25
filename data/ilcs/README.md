@@ -68,6 +68,18 @@ python scripts/ilcs_subset_usable_columns.py
 
 This reads `ml_households.csv`, keeps only columns with ≤25% missing, and writes **`ml_households_usable.csv`** (same rows, ~88 columns). Use this file as the main input for downstream analysis.
 
+**t-SNE and clustering:** The notebook **`notebooks/ilcs_tsne_clustering.ipynb`** loads `ml_households_usable.csv`, builds a numeric feature matrix (impute + scale), runs t-SNE and K-Means, and plots the 2D embedding colored by **region**, **area type**, and **cluster**, with crosstabs of cluster vs categories.
+
+### Pipeline output folders (for presentation)
+
+The t-SNE and correlation notebooks write outputs into three subfolders so you can present each stage separately:
+
+| Folder | Contents | Description |
+|--------|----------|-------------|
+| **`raw/`** | `ml_households_raw_usable.csv` | Usable columns only, **no imputation**; missing values as-is. |
+| **`imputed/`** | `ml_households_imputed_k9.csv` | Same columns as raw, with missing values **filled via KNN (k=9)**. |
+| **`final_dropped/`** | `ml_households_final_dropped.csv`, `columns_removal_log.csv`, `columns_removal_log.md` | Imputed data with **redundant** (correlation >0.7) and **non–poverty/socioeconomic** columns removed; removal log lists every dropped column and reason. |
+
 ---
 
 ## Reference files for the ML dataset (codebooks)

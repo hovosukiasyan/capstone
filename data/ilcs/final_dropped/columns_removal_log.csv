@@ -1,0 +1,29 @@
+column_removed,reason,optional_correlation_or_pair
+household_member_count,Correlation > 0.6 with household_size,r = 1.000
+household_mean_age,Correlation > 0.6 with household_size,r = -0.637
+area_type,Correlation > 0.6 with has_centralized_sanitation,r = 0.709
+area_type,Correlation > 0.6 with has_outside_toilet,r = -0.693
+area_type,Correlation > 0.6 with main_heating_energy,r = 0.636
+area_type,Correlation > 0.6 with any_member_household_own_work,r = -0.731
+housing_type,Correlation > 0.6 with any_member_household_own_work,r = 0.626
+dwelling_space_sqm,Correlation > 0.6 with number_of_rooms,r = 0.746
+water_source,Correlation > 0.6 with has_centralized_water,r = 0.695
+has_local_sanitation,Correlation > 0.6 with has_centralized_sanitation,r = -0.771
+has_outside_toilet,Correlation > 0.6 with has_centralized_sanitation,r = -0.782
+any_member_household_own_work,Correlation > 0.6 with has_centralized_sanitation,r = -0.679
+main_heating_energy,Correlation > 0.6 with has_outside_toilet,r = -0.629
+complaint_common_areas,Correlation > 0.6 with has_outside_toilet,r = -0.606
+any_member_household_own_work,Correlation > 0.6 with has_outside_toilet,r = 0.729
+has_internet,Correlation > 0.6 with has_computer,r = 0.945
+any_member_household_own_work,Correlation > 0.6 with main_heating_energy,r = -0.661
+complaint_windows_doors,Correlation > 0.6 with complaint_walls_floor,r = 0.771
+any_member_household_own_work,Correlation > 0.6 with complaint_common_areas,r = -0.656
+engaged_cattle_breeding,Correlation > 0.6 with any_member_household_own_work,r = 0.623
+benefit_system_justified,Correlation > 0.6 with share_families_really_vulnerable,r = 0.704
+drm_in_amd_2,Correlation > 0.6 with drm_in_amd,r = 0.629
+household_mean_age,Correlation > 0.6 with household_member_count,r = -0.637
+region,Not poverty/socioeconomic,
+moved_last_5_years,Not poverty/socioeconomic,
+water_tap_location,Not poverty/socioeconomic,
+id_number_household_member_who_11,Not poverty/socioeconomic,
+reason_not_registered_benefit,Not poverty/socioeconomic,
