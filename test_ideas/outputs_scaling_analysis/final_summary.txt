@@ -1,0 +1,50 @@
+ILCS Scaling Analysis — Final Summary
+======================================================================
+
+Dataset: ILCS 2015 Armenia — 5184 households, 28 welfare features
+Imputation: KNN k=9, 8 variables had missing values
+
+SCALE PROBLEM DIAGNOSIS:
+  Raw silhouette=0.9792 vs best scaled silhouette=0.9792 (improvement=+0.0000)
+  Elbow silhouette at raw elbow-k=0.7236 vs best-scaler elbow-k=0.7236
+  YES — scaling was a major reason the elbow looked malformed.
+  Top 5 variables by range (biggest scale offenders): amd_3, family_debt_amount, money_family_need_monthly_live, goods_services_total, drm_in_amd
+  Top 5 most skewed variables: amd_3, family_debt_amount, building_new_house, goods_services_total, lent_money_12m
+  Top 5 by coefficient of variation: goods_services_total, amd_3, family_debt_amount, money_family_need_monthly_live, drm_in_amd
+
+BEST SCALING METHOD:
+  Method: raw
+  Best silhouette score: 0.9792 at k=2
+  Stability (ARI mean ± std across 5 seeds): 1.000 ± 0.000
+  PCA: 3 components explain 80% of variance
+
+HYBRID STRATEGY APPLIED (data-driven column assignment):
+  log1p + StandardScaler (monetary/skewed): ['potable_water_hours_day', 'heating_spend_last_winter_amd', 'family_debt_amount', 'money_family_need_monthly_live', 'drm_in_amd', 'money_family_need_monthly_make', 'amd_3', 'household_income_total', 'food_purchases_total', 'services_goods_total', 'goods_services_total']
+  RobustScaler (ordinal/count): ['household_size', 'dwelling_ownership', 'number_of_rooms', 'has_other_dwelling', 'dwelling_condition_estimate', 'registered_poverty_benefit', 'share_families_really_vulnerable', 'household_income_source_count']
+  MinMaxScaler (binary/ternary): ['has_computer', 'household_has_car', 'dwelling_renovated', 'building_new_house', 'household_sent_money_goods_12m', 'household_received_money_goods_12m', 'lent_money_12m', 'borrowed_money_12m', 'humanitarian_assistance_12m']
+  StandardScaler (remaining continuous): []
+
+RECOMMENDED FILE FOR DOWNSTREAM t-SNE AND CLUSTERING:
+  O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\csv/scaled_raw.csv
+  (also copied to: O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\csv/recommended_final_scaled_dataset.csv)
+
+ALL OUTPUTS SAVED TO: O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis
+
+ Here's a summary of what experiments.py does (879 lines, no comments):
+
+  Structure:
+  - compute_diagnostics() — 24-metric per-variable statistics table (min/max/mean/median/std/variance/IQR/skewness/kurtosis/CV/unique/zeros/negatives/outliers/percentiles/normality
+   p-value)
+  - classify_variable_types() — data-driven taxonomy: monetary_large, ordinal_small, binary_or_ternary, count_bounded, sparse_zero_inflated, heavily_skewed, continuous
+  - apply_hybrid_scaling() — column-wise hybrid: log1p+StandardScaler for monetary/skewed, RobustScaler for ordinal/count, MinMaxScaler for binary
+
+  10 scaling strategies compared: raw, standard, minmax, robust, quantile_normal, quantile_uniform, power_yeo_johnson, log1p_standard, rank_percentile, hybrid
+
+  Per scaling regime: PCA scree + cumulative, KMeans (k=2–12) with inertia/silhouette/CH/DB, elbow detection, cluster stability (5 seeds, ARI), hierarchical clustering, t-SNE for 6
+   key scalers
+
+  Outputs to test_ideas/outputs_scaling_analysis/:
+  - csv/ — diagnostics tables (raw + all 10 scalers), all transformed datasets, KMeans metrics, comparison table, recommended dataset
+  - plots/ — histograms, boxplots, violins, correlation heatmap, dispersion bars, pairplot, magnitude heatmap, per-variable distributions, scaling comparison grids,
+  elbow/silhouette/CH/DB plots, PCA scatter, t-SNE scatter
+  - final_summary.txt + recommended_workflow.csv

@@ -1,0 +1,6 @@
+step,description,file,detail
+1,load_knn_imputed_data,O:\AUA Capstones\capstones-2026\hs-capstone\capstone\data\ilcs\research\ml_households_research_columns_imputed.csv,"5184 rows x 28 features, KNN k=9"
+2,apply_scaling_raw,O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\csv\recommended_final_scaled_dataset.csv,raw
+3,pca_dimensionality_reduction,O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\plots\dim_reduction\raw\pca_scree_raw.png,3 components for 80% variance
+4,tsne_embedding,O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\csv\tsne_embedding_raw.csv,"perplexity=30, max_iter=1000"
+5,kmeans_clustering,O:\AUA Capstones\capstones-2026\hs-capstone\capstone\test_ideas\outputs_scaling_analysis\csv\kmeans_metrics_raw.csv,"k=2, silhouette=0.9792, ARI=1.000"
