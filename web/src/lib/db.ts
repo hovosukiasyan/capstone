@@ -21,9 +21,14 @@ let pool: Pool | null = null;
 
 function getPool(): Pool {
   if (!pool) {
-    const url = process.env.DATABASE_URL;
+    const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
     if (!url) throw new Error('DATABASE_URL env variable is not set');
-    pool = new Pool({ connectionString: url, max: 10 });
+    pool = new Pool({
+      connectionString: url,
+      max: 10,
+      connectionTimeoutMillis: 5000,
+      idleTimeoutMillis: 30000,
+    });
   }
   return pool;
 }
