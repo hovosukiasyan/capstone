@@ -7,7 +7,31 @@ import ModelComparisonClient from './ModelComparisonClient';
 export const dynamic = 'force-dynamic';
 
 export default async function ModelsPage() {
-  const metrics = await getModelMetrics();
+  let metrics;
+  try {
+    console.log('[page/models] fetching DB data…');
+    metrics = await getModelMetrics();
+    console.log('[page/models] DB data fetched OK');
+  } catch (err) {
+    const e = err as Error & { code?: string; detail?: string };
+    console.error('[page/models] DB error:', {
+      message: e?.message,
+      code: e?.code,
+      detail: e?.detail,
+      stack: e?.stack,
+    });
+    return (
+      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
+        <h2 className="font-semibold text-red-900 mb-2">Database error</h2>
+        <pre className="text-sm text-red-700 whitespace-pre-wrap overflow-auto">
+          {e?.message}
+          {e?.code ? `\ncode: ${e.code}` : ''}
+          {e?.detail ? `\ndetail: ${e.detail}` : ''}
+        </pre>
+        <p className="mt-3 text-xs text-red-500">Check Vercel Runtime Logs and /api/debug/env for details.</p>
+      </div>
+    );
+  }
 
   return (
     <div>

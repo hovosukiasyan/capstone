@@ -11,7 +11,9 @@ export async function GET(req: NextRequest) {
   try {
     const data = await getForecastingResults(source);
     return NextResponse.json(data);
-  } catch (e) {
-    return NextResponse.json({ error: String(e) }, { status: 500 });
+  } catch (err) {
+    const e = err as Error & { code?: string; detail?: string };
+    console.error('[api/models/forecasting]', { message: e?.message, code: e?.code, detail: e?.detail, stack: e?.stack });
+    return NextResponse.json({ error: e?.message ?? String(err), code: e?.code, detail: e?.detail }, { status: 500 });
   }
 }

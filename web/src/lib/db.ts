@@ -19,16 +19,51 @@ import type {
 // Singleton pool reused across all API calls in the same Node.js process.
 let pool: Pool | null = null;
 
+function maskUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    u.password = '***';
+    return u.toString().slice(0, 80);
+  } catch {
+    return url.slice(0, 50) + '…';
+  }
+}
+
 function getPool(): Pool {
   if (!pool) {
+    // Log which env vars are present (masked)
+    const envVars = [
+      'DATABASE_URL_UNPOOLED', 'DATABASE_URL',
+      'POSTGRES_URL', 'POSTGRES_URL_NON_POOLING',
+      'NEON_DATABASE_URL',
+    ];
+    for (const key of envVars) {
+      const val = process.env[key];
+      console.log(`[db] ${key}: ${val ? maskUrl(val) : 'NOT SET'}`);
+    }
+
     const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
-    if (!url) throw new Error('DATABASE_URL env variable is not set');
-    pool = new Pool({
-      connectionString: url,
-      max: 10,
-      connectionTimeoutMillis: 5000,
-      idleTimeoutMillis: 30000,
-    });
+    if (!url) {
+      const setVars = envVars.filter((k) => process.env[k]);
+      console.error('[db] No DATABASE_URL found. Set vars:', setVars);
+      throw new Error(
+        `DATABASE_URL env variable is not set. Available DB-related vars: ${setVars.join(', ') || 'none'}`
+      );
+    }
+
+    console.log('[db] Creating pool with:', maskUrl(url));
+    try {
+      pool = new Pool({
+        connectionString: url,
+        max: 10,
+        connectionTimeoutMillis: 5000,
+        idleTimeoutMillis: 30000,
+      });
+      console.log('[db] Pool created successfully');
+    } catch (err) {
+      console.error('[db] Pool creation failed:', err);
+      throw err;
+    }
   }
   return pool;
 }
@@ -37,10 +72,32 @@ async function query<T = Record<string, unknown>>(
   sql: string,
   params?: unknown[]
 ): Promise<T[]> {
-  const client = await getPool().connect();
+  let client;
+  try {
+    client = await getPool().connect();
+  } catch (err) {
+    const e = err as Record<string, unknown>;
+    console.error('[db] connect() failed:', {
+      message: e?.message,
+      code: e?.code,
+      stack: e?.stack,
+    });
+    throw err;
+  }
   try {
     const res = await client.query(sql, params);
     return res.rows as T[];
+  } catch (err) {
+    const e = err as Record<string, unknown>;
+    console.error('[db] query failed:', {
+      sql: sql.slice(0, 120),
+      message: e?.message,
+      code: e?.code,
+      detail: e?.detail,
+      hint: e?.hint,
+      stack: e?.stack,
+    });
+    throw err;
   } finally {
     client.release();
   }

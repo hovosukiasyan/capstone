@@ -45,11 +45,35 @@ const SECTION_CARDS = [
 ];
 
 export default async function HomePage() {
-  const [stats, metrics, years] = await Promise.all([
-    getHouseholdStats(),
-    getModelMetrics(),
-    getRegionalYears(),
-  ]);
+  let stats, metrics, years;
+  try {
+    console.log('[page/home] fetching DB data…');
+    [stats, metrics, years] = await Promise.all([
+      getHouseholdStats(),
+      getModelMetrics(),
+      getRegionalYears(),
+    ]);
+    console.log('[page/home] DB data fetched OK');
+  } catch (err) {
+    const e = err as Error & { code?: string; detail?: string };
+    console.error('[page/home] DB error:', {
+      message: e?.message,
+      code: e?.code,
+      detail: e?.detail,
+      stack: e?.stack,
+    });
+    return (
+      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
+        <h2 className="font-semibold text-red-900 mb-2">Database error</h2>
+        <pre className="text-sm text-red-700 whitespace-pre-wrap overflow-auto">
+          {e?.message}
+          {e?.code ? `\ncode: ${e.code}` : ''}
+          {e?.detail ? `\ndetail: ${e.detail}` : ''}
+        </pre>
+        <p className="mt-3 text-xs text-red-500">Check Vercel Runtime Logs and /api/debug/env for details.</p>
+      </div>
+    );
+  }
 
   const bestModel = metrics[0];
   const yearRange = years.length > 0 ? `${years[0]}–${years[years.length - 1]}` : '2016–2022';
