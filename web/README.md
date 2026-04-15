@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Capstone Web App
 
-## Getting Started
+Next.js frontend for the Armenia poverty, regional inequality, and forecasting platform.
 
-First, run the development server:
+The app combines:
+- household-level ILCS 2015 analysis
+- regional poverty / stress / infrastructure views
+- model benchmarking and forecasting diagnostics
+- interactive forecast timeline + choropleth for 2023–2026 projections
+
+## Main Sections
+
+### `/`
+Editorial landing page with:
+- project framing
+- KPI summary
+- entry points into regional, household, models, and explorer flows
+
+### `/regional`
+Regional atlas views for Armenian marzes:
+- choropleth map
+- rankings
+- time-series comparisons
+
+### `/household`
+Household analysis workspace:
+- overview KPIs
+- column distributions
+- feature explorer
+- correlation heatmap
+- t-SNE cluster scatter
+
+### `/explorer`
+Improved analytical table for the household dataset:
+- income range filters
+- household size filters
+- interview month filter
+- asset filters (`has_computer`, `household_has_car`)
+- poverty benefit filter
+- sortable columns
+- CSV export
+
+### `/models`
+Model and forecasting views:
+- model comparison
+- feature importance
+- forecasting results
+- forecast timeline + map (`/models/forecast`)
+
+## Forecast Experience
+
+`/models/forecast` now includes:
+- observed vs forecast timeline for poverty rate and stress index
+- 95% confidence interval display
+- map year slider for 2016–2026
+- choropleth by marz
+- comparison ledger under the map showing:
+  - current value
+  - previous available value
+  - year-over-year delta
+  - largest increase / decrease
+  - highlighted region summary
+
+This is designed to make year changes readable numerically, not just via color.
+
+## Notable UI Improvements
+
+Recent UI work includes:
+- stronger civic/editorial homepage design
+- improved hover and tooltip readability
+- cleaner forecasting tables
+- fixed t-SNE income decile ordering
+- better explorer filter logic and table design
+- more readable distribution markers and chart annotation behavior
+
+## Data + API Sources
+
+Key API routes:
+- `src/app/api/households/list/route.ts`
+- `src/app/api/households/distribution/route.ts`
+- `src/app/api/households/scatter/route.ts`
+- `src/app/api/households/tsne/route.ts`
+- `src/app/api/models/forecasting/route.ts`
+- `src/app/api/models/importance/route.ts`
+- `src/app/api/models/metrics/route.ts`
+- `src/app/api/forecast/route.ts`
+- `src/app/api/regional/choropleth/route.ts`
+- `src/app/api/regional/panel/route.ts`
+- `src/app/api/regional/ranking/route.ts`
+
+Important shared app files:
+- `src/lib/db.ts`
+- `src/lib/constants.ts`
+- `src/lib/utils.ts`
+- `src/components/charts/*`
+- `src/components/layout/*`
+
+Important upstream data files used by the app:
+- `../data/processed/results/forecast_2023_2026.csv`
+- `../data/processed/results/ts_classical_results.csv`
+- `../data/processed/results/ts_nn_results.csv`
+- `../data/processed/results/poverty_nn_activation_sweep.csv`
+- `../data/processed/results/poverty_nn_layer_size_sweep.csv`
+- `../data/processed/panel/*`
+
+## Development
+
+From `web/`:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Production check:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The web app depends on seeded Postgres tables for most household/regional/model pages.
+- Some forecasting views also read result CSVs directly from `../data/processed/results/`.
+- Forecasting pages distinguish between observed historical data and projected values, but interpretation still depends on the underlying data-generation process documented elsewhere in the repo.

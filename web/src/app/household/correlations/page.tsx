@@ -1,11 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, ZAxis,
+} from 'recharts';
 import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { HOUSEHOLD_COLUMNS } from '@/lib/constants';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
+import { formatAMD } from '@/lib/utils';
 import type { ScatterPoint } from '@/lib/types';
 
 interface CorrelationData {
@@ -24,6 +29,23 @@ function getColor(r: number): string {
   }
 }
 
+function getColMeta(col: string) {
+  return HOUSEHOLD_COLUMNS.find((c) => c.key === col);
+}
+
+function isBinary(col: string) {
+  return getColMeta(col)?.type === 'binary';
+}
+
+function isMonetary(col: string) {
+  return getColMeta(col)?.type === 'monetary';
+}
+
+function formatAxisValue(col: string, v: number) {
+  if (isMonetary(col)) return formatAMD(v, true);
+  return String(Math.round(v));
+}
+
 export default function CorrelationsPage() {
   const [corrData, setCorrData] = useState<CorrelationData | null>(null);
   const [corrError, setCorrError] = useState<string | null>(null);
@@ -31,7 +53,7 @@ export default function CorrelationsPage() {
   const [hovered, setHovered] = useState<{ i: number; j: number } | null>(null);
   const [modal, setModal] = useState<{ xCol: string; yCol: string } | null>(null);
 
-  const { data: scatterData, error: scatterError } = useSWR<ScatterPoint[]>(
+  const { data: scatterData, error: scatterError, isLoading: scatterLoading } = useSWR<ScatterPoint[]>(
     modal
       ? `/api/households/scatter?x=${modal.xCol}&y=${modal.yCol}&p_min=1&p_max=99&color_by=household_income_source_count`
       : null,
@@ -89,6 +111,8 @@ export default function CorrelationsPage() {
 
   const labelFor = (col: string) => HOUSEHOLD_COLUMNS.find((c) => c.key === col)?.label ?? col;
 
+  const bothBinary = modal ? (isBinary(modal.xCol) && isBinary(modal.yCol)) : false;
+
   return (
     <div>
       <PageHeader
@@ -143,9 +167,8 @@ export default function CorrelationsPage() {
 
             {/* Data rows */}
             {displayCols.map((rowCol, i) => (
-              <>
+              <React.Fragment key={rowCol}>
                 <div
-                  key={`label-${rowCol}`}
                   className="text-right text-slate-400 pr-2 flex items-center justify-end"
                   style={{ fontSize: 9 }}
                 >
@@ -175,7 +198,7 @@ export default function CorrelationsPage() {
                     />
                   );
                 })}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -203,28 +226,86 @@ export default function CorrelationsPage() {
             className="bg-white rounded-2xl p-6 w-full max-w-2xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-1">
               <h3 className="font-semibold text-slate-900">
-                {HOUSEHOLD_COLUMNS.find((c) => c.key === modal.xCol)?.label} vs{' '}
-                {HOUSEHOLD_COLUMNS.find((c) => c.key === modal.yCol)?.label}
+                {labelFor(modal.xCol)} vs {labelFor(modal.yCol)}
               </h3>
-              <button onClick={() => setModal(null)} className="text-slate-400 hover:text-slate-600">
+              <button onClick={() => setModal(null)} className="text-slate-400 hover:text-slate-600 text-lg leading-none">
                 ✕
               </button>
             </div>
-            {!scatterData ? (
-              scatterError ? (
-                <ErrorState compact message={getErrorMessage(scatterError, 'Unable to load the comparison scatter data.')} />
-              ) : (
-                <div className="flex items-center justify-center h-64 text-slate-400">Loading...</div>
-              )
-            ) : (
-              <div className="h-64 flex items-center justify-center text-slate-400 text-sm">
-                {scatterData.length} points — X: {modal.xCol} | Y: {modal.yCol}
-                <br />
-                (Full scatter chart available on the Feature Explorer page)
+
+            {modal && corrData && (() => {
+              const xi = corrData.columns.indexOf(modal.xCol);
+              const yi = corrData.columns.indexOf(modal.yCol);
+              const r = xi !== -1 && yi !== -1 ? corrData.matrix[yi][xi] : null;
+              return r !== null ? (
+                <p className="text-xs text-slate-400 mb-4">
+                  Pearson r = <strong className="text-slate-600">{r.toFixed(4)}</strong>
+                  {' · '}
+                  {scatterData ? `${scatterData.length.toLocaleString()} points (p1–p99 trimmed)` : ''}
+                </p>
+              ) : null;
+            })()}
+
+            {bothBinary && (
+              <div className="mb-3 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-700">
+                Both variables are binary (Yes/No). The scatter shows income source count distribution across response groups.
               </div>
             )}
+
+            {scatterLoading ? (
+              <div className="flex items-center justify-center h-64 text-slate-400 text-sm">Loading...</div>
+            ) : scatterError ? (
+              <ErrorState compact message={getErrorMessage(scatterError, 'Unable to load scatter data.')} />
+            ) : scatterData && scatterData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <ScatterChart margin={{ top: 10, right: 20, left: 10, bottom: 30 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis
+                    type="number"
+                    dataKey="x"
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    tickLine={false}
+                    tickFormatter={(v) => formatAxisValue(modal.xCol, v)}
+                    label={{ value: labelFor(modal.xCol), position: 'insideBottom', offset: -20, fontSize: 10, fill: '#94a3b8' }}
+                  />
+                  <YAxis
+                    type="number"
+                    dataKey="y"
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    tickLine={false}
+                    axisLine={false}
+                    tickFormatter={(v) => formatAxisValue(modal.yCol, v)}
+                    label={{ value: labelFor(modal.yCol), angle: -90, position: 'insideLeft', fontSize: 10, fill: '#94a3b8' }}
+                  />
+                  <ZAxis range={[12, 12]} />
+                  <Tooltip
+                    contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, fontSize: 11, color: '#f8fafc' }}
+                    cursor={false}
+                    formatter={(v: unknown, name: unknown) => {
+                      const col = name === 'x' ? modal.xCol : modal.yCol;
+                      return [formatAxisValue(col, Number(v)), labelFor(col)];
+                    }}
+                  />
+                  <Scatter
+                    data={scatterData}
+                    shape={(props: { cx?: number; cy?: number; payload?: ScatterPoint }) => {
+                      const { cx = 0, cy = 0, payload } = props;
+                      // Color by income source count: 1–6 mapped warm→cool
+                      const cv = payload?.color_value ?? 1;
+                      const t = Math.min(Math.max((cv - 1) / 5, 0), 1);
+                      const r = Math.round(59 + t * (239 - 59));
+                      const g = Math.round(130 + t * (68 - 130));
+                      const b = Math.round(246 + t * (68 - 246));
+                      return <circle cx={cx} cy={cy} r={2.5} fill={`rgb(${r},${g},${b})`} fillOpacity={0.45} />;
+                    }}
+                  />
+                </ScatterChart>
+              </ResponsiveContainer>
+            ) : scatterData && scatterData.length === 0 ? (
+              <div className="flex items-center justify-center h-64 text-slate-400 text-sm">No data points returned.</div>
+            ) : null}
           </div>
         </div>
       )}

@@ -53,19 +53,21 @@ export function clamp(value: number, min: number, max: number): number {
 
 // ── Shared chart tooltip styles ──────────────────────────────────────────────
 export const CHART_TOOLTIP_CONTENT_STYLE = {
-  background: '#1e293b',
+  background: '#292320',   /* --stone-900 */
   border: 'none',
   borderRadius: 8,
   fontSize: 12,
-  color: '#f1f5f9',
+  color: '#F7F4EF',
+  boxShadow: '0 8px 24px -4px rgba(26,23,20,0.24)',
 };
 
 export const CHART_TOOLTIP_LABEL_STYLE = {
-  color: '#cbd5e1',
+  color: '#A89E95',   /* --text-faint */
+  fontWeight: 400,
 };
 
 export const CHART_TOOLTIP_ITEM_STYLE = {
-  color: '#f8fafc',
+  color: '#F7F4EF',
 };
 
 // ── Color scale helpers ───────────────────────────────────────────────────────

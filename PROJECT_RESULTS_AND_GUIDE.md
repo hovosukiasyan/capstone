@@ -14,7 +14,8 @@
 6. [Bayesian Optimization Notebook — Results & Analysis](#6-bayesian-optimization-notebook)
 7. [RNN/LSTM Notebook — Results & Analysis](#7-rnnlstm-notebook)
 8. [Cross-Notebook Findings & Interpretation](#8-cross-notebook-findings)
-9. [What to Do Next](#9-what-to-do-next)
+9. [Time Series Analysis — Script 07](#9-time-series-analysis--script-07)
+10. [What to Do Next — Future Forecasting & Visualizations](#10-what-to-do-next--future-forecasting--visualizations)
 
 ---
 
@@ -407,38 +408,158 @@ The household income models achieve R²~0.34–0.36. This can be improved by:
 
 ---
 
-## 9. What to Do Next
+## 9. Time Series Analysis — Script 07
 
-### Immediate improvements (1–2 days)
+**File:** `scripts/07_time_series_analysis.py`
+**Run:** `python3.11 scripts/07_time_series_analysis.py --push`
 
-- [ ] **Re-run feature importance with log-target** — add `y_log = np.log(y)` in the feature importance notebook and compare R²
-- [ ] **Add `interview_month` as a cyclical feature** — `sin(2π×month/12)` and `cos(2π×month/12)` to capture seasonality without ordinal bias
-- [ ] **Run Bayesian opt notebook with 50 trials** — the results above used 20; expect +0.01–0.02 more R²
+### Purpose
 
-### Short-term (1 week)
+The household ILCS data is a single cross-section (2015). The time series component shifts the question from
+*"which households are poor?"* to **"where is poverty going, and can we predict it?"**
 
-- [ ] **Add region + area_type to household models** — merge from the t-SNE notebook's full pipeline; these are strong contextual predictors
-- [ ] **Run LSTM notebook** — get actual LSTM vs lag-1 comparison; focus on whether LSTM captures the 2019→2020 COVID shock
-- [ ] **Poverty classification** — convert to binary (poor/non-poor using Armenia's national poverty line) and try classification models (XGBoost, logistic regression) — may get F1 > 0.7
+Using the regional panel (11 marz × 2016–2022), we forecast two targets at three time frequencies:
 
-### Medium-term (Project completion)
+| Target | What it is |
+|--------|-----------|
+| `poverty_rate` | Share of households in a region falling below the poverty line (%). Comes from ArmStat official estimates. On monthly/daily panels it is forward-filled from annual values. |
+| `stress_index` | A composite socioeconomic pressure score constructed as: `zscore(zscore(poverty_rate) + zscore(crime_rate_per_100k) − zscore(hospitals_per_100k))`. High score = high poverty + high crime + low healthcare access. Z-scored twice so the result is unit-free and centered at 0. |
 
-- [ ] **Micro-to-macro linking** — use ILCS 2015 household predictions to estimate expected poverty rate by region; compare to ArmStat actual rates
-- [ ] **Streamlit dashboard** — `app/streamlit_map.py` already exists; extend it to show: LSTM forecast, household income distribution by region, top poverty predictors
-- [ ] **Report writing** — the key narrative: "Number of income sources is Armenia's strongest household poverty signal; combined with consumption spending, a GBM model predicts household income with MAE=82K AMD (~$200); at the regional level, monthly poverty changes slowly but is sensitive to macro shocks (COVID 2020 +4 percentage points)"
+| Frequency | Rows | Notes |
+|-----------|------|-------|
+| Yearly | 77 (11 regions × 7 years) | Honest signal — directly from survey |
+| Monthly | 924 (11 × 84 months) | Interpolated from annual; very smooth |
+| Daily | 27,797 (sampled every 7 days) | Further interpolated; mostly synthetic |
 
----
-
-## Quick Reference: Output Locations
-
-```
-notebooks/                                 ← Run these
-data/ilcs/research/feature_importance/    ← feature_importance_*.csv (5 models)
-data/ilcs/research/bayesian_opt/          ← best_params.csv, model_metrics.csv, residual plots
-data/processed/results/rnn/               ← lstm_best_weights.pt, lstm_vs_baseline.csv, plots
-test_ideas/outputs_scaling_analysis/      ← scaling study (150+ plots, 50 CSVs)
-```
+**Train / val / test split:** ≤2019 / 2020 / ≥2021
 
 ---
 
-*All metrics in this document were computed on real data runs on 2026-04-08.*
+### Classical Models — Results
+
+| Model | Target | Frequency | R² | MAE | Interpretation |
+|-------|--------|-----------|-----|-----|----------------|
+| Lag-1 Baseline | poverty_rate | yearly | 0.728 | 5.11 pp | Predicting "next year = this year" explains 73% of variance. 5 pp MAE is large — poverty genuinely shifts year to year |
+| Lag-1 Baseline | poverty_rate | monthly | 0.999 | 0.23 pp | Near-perfect because monthly data barely changes (forward-filled from annual) |
+| Ridge lags [1,2,3,6] | poverty_rate | monthly | 0.999 | 0.25 pp | Marginally matches lag-1; additional lags give no gain |
+| Ridge lags [1,3,6,12] | poverty_rate | monthly | 0.998 | 0.40 pp | Slightly worse — lag-12 adds noise |
+| ARIMA(1,1,0) | poverty_rate | monthly | 0.984 | 0.43 pp | Fitted on Yerevan only as representative; less accurate than ridge |
+| Lag-1 Baseline | poverty_rate | daily | 0.9999 | 0.052 pp | Near-perfect — daily is synthetic interpolation |
+| Ridge lags [1,4,13] | poverty_rate | daily | 0.9999 | 0.043 pp | Best classical on daily; beats lag-1 by a tiny margin |
+| ARIMA(1,1,1) | poverty_rate | daily | 0.787 | 0.065 pp | Yerevan-only ARIMA struggles at daily granularity |
+| Lag-1 Baseline | stress_index | yearly | 0.764 | 0.433 | Slightly better than poverty yearly — stress is stickier |
+| Lag-1 Baseline | stress_index | monthly | 0.999 | 0.018 | Trivially smooth (same interpolation effect) |
+| Ridge lags [1,3,6,12] | stress_index | monthly | 0.919 | 0.240 | Worse than lag-1 — longer lags hurt stress_index |
+| ARIMA(1,1,0) | stress_index | monthly | 0.989 | 0.036 | Good for a single-region ARIMA |
+
+**Key insight:** Monthly/daily R² looks impressive but is partly artificial — data was built by forward-filling annual survey values, so month t ≈ month t−1 by construction. The **yearly results are the honest benchmark**: R² ~0.73–0.76 with lag-1, meaning the problem is genuinely hard with limited data.
+
+---
+
+### Neural Networks — Results
+
+| Model | Target | Frequency | R² | MAE | Interpretation |
+|-------|--------|-----------|-----|-----|----------------|
+| GRU | poverty_rate | yearly | 0.206 | 9.53 pp | Underperforms classical — only ~7 data points per region |
+| BiLSTM | poverty_rate | yearly | 0.236 | 8.99 pp | Slightly better than GRU, still poor |
+| Transformer | poverty_rate | yearly | 0.466 | 6.64 pp | Best NN on yearly poverty — attention helps, but still below lag-1 (0.73) |
+| TCN | poverty_rate | yearly | 0.177 | 9.06 pp | Worst on yearly — temporal conv needs more data |
+| GRU | poverty_rate | monthly | 0.995 | 0.64 pp | Good, but lag-1 (0.999) still wins |
+| BiLSTM | poverty_rate | monthly | 0.986 | 1.03 pp | Falls behind GRU |
+| Transformer | poverty_rate | monthly | 0.977 | 1.49 pp | Overfits on smooth monthly data |
+| TCN | poverty_rate | monthly | 0.941 | 2.42 pp | Worst NN on monthly |
+| GRU | poverty_rate | daily | 0.9998 | 0.151 pp | Near-perfect but data is synthetic |
+| BiLSTM | poverty_rate | daily | 0.9993 | 0.251 pp | Slightly behind GRU |
+| Transformer | poverty_rate | daily | 0.986 | 0.957 pp | Overfits |
+| TCN | poverty_rate | daily | 0.979 | 1.471 pp | Worst on daily |
+| TCN | stress_index | yearly | 0.615 | 0.535 | Best NN on yearly stress; narrowly behind lag-1 (0.764) |
+| BiLSTM | stress_index | yearly | 0.565 | 0.558 | Second best on yearly stress |
+| GRU | stress_index | yearly | 0.531 | 0.617 | Competitive |
+| Transformer | stress_index | yearly | 0.371 | 0.660 | Weakest on yearly stress |
+| GRU | stress_index | monthly | 0.953 | 0.157 | Best NN on monthly stress |
+| BiLSTM | stress_index | monthly | 0.942 | 0.162 | Close second |
+| TCN | stress_index | monthly | 0.939 | 0.201 | Competitive |
+| Transformer | stress_index | monthly | 0.875 | 0.227 | Underperforms on smooth monthly data |
+
+**Key insight on NNs:** On yearly data (the real signal), NNs underperform classical because each region has only ~7 training years — far too little for GRU/LSTM. The Transformer and TCN show the most promise on yearly stress (R² 0.37–0.62). On monthly/daily, NNs approach classical but never beat it because the smoothed data makes a simple lag-1 nearly unbeatable.
+
+---
+
+### Model Comparison Summary
+
+| Frequency | Best model | R² | Key reason |
+|-----------|-----------|-----|------------|
+| Yearly — poverty | Lag-1 Baseline (classical) | 0.728 | Too little data for NNs; poverty is sticky year-to-year |
+| Yearly — stress | Lag-1 Baseline (classical) | 0.764 | Same; but TCN (0.615) is the closest NN challenger |
+| Monthly — poverty | Ridge lags [1,2,3,6] | 0.999 | Smooth interpolated signal; linear models dominate |
+| Monthly — stress | Lag-1 Baseline | 0.999 | Same |
+| Daily — poverty | Ridge lags [1,4,13] | 0.9999 | Synthetic data; near-perfect by construction |
+
+---
+
+## 10. What to Do Next — Future Forecasting & Visualizations
+
+### The Vision
+
+The next phase uses the best models from script 07 to **generate actual future forecasts** — extending the timeline beyond 2022 — and visualizes them as:
+- Per-region poverty rate forecast curves (with confidence bands)
+- National (Armenia-wide) aggregate forecast
+- Stress index heatmaps across regions and years
+- Interactive dashboard panel (already wired into the Next.js web app)
+
+### Recommended Next Steps
+
+#### Step 1 — Build a dedicated forecasting script (`scripts/08_forecast_future.py`)
+
+Use the best models (Ridge lag + GRU) trained on all available data (2016–2022) to forecast 2023–2026 per region:
+
+```
+For each region:
+  1. Take all available monthly data (2016–2022) as training
+  2. Use Ridge (lags [1,2,3,6]) to predict month-by-month into 2023–2026
+     - Each predicted value becomes the next input (autoregressive rollout)
+  3. Repeat with GRU for a neural alternative
+  4. Output: a CSV with columns [marz, date, poverty_rate_predicted, stress_index_predicted, model]
+```
+
+#### Step 2 — Confidence intervals
+
+Wrap the Ridge rollout in a **bootstrap** (resample residuals, re-predict 200 times) to get 80% and 95% prediction bands. This gives the "shaded ribbon" around forecast lines that makes the graph readable.
+
+#### Step 3 — National aggregate forecast
+
+Average per-region forecasts (population-weighted using the `population` column) to get an Armenia-wide poverty rate trajectory. This is the headline number.
+
+#### Step 4 — Visualization outputs (per region + national)
+
+```
+For each marz:
+  - Time axis: 2016 → 2026 (historical + forecast separated by a vertical dashed line at 2023)
+  - Blue solid line: actual poverty_rate (2016–2022)
+  - Red dashed line: forecast (2023–2026), Ridge model
+  - Shaded ribbon: 80% confidence band
+  - Second panel below: stress_index same treatment
+
+National chart:
+  - Same layout but population-weighted Armenia average
+  - Overlay: all 11 regions as faint lines, national average bold
+```
+
+#### Step 5 — Push forecasts to DB + surface in web app
+
+The web app already has a `/models/forecasting` page. Extend it to show:
+- A line chart with historical + forecast per selected region (dropdown)
+- A map view with color-coded 2026 projected poverty rate per marz
+- A table of projected values by year
+
+#### Step 6 (optional) — Scenario forecasting
+
+Use the stress_index formula to show what happens if crime increases or hospital access improves:
+- "What if hospitals_per_100k increases by 20% in Shirak?" → recalculate stress_index → re-forecast poverty
+- Gives the project a policy-simulation angle which is strong for a capstone presentation
+
+### Why This Approach Makes Sense
+
+The yearly results (R²=0.73) tell us the model is imperfect — it cannot predict sharp shocks (COVID 2020). But for a 1–3 year forecast horizon with slowly-moving poverty data, a Ridge autoregressive rollout with confidence bands is the honest and defensible choice. The NNs (GRU) can run in parallel for comparison — if they diverge from Ridge, that divergence itself is informative.
+
+The result will be a clean story: *"Here is where Armenia's regional poverty was, here is what our best model says it will be, and here is how confident we are."*

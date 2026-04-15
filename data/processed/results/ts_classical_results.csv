@@ -1,0 +1,13 @@
+source,model,target,frequency,R2,MAE,RMSE
+time_series_classical,Lag-1 Baseline,poverty_rate,yearly,0.727857,5.109091,6.777771
+time_series_classical,Lag-1 Baseline,poverty_rate,monthly,0.998961,0.22923,0.401774
+time_series_classical,"Ridge (lags [1, 3, 6, 12])",poverty_rate,monthly,0.997822,0.401573,0.581752
+time_series_classical,"Ridge (lags [1, 2, 3, 6])",poverty_rate,monthly,0.999193,0.250067,0.354207
+time_series_classical,"ARIMA(1, 1, 0)",poverty_rate,monthly,0.984476,0.429861,1.553195
+time_series_classical,Lag-1 Baseline,poverty_rate,daily,0.999947,0.051696,0.091035
+time_series_classical,"Ridge (lags [1, 4, 13])",poverty_rate,daily,0.999967,0.043119,0.071476
+time_series_classical,"ARIMA(1, 1, 1)",poverty_rate,daily,0.786735,0.06522,0.393851
+time_series_classical,Lag-1 Baseline,stress_index,yearly,0.763604,0.433089,0.538701
+time_series_classical,Lag-1 Baseline,stress_index,monthly,0.999218,0.018265,0.031191
+time_series_classical,"Ridge (lags [1, 3, 6, 12])",stress_index,monthly,0.918858,0.240236,0.317699
+time_series_classical,"ARIMA(1, 1, 0)",stress_index,monthly,0.988661,0.035611,0.118763

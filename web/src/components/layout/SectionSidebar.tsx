@@ -18,9 +18,20 @@ export default function SectionSidebar({ items, title }: SectionSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="w-52 shrink-0 hidden lg:block">
+    <aside className="w-48 shrink-0 hidden lg:block">
       <div className="sticky top-20">
-        <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: '0.6875rem',
+            fontWeight: 500,
+            letterSpacing: '0.07em',
+            textTransform: 'uppercase',
+            color: 'var(--text-faint)',
+            marginBottom: '0.625rem',
+            paddingLeft: '0.5rem',
+          }}
+        >
           {title}
         </p>
         <nav className="flex flex-col gap-0.5">
@@ -30,17 +41,39 @@ export default function SectionSidebar({ items, title }: SectionSidebarProps) {
               <Link
                 key={href}
                 href={href}
-                className={`
-                  group rounded-lg px-3 py-2 text-sm transition-colors
-                  ${active
-                    ? 'bg-blue-50 text-blue-700 font-medium'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                  }
-                `}
+                style={{
+                  display: 'block',
+                  padding: '0.375rem 0.625rem',
+                  borderRadius: 'var(--radius-md)',
+                  textDecoration: 'none',
+                  background: active ? 'var(--surface-subtle)' : 'transparent',
+                  borderLeft: active ? '2px solid var(--warm-600)' : '2px solid transparent',
+                  transition: 'background 0.12s, border-color 0.12s',
+                }}
+                className="group hover:bg-[var(--surface-subtle)]"
               >
-                <span className="block">{label}</span>
+                <span
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: '0.8125rem',
+                    fontWeight: active ? 500 : 400,
+                    color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  }}
+                  className="group-hover:text-[var(--text-primary)]"
+                >
+                  {label}
+                </span>
                 {description && (
-                  <span className="block text-xs text-slate-400 group-hover:text-slate-500 mt-0.5">
+                  <span
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontSize: '0.6875rem',
+                      color: 'var(--text-faint)',
+                      marginTop: '0.125rem',
+                    }}
+                  >
                     {description}
                   </span>
                 )}

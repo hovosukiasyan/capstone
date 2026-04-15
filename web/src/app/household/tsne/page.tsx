@@ -4,7 +4,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, ZAxis, Legend,
+  ResponsiveContainer, ZAxis,
 } from 'recharts';
 import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
@@ -28,6 +28,36 @@ const DECILE_COLORS = [
 ];
 
 type ColorMode = 'cluster' | 'income_decile';
+
+function DecileLegend({
+  items,
+  colorMode,
+}: {
+  items: { key: number; color: string }[];
+  colorMode: ColorMode;
+}) {
+  return (
+    <div className="mb-4 flex flex-wrap gap-2">
+      {items.map(({ key, color }) => (
+        <div
+          key={`${colorMode}-${key}`}
+          className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs"
+          style={{
+            borderColor: 'var(--border-subtle)',
+            background: 'var(--surface-raised)',
+            color: 'var(--text-secondary)',
+          }}
+        >
+          <span
+            className="h-2.5 w-2.5 rounded-full"
+            style={{ background: color, display: 'inline-block' }}
+          />
+          <span>{colorMode === 'cluster' ? `Cluster ${key}` : `Decile ${key}`}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function TsnePage() {
   const [colorMode, setColorMode] = useState<ColorMode>('cluster');
@@ -71,7 +101,11 @@ export default function TsnePage() {
   const getColor = (key: number) =>
     colorMode === 'cluster'
       ? CLUSTER_COLORS[key % CLUSTER_COLORS.length]
-      : DECILE_COLORS[Math.min(key - 1, 9)];
+      : DECILE_COLORS[Math.max(0, Math.min(key - 1, 9))];
+
+  const legendItems = Array.from(groups.keys())
+    .sort((a, b) => a - b)
+    .map((key) => ({ key, color: getColor(key) }));
 
   return (
     <div>
@@ -100,6 +134,7 @@ export default function TsnePage() {
       </div>
 
       <div className="rounded-xl border border-slate-200 bg-white p-6">
+        <DecileLegend items={legendItems} colorMode={colorMode} />
         <ResponsiveContainer width="100%" height={500}>
           <ScatterChart margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f8fafc" />
@@ -130,7 +165,6 @@ export default function TsnePage() {
                 return [String(v), String(name)];
               }}
             />
-            <Legend />
             {Array.from(groups.entries())
               .sort(([a], [b]) => a - b)
               .map(([key, points]) => (
@@ -155,7 +189,7 @@ export default function TsnePage() {
 
       {colorMode === 'cluster' && (
         <p className="mt-3 text-xs text-slate-400">
-          Clusters computed with K-Means (k=2) on hybrid-scaled features. Silhouette score: 0.9792 — near-perfect separation.
+          Clusters computed with K-Means on hybrid-scaled features (mixed numeric and binary variables, normalized per type).
         </p>
       )}
     </div>

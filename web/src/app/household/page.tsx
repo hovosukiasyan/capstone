@@ -2,19 +2,16 @@ import Link from 'next/link';
 import PageHeader from '@/components/layout/PageHeader';
 import KpiCard from '@/components/cards/KpiCard';
 import HouseholdOverviewCharts from './OverviewCharts';
-import { getHouseholdStats, getIncomeByMonth } from '@/lib/db';
+import { getHouseholdStats } from '@/lib/db';
 import { formatAMD } from '@/lib/utils';
 
 export const dynamic = 'force-dynamic';
 
 export default async function HouseholdPage() {
-  let stats, byMonth;
+  let stats;
   try {
     console.log('[page/household] fetching DB data…');
-    [stats, byMonth] = await Promise.all([
-      getHouseholdStats(),
-      getIncomeByMonth(),
-    ]);
+    stats = await getHouseholdStats();
     console.log('[page/household] DB data fetched OK');
   } catch (err) {
     const e = err as Error & { code?: string; detail?: string };
@@ -72,7 +69,7 @@ export default async function HouseholdPage() {
       </div>
 
       {/* Charts */}
-      <HouseholdOverviewCharts initialByMonth={byMonth} />
+      <HouseholdOverviewCharts />
 
       {/* Navigation to sub-pages */}
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -85,10 +82,39 @@ export default async function HouseholdPage() {
           <Link
             key={href}
             href={href}
-            className="group rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-200 hover:shadow-sm transition-all"
+            style={{
+              display: 'block',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '1rem',
+              textDecoration: 'none',
+              transition: 'border-color 0.15s, box-shadow 0.15s',
+            }}
+            className="group hover:border-[var(--warm-400)] hover:shadow-[var(--shadow-sm)]"
           >
-            <p className="font-medium text-slate-900 group-hover:text-blue-700 text-sm">{label}</p>
-            <p className="text-xs text-slate-500 mt-1">{desc}</p>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 500,
+                fontSize: '0.875rem',
+                color: 'var(--text-primary)',
+                margin: 0,
+              }}
+              className="group-hover:text-[var(--warm-700)]"
+            >
+              {label}
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.75rem',
+                color: 'var(--text-muted)',
+                marginTop: '0.25rem',
+              }}
+            >
+              {desc}
+            </p>
           </Link>
         ))}
       </div>

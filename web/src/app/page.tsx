@@ -7,70 +7,58 @@ export const dynamic = 'force-dynamic';
 
 const SECTION_CARDS = [
   {
-    href: '/household',
-    title: 'Household Analysis',
+    href: '/regional',
+    title: 'Regional Atlas',
+    eyebrow: 'Map-first analysis',
     description:
-      'Explore income distributions, seasonal patterns, feature correlations, and demographic breakdowns across 5,184 households.',
-    badge: '5,184 households',
-    color: 'blue',
-    icon: '🏠',
+      'Explore all 11 marzes through choropleths, ranking tables, and time-series views of poverty, extreme poverty, infrastructure capacity, and stress.',
   },
   {
-    href: '/regional',
-    title: 'Regional Map',
+    href: '/household',
+    title: 'Household Analysis',
+    eyebrow: 'Micro-level structure',
     description:
-      'Interactive choropleth of all 11 Armenian marzes. Visualize poverty, crime, health capacity, and the composite stress index over 2016–2022.',
-    badge: '11 regions',
-    color: 'emerald',
-    icon: '🗺️',
+      'Study household income distributions, socioeconomic features, clustering, and correlations from the ILCS 2015 microdata.',
   },
   {
     href: '/models',
-    title: 'ML Models',
+    title: 'Model Results',
+    eyebrow: 'Forecasting and explanation',
     description:
-      'Compare 5 ML models (GBM, RF, ET, Ridge, Lasso). Explore feature importances, model metrics, and forecasting results.',
-    badge: '5 models',
-    color: 'amber',
-    icon: '🤖',
+      'Review benchmark models, feature-importance outputs, and forecasting comparisons for poverty and stress indicators.',
   },
   {
     href: '/explorer',
     title: 'Data Explorer',
+    eyebrow: 'Structured table access',
     description:
-      'Browse and filter the full household dataset. Download filtered subsets as CSV.',
-    badge: 'filterable table',
-    color: 'slate',
-    icon: '🔍',
+      'Filter the underlying household data with practical controls, sort analytically relevant columns, and export scoped subsets.',
   },
 ];
 
 export default async function HomePage() {
   let stats, metrics, years;
   try {
-    console.log('[page/home] fetching DB data…');
     [stats, metrics, years] = await Promise.all([
       getHouseholdStats(),
       getModelMetrics(),
       getRegionalYears(),
     ]);
-    console.log('[page/home] DB data fetched OK');
   } catch (err) {
     const e = err as Error & { code?: string; detail?: string };
-    console.error('[page/home] DB error:', {
-      message: e?.message,
-      code: e?.code,
-      detail: e?.detail,
-      stack: e?.stack,
-    });
     return (
-      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
-        <h2 className="font-semibold text-red-900 mb-2">Database error</h2>
-        <pre className="text-sm text-red-700 whitespace-pre-wrap overflow-auto">
+      <div
+        className="rounded-[var(--radius-xl)] border p-6"
+        style={{ background: 'var(--warm-50)', borderColor: 'var(--warm-200)' }}
+      >
+        <h2 className="mb-2 text-lg font-semibold" style={{ color: 'var(--warm-800)' }}>
+          Database error
+        </h2>
+        <pre className="overflow-x-auto whitespace-pre-wrap text-sm" style={{ color: 'var(--warm-700)' }}>
           {e?.message}
           {e?.code ? `\ncode: ${e.code}` : ''}
           {e?.detail ? `\ndetail: ${e.detail}` : ''}
         </pre>
-        <p className="mt-3 text-xs text-red-500">Check Vercel Runtime Logs and /api/debug/env for details.</p>
       </div>
     );
   }
@@ -79,139 +67,220 @@ export default async function HomePage() {
   const yearRange = years.length > 0 ? `${years[0]}–${years[years.length - 1]}` : '2016–2022';
 
   return (
-    <div>
-      {/* Hero */}
-      <div className="mb-8 rounded-2xl bg-gradient-to-br from-blue-900 to-blue-700 px-8 py-10 text-white">
-        <div className="max-w-2xl">
-          <div className="mb-3 flex items-center gap-2">
-            <span className="rounded-full bg-white/20 px-3 py-0.5 text-xs font-medium">
-              Armenia Capstone Project
-            </span>
+    <div className="space-y-8">
+      <section
+        className="hero-panel relative overflow-hidden rounded-[28px] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12"
+        style={{
+          background:
+            'linear-gradient(140deg, var(--stone-950) 0%, var(--stone-900) 36%, var(--warm-900) 78%, #5c2c18 100%)',
+        }}
+      >
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-70"
+          style={{
+            background:
+              'radial-gradient(circle at 18% 16%, rgba(186,216,238,0.16), transparent 28%), radial-gradient(circle at 80% 24%, rgba(216,112,112,0.18), transparent 22%), linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.04) 48%, transparent 100%)',
+          }}
+        />
+        <div
+          aria-hidden
+          className="hero-grid absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+            backgroundSize: '72px 72px',
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 88%)',
+          }}
+        />
+
+        <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,0.8fr)] lg:items-end">
+          <div className="hero-copy">
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-white/15 bg-white/8 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/70">
+                Armenia Poverty Observatory
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.16em] text-white/45">
+                Household microdata + regional panel forecasting
+              </span>
+            </div>
+
+            <h1
+              className="max-w-3xl font-display text-[clamp(2rem,5vw,4.5rem)] font-normal leading-[1.02] text-[var(--stone-50)]"
+              style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}
+            >
+              A civic analytics platform for poverty, stress, and regional inequality in Armenia.
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/72 sm:text-base">
+              Read Armenia’s social conditions through regional maps, household distributions, model
+              comparisons, and forecasting outputs built from ILCS 2015 and ArmStat panel data.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/regional"
+                className="rounded-full bg-[var(--stone-50)] px-5 py-2.5 text-sm font-medium text-[var(--stone-950)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)]"
+              >
+                Open Regional Atlas
+              </Link>
+              <Link
+                href="/models"
+                className="rounded-full border border-white/20 bg-white/6 px-5 py-2.5 text-sm font-medium text-white/88 transition hover:-translate-y-0.5 hover:bg-white/10"
+              >
+                Review Model Results
+              </Link>
+            </div>
           </div>
-          <h1 className="text-4xl font-bold leading-tight">
-            Poverty Prediction &amp; Regional Analysis
-          </h1>
-          <p className="mt-3 text-blue-100 text-lg leading-relaxed">
-            Machine learning analysis of household socioeconomic outcomes using the ILCS 2015
-            survey and ArmStat regional panel data.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/regional"
-              className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-blue-900 hover:bg-blue-50 transition-colors"
-            >
-              View Regional Map →
-            </Link>
-            <Link
-              href="/household"
-              className="rounded-lg border border-white/40 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-            >
-              Explore Households
-            </Link>
+
+          <div className="hero-metrics grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="rounded-[22px] border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Regional coverage</p>
+              <p className="mt-2 font-data text-2xl text-[var(--stone-50)]">{yearRange}</p>
+              <p className="mt-1 text-xs text-white/62">11 marzes tracked through the atlas and ranking views</p>
+            </div>
+            <div className="rounded-[22px] border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Best reported model</p>
+              <p className="mt-2 font-data text-2xl text-[var(--stone-50)]">{bestModel.r2.toFixed(3)} R²</p>
+              <p className="mt-1 text-xs text-white/62">{bestModel.model.toUpperCase()} remains the leading benchmark in the current platform</p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* KPI cards */}
-      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-        <KpiCard
-          title="Households surveyed"
-          value={stats.count.toLocaleString()}
-          subtitle="ILCS 2015"
-          color="blue"
-        />
-        <KpiCard
-          title="Median household income"
-          value={formatAMD(Math.round(stats.median_income), true)}
-          subtitle="AMD per year"
-          color="emerald"
-        />
-        <KpiCard
-          title="Best model R²"
-          value={bestModel.r2.toFixed(3)}
-          subtitle={`${bestModel.model.toUpperCase()} — Bayesian optimized`}
-          color="amber"
-        />
-        <KpiCard
-          title="Regional data years"
-          value={yearRange}
-          subtitle="11 marzes monthly"
-          color="slate"
-        />
-      </div>
+      <section className="grid gap-4 md:grid-cols-4">
+        <div className="homepage-kpi-card"><KpiCard title="Households surveyed" value={stats.count.toLocaleString()} subtitle="ILCS 2015 microdata" color="blue" /></div>
+        <div className="homepage-kpi-card"><KpiCard title="Median income" value={formatAMD(Math.round(stats.median_income), true)} subtitle="AMD per year" color="emerald" /></div>
+        <div className="homepage-kpi-card"><KpiCard title="Best model R²" value={bestModel.r2.toFixed(3)} subtitle={`${bestModel.model.toUpperCase()} benchmark`} color="amber" /></div>
+        <div className="homepage-kpi-card"><KpiCard title="Income range" value={`${formatAMD(Math.round(stats.p10_income), true)}–${formatAMD(Math.round(stats.p90_income), true)}`} subtitle="P10 to P90 spread" color="slate" /></div>
+      </section>
 
-      {/* Section cards */}
-      <div className="mb-8 grid gap-4 md:grid-cols-2">
-        {SECTION_CARDS.map((card) => (
-          <Link
-            key={card.href}
-            href={card.href}
-            className="group rounded-xl border border-slate-200 bg-white p-6 hover:border-blue-200 hover:shadow-md transition-all"
-          >
-            <div className="flex items-start gap-3">
-              <span className="text-2xl">{card.icon}</span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h2 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
-                    {card.title}
-                  </h2>
-                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-500">
-                    {card.badge}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed">{card.description}</p>
-              </div>
-              <span className="text-slate-300 group-hover:text-blue-400 transition-colors text-lg">→</span>
+      <section className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
+        <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)]">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-faint)]">
+                Platform Sections
+              </p>
+              <h2 className="mt-2 text-2xl font-medium text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}>
+                Four ways to read the evidence
+              </h2>
             </div>
-          </Link>
-        ))}
-      </div>
+            <p className="max-w-xs text-right text-sm text-[var(--text-muted)]">
+              The regional map is the strongest current experience. The other sections should feel just as deliberate.
+            </p>
+          </div>
 
-      {/* Model metrics preview */}
-      <div className="rounded-xl border border-slate-200 bg-white p-6">
-        <h2 className="text-base font-semibold text-slate-900 mb-4">Model Performance Summary</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {SECTION_CARDS.map((card, index) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="homepage-section-card group rounded-[22px] border p-5 transition hover:-translate-y-1"
+                style={{
+                  borderColor: 'var(--border)',
+                  background:
+                    index === 0
+                      ? 'linear-gradient(180deg, rgba(238,247,252,0.95), rgba(255,255,255,1))'
+                      : 'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(253,252,250,1))',
+                }}
+              >
+                <p className="text-[11px] uppercase tracking-[0.14em] text-[var(--text-faint)]">{card.eyebrow}</p>
+                <h3 className="mt-2 text-lg font-medium text-[var(--text-primary)] group-hover:text-[var(--warm-700)]">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--text-muted)]">{card.description}</p>
+                <div className="mt-5 flex items-center justify-between text-sm font-medium text-[var(--cool-700)]">
+                  <span>Enter section</span>
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-faint)]">Project framing</p>
+          <h2 className="mt-2 text-2xl font-medium text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}>
+            What the platform is trying to explain
+          </h2>
+
+          <div className="mt-5 space-y-4">
+            {[
+              {
+                title: 'Household vulnerability',
+                body: 'Income, assets, consumption, and self-reported hardship provide the micro-level structure behind poverty risk.',
+              },
+              {
+                title: 'Regional inequality',
+                body: 'Poverty and extreme poverty rates vary across Armenian marzes and need map-first interpretation rather than isolated tables.',
+              },
+              {
+                title: 'Forecasting limits',
+                body: 'Time-series pages should communicate not just metrics, but also the strength and limits of the data generation process.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-[18px] border border-[var(--border-subtle)] bg-[var(--surface-raised)] p-4">
+                <h3 className="text-sm font-medium text-[var(--text-primary)]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">{item.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/explorer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--cool-300)] hover:bg-[var(--surface-subtle)]"
+          >
+            Inspect the dataset directly <span>→</span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)]">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-faint)]">Model snapshot</p>
+            <h2 className="mt-2 text-2xl font-medium text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}>
+              Current benchmark table
+            </h2>
+          </div>
+          <Link href="/models" className="text-sm font-medium text-[var(--cool-700)] transition hover:text-[var(--cool-800)]">
+            Open full model analysis →
+          </Link>
+        </div>
+
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="min-w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100">
-                <th className="text-left py-2 pr-4 font-medium text-slate-500">Model</th>
-                <th className="text-right py-2 pr-4 font-medium text-slate-500">R²</th>
-                <th className="text-right py-2 pr-4 font-medium text-slate-500">MAE (AMD)</th>
-                <th className="text-right py-2 font-medium text-slate-500">RMSE (AMD)</th>
+              <tr className="border-b border-[var(--border-subtle)]">
+                <th className="px-0 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-faint)]">Model</th>
+                <th className="px-0 py-3 text-right text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-faint)]">R²</th>
+                <th className="px-0 py-3 text-right text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-faint)]">MAE</th>
+                <th className="px-0 py-3 text-right text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-faint)]">RMSE</th>
               </tr>
             </thead>
             <tbody>
-              {metrics.map((m, i) => (
-                <tr key={m.model} className="border-b border-slate-50 hover:bg-slate-50">
-                  <td className="py-2 pr-4 font-medium text-slate-900">
-                    {i === 0 && (
-                      <span className="mr-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700">
-                        BEST
-                      </span>
-                    )}
-                    {m.model.toUpperCase()}
-                    {m.is_bayesian_optimized ? (
-                      <span className="ml-2 text-xs text-slate-400">Bayesian opt.</span>
-                    ) : null}
+              {metrics.map((m, index) => (
+                <tr key={m.model} className="border-b border-[var(--border-subtle)] last:border-b-0">
+                  <td className="py-3 text-[var(--text-primary)]">
+                    <div className="flex items-center gap-2">
+                      {index === 0 && (
+                        <span className="rounded-full bg-[var(--warning-bg)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--warning)]">
+                          Best
+                        </span>
+                      )}
+                      <span className="font-medium">{m.model.toUpperCase()}</span>
+                    </div>
                   </td>
-                  <td className="py-2 pr-4 text-right tabular-nums text-slate-700">
-                    {m.r2.toFixed(4)}
-                  </td>
-                  <td className="py-2 pr-4 text-right tabular-nums text-slate-700">
-                    {formatAMD(Math.round(m.mae), true)}
-                  </td>
-                  <td className="py-2 text-right tabular-nums text-slate-700">
-                    {formatAMD(Math.round(m.rmse), true)}
-                  </td>
+                  <td className="py-3 text-right font-data text-[var(--text-secondary)]">{m.r2.toFixed(4)}</td>
+                  <td className="py-3 text-right font-data text-[var(--text-secondary)]">{formatAMD(Math.round(m.mae), true)}</td>
+                  <td className="py-3 text-right font-data text-[var(--text-secondary)]">{formatAMD(Math.round(m.rmse), true)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <Link href="/models" className="mt-4 inline-block text-sm text-blue-600 hover:underline">
-          Full model analysis →
-        </Link>
-      </div>
+      </section>
     </div>
   );
 }

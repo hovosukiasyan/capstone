@@ -270,7 +270,11 @@ export async function getHouseholdList(
   incomeMin?: number,
   incomeMax?: number,
   householdSizeMin?: number,
-  householdSizeMax?: number
+  householdSizeMax?: number,
+  hasComputer?: number,
+  hasCar?: number,
+  povertyBenefitLevel?: number,
+  interviewMonth?: number
 ): Promise<PaginatedResponse<Household>> {
   const conditions: string[] = [];
   const params: unknown[] = [];
@@ -291,6 +295,22 @@ export async function getHouseholdList(
   if (householdSizeMax !== undefined) {
     conditions.push(`household_size <= $${paramIdx++}`);
     params.push(householdSizeMax);
+  }
+  if (hasComputer !== undefined) {
+    conditions.push(`has_computer = $${paramIdx++}`);
+    params.push(hasComputer);
+  }
+  if (hasCar !== undefined) {
+    conditions.push(`household_has_car = $${paramIdx++}`);
+    params.push(hasCar);
+  }
+  if (povertyBenefitLevel !== undefined) {
+    conditions.push(`registered_poverty_benefit = $${paramIdx++}`);
+    params.push(povertyBenefitLevel);
+  }
+  if (interviewMonth !== undefined) {
+    conditions.push(`interview_month = $${paramIdx++}`);
+    params.push(interviewMonth);
   }
 
   const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -460,6 +480,7 @@ export async function getForecastingResults(
   const valid = new Set([
     'poverty', 'stress', 'augmentation_baseline', 'augmentation_nn',
     'poverty_nn_activation', 'poverty_nn_layer',
+    'time_series_classical', 'time_series_nn',
   ]);
   if (!valid.has(source)) throw new Error(`Invalid source: ${source}`);
   return query<ForecastingResult>(
