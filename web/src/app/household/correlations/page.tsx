@@ -136,7 +136,6 @@ export default function CorrelationsPage() {
                   paddingBottom: 4,
                   fontSize: 9,
                 }}
-                title={labelFor(col)}
               >
                 {labelFor(col).slice(0, 16)}
               </div>
@@ -149,7 +148,6 @@ export default function CorrelationsPage() {
                   key={`label-${rowCol}`}
                   className="text-right text-slate-400 pr-2 flex items-center justify-end"
                   style={{ fontSize: 9 }}
-                  title={labelFor(rowCol)}
                 >
                   {labelFor(rowCol).slice(0, 18)}
                 </div>
@@ -159,6 +157,7 @@ export default function CorrelationsPage() {
                   return (
                     <div
                       key={`${rowCol}-${colCol}`}
+                      aria-label={`${labelFor(rowCol)} vs ${labelFor(colCol)}: r = ${r.toFixed(3)}`}
                       style={{
                         background: getColor(r),
                         cursor: i !== j ? 'pointer' : 'default',
@@ -166,7 +165,6 @@ export default function CorrelationsPage() {
                         transition: 'outline 0.1s',
                         height: 18,
                       }}
-                      title={`${labelFor(rowCol)} vs ${labelFor(colCol)}: r = ${r.toFixed(3)}`}
                       onMouseEnter={() => setHovered({ i, j })}
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => {

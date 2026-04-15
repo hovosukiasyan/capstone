@@ -9,6 +9,11 @@ import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { MODEL_LABELS, MODEL_COLORS, HOUSEHOLD_COLUMN_MAP } from '@/lib/constants';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+} from '@/lib/utils';
 import type { FeatureImportance } from '@/lib/types';
 const MODELS = ['gbm', 'rf', 'et', 'ridge', 'lasso'] as const;
 
@@ -160,7 +165,9 @@ export default function FeatureImportancePage() {
                 width={155}
               />
               <Tooltip
-                contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, fontSize: 12, color: '#f1f5f9' }}
+                contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+                labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+                itemStyle={CHART_TOOLTIP_ITEM_STYLE}
                 formatter={(v: unknown) => [
                   Number(v).toFixed(4),
                   isLinear ? 'Normalized coeff.' : 'Importance',

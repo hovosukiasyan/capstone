@@ -10,7 +10,13 @@ import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { HOUSEHOLD_COLUMNS, ORDINAL_LABELS } from '@/lib/constants';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
-import { decodeLabel, formatAMD } from '@/lib/utils';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+  decodeLabel,
+  formatAMD,
+} from '@/lib/utils';
 import type { DistributionResponse } from '@/lib/types';
 
 export default function DistributionPage() {
@@ -127,13 +133,9 @@ export default function DistributionPage() {
                     axisLine={false}
                   />
                   <Tooltip
-                    contentStyle={{
-                      background: '#1e293b',
-                      border: 'none',
-                      borderRadius: 8,
-                      fontSize: 12,
-                      color: '#f1f5f9',
-                    }}
+                    contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+                    labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+                    itemStyle={CHART_TOOLTIP_ITEM_STYLE}
                     formatter={(v: unknown, _n: unknown, props: { payload?: { pct?: string } }) => [
                       `${v} (${props.payload?.pct ?? ''}%)`,
                       'Count',

@@ -51,6 +51,23 @@ export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
+// ── Shared chart tooltip styles ──────────────────────────────────────────────
+export const CHART_TOOLTIP_CONTENT_STYLE = {
+  background: '#1e293b',
+  border: 'none',
+  borderRadius: 8,
+  fontSize: 12,
+  color: '#f1f5f9',
+};
+
+export const CHART_TOOLTIP_LABEL_STYLE = {
+  color: '#cbd5e1',
+};
+
+export const CHART_TOOLTIP_ITEM_STYLE = {
+  color: '#f8fafc',
+};
+
 // ── Color scale helpers ───────────────────────────────────────────────────────
 /**
  * Map a normalized [0,1] value to a warm red scale for "bad" indicators

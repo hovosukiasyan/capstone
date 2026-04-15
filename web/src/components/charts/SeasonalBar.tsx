@@ -3,7 +3,13 @@
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
-import { formatAMD, MONTH_NAMES } from '@/lib/utils';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+  formatAMD,
+  MONTH_NAMES,
+} from '@/lib/utils';
 
 interface DataPoint {
   month: number;
@@ -40,13 +46,9 @@ export default function SeasonalBar({ data }: Props) {
           tickFormatter={(v) => formatAMD(v, true)}
         />
         <Tooltip
-          contentStyle={{
-            background: '#1e293b',
-            border: 'none',
-            borderRadius: 8,
-            fontSize: 12,
-            color: '#f1f5f9',
-          }}
+          contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+          labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+          itemStyle={CHART_TOOLTIP_ITEM_STYLE}
           formatter={(v: unknown) => [formatAMD(Number(v)), 'Mean income']}
         />
         <Bar

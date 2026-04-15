@@ -10,7 +10,12 @@ import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { HOUSEHOLD_COLUMNS } from '@/lib/constants';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
-import { formatAMD } from '@/lib/utils';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+  formatAMD,
+} from '@/lib/utils';
 import type { ScatterPoint } from '@/lib/types';
 
 const MONETARY_COLS = HOUSEHOLD_COLUMNS.filter((c) =>
@@ -118,13 +123,9 @@ export default function FeaturesPage() {
               />
               <ZAxis range={[12, 12]} />
               <Tooltip
-                contentStyle={{
-                  background: '#1e293b',
-                  border: 'none',
-                  borderRadius: 8,
-                  fontSize: 12,
-                  color: '#f1f5f9',
-                }}
+                contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+                labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+                itemStyle={CHART_TOOLTIP_ITEM_STYLE}
                 cursor={{ strokeDasharray: '3 3' }}
                 formatter={(value: unknown, name: unknown) => {
                 const v = Number(value);

@@ -5,6 +5,11 @@ import {
   ResponsiveContainer, Legend, Cell,
 } from 'recharts';
 import { MODEL_LABELS, MODEL_COLORS } from '@/lib/constants';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+} from '@/lib/utils';
 import type { ModelMetrics } from '@/lib/types';
 
 interface Props {
@@ -41,7 +46,9 @@ export default function ModelComparisonClient({ metrics }: Props) {
               tickFormatter={(v) => v.toFixed(2)}
             />
             <Tooltip
-              contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, fontSize: 12, color: '#f1f5f9' }}
+              contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+              labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+              itemStyle={CHART_TOOLTIP_ITEM_STYLE}
               formatter={(v: unknown) => [Number(v).toFixed(4), 'R²']}
             />
             <Bar dataKey="R2" radius={[4, 4, 0, 0]}>
@@ -65,7 +72,9 @@ export default function ModelComparisonClient({ metrics }: Props) {
               tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`}
             />
             <Tooltip
-              contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, fontSize: 12, color: '#f1f5f9' }}
+              contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+              labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+              itemStyle={CHART_TOOLTIP_ITEM_STYLE}
               formatter={(v: unknown) => [`${Number(v).toLocaleString()} ֏`, 'MAE']}
             />
             <Bar dataKey="MAE" radius={[4, 4, 0, 0]}>

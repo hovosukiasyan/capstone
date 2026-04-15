@@ -7,7 +7,14 @@ import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { REGIONAL_INDICATORS } from '@/lib/constants';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
-import { changeArrow, formatPct } from '@/lib/utils';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+  changeArrow,
+  formatPct,
+  getIndicatorColor,
+} from '@/lib/utils';
 import type { RankingRow } from '@/lib/types';
 
 export default function RegionalRankingPage() {
@@ -21,6 +28,9 @@ export default function RegionalRankingPage() {
 
   const indicatorMeta = REGIONAL_INDICATORS.find((i) => i.key === indicator);
   const isPct = ['poverty_rate', 'extreme_poverty_rate'].includes(indicator);
+  const values = (data ?? []).map((row) => row.value).filter((value): value is number => value !== null);
+  const minValue = values.length > 0 ? Math.min(...values) : 0;
+  const maxValue = values.length > 0 ? Math.max(...values) : 0;
 
   const fmt = (v: number | null) => {
     if (v === null) return '—';
@@ -94,20 +104,25 @@ export default function RegionalRankingPage() {
                 width={78}
               />
               <Tooltip
-                contentStyle={{
-                  background: '#1e293b',
-                  border: 'none',
-                  borderRadius: 8,
-                  fontSize: 12,
-                  color: '#f1f5f9',
-                }}
+                contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+                labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+                itemStyle={CHART_TOOLTIP_ITEM_STYLE}
                 formatter={(v: unknown) => [fmt(Number(v)), indicatorMeta?.label ?? indicator]}
               />
               <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                {(data ?? []).slice().reverse().map((_, i) => (
+                {(data ?? []).slice().reverse().map((row, i) => (
                   <Cell
                     key={i}
-                    fill={indicatorMeta?.colorScheme === 'cool' ? '#3b82f6' : `hsl(${10 + i * 12}, 75%, 52%)`}
+                    fill={
+                      row.value === null
+                        ? '#e2e8f0'
+                        : getIndicatorColor(
+                            row.value,
+                            minValue,
+                            maxValue,
+                            indicatorMeta?.colorScheme ?? 'warm'
+                          )
+                    }
                   />
                 ))}
               </Bar>

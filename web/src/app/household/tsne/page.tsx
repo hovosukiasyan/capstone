@@ -9,7 +9,12 @@ import {
 import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
-import { formatAMD } from '@/lib/utils';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+  formatAMD,
+} from '@/lib/utils';
 import type { TsnePoint } from '@/lib/types';
 
 const CLUSTER_COLORS = [
@@ -115,13 +120,9 @@ export default function TsnePage() {
             />
             <ZAxis range={[15, 15]} />
             <Tooltip
-              contentStyle={{
-                background: '#1e293b',
-                border: 'none',
-                borderRadius: 8,
-                fontSize: 11,
-                color: '#f1f5f9',
-              }}
+              contentStyle={{ ...CHART_TOOLTIP_CONTENT_STYLE, fontSize: 11 }}
+              labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+              itemStyle={CHART_TOOLTIP_ITEM_STYLE}
               cursor={false}
               formatter={(v: unknown, name: unknown) => {
                 if (name === 'household_income_total') return [formatAMD(Number(v), true), 'Income'];

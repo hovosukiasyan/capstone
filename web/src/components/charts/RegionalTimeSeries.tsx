@@ -5,6 +5,11 @@ import {
   Legend, ResponsiveContainer, ReferenceLine,
 } from 'recharts';
 import { MARZ_NAMES } from '@/lib/constants';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+} from '@/lib/utils';
 
 const MARZ_COLORS = [
   '#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6',
@@ -60,13 +65,9 @@ export default function RegionalTimeSeries({ data, marzes, indicatorLabel, natio
           tickFormatter={(v) => v.toFixed(1)}
         />
         <Tooltip
-          contentStyle={{
-            background: '#1e293b',
-            border: 'none',
-            borderRadius: 8,
-            fontSize: 12,
-            color: '#f1f5f9',
-          }}
+          contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+          labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+          itemStyle={CHART_TOOLTIP_ITEM_STYLE}
           formatter={(value: unknown, name: unknown) => [(Number(value)).toFixed(2), String(name)]}
         />
         <Legend />

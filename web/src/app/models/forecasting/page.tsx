@@ -9,6 +9,11 @@ import {
 import ErrorState from '@/components/layout/ErrorState';
 import PageHeader from '@/components/layout/PageHeader';
 import { apiFetcher, getErrorMessage } from '@/lib/fetcher';
+import {
+  CHART_TOOLTIP_CONTENT_STYLE,
+  CHART_TOOLTIP_ITEM_STYLE,
+  CHART_TOOLTIP_LABEL_STYLE,
+} from '@/lib/utils';
 
 const TABS = [
   { key: 'poverty', label: 'Poverty Forecasting' },
@@ -114,7 +119,9 @@ export default function ForecastingPage() {
                   width={135}
                 />
                 <Tooltip
-                  contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, fontSize: 12, color: '#f1f5f9' }}
+                  contentStyle={CHART_TOOLTIP_CONTENT_STYLE}
+                  labelStyle={CHART_TOOLTIP_LABEL_STYLE}
+                  itemStyle={CHART_TOOLTIP_ITEM_STYLE}
                   formatter={(v: unknown) => [Number(v).toFixed(4), 'R²']}
                 />
                 <ReferenceLine x={0} stroke="#94a3b8" strokeWidth={1} />
