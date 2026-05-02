@@ -26,10 +26,32 @@
 - **ArmStat panel** — 924 monthly records (11 regions × 84 months, 2016–2022)
 
 **Two parallel tasks:**
-| Task | Data | Target | Best model |
-|------|------|--------|------------|
-| Household income prediction | ILCS 2015 | `household_income_total` (AMD) | GBM Bayesian (R²=0.3563) |
-| Regional poverty forecasting | Monthly panel | `poverty_rate` (%) | LSTM (to beat lag-1 R²=0.9990) |
+| Task | Data | Target | Result |
+|------|------|--------|--------|
+| Household income prediction | ILCS 2015 | `household_income_total` (AMD) | GBM Bayesian (R²=0.3563) — micro-level benchmark, not the main result |
+| Regional poverty forecasting | ArmStat yearly panel | `poverty_rate` (%) | Ridge AR validated against actual 2022 outcomes (national error: 1.29 pp) |
+
+**Primary project evidence:** The 2022 Forecast Validation — Ridge AR models trained on 2016–2021 ArmStat panel data are tested against actual 2022 regional poverty rates across all 11 marzes. The household income R²=0.3563 is a useful cross-sectional micro-benchmark but should not be treated as the overall best result.
+
+## 2022 Forecast Validation
+
+**Methodology:** Train Ridge autoregressive (lag-1 + lag-2 on poverty_rate and stress_index) on 2016–2021 data. Forecast 2022. Compare to actual 2022 values.
+
+**Results (poverty_rate):**
+- National aggregate error: 1.29 pp (actual 24.3% → predicted 23.0%)
+- Closest regions: Yerevan (±0.40 pp), Shirak (±1.94 pp), Ararat (±2.75 pp)
+- Largest misses: Vayots Dzor (±19.21 pp), Aragatsotn (±18.12 pp)
+- Mean absolute error across 11 marzes: 8.41 pp
+- Individual region errors are honest — some marzes experience sharp year-over-year shifts that a simple AR model cannot fully capture with only 6 training years
+
+**Generated artifact:** `data/processed/results/forecast_validation_2022.csv`  
+**Generation script:** `scripts/09_validate_2022.py`
+
+**Production data workflow:**
+1. Run `python3 scripts/09_validate_2022.py` locally
+2. Commit `data/processed/results/forecast_validation_2022.csv`
+3. Push to GitHub → Vercel redeploys → `/models/validation` shows updated results
+4. No Neon schema changes required — the validation page reads the CSV directly
 
 ---
 

@@ -1,0 +1,1303 @@
+\documentclass[12pt]{article}
+
+% ── Core layout ───────────────────────────────────────────────────────────────
+\usepackage[margin=1in,top=1.1in,bottom=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{url}           % \path{} — breakable file paths, no _ escaping needed
+
+% ── Color and table packages ──────────────────────────────────────────────────
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+% ── Color palette ─────────────────────────────────────────────────────────────
+\definecolor{navyblue}{RGB}{18, 52, 86}
+\definecolor{steelblue}{RGB}{44, 98, 158}
+\definecolor{lightblue}{RGB}{214, 230, 247}
+\definecolor{palegray}{RGB}{246, 247, 249}
+\definecolor{bordergray}{RGB}{210, 215, 222}
+\definecolor{emeralddk}{RGB}{4, 100, 66}
+\definecolor{emeraldlt}{RGB}{213, 244, 230}
+\definecolor{amberdk}{RGB}{140, 80, 0}
+\definecolor{amberlt}{RGB}{255, 243, 205}
+\definecolor{infodk}{RGB}{10, 90, 160}
+\definecolor{infolt}{RGB}{212, 232, 255}
+\definecolor{rulecolor}{RGB}{180, 195, 215}
+
+% ── Array / table settings ────────────────────────────────────────────────────
+\renewcommand{\arraystretch}{1.35}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+% ── URL / path style ──────────────────────────────────────────────────────────
+% \path{...} uses typewriter font and breaks at / _ . etc.  No _ escaping.
+\urlstyle{tt}
+
+% ── Section heading redesign (no titlesec needed) ─────────────────────────────
+\makeatletter
+\renewcommand\section{%
+  \@startsection{section}{1}{\z@}%
+    {-3.2ex \@plus -1ex \@minus -.2ex}%
+    {1.4ex \@plus .2ex}%
+    {\color{navyblue}\large\bfseries}}
+\renewcommand\subsection{%
+  \@startsection{subsection}{2}{\z@}%
+    {-2.4ex \@plus -0.5ex \@minus -.2ex}%
+    {0.9ex \@plus .2ex}%
+    {\color{steelblue}\normalsize\bfseries}}
+\renewcommand\subsubsection{%
+  \@startsection{subsubsection}{3}{\z@}%
+    {-1.8ex \@plus -0.3ex}%
+    {0.6ex}%
+    {\normalsize\itshape\color{steelblue}}}
+\makeatother
+
+% ── Decorative rule after section headings ────────────────────────────────────
+% Patch \section to draw a thin colored rule below
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \oldsection{#1}%
+  \noindent{\color{rulecolor}\rule{\linewidth}{0.5pt}}\par\vspace{0.3ex}%
+}
+
+% ── Callout box macros ────────────────────────────────────────────────────────
+% \callout{border-color}{bg-color}{title}{body}
+\newcommand{\callout}[4]{%
+  \vspace{0.6em}%
+  \noindent
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{#2}{%
+    \hspace{4pt}%
+    \textcolor{#1}{\rule[-2pt]{3pt}{13pt}}%
+    \hspace{6pt}%
+    \begin{minipage}[t]{0.934\textwidth}%
+      \vspace{6pt}%
+      {\color{#1}\small\bfseries #3}\par\vspace{2pt}%
+      {\small #4}%
+      \vspace{6pt}%
+    \end{minipage}%
+    \hspace{4pt}%
+  }%
+  \vspace{0.6em}%
+}
+
+% Convenience wrappers
+\newcommand{\keyresult}[2]{\callout{emeralddk}{emeraldlt}{#1}{#2}}
+\newcommand{\noteblock}[2]{\callout{amberdk}{amberlt}{#1}{#2}}
+\newcommand{\infoblock}[2]{\callout{infodk}{infolt}{#1}{#2}}
+
+% ── Figure placeholder macro ──────────────────────────────────────────────────
+\colorlet{figbg}{blue!7}
+\newcommand{\figplaceholder}[2]{%
+  \begin{figure}[H]%
+  \centering%
+  {\setlength{\fboxsep}{8pt}\setlength{\fboxrule}{0.7pt}%
+  \fcolorbox{steelblue}{figbg}{%
+    \begin{minipage}[c][#1cm]{0.82\textwidth}%
+      \centering%
+      \textcolor{steelblue}{\small\itshape --- Insert screenshot\,/\,chart here ---}%
+    \end{minipage}%
+  }}%
+  \caption{#2}%
+  \end{figure}%
+}
+
+% ── Data-schema table macro ───────────────────────────────────────────────────
+\newcommand{\DataTable}[2]{%
+  \begin{table}[H]%
+  \centering%
+  \setlength{\tabcolsep}{14pt}%
+  \rowcolors{2}{palegray}{white}%
+  \begin{tabularx}{0.68\textwidth}{@{}Y@{}}%
+    \rowcolor{lightblue}%
+    \textbf{\color{navyblue}#1} \\%
+    \midrule%
+    #2%
+    \bottomrule%
+  \end{tabularx}%
+  \end{table}%
+}
+
+% ── Header / footer ───────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \footrulewidth\hfill}}
+\rhead{\small\color{steelblue} Armenia Poverty Forecasting Capstone}
+\lhead{\small\color{steelblue} Final Report}
+\cfoot{\small\color{steelblue!70} \thepage}
+
+% ── Hyperref colors ───────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=steelblue,
+  citecolor=steelblue,
+  urlcolor=steelblue
+}
+
+% =============================================================================
+\begin{document}
+% =============================================================================
+
+% ── Title page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  % Top navy banner
+  \noindent
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{navyblue}{%
+    \begin{minipage}[c][3.2cm][c]{\textwidth}%
+      \centering
+      {\color{white}\large\bfseries CS 296: Capstone Project \quad\textbullet\quad American University of Armenia}
+    \end{minipage}%
+  }
+
+  \vspace{2.2cm}
+
+  \centering
+
+  % Main title
+  {\color{navyblue}\Huge\bfseries
+    Poverty Prediction and Regional\\[0.3em]
+    Forecasting in Armenia\par}
+
+  \vspace{0.5cm}
+
+  % Subtitle rule
+  \noindent{\color{rulecolor}\rule{0.55\textwidth}{1.2pt}}\par
+
+  \vspace{0.5cm}
+
+  {\large\color{steelblue}
+    Machine Learning on ILCS 2015 Household Survey Data\\[0.2em]
+    and ArmStat Regional Panel (2016--2022)\par}
+
+  \vspace{2.0cm}
+
+  % Info box
+  \noindent
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{palegray}{%
+    \begin{minipage}[c][4.2cm][c]{0.72\textwidth}%
+      \centering
+      \renewcommand{\arraystretch}{1.6}
+      \begin{tabular}{r @{\hspace{0.8em}} l}
+        {\color{navyblue}\bfseries Author}     & Hovo Sukiasyan \\
+        {\color{navyblue}\bfseries Supervisor} & Aleksandr Hayrapetyan \\
+        {\color{navyblue}\bfseries Program Chair} & Hayk Nersisyan \\
+        {\color{navyblue}\bfseries Institution} & American University of Armenia \\
+        {\color{navyblue}\bfseries Date}        & May 2026 \\
+      \end{tabular}
+    \end{minipage}%
+  }
+
+  \vfill
+
+  % Bottom navy strip
+  \vspace{0.6cm}
+  \noindent
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{navyblue}{%
+    \begin{minipage}[c][1.0cm][c]{\textwidth}%
+      \centering
+      {\color{white}\small Yerevan, Armenia \quad\textbullet\quad 2026}
+    \end{minipage}%
+  }
+
+\end{titlepage}
+
+\clearpage
+
+% ── Abstract ──────────────────────────────────────────────────────────────────
+\begin{abstract}
+\noindent
+Poverty measurement in Armenia relies heavily on periodic household surveys and
+annual regional estimates, leaving a gap between data collection cycles and timely
+policy decisions. This project addresses that gap through a regional time-series
+forecasting study on ArmStat panel data spanning 11 marzes and 84 months
+(2016--2022), benchmarking autoregressive Ridge models, classical baselines, and
+four neural architectures (GRU, BiLSTM, Transformer, TCN). Forecasting models
+are evaluated at three temporal granularities, yielding the following best-model
+results on poverty rate: daily ($R^2 = 1.0000$, MAE\,=\,0.007\,pp), monthly
+($R^2 = 0.9990$, MAE\,=\,0.229\,pp), and yearly ($R^2 = 0.7279$, MAE\,=\,5.109\,pp).
+Model credibility is established through a held-out 2022 backtest trained
+exclusively on 2016--2021 data; the Lag-1 persistence model achieves the best
+per-region accuracy (MAE\,=\,5.07\,pp), while a Lag-1/Ridge ensemble achieves
+near-zero national error (0.02\,pp). Results and forecasts are communicated
+through a Next.js interactive web dashboard covering regional analytics, model
+comparisons, validation evidence, and 2023--2026 poverty projections. This
+report documents the data, methodology, system architecture, and findings in
+full, and is intended as the primary reference for evaluating the project.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Introduction}
+% =============================================================================
+
+\subsection{System Overview}
+
+\indent\hspace*{1em}
+The project is a full-stack data science system for predicting and forecasting
+household poverty in Armenia. It combines two data assets --- a nationally
+representative household survey (ILCS 2015) and a seven-year regional panel from
+the Armenian Statistical Committee (ArmStat) --- with a layered modelling
+pipeline and an interactive web interface.
+
+At the micro level, cross-sectional ML models on ILCS 2015 identify which
+household characteristics (income source diversification, consumption expenditures,
+asset ownership) are most predictive of total household income. At the macro
+level, time-series models on the ArmStat panel estimate the future trajectory of
+regional poverty rates and a composite socioeconomic stress index, with
+credibility established through a 2022 holdout backtest trained entirely on
+2016--2021 data.
+
+The research findings and forecasts are exposed through a Next.js web application
+that allows users to explore regional trends interactively, inspect model
+performance metrics, review the 2022 validation evidence, and examine
+2023--2026 poverty projections. A PostgreSQL (Neon) database supports the dynamic
+data features, while validation results and forecast outputs are served as static
+CSV files for reproducibility.
+
+\subsection{Objectives}
+
+\indent\hspace*{1em}
+The primary objectives of this project are as follows.
+
+\begin{enumerate}[leftmargin=*, itemsep=0.3em]
+  \item Identify the household-level features most predictive of total income in
+        Armenia using supervised machine learning on ILCS 2015 data, and quantify
+        model performance through rigorous train/test evaluation with Bayesian
+        hyperparameter optimization.
+  \item Construct and validate autoregressive and neural time-series models that
+        forecast regional poverty rates across Armenia's 11 marzes, using a strict
+        held-out 2022 backtest for credibility assessment.
+  \item Build and deploy a public-facing web dashboard that communicates results,
+        spatial patterns, and forecasts in an accessible, interactive format
+        suitable for researchers and policy practitioners.
+  \item Document the complete data pipeline, modelling workflow, and web system
+        architecture so that the project can be reproduced and extended.
+\end{enumerate}
+
+\noindent A secondary objective is methodological: to honestly assess the
+limitations of poverty prediction with small regional panels and cross-sectional
+survey data, and to communicate uncertainty clearly rather than overstate model
+capability.
+
+\subsection{Scope}
+
+\indent\hspace*{1em}
+The project covers the following scope.
+
+\vspace{0.4em}
+\noindent\textbf{Data:}
+(i)~ILCS 2015 public-use household microdata --- 5,184 households, 29 research
+columns after cleaning; (ii)~ArmStat regional statistics --- 11 marzes,
+7 annual observations per marz (2016--2022), disaggregated to monthly frequency
+for time-series modelling.
+
+\vspace{0.3em}
+\noindent\textbf{Models:}
+Five supervised regressors (Random Forest, Gradient Boosting, Extra Trees, Ridge,
+Lasso) with and without Bayesian hyperparameter optimization; four neural sequence
+models (GRU, BiLSTM, Transformer, TCN) trained at yearly, monthly, and daily
+granularity; and classical baselines (Lag-1, Ridge AR, ARIMA).
+
+\vspace{0.3em}
+\noindent\textbf{Web application:}
+A Next.js/React web app hosted on Vercel, with pages for the homepage,
+regional explorer, regional trends, regional rankings, household model,
+feature importance, forecasting diagnostics, 2022 validation, and future
+projections.
+
+\vspace{0.3em}
+\noindent\textbf{Out of scope:}
+Real-time data ingestion, mobile clients, causal inference, and individual-level
+poverty status classification (as opposed to income regression).
+
+\newpage
+
+% =============================================================================
+\section{Methodology}
+% =============================================================================
+
+\indent\hspace*{1em}
+The project follows an applied quantitative research design combining secondary
+data analysis, supervised machine learning, and time-series forecasting. All
+models are evaluated against held-out test data; no model is assessed only on
+training performance.
+
+\subsection{Literature Context and Motivation}
+
+\indent\hspace*{1em}
+Poverty measurement in low- and middle-income countries has increasingly relied
+on proxy means tests (PMT), which estimate household welfare from observable
+characteristics rather than direct income measurement~\cite{wb2015pmt}.
+Machine learning extensions of PMT have demonstrated that ensemble tree models
+and gradient boosting approaches reliably outperform OLS on household survey
+data~\cite{mcbride2018}. The predictive ceiling is constrained by survey design:
+features available in welfare surveys (assets, consumption, demographics)
+typically capture 30--45\,\% of household income variance, consistent with the
+$R^2\approx 0.35$ found in this project.
+
+For regional poverty forecasting, autoregressive models remain competitive with
+neural alternatives on short panels~\cite{athey2019ml}. Armenia's annual regional
+data (7 observations per marz) is at the lower bound for stable neural network
+training, and the results confirm that Lag-1 and Ridge AR outperform GRU and
+LSTM on the annual benchmark, while neural models are competitive only at monthly
+granularity where the data is synthetically interpolated.
+
+\subsection{Data Sources}
+
+\subsubsection*{ILCS 2015 Household Survey}
+\indent\hspace*{1em}
+The Integrated Living Conditions Survey (ILCS) is Armenia's primary household
+welfare instrument, conducted by ArmStat. The 2015 wave covers 5,184 households
+across all marzes and urban/rural strata. After applying the subset and cleaning
+pipeline (\path{scripts/01_extract_all.py},
+\path{scripts/02_clean_and_panel.py}),
+29 features are retained for ML modelling. These include consumption aggregates
+(food, services, goods), asset indicators (car ownership, computer, dwelling
+condition), household demographics (size, age structure), financial behaviour
+(debt, remittances, money transfers), and the interview month --- recovered
+during preprocessing and critical for controlling seasonal income variation.
+
+\subsubsection*{ArmStat Regional Panel}
+\indent\hspace*{1em}
+Annual statistics for 11 Armenian marzes covering 2016--2022 were sourced from
+the Armenian Statistical Committee. Variables include the official poverty rate
+(\%), crime rate per 100,000 population, hospital count per 100,000, hospital
+beds per 10,000, and total population. The panel is augmented to monthly
+frequency via forward-filling and stored as
+\path{data/processed/panel/marz_monthly_panel_augmented.csv}
+(924 rows: 11 marzes $\times$ 84 months).
+
+A composite \textbf{Stress Index} is constructed as:
+\begin{equation}
+  \text{stress\_index} = z\!\left(z(\text{poverty\_rate})
+    + z(\text{crime\_rate\_per\_100k})
+    - z(\text{hospitals\_per\_100k})\right)
+\end{equation}
+where $z(\cdot)$ denotes standardisation to zero mean and unit variance.
+High values indicate co-occurring high poverty, high crime, and low healthcare
+access.
+
+\subsection{Feature Engineering and Preprocessing}
+
+\indent\hspace*{1em}
+Monetary variables in ILCS 2015 span four orders of magnitude (50 AMD to
+94.5 million AMD), making a flat \texttt{StandardScaler} unsuitable. A hybrid
+scaling strategy is applied: 11 variables with heavy right-skew receive
+$\log_{1+x}$ + \texttt{StandardScaler}; 8 variables with outliers receive
+\texttt{RobustScaler}; the remaining 9 ordinal and binary variables receive
+\texttt{MinMaxScaler}. The interview month (originally absent from the subset)
+is recovered by exploiting a deterministic relationship between household
+identifiers and the survey wave structure, yielding a perfectly balanced
+distribution (432 households per month, $n=12$ months).
+
+\infoblock{Time-series preprocessing}{For the time-series component, sequences
+are constructed as 12-month sliding windows per region for LSTM/GRU input.
+Yearly lag features (lag-1, lag-2) are used for Ridge autoregressive modelling.}
+
+\subsection{Validation Strategy}
+
+\vspace{0.3em}
+\noindent\textbf{Household models:} Standard 80/20 stratified train/test split
+on ILCS 2015. Bayesian optimization (Optuna, 50 trials, 5-fold CV objective) is
+performed on the training fold only; the test fold is touched once for final
+reporting.
+
+\vspace{0.3em}
+\noindent\textbf{Time-series models:} Temporal train/validation/test split at
+$\leq\!2019$ / 2020 / $\geq\!2021$ for within-sample evaluation. The primary
+evidence of forecast credibility is a \textbf{held-out 2022 backtest}: all
+models are retrained on 2016--2021 data and evaluated against actual 2022
+regional poverty rates withheld during training. A rolling validation experiment
+further tests the same models on 2020, 2021, and 2022 as successive holdout
+years.
+
+\newpage
+
+% =============================================================================
+\section{System Architecture}
+% =============================================================================
+
+\subsection{Overview}
+
+\indent\hspace*{1em}
+The system is organized into three layers: a data and modelling pipeline, a
+PostgreSQL data store, and a Next.js web application.
+
+\figplaceholder{3}{High-level system architecture: data pipeline, PostgreSQL/CSV storage, and Next.js web application}
+
+The \textbf{data pipeline} runs entirely in Python. Scripts in
+\path{scripts/} handle extraction, cleaning, feature engineering, ML training,
+and time-series analysis. Jupyter notebooks in \path{notebooks/} provide the
+exploratory and experimental counterpart. Key pipeline outputs --- model metrics,
+forecast CSVs, and validation results --- are committed to the repository and
+consumed by the web layer.
+
+The \textbf{data store} uses two mechanisms: a PostgreSQL database hosted on
+Neon for dynamic, query-driven features (choropleth maps, distribution charts,
+scatter plots, household explorer); and static CSV files read at request time
+for model metrics, validation results, and forecasts. This hybrid approach
+eliminates unnecessary database queries for data that changes only when a new
+model run is committed.
+
+The \textbf{web application} is a Next.js 14 app with React server components
+and selective client-side interactivity via \texttt{'use client'} boundaries.
+API routes in \path{web/src/app/api/} serve data to client components.
+The app is deployed on Vercel with automatic redeployment on \texttt{git push}.
+
+\subsection{Technology Stack}
+
+\subsubsection{Data and Modelling}
+\begin{itemize}[leftmargin=*, itemsep=0.2em]
+  \item \textbf{Python 3.11} --- primary language for all data processing, ML
+        training, and time-series analysis.
+  \item \textbf{pandas, NumPy} --- data manipulation, panel construction, and
+        feature engineering.
+  \item \textbf{scikit-learn} --- supervised models (Random Forest, Gradient
+        Boosting, Extra Trees, Ridge, Lasso), preprocessing pipelines, and
+        cross-validation.
+  \item \textbf{Optuna} --- Bayesian hyperparameter optimization using
+        Tree-structured Parzen Estimator (TPE) with 50 trials per model.
+  \item \textbf{PyTorch} --- GRU, BiLSTM, Transformer, and TCN implementations
+        for time-series forecasting.
+  \item \textbf{statsmodels} --- ARIMA fitting and ACF/PACF analysis.
+\end{itemize}
+
+\subsubsection{Web Application}
+\begin{itemize}[leftmargin=*, itemsep=0.2em]
+  \item \textbf{Next.js 14 (App Router)} --- full-stack React framework with
+        server components, API routes, and static generation.
+  \item \textbf{Recharts} --- interactive line charts, bar charts, and area
+        charts for model and regional visualizations.
+  \item \textbf{Tailwind CSS} --- utility-first styling.
+  \item \textbf{SWR} --- data fetching and caching in client components.
+\end{itemize}
+
+\subsubsection{Data Storage and Deployment}
+\begin{itemize}[leftmargin=*, itemsep=0.2em]
+  \item \textbf{PostgreSQL (Neon)} --- serverless Postgres instance for
+        household-level and regional panel data. Connection pooling via
+        \texttt{@neondatabase/serverless}.
+  \item \textbf{Vercel} --- serverless deployment with Git-triggered CI/CD and
+        edge network distribution.
+  \item \textbf{Static CSV} --- model metrics, forecast outputs, and validation
+        results served from \path{data/processed/results/} via Node.js
+        \texttt{fs} reads.
+\end{itemize}
+
+\newpage
+
+% =============================================================================
+\section{Data Description and Schema}
+% =============================================================================
+
+\subsection{ILCS 2015 Dataset}
+
+\indent\hspace*{1em}
+After cleaning and subsetting, the ILCS 2015 machine learning dataset contains
+5,184 rows and 29 columns. The target variable is
+\texttt{household\_income\_total} (AMD). The features span five categories:
+
+\begin{enumerate}[leftmargin=*, itemsep=0.2em]
+  \item \textbf{Consumption expenditures:} \texttt{food\_purchases\_total},
+        \texttt{services\_goods\_total}, \texttt{goods\_services\_total}
+  \item \textbf{Financial behaviour:} \texttt{family\_debt\_amount},
+        \texttt{borrowed\_money\_12m}, \texttt{lent\_money\_12m},
+        \texttt{received\_money\_goods}, \texttt{sent\_money\_abroad}
+  \item \textbf{Asset and housing:} \texttt{household\_has\_car},
+        \texttt{has\_computer}, \texttt{dwelling\_condition\_estimate},
+        \texttt{building\_new\_house}
+  \item \textbf{Household demographics:} \texttt{household\_size},
+        \texttt{household\_income\_source\_count}
+  \item \textbf{Survey metadata:} \texttt{interview\_month} (recovered feature),
+        \texttt{humanitarian\_assistance}, subjective survival minimum
+        (\texttt{amd\_3})
+\end{enumerate}
+
+\DataTable{ILCS 2015 ML Dataset --- Key Columns}{%
+\textbf{\underline{household\_id}} \\
+household\_income\_total \textit{(target, AMD)} \\
+household\_income\_source\_count \\
+services\_goods\_total \\
+food\_purchases\_total \\
+goods\_services\_total \\
+household\_has\_car \textit{(1=Yes, 2=No)} \\
+has\_computer \textit{(1=Yes, 2=No)} \\
+family\_debt\_amount \\
+household\_size \\
+dwelling\_condition\_estimate \\
+amd\_3 \textit{(subjective minimum, AMD)} \\
+interview\_month \textit{(1--12, recovered)} \\
+}
+
+\subsection{ArmStat Regional Panel}
+
+\indent\hspace*{1em}
+The regional panel covers Armenia's 11 administrative regions (marzes) across
+84 months (January 2016 -- December 2022). The yearly resolution data is the
+authoritative signal; monthly values are forward-filled from annual estimates
+for use in LSTM/GRU training.
+
+\DataTable{ArmStat Regional Panel --- Columns}{%
+\textbf{\underline{marz}} \\
+\textbf{\underline{date}} \\
+poverty\_rate \textit{(\%, annual official estimate)} \\
+crime\_rate\_per\_100k \\
+hospitals\_per\_100k \\
+beds\_per\_10k \\
+population \\
+stress\_index \textit{(composite, computed)} \\
+}
+
+\subsection{Key Descriptive Statistics}
+
+\indent\hspace*{1em}
+The income distribution in ILCS 2015 is highly right-skewed (min: 50 AMD,
+max: 3,405,000 AMD, CV\,$\approx$\,0.98), confirming the need for log-scale
+visualizations and hybrid preprocessing.
+
+\begin{table}[H]
+\centering
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{0.85\textwidth}{lCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Feature}} & \textbf{Yes (code=1)} & \textbf{No (code=2)} \\
+\midrule
+\texttt{has\_computer}              & 3,082 (59.5\%) & 2,102 (40.5\%) \\
+\texttt{household\_has\_car}        & 1,618 (31.2\%) & 3,566 (68.8\%) \\
+\texttt{received\_money\_goods}     & 2,461 (47.5\%) & 2,723 (52.5\%) \\
+\texttt{borrowed\_money\_12m}       & 2,103 (40.6\%) & 3,081 (59.4\%) \\
+\texttt{humanitarian\_assistance}   &   145 (2.8\%)  & 5,039 (97.2\%) \\
+\bottomrule
+\end{tabularx}
+\caption{Binary feature distribution in ILCS 2015 (n=5,184 households)}
+\end{table}
+
+\noteblock{Encoding trap}{%
+\texttt{household\_has\_car} and \texttt{has\_computer} are
+\textit{negatively} correlated with income ($r = -0.32$ and $r = -0.29$)
+because the survey encodes these as 1=Yes, 2=No --- higher code $\Rightarrow$
+household does \textit{not} have the asset. Households with code=1 are the
+richer group. All EDA bar charts make this explicit.}
+
+\subsection{Seasonal Income Variation}
+
+\indent\hspace*{1em}
+The recovered \texttt{interview\_month} reveals a systematic seasonal pattern:
+households surveyed in January--March report approximately 20--25\,\% lower mean
+income than those surveyed in November--December (167K AMD vs.\ 202K AMD).
+This is consistent with agricultural income cycles and reduced off-season
+economic activity in rural Armenia. Because the ILCS is a single cross-section,
+this confound cannot be controlled with time fixed effects;
+\texttt{interview\_month} is therefore included as a numeric feature in all
+regression models.
+
+\newpage
+
+% =============================================================================
+\section{Model Development and Results}
+% =============================================================================
+
+\subsection{Household Income Models}
+
+\indent\hspace*{1em}
+Five supervised regression models are trained on ILCS 2015 to predict
+\texttt{household\_income\_total}. The training set contains 4,147 households
+(80\%); the test set contains 1,037 households (20\%).
+
+\begin{table}[H]
+\centering
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{lCCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Model}} &
+{\color{navyblue}\textbf{R\textsuperscript{2}}} &
+{\color{navyblue}\textbf{MAE (AMD)}} &
+{\color{navyblue}\textbf{RMSE (AMD)}} \\
+\midrule
+Gradient Boosting (baseline) & 0.3417 & 84,477  & 164,624 \\
+Random Forest                & 0.3339 & 85,475  & 165,603 \\
+Ridge Regression             & 0.3153 & 91,183  & 167,894 \\
+Lasso Regression             & 0.3154 & 91,186  & 167,879 \\
+Extra Trees                  & 0.3146 & 87,681  & 167,979 \\
+\midrule
+\rowcolor{emeraldlt}
+\textbf{GBM + Bayesian Opt}  & \textbf{0.3563} & \textbf{82,152} & \textbf{162,784} \\
+\bottomrule
+\end{tabularx}
+\caption{Household income model performance on held-out test set (1,037 households).
+GBM with Bayesian optimization is the best overall model.}
+\end{table}
+
+\subsection{Feature Importance}
+
+\indent\hspace*{1em}
+Feature importance rankings are consistent across all five models.
+\texttt{household\_income\_source\_count} --- the number of distinct income
+streams a household reports --- is the single strongest predictor (correlation
+with income: $r = 0.45$; importance in GBM: 0.32). The top five features
+across Random Forest and GBM are:
+
+\begin{enumerate}[leftmargin=*, itemsep=0.3em]
+  \item \texttt{household\_income\_source\_count} --- income source
+        diversification is the clearest poverty signal. Households with only
+        one income source (typically pension or a single wage) are substantially
+        more vulnerable.
+  \item \texttt{services\_goods\_total} --- total expenditure on services and
+        goods reflects current spending capacity better than accumulated assets.
+  \item \texttt{amd\_3} --- the household's subjective estimate of the minimum
+        income needed to survive, which correlates with actual income perceptions.
+  \item \texttt{goods\_services\_total} --- an overlapping consumption aggregate
+        that confirms the primacy of spending variables.
+  \item \texttt{food\_purchases\_total} --- food spending is a direct proxy for
+        household subsistence level.
+\end{enumerate}
+
+\noindent Asset variables (\texttt{dwelling\_condition}, \texttt{has\_car},
+\texttt{has\_computer}) contribute at 0.02--0.04 importance each, confirming
+that current consumption is a stronger welfare signal than historical asset
+accumulation in this survey.
+
+\figplaceholder{3}{Feature importance comparison across all five models (bar chart, sorted by RF importance)}
+
+\subsection{Bayesian Hyperparameter Optimization}
+
+\indent\hspace*{1em}
+Optuna~\cite{optuna2019} is used to optimize GBM, Random Forest, and Extra
+Trees over 50 trials each, with 5-fold cross-validation $R^2$ as the objective.
+
+\begin{table}[H]
+\centering
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{lCCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Model}} &
+{\color{navyblue}\textbf{Baseline R\textsuperscript{2}}} &
+{\color{navyblue}\textbf{CV R\textsuperscript{2} (Bayes)}} &
+{\color{navyblue}\textbf{Test R\textsuperscript{2}}} \\
+\midrule
+Random Forest              & 0.3339 & 0.4267 & 0.3398 \\
+\textbf{Gradient Boosting} & 0.3417 & \textbf{0.4344} & \textbf{0.3563} \\
+Extra Trees                & 0.3146 & 0.4163 & 0.3316 \\
+\bottomrule
+\end{tabularx}
+\caption{Bayesian optimization results. GBM benefits most from tuning.
+The CV--Test gap (0.43 vs.\ 0.36) reflects mild overfitting to training folds.}
+\end{table}
+
+The best GBM configuration:
+\texttt{n\_estimators=170}, \texttt{max\_depth=6},
+\texttt{learning\_rate=0.031}, \texttt{subsample=0.858}.
+The low learning rate with moderate tree depth prevents memorization while
+capturing interaction effects among the consumption variables.
+
+\figplaceholder{3}{Optuna optimization history: CV R\textsuperscript{2} across 50 trials for GBM}
+
+\figplaceholder{3}{Residual plot for best GBM model: predicted vs.\ actual household income (AMD, log scale)}
+
+\subsection{Time-Series Analysis --- Classical Models}
+
+\indent\hspace*{1em}
+Script \path{scripts/07_time_series_analysis.py} benchmarks classical
+time-series models on the ArmStat regional panel at three temporal granularities.
+The train/validation/test split uses $\leq 2019$ / 2020 / $\geq 2021$.
+
+\begin{table}[H]
+\centering
+\small
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{llYCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Model}} &
+{\color{navyblue}\textbf{Target}} &
+{\color{navyblue}\textbf{Frequency}} &
+{\color{navyblue}\textbf{R\textsuperscript{2}}} &
+{\color{navyblue}\textbf{MAE}} \\
+\midrule
+Lag-1 Baseline       & poverty\_rate & yearly  & 0.728  & 5.11 pp \\
+Lag-1 Baseline       & stress\_index & yearly  & 0.764  & 0.433   \\
+Ridge lags [1,2,3,6] & poverty\_rate & monthly & 0.999  & 0.25 pp \\
+Lag-1 Baseline       & poverty\_rate & monthly & 0.999  & 0.23 pp \\
+ARIMA(1,1,0)         & poverty\_rate & monthly & 0.984  & 0.43 pp \\
+Ridge lags [1,4,13]  & poverty\_rate & daily   & 0.9999 & 0.043 pp \\
+\bottomrule
+\end{tabularx}
+\caption{Classical time-series model results across frequencies.
+Monthly/daily $R^2$ appears inflated because values are forward-filled
+from annual estimates; yearly results are the honest benchmark.}
+\end{table}
+
+\noteblock{Honest benchmark}{The yearly result is the only metric backed by
+real survey signal: Lag-1 explains 73\,\% of variance with 5.11\,pp MAE on
+poverty\_rate. Month-to-month and day-to-day changes are nearly zero by
+construction (interpolated data).}
+
+\subsection{Time-Series Analysis --- Neural Network Models}
+
+\indent\hspace*{1em}
+Four sequence architectures are trained and evaluated: GRU, BiLSTM,
+Transformer (multi-head attention), and Temporal Convolutional Network (TCN).
+All are implemented in PyTorch with Adam optimizer, ReduceLROnPlateau scheduling,
+and early stopping.
+
+\begin{table}[H]
+\centering
+\small
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{llYCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Model}} &
+{\color{navyblue}\textbf{Target}} &
+{\color{navyblue}\textbf{Frequency}} &
+{\color{navyblue}\textbf{R\textsuperscript{2}}} &
+{\color{navyblue}\textbf{MAE}} \\
+\midrule
+Transformer  & poverty\_rate & yearly  & 0.466 & 6.64 pp \\
+BiLSTM       & poverty\_rate & yearly  & 0.236 & 8.99 pp \\
+GRU          & poverty\_rate & yearly  & 0.206 & 9.53 pp \\
+TCN          & poverty\_rate & yearly  & 0.177 & 9.06 pp \\
+\midrule
+GRU          & poverty\_rate & monthly & 0.995 & 0.64 pp \\
+BiLSTM       & poverty\_rate & monthly & 0.986 & 1.03 pp \\
+Transformer  & poverty\_rate & monthly & 0.977 & 1.49 pp \\
+TCN          & poverty\_rate & monthly & 0.941 & 2.42 pp \\
+\midrule
+TCN          & stress\_index & yearly  & 0.615 & 0.535 \\
+BiLSTM       & stress\_index & yearly  & 0.565 & 0.558 \\
+GRU          & stress\_index & yearly  & 0.531 & 0.617 \\
+Transformer  & stress\_index & yearly  & 0.371 & 0.660 \\
+\bottomrule
+\end{tabularx}
+\caption{Neural network time-series results. On yearly data (the honest benchmark),
+all NNs underperform classical Lag-1 ($R^2=0.728$) due to insufficient training
+samples ($\sim$7 data points per region). The Transformer shows the most promise
+at yearly granularity. GRU approaches the Ridge baseline at monthly frequency.}
+\end{table}
+
+\figplaceholder{3}{Model comparison chart: R\textsuperscript{2} across all architectures and frequencies (poverty\_rate target)}
+
+\subsection{2022 Forecast Validation (Primary Evidence)}
+
+\indent\hspace*{1em}
+The primary evidence for forecast credibility is a \textbf{held-out 2022
+backtest}. Three models are trained exclusively on 2016--2021 data and evaluated
+against the actual 2022 regional poverty rates released by ArmStat.
+
+\begin{itemize}[leftmargin=*, itemsep=0.2em]
+  \item \textbf{Lag-1 Baseline} --- predict 2022 = actual 2021 (zero training,
+        pure persistence).
+  \item \textbf{Ridge AR} --- autoregressive lag-1\,+\,lag-2 features on both
+        poverty\_rate and stress\_index, trained on 2016--2021.
+  \item \textbf{Ensemble} --- 50/50 average of Lag-1 and Ridge predictions.
+\end{itemize}
+
+\noindent All predictions are clamped to $[0, 100]$ to eliminate physically
+impossible negative poverty rates. National aggregate is computed as a
+population-weighted mean using 2021 population weights.
+
+\begin{table}[H]
+\centering
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{lCCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Model}} &
+{\color{navyblue}\textbf{Regional MAE (11 marzes)}} &
+{\color{navyblue}\textbf{National Error}} &
+{\color{navyblue}\textbf{Best at}} \\
+\midrule
+Lag-1 Baseline & \textbf{5.07 pp} & 1.07 pp & Regional accuracy \\
+Ridge AR       & 8.72 pp          & 1.11 pp & ---               \\
+Ensemble       & 6.28 pp          & \textbf{0.02 pp} & National accuracy \\
+\bottomrule
+\end{tabularx}
+\caption{2022 holdout validation summary (poverty\_rate). Lag-1 wins regionally;
+the Ensemble achieves near-zero national error because directional biases cancel
+under population weighting.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{\textwidth}{lCCCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Region}} &
+{\color{navyblue}\textbf{Actual 2022}} &
+{\color{navyblue}\textbf{Lag-1 err.}} &
+{\color{navyblue}\textbf{Ridge err.}} &
+{\color{navyblue}\textbf{Ensemble err.}} \\
+\midrule
+Yerevan      & 18.5\% & 2.60 & \textbf{0.40} & 1.50 \\
+Shirak       & 41.6\% & 5.30 & \textbf{1.94} & 3.62 \\
+Ararat       & 23.8\% & 4.20 & \textbf{2.75} & 0.72 \\
+Lori         & 18.6\% & 3.20 & 4.27 & \textbf{0.54} \\
+Kotayk       & 26.1\% & \textbf{2.50} & 6.03 & 4.27 \\
+Syunik       &  5.4\% & \textbf{2.60} & 5.40 & 4.00 \\
+Gegharkunik  & 33.9\% & 15.20 & \textbf{11.25} & 13.23 \\
+Tavush       & 37.4\% & \textbf{0.80} & 12.62 & 5.91 \\
+Armavir      & 40.8\% & \textbf{2.90} & 13.89 & 8.40 \\
+Aragatsotn   &  7.9\% & \textbf{5.60} & 18.12 & 11.86 \\
+Vayots Dzor  & 15.7\% & 10.90 & 19.21 & 15.05 \\
+\midrule
+\rowcolor{infolt}
+\textbf{Armenia (national)} & \textbf{24.3\%} & 1.07 & 1.11 & \textbf{0.02} \\
+\bottomrule
+\end{tabularx}
+\caption{Per-region 2022 absolute errors (pp) by model. Bold = best model per row.
+Aragatsotn and Vayots Dzor are the hardest marzes due to anomalous year-over-year
+swings.}
+\end{table}
+
+\keyresult{Key finding}{The Ensemble achieves near-zero national error (0.02\,pp
+vs.\ Armenia actual 24.3\%) because Lag-1's upward bias and Ridge's downward bias
+for recovering regions partially cancel under population weighting.}
+
+\figplaceholder{3}{Bar chart: actual vs.\ predicted 2022 poverty rate for all 11 marzes under each model}
+
+\vspace{0.4em}
+\noindent\textbf{Rolling validation}
+(script \path{scripts/10_rolling_validation.py})
+repeats the same evaluation for holdout years 2020, 2021, and 2022:
+
+\begin{table}[H]
+\centering
+\rowcolors{2}{palegray}{white}
+\begin{tabularx}{0.65\textwidth}{lCC}
+\toprule
+\rowcolor{lightblue}
+{\color{navyblue}\textbf{Test year}} &
+{\color{navyblue}\textbf{Lag-1 MAE}} &
+{\color{navyblue}\textbf{Ridge MAE}} \\
+\midrule
+2020 & 8.51 pp & 9.86 pp \\
+2021 & 5.15 pp & 22.19 pp \\
+2022 & \textbf{5.07 pp} & 8.72 pp \\
+\bottomrule
+\end{tabularx}
+\caption{Rolling validation: regional MAE (poverty\_rate, 11 marzes).
+Ridge's 2021 spike is caused by Aragatsotn's anomalous 2019 value (51.4\%)
+entering the lag-2 feature.}
+\end{table}
+
+\figplaceholder{3}{Rolling validation line chart: MAE across 2020 → 2021 → 2022 for Lag-1 and Ridge AR}
+
+\subsection{GRU Daily Validation}
+
+\indent\hspace*{1em}
+As an additional experiment, a GRU model trained on the daily-granularity
+panel (\path{scripts/11_gru_daily_validation.py}) is validated against the
+2022 holdout. Results are stored in
+\path{data/processed/results/gru_daily_validation_2022.csv}.
+Daily $R^2$ values are near-perfect due to the synthetically interpolated nature
+of the data, but this experiment confirms the GRU architecture functions correctly
+and provides a basis for scenario-based future projections.
+
+\newpage
+
+% =============================================================================
+\section{Application and Functionality}
+% =============================================================================
+
+\indent\hspace*{1em}
+The project's findings are communicated through a publicly deployed Next.js
+web application organized into two navigation areas: \textbf{Regional}
+(exploratory data views of Armenia's 11 marzes) and \textbf{Models} (ML model
+metrics, validation evidence, and forecasts).
+
+\subsection{Homepage}
+
+\indent\hspace*{1em}
+The homepage provides a project overview with key metric cards and navigation
+to the primary evidence pages. Following the validation-first redesign, the
+primary call to action links directly to the 2022 Validation page rather than
+the household model. Key elements: a hero card showing ``Validation year: 2022'';
+KPI tiles for dataset size (5,184 households), regions covered (11 marzes); and
+navigation cards for Regional Analytics and Models.
+
+\figplaceholder{4}{Homepage: hero section with KPI tiles and navigation cards}
+
+\subsection{Regional Explorer}
+
+\indent\hspace*{1em}
+The Regional section contains three pages: regional overview (choropleth map),
+regional trends (time-series line charts), and regional rankings (sorted bar
+chart).
+
+The \textbf{Regional Overview} page renders a choropleth map of Armenia coloured
+by poverty rate for a user-selected year (2016--2022). Users can hover over
+individual marzes to see exact values. Data is served from the Neon PostgreSQL
+instance via \path{/api/regional/choropleth}.
+
+\figplaceholder{4}{Regional Overview: choropleth map of Armenia colour-coded by poverty rate (2022)}
+
+The \textbf{Regional Trends} page displays per-region time-series line charts
+for poverty\_rate and stress\_index from 2016 to 2022. A multi-select control
+allows overlaying any subset of marzes on the same chart for direct comparison.
+
+\figplaceholder{3}{Regional Trends: multi-region poverty rate time-series (2016--2022)}
+
+The \textbf{Regional Rankings} page renders a sorted horizontal bar chart of
+poverty rates for a selected year, allowing rapid identification of the highest-
+and lowest-poverty marzes.
+
+\figplaceholder{3}{Regional Rankings: bar chart of 2022 poverty rate by marz, sorted descending}
+
+\subsection{Household Income Model}
+
+\indent\hspace*{1em}
+The Household Model page (\path{/models}) presents the ILCS 2015 cross-sectional
+results. An amber callout directs readers to the 2022 Validation page as the
+primary evidence, positioning this page as a micro-level benchmark. The model
+comparison table is rendered interactively, allowing sorting by $R^2$, MAE, or
+RMSE.
+
+\figplaceholder{3}{Household Model page: model comparison table with R\textsuperscript{2}, MAE, RMSE for all five models}
+
+\subsection{Feature Importance Page}
+
+\indent\hspace*{1em}
+The Feature Importance page (\path{/models/importance}) displays normalized
+feature importance rankings for all five models side by side as grouped bar
+charts. A model selector allows users to highlight a specific model's ranking.
+The page includes a prose explanation of the encoding trap for binary asset
+variables.
+
+\figplaceholder{3}{Feature Importance page: grouped bar chart of top-10 features across RF, GBM, Ridge, Lasso, ET}
+
+\subsection{Forecasting Diagnostics}
+
+\indent\hspace*{1em}
+The Forecasting Diagnostics page (\path{/models/forecasting}) presents the
+classical and neural model results tables from Sections~5.4--5.5, with a blue
+callout linking to the 2022 Validation page as the real holdout test. Tabs allow
+switching between classical and neural results.
+
+\figplaceholder{3}{Forecasting Diagnostics: classical vs.\ neural model R\textsuperscript{2} comparison table with frequency selector}
+
+\subsection{2022 Forecast Validation}
+
+\indent\hspace*{1em}
+The Validation page (\path{/models/validation}) is the primary evidence page of
+the application. It fetches from two API routes:
+\path{/api/models/validation}
+(reads \path{forecast_validation_2022.csv}) and
+\path{/api/models/rolling-validation}
+(reads \path{forecast_rolling_validation.csv}).
+
+The page contains the following sections in sequence:
+
+\begin{enumerate}[leftmargin=*, itemsep=0.25em]
+  \item \textbf{Methodology card} --- four info tiles: training window
+        (2016--2021), test year (2022), geography (11 marzes), models compared.
+  \item \textbf{Key insight callout} --- Lag-1 wins regionally (5.07\,pp MAE),
+        Ensemble wins nationally (0.02\,pp error), computed live from fetched data.
+  \item \textbf{Model Performance Summary} --- three-model table with regional
+        MAE, national error, and ``BEST REGIONAL'' / ``BEST NATIONAL'' badges.
+  \item \textbf{Interactive model selector} --- pill buttons switch the bar chart
+        between Lag-1, Ridge AR, and Ensemble.
+  \item \textbf{Actual vs.\ Predicted bar chart} --- Recharts BarChart across all
+        11 marzes, switchable by model.
+  \item \textbf{Per-region comparison table} --- all three models as columns,
+        best model per row highlighted in emerald.
+  \item \textbf{Rolling validation chart} --- line chart of MAE across
+        2020/2021/2022 with annotation explaining the Ridge 2021 spike.
+  \item \textbf{Marz narrative annotations} --- collapsible accordions for
+        Aragatsotn, Vayots Dzor, and Gegharkunik.
+  \item \textbf{Honest assessment} --- callout explaining structural data
+        limitations and when national vs.\ regional figures are reliable.
+\end{enumerate}
+
+\figplaceholder{5}{2022 Validation page: methodology tiles, key insight callout, and model performance table}
+
+\figplaceholder{4}{2022 Validation page: actual vs.\ predicted bar chart (Lag-1 selected) across 11 marzes}
+
+\figplaceholder{4}{2022 Validation page: rolling validation MAE chart with Ridge 2021 spike annotation}
+
+\subsection{Future Projection 2023--2026}
+
+\indent\hspace*{1em}
+The Future Projection page (\path{/models/forecast}) displays autoregressive
+rollout forecasts generated by \path{scripts/08_forecast_future.py}. The
+forecast extends the Ridge AR model (trained on all available data through 2022)
+to 2023--2026 for all 11 marzes. A contextual callout links to the 2022
+Validation page so users can assess forecast quality before interpreting
+projections. Key visual elements: a region selector dropdown; a line chart with
+solid historical (2016--2022) and dashed forecast (2023--2026) segments separated
+by a vertical reference line; and a projected values table by region and year.
+
+\figplaceholder{5}{Future Projection page: per-region line chart with historical and 2023--2026 forecast segments}
+
+\newpage
+
+% =============================================================================
+\section{Challenges Encountered}
+% =============================================================================
+
+\subsection{Data Quality and Panel Size}
+
+\indent\hspace*{1em}
+The most fundamental challenge is the sparsity of the regional panel: each marz
+has only seven annual observations (2016--2022). This severely limits neural
+network models, which underperform simple lag-1 baselines on the yearly poverty
+target. The monthly-granularity workaround (forward-filling annual values to
+84 monthly rows per marz) improves neural model metrics visually but is not a
+genuine improvement in information density --- it exploits the near-perfect
+autocorrelation induced by the filling procedure. Recognising and communicating
+this limitation required restructuring the model evidence hierarchy across the
+entire web application.
+
+\subsection{Anomalous Regional Observations}
+
+\indent\hspace*{1em}
+Aragatsotn's 2019 poverty rate of 51.4\,\% --- a sharp departure from its
+approximate 16\,\% baseline --- severely distorted Ridge AR predictions for
+2021 by entering the lag-2 feature for that year. The clamping of predictions
+to $[0, 100]$ resolved a non-physical artefact (Syunik predicted at $-3.75\,\%$
+before clamping). Vayots Dzor, Armenia's smallest marz ($\sim$47,600 people),
+remains the hardest region to predict because a single large employer or
+sampling shift can move its poverty rate by 10+ percentage points in one year.
+
+\subsection{Interview Month Recovery}
+
+\indent\hspace*{1em}
+The ILCS 2015 public-use dataset did not expose the interview month as a
+separate column in the subset originally used. Recovery required
+reverse-engineering the relationship between household IDs and the survey wave
+structure, yielding a perfectly balanced distribution (exactly 432 households
+per month). Without this recovery, seasonality would have remained an
+uncontrolled confound.
+
+\subsection{Web Application Data Architecture}
+
+\indent\hspace*{1em}
+Routing the correct data to each web page required designing a hybrid data
+architecture: dynamic household-level and regional data served from Neon
+PostgreSQL, while model metrics, validation results, and forecasts are served
+as static CSV files. Managing this split required careful API route design and
+connection pooling to avoid exceeding Neon's serverless connection limits under
+concurrent requests.
+
+\subsection{Model Evidence Communication}
+
+\indent\hspace*{1em}
+An early version of the web application headlined the GBM $R^2 = 0.3563$ as
+the project's primary result. This framing was misleading because the household
+income $R^2$ is a cross-sectional micro-benchmark, not a forecast.
+Repositioning the primary evidence around the 2022 regional backtest required
+revising the homepage, navigation order, page titles, and callout language across
+seven pages.
+
+\newpage
+
+% =============================================================================
+\section{Future Work}
+% =============================================================================
+
+\subsection{Larger Regional Panels}
+
+\indent\hspace*{1em}
+The most impactful improvement would be extending the ArmStat panel beyond 2022
+as new annual estimates are released. Each additional year provides a meaningful
+increment for both Ridge and neural models. Incorporating additional macroeconomic
+variables --- unemployment rates, remittance flows, agricultural output ---
+could improve yearly prediction accuracy and enable scenario-based what-if
+forecasting.
+
+\noindent\textbf{Planned improvement:} Automate annual ingestion of new ArmStat
+releases and re-run validation scripts to track model calibration over time.
+
+\subsection{Improved Household Income Models}
+
+\indent\hspace*{1em}
+The current $R^2 \approx 0.35$ can be improved through: (i)~adding region and
+area type (urban/rural) back as features (+0.03--0.05 expected); (ii)~using a
+log-transformed target ($\log(\text{household\_income\_total})$), more
+appropriate for log-normal income distributions and expected to reach
+$R^2 \approx 0.45\text{--}0.55$; (iii)~adding interaction features
+(\texttt{household\_size} $\times$ \texttt{income\_source\_count});
+(iv)~running Optuna with 200 trials rather than 50.
+
+\noindent\textbf{Planned improvement:} Re-run feature importance analysis on
+log-scale target and compare to current linear-scale results.
+
+\subsection{Scenario Forecasting}
+
+\indent\hspace*{1em}
+The stress\_index formula (Equation~1) enables policy simulation: by
+hypothetically changing \texttt{hospitals\_per\_100k} or
+\texttt{crime\_rate\_per\_100k}, the user could observe the model's projected
+impact on regional poverty rates, giving the web application a genuine
+policy-simulation angle.
+
+\noindent\textbf{Planned improvement:} Build a scenario slider interface on the
+Future Projection page allowing users to adjust macroeconomic inputs and see
+revised 2023--2026 forecasts.
+
+\subsection{Confidence Intervals on Projections}
+
+\indent\hspace*{1em}
+The current forecast line charts do not display uncertainty bands. A bootstrap
+resampling of Ridge AR residuals (200 iterations) would produce 80\,\% and
+95\,\% prediction intervals, giving the shaded ribbon standard in policy
+forecasting visualizations.
+
+\noindent\textbf{Planned improvement:} Add bootstrap confidence bands to the
+Future Projection chart, stored alongside point forecasts in the CSV.
+
+\subsection{ILCS Longitudinal Analysis}
+
+\indent\hspace*{1em}
+ILCS waves are available for multiple years beyond 2015. Linking households
+across waves would enable panel fixed-effects models that control for unobserved
+household-level heterogeneity --- a substantial methodological improvement over
+the current cross-sectional approach.
+
+\noindent\textbf{Planned improvement:} Obtain multi-wave ILCS public-use data
+and implement a difference-in-differences or panel fixed-effects model for
+income change prediction.
+
+\newpage
+
+% =============================================================================
+\section{Conclusion}
+% =============================================================================
+
+\indent\hspace*{1em}
+This project demonstrates that household poverty in Armenia can be analysed and
+forecast with reasonable accuracy using publicly available data and standard
+machine learning techniques, while being honest about the structural limits of
+those techniques when data is scarce.
+
+At the household level, the ILCS 2015 analysis reveals that income source
+diversification (\texttt{household\_income\_source\_count}) is the single
+strongest predictor of household welfare, explaining more variance than assets
+or housing quality. Gradient Boosting with Bayesian optimization achieves the
+best household model result on a held-out test set, consistent with the published
+range for proxy means testing on welfare surveys. The analysis also uncovers two
+methodological lessons: the survey coding trap (assets coded 1=Yes/2=No creating
+inverted correlations), and the seasonal confound requiring interview month
+recovery.
+
+At the regional level, the 2022 holdout backtest establishes concrete forecast
+credibility: trained on 2016--2021 data, the Lag-1 model achieves a regional MAE
+of 5.07 percentage points, while a Lag-1/Ridge ensemble reaches near-zero
+national error (0.02\,pp). Neural architectures (GRU, BiLSTM, Transformer, TCN)
+underperform classical models on annual data due to the structural limitation of
+seven training observations per region, but are competitive at monthly granularity
+and provide a foundation for future work with larger panels.
+
+\keyresult{Primary contribution}{The project's main contribution is a validated
+regional poverty forecasting pipeline for Armenia, benchmarked on held-out 2022
+data, with results served through an interactive public dashboard and 2023--2026
+projections.}
+
+The findings are communicated through a publicly deployed interactive dashboard
+that organises evidence around the primary backtest result, surfaces regional
+trends and rankings, and provides 2023--2026 projections with honest uncertainty
+acknowledgement. The application architecture --- hybrid CSV/PostgreSQL data
+delivery, Vercel deployment, and CSV-based reproducibility --- supports
+continuous updates as new ArmStat data becomes available.
+
+\newpage
+
+% =============================================================================
+\section*{References}
+% =============================================================================
+\renewcommand{\refname}{}
+\begin{thebibliography}{99}
+
+\bibitem{wb2015pmt}
+World Bank. (2015).
+\textit{A Proxy Means Test for Armenia: Methodology and Implementation}.
+World Bank Technical Report.
+\url{https://documents.worldbank.org}
+
+\bibitem{mcbride2018}
+McBride, L., \& Nichols, A. (2018).
+\textit{Retooling poverty targeting using out-of-sample validation and
+machine learning}.
+World Bank Economic Review, 32(3), 531--550.
+\url{https://doi.org/10.1093/wber/lhw056}
+
+\bibitem{athey2019ml}
+Athey, S., \& Imbens, G.~W. (2019).
+\textit{Machine learning methods economists should know about}.
+Annual Review of Economics, 11, 685--725.
+\url{https://doi.org/10.1146/annurev-economics-080217-053433}
+
+\bibitem{optuna2019}
+Akiba, T., Sano, S., Yanase, T., Ohta, T., \& Koyama, M. (2019).
+\textit{Optuna: A next-generation hyperparameter optimization framework}.
+Proceedings of the 25th ACM SIGKDD International Conference on Knowledge
+Discovery \& Data Mining, 2623--2631.
+\url{https://doi.org/10.1145/3292500.3330701}
+
+\bibitem{armstat}
+Armenian Statistical Committee (ArmStat). (2022).
+\textit{Social situation of the population of Armenia: Regional statistics
+2016--2022}.
+\url{https://www.armstat.am}
+
+\bibitem{ilcs2015}
+National Statistical Service of Armenia. (2015).
+\textit{Integrated Living Conditions Survey of Armenia 2015: Methodology and
+main results}.
+\url{https://www.armstat.am/en/?nid=86}
+
+\bibitem{lstm1997}
+Hochreiter, S., \& Schmidhuber, J. (1997).
+\textit{Long short-term memory}.
+Neural Computation, 9(8), 1735--1780.
+\url{https://doi.org/10.1162/neco.1997.9.8.1735}
+
+\bibitem{vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+Kaiser, \L., \& Polosukhin, I. (2017).
+\textit{Attention is all you need}.
+Advances in Neural Information Processing Systems, 30.
+\url{https://doi.org/10.48550/arXiv.1706.03762}
+
+\bibitem{sklearn}
+Pedregosa, F., et al. (2011).
+\textit{Scikit-learn: Machine learning in Python}.
+Journal of Machine Learning Research, 12, 2825--2830.
+\url{https://jmlr.org/papers/v12/pedregosa11a.html}
+
+\bibitem{nextjs}
+Vercel. (n.d.).
+\textit{Next.js documentation}.
+\url{https://nextjs.org/docs}
+
+\bibitem{neon}
+Neon. (n.d.).
+\textit{Neon serverless Postgres documentation}.
+\url{https://neon.tech/docs}
+
+\end{thebibliography}
+
+\end{document}

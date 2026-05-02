@@ -36,9 +36,19 @@ export default async function ModelsPage() {
   return (
     <div>
       <PageHeader
-        title="ML Model Comparison"
-        subtitle="5 models trained on ILCS 2015 household data to predict household income. Bayesian optimization via Optuna (20 trials, 5-fold CV)."
+        title="Household Income Model"
+        subtitle="5 models trained on ILCS 2015 household microdata (5,184 households) to predict household income using 28 survey features. Bayesian optimization via Optuna (20 trials, 5-fold CV)."
       />
+
+      <div className="mb-6 rounded-xl border border-amber-100 bg-amber-50 p-4 flex items-start gap-3">
+        <span className="mt-0.5 shrink-0 text-amber-600">ℹ</span>
+        <p className="text-sm text-amber-800 leading-relaxed">
+          This page benchmarks household income prediction from ILCS 2015 survey data — a micro-level
+          cross-sectional result. The primary forecast evidence — Ridge AR models tested against actual 2022
+          regional outcomes — is on the{' '}
+          <a href="/models/validation" className="underline font-medium">2022 Validation page</a>.
+        </p>
+      </div>
 
       {/* Metrics table */}
       <div className="mb-6 rounded-xl border border-slate-200 bg-white overflow-hidden">

@@ -1,0 +1,52 @@
+\contentsline {section}{\numberline {1}*}{2}{section.1}%
+\contentsline {section}{\numberline {2}Introduction}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}System Overview}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Objectives}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Scope}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Methodology}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Literature Context and Motivation}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Data Sources}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Feature Engineering and Preprocessing}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Validation Strategy}{7}{subsection.3.4}%
+\contentsline {section}{\numberline {4}System Architecture}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Overview}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Technology Stack}{8}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Data and Modelling}{8}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Web Application}{9}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Data Storage and Deployment}{9}{subsubsection.4.2.3}%
+\contentsline {section}{\numberline {5}Data Description and Schema}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ILCS 2015 Dataset}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}ArmStat Regional Panel}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Key Descriptive Statistics}{11}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Seasonal Income Variation}{11}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Model Development and Results}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Household Income Models}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Feature Importance}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Bayesian Hyperparameter Optimization}{14}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Time-Series Analysis --- Classical Models}{15}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Time-Series Analysis --- Neural Network Models}{15}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation (Primary Evidence)}{16}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}GRU Daily Validation}{19}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Application and Functionality}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Homepage}{20}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Regional Explorer}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Household Income Model}{21}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Feature Importance Page}{22}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Forecasting Diagnostics}{22}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}2022 Forecast Validation}{22}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Future Projection 2023--2026}{24}{subsection.7.7}%
+\contentsline {section}{\numberline {8}Challenges Encountered}{26}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data Quality and Panel Size}{26}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Anomalous Regional Observations}{26}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Interview Month Recovery}{26}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Web Application Data Architecture}{26}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Model Evidence Communication}{26}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Future Work}{27}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Larger Regional Panels}{27}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Improved Household Income Models}{27}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Scenario Forecasting}{27}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Confidence Intervals on Projections}{27}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}ILCS Longitudinal Analysis}{27}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Conclusion}{29}{section.10}%
+\contentsline {section}{\numberline {11}*}{30}{section.11}%
+\contentsline {section}{\numberline {12}*}{30}{section.12}%

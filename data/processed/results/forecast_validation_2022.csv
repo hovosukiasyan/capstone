@@ -1,0 +1,73 @@
+marz,target,actual_2022,predicted_2022,signed_error,absolute_error,percent_error,model
+Aragatsotn,poverty_rate,7.9000,13.5000,5.6000,5.6000,70.8861,Lag-1 Baseline
+Aragatsotn,poverty_rate,7.9000,26.0224,18.1224,18.1224,229.3974,Ridge AR
+Aragatsotn,poverty_rate,7.9000,19.7612,11.8612,11.8612,150.1418,Ensemble
+Aragatsotn,stress_index,-0.4636,-0.7351,-0.2715,0.2715,-58.5560,Lag-1 Baseline
+Aragatsotn,stress_index,-0.4636,-0.4608,0.0028,0.0028,-0.6057,Ridge AR
+Aragatsotn,stress_index,-0.4636,-0.5980,-0.1343,0.1343,-28.9752,Ensemble
+Ararat,poverty_rate,23.8000,28.0000,4.2000,4.2000,17.6471,Lag-1 Baseline
+Ararat,poverty_rate,23.8000,21.0491,-2.7509,2.7509,11.5583,Ridge AR
+Ararat,poverty_rate,23.8000,24.5246,0.7246,0.7246,3.0444,Ensemble
+Ararat,stress_index,1.1024,1.1249,0.0225,0.0225,2.0375,Lag-1 Baseline
+Ararat,stress_index,1.1024,0.4933,-0.6092,0.6092,55.2556,Ridge AR
+Ararat,stress_index,1.1024,0.8091,-0.2933,0.2933,26.6091,Ensemble
+Armavir,poverty_rate,40.8000,37.9000,-2.9000,2.9000,7.1078,Lag-1 Baseline
+Armavir,poverty_rate,40.8000,26.9098,-13.8902,13.8902,34.0447,Ridge AR
+Armavir,poverty_rate,40.8000,32.4049,-8.3951,8.3951,20.5763,Ensemble
+Armavir,stress_index,2.3516,1.7625,-0.5891,0.5891,25.0502,Lag-1 Baseline
+Armavir,stress_index,2.3516,0.9930,-1.3585,1.3585,57.7709,Ridge AR
+Armavir,stress_index,2.3516,1.3778,-0.9738,0.9738,41.4105,Ensemble
+Gegharkunik,poverty_rate,33.9000,49.1000,15.2000,15.2000,44.8378,Lag-1 Baseline
+Gegharkunik,poverty_rate,33.9000,45.1506,11.2506,11.2506,33.1876,Ridge AR
+Gegharkunik,poverty_rate,33.9000,47.1253,13.2253,13.2253,39.0127,Ensemble
+Gegharkunik,stress_index,0.6295,1.4113,0.7818,0.7818,124.2036,Lag-1 Baseline
+Gegharkunik,stress_index,0.6295,1.1799,0.5504,0.5504,87.4412,Ridge AR
+Gegharkunik,stress_index,0.6295,1.2956,0.6661,0.6661,105.8224,Ensemble
+Kotayk,poverty_rate,26.1000,23.6000,-2.5000,2.5000,9.5785,Lag-1 Baseline
+Kotayk,poverty_rate,26.1000,20.0671,-6.0329,6.0329,23.1146,Ridge AR
+Kotayk,poverty_rate,26.1000,21.8335,-4.2665,4.2665,16.3466,Ensemble
+Kotayk,stress_index,0.7555,0.5291,-0.2263,0.2263,29.9609,Lag-1 Baseline
+Kotayk,stress_index,0.7555,0.1116,-0.6439,0.6439,85.2309,Ridge AR
+Kotayk,stress_index,0.7555,0.3203,-0.4351,0.4351,57.5959,Ensemble
+Lori,poverty_rate,18.6000,21.8000,3.2000,3.2000,17.2043,Lag-1 Baseline
+Lori,poverty_rate,18.6000,14.3262,-4.2738,4.2738,22.9774,Ridge AR
+Lori,poverty_rate,18.6000,18.0631,-0.5369,0.5369,2.8865,Ensemble
+Lori,stress_index,1.3290,0.8185,-0.5105,0.5105,38.4131,Lag-1 Baseline
+Lori,stress_index,1.3290,0.3363,-0.9928,0.9928,74.6991,Ridge AR
+Lori,stress_index,1.3290,0.5774,-0.7517,0.7517,56.5561,Ensemble
+Shirak,poverty_rate,41.6000,46.9000,5.3000,5.3000,12.7404,Lag-1 Baseline
+Shirak,poverty_rate,41.6000,43.5394,1.9394,1.9394,4.6620,Ridge AR
+Shirak,poverty_rate,41.6000,45.2197,3.6197,3.6197,8.7012,Ensemble
+Shirak,stress_index,0.7612,0.4629,-0.2983,0.2983,39.1832,Lag-1 Baseline
+Shirak,stress_index,0.7612,-0.3040,-1.0653,1.0653,139.9414,Ridge AR
+Shirak,stress_index,0.7612,0.0795,-0.6818,0.6818,89.5623,Ensemble
+Syunik,poverty_rate,5.4000,2.8000,-2.6000,2.6000,48.1481,Lag-1 Baseline
+Syunik,poverty_rate,5.4000,0.0000,-5.4000,5.4000,100.0000,Ridge AR
+Syunik,poverty_rate,5.4000,1.4000,-4.0000,4.0000,74.0741,Ensemble
+Syunik,stress_index,-1.5684,-1.8496,-0.2812,0.2812,-17.9310,Lag-1 Baseline
+Syunik,stress_index,-1.5684,-2.0656,-0.4972,0.4972,-31.7041,Ridge AR
+Syunik,stress_index,-1.5684,-1.9576,-0.3892,0.3892,-24.8176,Ensemble
+Tavush,poverty_rate,37.4000,38.2000,0.8000,0.8000,2.1390,Lag-1 Baseline
+Tavush,poverty_rate,37.4000,24.7755,-12.6245,12.6245,33.7553,Ridge AR
+Tavush,poverty_rate,37.4000,31.4878,-5.9122,5.9122,15.8081,Ensemble
+Tavush,stress_index,0.0514,0.3369,0.2855,0.2855,555.1638,Lag-1 Baseline
+Tavush,stress_index,0.0514,-0.3968,-0.4482,0.4482,871.5321,Ridge AR
+Tavush,stress_index,0.0514,-0.0299,-0.0814,0.0814,158.1842,Ensemble
+Vayots Dzor,poverty_rate,15.7000,26.6000,10.9000,10.9000,69.4268,Lag-1 Baseline
+Vayots Dzor,poverty_rate,15.7000,34.9087,19.2087,19.2087,122.3483,Ridge AR
+Vayots Dzor,poverty_rate,15.7000,30.7543,15.0543,15.0543,95.8875,Ensemble
+Vayots Dzor,stress_index,-1.0674,-1.0013,0.0661,0.0661,-6.1929,Lag-1 Baseline
+Vayots Dzor,stress_index,-1.0674,-0.3882,0.6791,0.6791,-63.6267,Ridge AR
+Vayots Dzor,stress_index,-1.0674,-0.6948,0.3726,0.3726,-34.9098,Ensemble
+Yerevan,poverty_rate,18.5000,15.9000,-2.6000,2.6000,14.0541,Lag-1 Baseline
+Yerevan,poverty_rate,18.5000,18.1012,-0.3988,0.3988,2.1557,Ridge AR
+Yerevan,poverty_rate,18.5000,17.0006,-1.4994,1.4994,8.1049,Ensemble
+Yerevan,stress_index,1.9971,0.8446,-1.1525,1.1525,57.7073,Lag-1 Baseline
+Yerevan,stress_index,1.9971,0.6040,-1.3931,1.3931,69.7542,Ridge AR
+Yerevan,stress_index,1.9971,0.7243,-1.2728,1.2728,63.7308,Ensemble
+Armenia,poverty_rate,24.2559,25.3254,1.0696,1.0696,4.4095,Lag-1 Baseline
+Armenia,stress_index,1.2011,0.6953,-0.5058,0.5058,42.1140,Lag-1 Baseline
+Armenia,poverty_rate,24.2559,23.1415,-1.1144,1.1144,4.5942,Ridge AR
+Armenia,stress_index,1.2011,0.3176,-0.8835,0.8835,73.5577,Ridge AR
+Armenia,poverty_rate,24.2559,24.2335,-0.0224,0.0224,0.0924,Ensemble
+Armenia,stress_index,1.2011,0.5064,-0.6947,0.6947,57.8359,Ensemble

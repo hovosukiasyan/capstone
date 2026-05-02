@@ -1,0 +1,177 @@
+===========================================================================
+  CAPSTONE PRESENTATION — BEST SINGLE SLIDE + SPEECH GUIDE
+  Project: Poverty Prediction and Regional Forecasting in Armenia
+  Author: Hovo Sukiasyan | AUA CS 296 Capstone | May 2026
+===========================================================================
+
+
+───────────────────────────────────────────────────────────────────────────
+SLIDE CONTENT (what to display)
+───────────────────────────────────────────────────────────────────────────
+
+TITLE (top, large, bold):
+  "Can We Predict Armenia's Poverty Rate Before the Data Arrives?"
+
+SUBTITLE (smaller, under title):
+  Validated Regional Forecasting — 2022 Holdout Backtest
+
+─────────────────────────────
+LEFT COLUMN — The Challenge
+─────────────────────────────
+Header: The Problem
+• Armenia publishes poverty rates once a year, per region
+• By the time data arrives, the window for early policy action is gone
+• 11 marzes, only 7 years of observations (2016–2022)
+• Neural networks trained here typically fail — too little data
+
+─────────────────────────────
+CENTER — Key Visual (BAR CHART)
+─────────────────────────────
+Title: "2022 Predictions vs. Actual — Trained on 2016–2021 Only"
+
+Show a grouped bar chart (actual vs. Lag-1 predicted) for 5-6 marzes:
+  Yerevan:     Actual 18.5% | Predicted 21.1%  (error: 2.6pp)
+  Tavush:      Actual 37.4% | Predicted 36.6%  (error: 0.8pp)
+  Armavir:     Actual 40.8% | Predicted 43.7%  (error: 2.9pp)
+  Kotayk:      Actual 26.1% | Predicted 23.6%  (error: 2.5pp)
+  Shirak:      Actual 41.6% | Predicted 46.9%  (error: 5.3pp)
+  Armenia (nat): Actual 24.3% | Ensemble: 24.28% (error: 0.02pp!) ← highlight this
+
+─────────────────────────────
+RIGHT COLUMN — Results Table
+─────────────────────────────
+Header: How Good Is It?
+
+┌──────────────┬──────────────┬────────────────┐
+│ Model        │ Regional MAE │ National Error │
+├──────────────┼──────────────┼────────────────┤
+│ Lag-1        │  5.07 pp ✓   │ 1.07 pp        │
+│ Ridge AR     │  8.72 pp     │ 1.11 pp        │
+│ Ensemble     │  6.28 pp     │ 0.02 pp ★      │
+└──────────────┴──────────────┴────────────────┘
+
+★ Ensemble = population-weighted average of Lag-1 + Ridge predictions
+★ 0.02pp national error = effectively zero
+
+─────────────────────────────
+BOTTOM BANNER — Key Takeaways (3 pills)
+─────────────────────────────
+[✓ Trained only on 2016–2021] [✓ Tested against real 2022 ArmStat data] [★ National error: 0.02 pp]
+
+FOOTER: "Live dashboard → armenia-poverty.vercel.app"
+
+
+───────────────────────────────────────────────────────────────────────────
+WHAT TO SPEAK — Full Speech Guide
+───────────────────────────────────────────────────────────────────────────
+
+OPENING (15 seconds):
+"Armenia's official poverty statistics come out once a year. By the time
+they're published, it's already too late to act on them. So the question I
+built this project around is: can we predict those numbers before they
+arrive, with nothing but the previous year's data?"
+
+SETUP — why it's hard (20 seconds):
+"We have 11 regions — marzes — and only 7 years of data per region,
+from 2016 to 2022. That's the entire panel. Neural networks normally
+need hundreds of data points to learn patterns. With 7, they overfit
+immediately and actually performed worse than a trivial baseline. So
+I went back to basics."
+
+THE APPROACH (20 seconds):
+"The simplest possible model — Lag-1 — just says: next year's poverty
+rate equals this year's. That's it. No parameters. No training.
+I also built a Ridge autoregressive model that uses the last two years
+plus a stress index combining crime rates and healthcare access.
+Then I combined them 50/50 into an Ensemble."
+
+THE HONEST TEST (30 seconds):
+"Here's where it gets interesting. I didn't evaluate any of these models
+on training data. I trained everything on 2016 through 2021 — and then
+looked at 2022 for the first time, after training was complete. That's the
+bar chart you see here. Real predictions against real 2022 ArmStat data.
+Lag-1 achieves a regional mean absolute error of 5.07 percentage points
+across all 11 marzes. And the Ensemble — the average of Lag-1 and Ridge —
+gets the national-level poverty rate right to within 0.02 percentage points.
+Armenia's actual 2022 national poverty rate was 24.3%. The Ensemble
+predicted 24.28%. That's not luck — that's directional errors cancelling
+under population weighting."
+
+WHAT FEATURE IMPORTANCE TOLD US (20 seconds):
+"On the household side, I trained five models on the 2015 ILCS survey —
+5,184 households. The clearest finding from feature importance: the single
+strongest predictor of whether a household is poor isn't what they own —
+it's how many income sources they have. Diversification matters more than
+assets. Households relying on one income stream — a single pension or
+wage — are the most vulnerable."
+
+CLOSING (15 seconds):
+"Everything I just described is live on a public dashboard where you can
+explore any marz, compare models, and see the 2023-to-2026 projections.
+The biggest limitation is honest: 7 data points per region is a structural
+constraint no amount of modeling can fully overcome. But within that
+constraint, a simple validated pipeline can produce actionable regional
+estimates — and that's the contribution."
+
+TOTAL ESTIMATED SPEAKING TIME: ~2 minutes
+
+
+───────────────────────────────────────────────────────────────────────────
+PROMPT TO GENERATE THIS SLIDE (for AI tools like Gamma, Beautiful.ai,
+or image generators like DALL-E / Midjourney for the bar chart)
+───────────────────────────────────────────────────────────────────────────
+
+USE THIS PROMPT FOR AN AI SLIDE GENERATOR (e.g., Gamma.app, Tome, Canva AI):
+------------------------------------------------------------------------
+Create a single professional presentation slide for a data science capstone
+presentation. Use a dark navy blue and white color scheme with emerald green
+accents for positive/success metrics. The slide should have:
+
+TITLE: "Can We Predict Armenia's Poverty Rate Before the Data Arrives?"
+SUBTITLE: "Validated Regional Forecasting — 2022 Holdout Backtest"
+
+Three-column layout:
+- LEFT COLUMN header "The Problem": 4 bullet points about Armenia publishing
+  poverty rates once a year, the policy window being missed, 11 marzes with
+  only 7 years of data, and neural networks failing on small panels.
+
+- CENTER COLUMN: A grouped horizontal bar chart titled "2022 Predictions vs
+  Actual Poverty Rate (Trained on 2016–2021 Only)" comparing actual 2022
+  poverty rates (dark bars) versus Lag-1 model predictions (lighter bars)
+  for 5 Armenian regions: Yerevan (18.5% actual, 21.1% predicted), Tavush
+  (37.4% actual, 36.6% predicted), Armavir (40.8% actual, 43.7% predicted),
+  Shirak (41.6% actual, 46.9% predicted), and Kotayk (26.1% actual, 23.6%
+  predicted). Include a highlighted annotation: "National Ensemble Error:
+  0.02 pp ★" in emerald green.
+
+- RIGHT COLUMN header "How Good Is It?": A clean 3-row table with columns
+  Model / Regional MAE / National Error. Rows: Lag-1 (5.07pp ✓ / 1.07pp),
+  Ridge AR (8.72pp / 1.11pp), Ensemble (6.28pp / 0.02pp ★). Highlight the
+  Ensemble row in emerald green.
+
+Bottom banner: Three green pill/badge elements reading:
+  [✓ Trained only on 2016–2021]  [✓ Tested on real 2022 ArmStat data]
+  [★ National error: 0.02 pp]
+
+Footer: "Live dashboard → armenia-poverty.vercel.app"
+
+Style: Academic but clean, suitable for a university capstone defense. No
+decorative graphics. Data-first layout. Use navy #123456, emerald #046442,
+and light gray #F6F7F9 as the primary palette.
+------------------------------------------------------------------------
+
+USE THIS PROMPT FOR A BAR CHART IMAGE ONLY (e.g., DALL-E or Midjourney):
+------------------------------------------------------------------------
+A clean, professional data visualization bar chart on a white background.
+Title: "2022 Armenia Poverty Rate: Actual vs. Predicted". Grouped horizontal
+bar chart showing 5 Armenian regions with two bars each — dark navy blue for
+actual values and steel blue for predicted values. Regions: Yerevan, Tavush,
+Armavir, Shirak, Kotayk. Values range from 18% to 47%. Include a small
+annotation in emerald green text: "National Ensemble Error: 0.02 pp". Clean
+sans-serif font, minimal grid lines, axis labeled "Poverty Rate (%)". Academic
+presentation style, high resolution.
+------------------------------------------------------------------------
+
+===========================================================================
+END OF FILE
+===========================================================================

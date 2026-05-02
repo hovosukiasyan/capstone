@@ -134,9 +134,15 @@ export default function ForecastingPage() {
   return (
     <div>
       <PageHeader
-        title="Forecasting Results"
-        subtitle="Model performance on poverty rate and stress index prediction. Yearly data is observed; monthly and daily are linearly interpolated."
+        title="Forecasting Diagnostics"
+        subtitle="Benchmark comparisons across model types and data frequencies. Includes important caveats about interpolated data."
       />
+
+      <div className="mb-6 rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800">
+        <strong>This page shows model benchmarking experiments.</strong> For the held-out 2022 validation
+        (training 2016–2021, testing against actual 2022 regional outcomes), see the{' '}
+        <a href="/models/validation" className="underline font-medium">2022 Validation page</a>.
+      </div>
 
       {/* Tabs */}
       <div

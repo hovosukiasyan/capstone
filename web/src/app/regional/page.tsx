@@ -36,7 +36,7 @@ export default function RegionalMapPage() {
     <div>
       <PageHeader
         title="Regional Map"
-        subtitle="Click a region to see its trend. All 11 Armenian marzes."
+        subtitle="Observed history 2016–2022. Click a region to see its trend. Forecast validation and future projections are in the Models section."
       />
 
       {/* Controls */}

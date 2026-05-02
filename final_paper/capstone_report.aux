@@ -1,0 +1,98 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}*}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction}{4}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}System Overview}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Objectives}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Scope}{5}{subsection.2.3}\protected@file@percent }
+\citation{wb2015pmt}
+\citation{mcbride2018}
+\citation{athey2019ml}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{6}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Literature Context and Motivation}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Sources}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Feature Engineering and Preprocessing}{7}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Validation Strategy}{7}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}System Architecture}{8}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces High-level system architecture: data pipeline, PostgreSQL/CSV storage, and Next.js web application}}{8}{figure.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Technology Stack}{8}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Data and Modelling}{8}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Web Application}{9}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Data Storage and Deployment}{9}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Data Description and Schema}{10}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ILCS 2015 Dataset}{10}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}ArmStat Regional Panel}{10}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Key Descriptive Statistics}{11}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Binary feature distribution in ILCS 2015 (n=5,184 households)}}{11}{table.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Seasonal Income Variation}{11}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Model Development and Results}{13}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Household Income Models}{13}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Household income model performance on held-out test set (1,037 households). GBM with Bayesian optimization is the best overall model.}}{13}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Feature Importance}{13}{subsection.6.2}\protected@file@percent }
+\citation{optuna2019}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Feature importance comparison across all five models (bar chart, sorted by RF importance)}}{14}{figure.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Bayesian Hyperparameter Optimization}{14}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Bayesian optimization results. GBM benefits most from tuning. The CV--Test gap (0.43 vs.\ 0.36) reflects mild overfitting to training folds.}}{14}{table.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Optuna optimization history: CV R\textsuperscript  {2} across 50 trials for GBM}}{14}{figure.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Residual plot for best GBM model: predicted vs.\ actual household income (AMD, log scale)}}{15}{figure.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Time-Series Analysis --- Classical Models}{15}{subsection.6.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Classical time-series model results across frequencies. Monthly/daily $R^2$ appears inflated because values are forward-filled from annual estimates; yearly results are the honest benchmark.}}{15}{table.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Time-Series Analysis --- Neural Network Models}{15}{subsection.6.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Neural network time-series results. On yearly data (the honest benchmark), all NNs underperform classical Lag-1 ($R^2=0.728$) due to insufficient training samples ($\sim $7 data points per region). The Transformer shows the most promise at yearly granularity. GRU approaches the Ridge baseline at monthly frequency.}}{16}{table.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Model comparison chart: R\textsuperscript  {2} across all architectures and frequencies (poverty\_rate target)}}{16}{figure.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation (Primary Evidence)}{16}{subsection.6.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces 2022 holdout validation summary (poverty\_rate). Lag-1 wins regionally; the Ensemble achieves near-zero national error because directional biases cancel under population weighting.}}{17}{table.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Per-region 2022 absolute errors (pp) by model. Bold = best model per row. Aragatsotn and Vayots Dzor are the hardest marzes due to anomalous year-over-year swings.}}{17}{table.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Bar chart: actual vs.\ predicted 2022 poverty rate for all 11 marzes under each model}}{18}{figure.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Rolling validation: regional MAE (poverty\_rate, 11 marzes). Ridge's 2021 spike is caused by Aragatsotn's anomalous 2019 value (51.4\%) entering the lag-2 feature.}}{18}{table.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Rolling validation line chart: MAE across 2020 → 2021 → 2022 for Lag-1 and Ridge AR}}{18}{figure.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}GRU Daily Validation}{19}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Application and Functionality}{20}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Homepage}{20}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Homepage: hero section with KPI tiles and navigation cards}}{20}{figure.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Regional Explorer}{20}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Regional Overview: choropleth map of Armenia colour-coded by poverty rate (2022)}}{20}{figure.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Regional Trends: multi-region poverty rate time-series (2016--2022)}}{21}{figure.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Regional Rankings: bar chart of 2022 poverty rate by marz, sorted descending}}{21}{figure.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Household Income Model}{21}{subsection.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Household Model page: model comparison table with R\textsuperscript  {2}, MAE, RMSE for all five models}}{21}{figure.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Feature Importance Page}{22}{subsection.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Feature Importance page: grouped bar chart of top-10 features across RF, GBM, Ridge, Lasso, ET}}{22}{figure.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Forecasting Diagnostics}{22}{subsection.7.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Forecasting Diagnostics: classical vs.\ neural model R\textsuperscript  {2} comparison table with frequency selector}}{22}{figure.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}2022 Forecast Validation}{22}{subsection.7.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 2022 Validation page: methodology tiles, key insight callout, and model performance table}}{23}{figure.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces 2022 Validation page: actual vs.\ predicted bar chart (Lag-1 selected) across 11 marzes}}{24}{figure.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces 2022 Validation page: rolling validation MAE chart with Ridge 2021 spike annotation}}{24}{figure.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7}Future Projection 2023--2026}{24}{subsection.7.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Future Projection page: per-region line chart with historical and 2023--2026 forecast segments}}{25}{figure.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Challenges Encountered}{26}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Data Quality and Panel Size}{26}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Anomalous Regional Observations}{26}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Interview Month Recovery}{26}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Web Application Data Architecture}{26}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Model Evidence Communication}{26}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Future Work}{27}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Larger Regional Panels}{27}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Improved Household Income Models}{27}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Scenario Forecasting}{27}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Confidence Intervals on Projections}{27}{subsection.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}ILCS Longitudinal Analysis}{27}{subsection.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion}{29}{section.10}\protected@file@percent }
+\bibcite{wb2015pmt}{1}
+\bibcite{mcbride2018}{2}
+\bibcite{athey2019ml}{3}
+\bibcite{optuna2019}{4}
+\bibcite{armstat}{5}
+\bibcite{ilcs2015}{6}
+\bibcite{lstm1997}{7}
+\bibcite{vaswani2017}{8}
+\bibcite{sklearn}{9}
+\bibcite{nextjs}{10}
+\bibcite{neon}{11}
+\@writefile{toc}{\contentsline {section}{\numberline {11}*}{30}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}*}{30}{section.12}\protected@file@percent }
+\gdef \@abspage@last{31}

@@ -32,7 +32,7 @@ export default function RegionalTrendsPage() {
     <div>
       <PageHeader
         title="Regional Time Series"
-        subtitle="Compare poverty, crime, and health indicators across marzes over 2016–2022."
+        subtitle="Historical panel data 2016–2022. Compare poverty, crime, and health indicators across marzes. See Models → 2022 Validation for forecast evidence."
       />
 
       <div className="mb-6 flex flex-wrap gap-4">

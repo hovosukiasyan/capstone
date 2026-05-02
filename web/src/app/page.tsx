@@ -21,11 +21,11 @@ const SECTION_CARDS = [
       'Study household income distributions, socioeconomic features, clustering, and correlations from the ILCS 2015 microdata.',
   },
   {
-    href: '/models',
-    title: 'Model Results',
-    eyebrow: 'Forecasting and explanation',
+    href: '/models/validation',
+    title: '2022 Validation',
+    eyebrow: 'Forecast holdout evidence',
     description:
-      'Review benchmark models, feature-importance outputs, and forecasting comparisons for poverty and stress indicators.',
+      'Examine how well models trained on 2016–2021 predicted actual 2022 regional poverty and stress outcomes across all 11 marzes.',
   },
   {
     href: '/explorer',
@@ -113,8 +113,8 @@ export default async function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-sm leading-7 text-white/72 sm:text-base">
-              Read Armenia’s social conditions through regional maps, household distributions, model
-              comparisons, and forecasting outputs built from ILCS 2015 and ArmStat panel data.
+              We validate regional poverty forecasts against observed 2022 outcomes across 11 Armenian marzes,
+              then project 2023–2026 using the same validated workflow — built from ILCS 2015 and ArmStat panel data.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -125,10 +125,10 @@ export default async function HomePage() {
                 Open Regional Atlas
               </Link>
               <Link
-                href="/models"
+                href="/models/validation"
                 className="rounded-full border border-white/20 bg-white/6 px-5 py-2.5 text-sm font-medium text-white/88 transition hover:-translate-y-0.5 hover:bg-white/10"
               >
-                Review Model Results
+                Review 2022 Validation
               </Link>
             </div>
           </div>
@@ -140,9 +140,9 @@ export default async function HomePage() {
               <p className="mt-1 text-xs text-white/62">11 marzes tracked through the atlas and ranking views</p>
             </div>
             <div className="rounded-[22px] border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Best reported model</p>
-              <p className="mt-2 font-data text-2xl text-[var(--stone-50)]">{bestModel.r2.toFixed(3)} R²</p>
-              <p className="mt-1 text-xs text-white/62">{bestModel.model.toUpperCase()} remains the leading benchmark in the current platform</p>
+              <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Validation year</p>
+              <p className="mt-2 font-data text-2xl text-[var(--stone-50)]">2022</p>
+              <p className="mt-1 text-xs text-white/62">Models trained 2016–2021, tested against actual 2022 outcomes across 11 marzes</p>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default async function HomePage() {
       <section className="grid gap-4 md:grid-cols-4">
         <div className="homepage-kpi-card"><KpiCard title="Households surveyed" value={stats.count.toLocaleString()} subtitle="ILCS 2015 microdata" color="blue" /></div>
         <div className="homepage-kpi-card"><KpiCard title="Median income" value={formatAMD(Math.round(stats.median_income), true)} subtitle="AMD per year" color="emerald" /></div>
-        <div className="homepage-kpi-card"><KpiCard title="Best model R²" value={bestModel.r2.toFixed(3)} subtitle={`${bestModel.model.toUpperCase()} benchmark`} color="amber" /></div>
+        <div className="homepage-kpi-card"><KpiCard title="Validation year" value="2022" subtitle="Forecast holdout vs actual ArmStat data" color="amber" /></div>
         <div className="homepage-kpi-card"><KpiCard title="Income range" value={`${formatAMD(Math.round(stats.p10_income), true)}–${formatAMD(Math.round(stats.p90_income), true)}`} subtitle="P10 to P90 spread" color="slate" /></div>
       </section>
 
@@ -241,11 +241,18 @@ export default async function HomePage() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-faint)]">Model snapshot</p>
             <h2 className="mt-2 text-2xl font-medium text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-serif), Georgia, serif' }}>
-              Current benchmark table
+              Household Income Benchmark
             </h2>
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
+              ILCS 2015 micro-level income model. The primary forecast evidence is the{' '}
+              <Link href="/models/validation" className="font-medium text-[var(--cool-700)] underline">
+                2022 Validation
+              </Link>{' '}
+              page.
+            </p>
           </div>
           <Link href="/models" className="text-sm font-medium text-[var(--cool-700)] transition hover:text-[var(--cool-800)]">
-            Open full model analysis →
+            Open household model →
           </Link>
         </div>
 

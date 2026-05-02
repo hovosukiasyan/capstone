@@ -41,7 +41,7 @@ export default function RegionalRankingPage() {
     <div>
       <PageHeader
         title="Regional Rankings"
-        subtitle="Compare all 11 marzes for any indicator and year."
+        subtitle="Observed data only, 2016–2022. Compare all 11 marzes for any indicator and year. Projections are available in the Forecast section."
       />
 
       <div className="mb-6 flex flex-wrap gap-4">
