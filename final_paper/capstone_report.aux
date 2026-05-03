@@ -2,6 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{ilcs2015}
+\citation{armstat}
+\citation{wb2015pmt}
+\citation{mcbride2018}
+\citation{armstat}
+\citation{nextjs}
+\citation{neon}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{4}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}System Overview}{4}{subsection.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Objectives}{4}{subsection.1.2}\protected@file@percent }
@@ -12,77 +19,80 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{6}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Literature Context and Motivation}{6}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Data Sources}{6}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:stress-index}{{1}{6}{ArmStat Regional Panel}{equation.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Feature Engineering and Preprocessing}{7}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Validation Strategy}{7}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}System Architecture}{8}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview}{8}{subsection.3.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces High-level system architecture showing the three-layer design: Python data and modelling pipeline (scripts and notebooks), hybrid data storage (Neon PostgreSQL for dynamic household and regional data; static CSV for model outputs), and Next.js web application deployed on Vercel.}}{8}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Technology Stack}{8}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Data and Modelling}{8}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Technology Stack}{9}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Data and Modelling}{9}{subsubsection.3.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Web Application}{9}{subsubsection.3.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Data Storage and Deployment}{9}{subsubsection.3.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Data Description and Schema}{10}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}ILCS 2015 Dataset}{10}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}ArmStat Regional Panel}{10}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}ArmStat Regional Panel}{11}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Key Descriptive Statistics}{11}{subsection.4.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Binary feature distribution in ILCS 2015 (n=5,184 households)}}{11}{table.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Seasonal Income Variation}{11}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Seasonal Income Variation}{12}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Model Development and Results}{13}{section.5}\protected@file@percent }
 \newlabel{sec:model-results}{{5}{13}{Model Development and Results}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Household Income Models}{13}{subsection.5.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Household income model performance on held-out test set (1,037 households). GBM with Bayesian optimization is the best overall model.}}{13}{table.2}\protected@file@percent }
+\newlabel{tab:hh-income-models}{{2}{13}{Household income model performance on held-out test set (1,037 households). GBM with Bayesian optimization is the best overall model}{table.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Feature Importance}{13}{subsection.5.2}\protected@file@percent }
 \citation{optuna2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Normalized feature importance for all five household income models (grouped bar chart). \texttt  {household\_income\_source\_count} ranks first across every model; the top five are dominated by consumption expenditure variables. Asset variables (\texttt  {has\_car}, \texttt  {has\_computer}) rank near the bottom despite their apparent relevance, partly due to the survey's 1=Yes/2=No encoding.}}{14}{figure.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Normalized feature importance across all five supervised models (grouped bar chart). Income source diversification leads every architecture; expenditures dominate ranks while vehicle and electronics indicators trail because of asymmetric survey coding.}}{14}{figure.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Bayesian Hyperparameter Optimization}{14}{subsection.5.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Bayesian optimization results. GBM benefits most from tuning. The CV--Test gap (0.43 vs.\ 0.36) reflects mild overfitting to training folds.}}{14}{table.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Bayesian optimization results. GBM benefits most from tuning. The CV--Test gap (0.43 vs.\ 0.36) reflects mild overfitting to training folds.}}{15}{table.3}\protected@file@percent }
+\newlabel{tab:bayes-gbm}{{3}{15}{Bayesian optimization results. GBM benefits most from tuning. The CV--Test gap (0.43 vs.\ 0.36) reflects mild overfitting to training folds}{table.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Optuna Bayesian optimization history for Gradient Boosting: 5-fold CV $R^2$ across 50 trials using the Tree-structured Parzen Estimator (TPE) sampler. The best trial reaches CV $R^2 = 0.4344$, corresponding to the configuration reported in the text.}}{15}{figure.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Predicted vs.\ actual household income (AMD) for the tuned Gradient Boosting model on the held-out test set (1,037 households, log--log scale). Systematic underestimation at the high end reflects the right-skewed income distribution; the central mass is well-calibrated.}}{15}{figure.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Time-Series Analysis --- Classical Models}{15}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Predicted vs.\ actual household income (AMD) for the tuned Gradient Boosting model on the held-out test set (1,037 households, log--log scale). Systematic underestimation at the high end reflects the right-skewed income distribution; the central mass is well-calibrated.}}{16}{figure.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Time-Series Analysis --- Classical Models}{16}{subsection.5.4}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Classical time-series model results across frequencies. Monthly/daily $R^2$ appears inflated because values are forward-filled from annual estimates; yearly results are the honest benchmark.}}{16}{table.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Time-Series Analysis --- Neural Network Models}{16}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Time-Series Analysis --- Neural Network Models}{17}{subsection.5.5}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Neural network time-series results. On yearly data (the honest benchmark), all NNs underperform classical Lag-1 ($R^2=0.728$) due to insufficient training samples ($\sim $7 data points per region). The Transformer shows the most promise at yearly granularity. Monthly-frequency rows reuse the filled annual signal, so strong scores there are mechanical and must not be read as richer survey evidence (see~\S  \ref {sec:model-results}).}}{17}{table.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Performance comparison across temporal granularities and model families on poverty rate $R^2$ (classical baselines left, neural networks right). Yearly results are the honest benchmark backed by real survey signal; monthly and daily values are mechanically inflated by forward-filling of annual estimates and must not be interpreted as evidence of richer predictive capacity.}}{17}{figure.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}2022 Forecast Validation (Primary Evidence)}{17}{subsection.5.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces 2022 holdout validation summary (poverty\_rate). Lag-1 wins regionally; the Ensemble achieves near-zero national error because directional biases cancel under population weighting.}}{18}{table.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Performance comparison across temporal granularities and model families on poverty rate $R^2$ (classical baselines left, neural networks right). Yearly results are the honest benchmark backed by real survey signal; monthly and daily values are mechanically inflated by forward-filling of annual estimates and must not be interpreted as evidence of richer predictive capacity.}}{18}{figure.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}2022 Forecast Validation}{18}{subsection.5.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces 2022 holdout validation summary for official poverty rates. Lag-1 wins regionally; the Ensemble achieves near-zero national error because directional biases cancel under population weighting.}}{19}{table.6}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Per-region 2022 absolute errors (pp) by model. Bold = best model per row. Aragatsotn and Vayots Dzor are the hardest marzes due to anomalous year-over-year swings.}}{19}{table.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Actual vs.\ predicted 2022 regional poverty rates for all 11 marzes (holdout: models trained on 2016--2021 only). Lag-1 predictions shown; the dashboard bar chart allows switching to Ridge AR or Ensemble via model pill buttons. Source data: \texttt  {forecast\_validation\_2022.csv}.}}{19}{figure.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Rolling validation: regional MAE (poverty\_rate, 11 marzes). Ridge's 2021 spike is caused by Aragatsotn's anomalous 2019 value (51.4\%) entering the lag-2 feature.}}{20}{table.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Rolling validation: regional mean absolute error (poverty rate, 11 marzes) for Lag-1 and Ridge AR across holdout years 2020, 2021, and 2022. Ridge's 2021 spike (22.19\,pp MAE) is caused by Aragatsotn's anomalous 2019 value (51.4\,\%) entering the lag-2 feature. Source data: \texttt  {forecast\_rolling\_validation.csv}.}}{20}{figure.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Application and Functionality}{21}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Homepage}{21}{subsection.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Application homepage showing the project overview hero card, key metric tiles (5,184 households surveyed; 11 marzes covered), and primary navigation to Regional Analytics and Models. The main call-to-action links directly to the 2022 Validation page.}}{21}{figure.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Regional Explorer}{21}{subsection.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Regional choropleth map of Armenia coloured by poverty rate for 2022. Marz-level hover tooltips display exact estimates; data is served dynamically from the Neon PostgreSQL instance. Shirak (41.6\,\%) and Armavir (40.8\,\%) are the highest-poverty marzes; Syunik (5.4\,\%) is the lowest.}}{22}{figure.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Regional poverty rate time series (2016--2022) with multiple marzes overlaid. The multi-select control allows direct marz-to-marz comparison; persistent high-poverty regions (Shirak, Armavir) diverge visibly from low-poverty outliers (Syunik) and from the anomalous Aragatsotn 2019 spike.}}{22}{figure.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Sorted horizontal bar chart of regional poverty rates for 2022. The 36 percentage-point spread between Shirak (41.6\,\%) and Syunik (5.4\,\%) illustrates the scale of geographic inequality captured in the ArmStat panel.}}{23}{figure.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Household Income Model}{23}{subsection.6.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Household income model leaderboard (\texttt  {/models}): sortable comparison table of $R^2$, MAE, and RMSE for all five models on the held-out ILCS 2015 test set. An amber callout positions this page as a micro-level benchmark and directs users to the 2022 Validation page as the primary forecast evidence.}}{23}{figure.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Feature Importance Page}{23}{subsection.6.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Interactive feature importance dashboard (\texttt  {/models/importance}): normalized rankings for all five models with a model-selector control that highlights individual rankings. A prose callout on the page explains the survey's 1=Yes/2=No asset encoding that causes apparent negative correlations for \texttt  {has\_car} and \texttt  {has\_computer}.}}{24}{figure.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Forecasting Diagnostics}{24}{subsection.6.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Forecasting diagnostics page (\texttt  {/models/forecasting}) presenting $R^2$ and MAE tables for classical (Lag-1, Ridge AR, ARIMA) and neural (GRU, BiLSTM, Transformer, TCN) models. Tabs separate the two model families; a blue callout links to the 2022 Validation page as the real out-of-sample test.}}{24}{figure.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation}{24}{subsection.6.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 2022 Holdout Validation page (upper section): four methodology context tiles (training window 2016--2021; test year 2022; 11 marzes; 3 models), a key insight callout reporting the headline results, and the model performance summary table with BEST~REGIONAL and BEST~NATIONAL badges.}}{25}{figure.15}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Interactive actual vs.\ predicted bar chart on the Validation page. Model pill buttons switch the display between Lag-1, Ridge AR, and Ensemble predictions for all 11 marzes against the actual 2022 ArmStat values. The per-region comparison table below the chart highlights the best model per marz in emerald.}}{26}{figure.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Rolling validation MAE line chart (2020--2022) on the Validation page. Ridge's 2021 spike is annotated; collapsible accordion panels below provide marz-level narrative for Aragatsotn, Vayots Dzor, and Gegharkunik --- the three hardest-to-predict regions.}}{26}{figure.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Future Projection 2023--2026}{26}{subsection.6.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Regional poverty trajectory for a selected marz: historical rates (2016--2022, solid line) and Ridge AR autoregressive projections (2023--2026, dashed line). A vertical reference line separates the historical from the forecast segment. A contextual callout on the page links to the 2022 Validation results so users can assess model quality before interpreting projections.}}{27}{figure.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Challenges Encountered}{28}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Data Quality and Panel Size}{28}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Anomalous Regional Observations}{28}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Interview Month Recovery}{28}{subsection.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Web Application Data Architecture}{28}{subsection.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Model Evidence Communication}{28}{subsection.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{29}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Larger Regional Panels}{29}{subsection.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Improved Household Income Models}{29}{subsection.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Scenario Forecasting}{29}{subsection.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Confidence Intervals on Projections}{29}{subsection.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}ILCS Longitudinal Analysis}{29}{subsection.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{31}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}Data and Code Availability}{32}{appendix.A}\protected@file@percent }
-\newlabel{app:figure-guide}{{A}{32}{Data and Code Availability}{appendix.A}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Actual vs.\ predicted 2022 regional poverty rates for all 11 marzes (holdout: models trained on 2016--2021 only). Lag-1 predictions shown; the dashboard bar chart allows switching to Ridge AR or Ensemble via model pill buttons.}}{20}{figure.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Rolling validation: regional MAE for poverty incidence across 11 marzes. Ridge's 2021 spike is caused by Aragatsotn's anomalous 2019 value (51.4\%) entering the lag-2 feature.}}{20}{table.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Rolling validation: regional mean absolute error (poverty rate, 11 marzes) for Lag-1 and Ridge AR across holdout years 2020, 2021, and 2022. Ridge's 2021 spike (22.19\,pp MAE) is caused by Aragatsotn's anomalous 2019 value (51.4\,\%) entering the lag-2 feature.}}{21}{figure.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Application and Functionality}{22}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Homepage}{22}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Application homepage showing the project overview hero card, key metric tiles (5,184 households surveyed; 11 marzes covered), and two primary call-to-action buttons --- ``Open Regional Atlas'' and ``Review 2022 Validation'' --- with navigation cards for all platform sections below.}}{22}{figure.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Regional Explorer}{23}{subsection.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Regional choropleth map of Armenia coloured by poverty rate for 2022. Marz-level hover tooltips display exact estimates; data is served dynamically from the Neon PostgreSQL instance. Shirak (41.6\,\%) and Armavir (40.8\,\%) are the highest-poverty marzes; Syunik (5.4\,\%) is the lowest.}}{23}{figure.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Regional poverty rate time series (2016--2022) with multiple marzes overlaid. The multi-select control allows direct marz-to-marz comparison; persistent high-poverty regions (Shirak, Armavir) diverge visibly from low-poverty outliers (Syunik) and from the anomalous Aragatsotn 2019 spike.}}{24}{figure.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Sorted horizontal bar chart of regional poverty rates for 2022. The 36 percentage-point spread between Shirak (41.6\,\%) and Syunik (5.4\,\%) illustrates the scale of geographic inequality captured in the ArmStat panel.}}{25}{figure.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Household Income Model}{25}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Household income model leaderboard: sortable comparison table of $R^2$, MAE, and RMSE for all five models on the held-out ILCS 2015 test set. An amber callout positions this page as a micro-level benchmark and directs users to the 2022 Validation page as the primary forecast evidence.}}{26}{figure.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Feature Importance Page}{26}{subsection.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Interactive feature importance dashboard: normalized importance rankings for all five models with model tabs (GBM, RF, ET, Ridge, Lasso), a compare-model overlay dropdown, and a top-N slider (5--27 features). A footer note explains that Ridge/Lasso importances are absolute coefficient values normalized to [0,1].}}{27}{figure.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Forecasting Diagnostics}{27}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Forecasting diagnostics page with the ``Classical TS (ARIMA)'' tab active, showing $R^2$ and MAE by model and frequency. A blue callout at the top links to the 2022 Validation page as the real out-of-sample test; a per-tab amber callout explains data caveats (interpolated monthly/daily rows inflate lag-based $R^2$ scores).}}{28}{figure.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation}{28}{subsection.6.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 2022 Forecast Validation page: blue methodology card showing the GRU training/validation/test split (2016--2020 train, 2021 early-stop, 2022 held-out), and green key insight callout reporting GRU headline results ($R^2{=}0.9999$, RMSE\,=\,0.14\,pp, MAE\,=\,0.10\,pp, 517 daily test-set predictions).}}{29}{figure.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces 2022 holdout validation: actual vs.\ predicted poverty rates for all 11 marzes, Lag-1 Baseline model. Aragatsotn shows the largest absolute error (5.6\,pp) due to its anomalous 2019 spike entering the lag feature; most other marzes fall within 2\,pp.}}{29}{figure.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Rolling walk-forward validation: regional mean absolute error (poverty rate, 11 marzes) for Lag-1 Baseline and Ridge AR across holdout years 2020, 2021, and 2022. Ridge's 2021 MAE spike (driven by Aragatsotn's 51.4\,\% outlier entering the lag-2 feature) confirms that Lag-1 is the more robust regional predictor.}}{30}{figure.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Future Projection 2023--2026}{30}{subsection.6.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Regional poverty trajectory for a selected marz: historical rates (2016--2022, solid line) and Ridge AR autoregressive projections (2023--2026, dashed line with 90\% confidence intervals). A vertical reference line separates the historical from the forecast segment. A contextual callout on the page links to the 2022 Validation results so users can assess model quality before interpreting projections.}}{31}{figure.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Challenges Encountered}{32}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Data Quality and Panel Size}{32}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Anomalous Regional Observations}{32}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Interview Month Recovery}{32}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Web Application Data Architecture}{32}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Model Evidence Communication}{32}{subsection.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{33}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Larger Regional Panels}{33}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Improved Household Income Models}{33}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Scenario Forecasting}{33}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Confidence Intervals on Projections}{33}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}ILCS Longitudinal Analysis}{33}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Data and Code Availability}{35}{section.9}\protected@file@percent }
+\newlabel{sec:data-code}{{9}{35}{Data and Code Availability}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion}{36}{section.10}\protected@file@percent }
 \bibcite{wb2015pmt}{1}
 \bibcite{mcbride2018}{2}
 \bibcite{athey2019ml}{3}
@@ -94,6 +104,5 @@
 \bibcite{sklearn}{9}
 \bibcite{nextjs}{10}
 \bibcite{neon}{11}
-\@writefile{toc}{\contentsline {section}{\numberline {B}*}{33}{appendix.B}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {C}*}{33}{appendix.C}\protected@file@percent }
-\gdef \@abspage@last{34}
+\@writefile{toc}{\contentsline {section}{References}{37}{section*.3}\protected@file@percent }
+\gdef \@abspage@last{38}

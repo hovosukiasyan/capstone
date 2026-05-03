@@ -1,0 +1,695 @@
+===========================================================================
+  CAPSTONE PRESENTATION — COMPLETE CREATION GUIDE & SPEECH SCRIPT
+  Project: Poverty Prediction and Regional Forecasting in Armenia
+  Author: Hovo Sukiasyan | AUA CS 296 Capstone | May 2026
+
+  HOW TO USE THIS FILE
+  ────────────────────
+  This file serves two purposes:
+
+  A) AS A PROMPT FOR AN AI SLIDE TOOL (Gamma.app, Beautiful.ai, Claude, etc.)
+     Copy the section "AI SLIDE CREATION PROMPT" at the bottom and paste it
+     directly into the tool. It contains all content, layout, and design
+     instructions in a compact format the tool can parse.
+
+  B) AS YOUR MANUAL CREATION GUIDE
+     Work through slides 1–8 below. Each slide has:
+       • SLIDE CONTENT  — exact text to put on the slide
+       • DESIGN NOTES   — layout, colors, visual elements
+       • WHAT TO SAY    — your full spoken script (~timed)
+
+  STRUCTURE:
+    Slides 1–4: YOU SPEAK  (slides on screen, no website)
+    Slides 5–8: LIVE WEBSITE DEMO on armenia-poverty.vercel.app
+===========================================================================
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DESIGN SYSTEM  (apply consistently across all slides)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  COLORS:
+    Primary / Navy     #123456  (headings, key text, borders)
+    Accent / Steel     #2C629E  (subheadings, highlights)
+    Light Blue fill    #D6E6F7  (header row backgrounds, light boxes)
+    Pale Gray fill     #F6F7F9  (card backgrounds, alternating rows)
+    Emerald highlight  #04643E  text on #D5F4E6 bg  (key findings, wins)
+    Amber callout      #8C5000  text on #FFF3CD bg  (warnings, caveats)
+    Info blue          #0A5AA0  text on #D4E8FF bg  (methodology notes)
+
+  TYPOGRAPHY:
+    Title slide: Bold 36–40pt  (navy)
+    Slide headers: Bold 24–28pt  (navy)
+    Body / bullets: Regular 16–18pt  (dark gray #333)
+    Table text: 13–15pt
+    Callout labels: Bold 12–13pt
+
+  SLIDE DIMENSIONS: 16:9 widescreen
+
+  VISUAL STYLE:
+    Clean, data-forward. No clip art or decorative icons.
+    Thin horizontal rule (steel blue) below every slide header.
+    Slides 1–4: white background with cards/boxes.
+    Slides 5–8: dark overlay or minimal text — screen is the dashboard.
+    Consistent left margin, generous white space.
+
+  BRANDING FOOTER (slides 1–8):
+    Left:  Hovo Sukiasyan · AUA CS 296 Capstone · May 2026
+    Right: armenia-poverty.vercel.app
+    Font:  10–11pt, Steel Blue, thin top border
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 1 — TITLE  [YOU SPEAK]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT:
+  Main title:   Can We Predict Armenia's Poverty Rate
+                Before the Data Arrives?
+  Subtitle:     Validated Regional Forecasting · CS 296 Capstone · AUA · May 2026
+  Author:       Hovo Sukiasyan
+  Advisor:      Aleksandr Hayrapetyan
+  Program Chair: Hayk Nersisyan
+
+  Bottom bar:   Live dashboard → armenia-poverty.vercel.app
+
+DESIGN NOTES:
+  • Title in two lines, navy bold, 38pt
+  • Thin steel-blue rule separating title from author block
+  • Author block in a pale gray card, centered, 16pt
+  • "Live dashboard" pill at bottom in steel blue with arrow icon
+  • AUA logo top-right if available (figures/university_logo.png)
+  • No bullet points on this slide — clean and minimal
+
+WHAT TO SAY (≈ 30 sec):
+"Good [morning/afternoon]. My name is Hovo Sukiasyan, and my capstone project
+asks a single, concrete question: can we predict Armenia's regional poverty rate
+for next year, before ArmStat publishes the official number? That is the problem
+I spent this year building a solution for — from raw survey data all the way to
+a live public dashboard. Let me walk you through it."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 2 — THE PROBLEM & THE DATA  [YOU SPEAK]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT:
+  Header: The Problem and the Data
+
+  LEFT BOX — The Policy Gap:
+    • Armenia publishes 1 poverty number per region, per year
+    • By publication day, the policy window for early action is already closed
+    • 11 marzes — 7 years of data (2016–2022) — that's the entire panel
+    • No room to just add more data: 7 points per region is a structural limit
+
+  RIGHT BOX — Two Data Assets:
+    ① ILCS 2015 Household Survey
+       • 5,184 households · 29 features after cleaning
+       • Target: total household income (AMD)
+       • Key recovered feature: interview month (seasonality control)
+    ② ArmStat Regional Panel
+       • 11 marzes · 7 annual observations each (2016–2022)
+       • Variables: poverty rate (%), crime rate, hospitals per 100k, population
+       • Augmented to monthly frequency for neural model training
+
+DESIGN NOTES:
+  • Two-column layout: left = amber-tinted card (the "problem"), right = info-blue card (the "data")
+  • Each data asset in a numbered pill (circle with ① ②)
+  • "7 points per region" should be visually emphasized — bold or slightly larger
+  • Thin steel-blue section header with rule underneath
+  • Keep text tight; no paragraph prose on the slide
+
+WHAT TO SAY (≈ 60 sec):
+"Armenia's poverty statistics work like this: ArmStat surveys households, crunches
+numbers, and publishes one poverty rate per region, once a year. By the time that
+number is public, it's already describing last year. Any policy response is
+already late.
+
+My project tries to close that gap with two data sources. First, the ILCS 2015
+household survey — over 5,000 households with 29 features after cleaning —
+where I build ML models to understand what predicts household income at the
+micro level. One non-obvious challenge here: the interview month was not directly
+available in the dataset and had to be reverse-engineered from household IDs,
+yielding exactly 432 households per month — an important seasonality control.
+
+Second, the ArmStat regional panel covering all 11 marzes from 2016 to 2022 —
+seven annual observations per region — where I build time-series models to
+forecast next year's poverty rate.
+
+The hardest constraint in this project is that seven data points is genuinely
+not a lot. Neural networks that normally need hundreds of observations fail
+badly here. I had to be honest about that, and let the simplest models win."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 3 — THE APPROACH  [YOU SPEAK]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT:
+  Header: Two-Strand Modelling Pipeline
+
+  LEFT COLUMN — Strand 1: Household ML (ILCS 2015):
+    Models: Random Forest · Gradient Boosting · Extra Trees · Ridge · Lasso
+    Tuning: Bayesian hyperparameter optimization (Optuna, 50 trials)
+    Split:  80% train (4,147 hh) / 20% test (1,037 hh) — held out once
+    Best:   GBM + Bayesian Opt → R² = 0.36, MAE = 82K AMD
+    Top predictor: income_source_count  (r = 0.45, importance = 0.32)
+
+  RIGHT COLUMN — Strand 2: Regional Forecasting (ArmStat):
+    Classical: Lag-1 baseline · Ridge AR · ARIMA
+    Neural:    GRU · BiLSTM · Transformer · TCN  (PyTorch)
+    Honest benchmark: YEARLY  (7 real data points per marz)
+    Inflated benchmarks: monthly / daily (forward-filled — mechanical)
+    Validation: Strict 2022 HOLDOUT — trained 2016–2021 only
+
+  BOTTOM CALLOUT (amber):
+    ★ The 2022 holdout backtest is the only number that counts for regional
+      forecasting. Monthly R²=0.999 reflects interpolated data, not real signal.
+
+DESIGN NOTES:
+  • Two equal columns, each in a light-gray card with steel-blue top border
+  • Column titles bold steel-blue ("Strand 1 / Strand 2")
+  • "YEARLY" in the right column should be visually highlighted (bold + emerald)
+  • "forward-filled — mechanical" in parentheses in a muted amber
+  • Bottom amber callout spans full width, bold label "★ Honest benchmark note:"
+  • Use small pill-shaped tags for model names (RF, GBM, GRU, etc.)
+
+WHAT TO SAY (≈ 60 sec):
+"The project has two modelling strands.
+
+The first is a household income model on ILCS 2015. I trained five supervised
+regressors and used Bayesian optimization with Optuna to tune the top three.
+The best model — Gradient Boosting after tuning — achieves an R-squared of 0.36
+on the held-out test set. That's modest, but consistent with the literature on
+welfare proxies from single survey waves. The clearest finding from feature
+importance: households with diversified income sources are significantly richer.
+The single variable income_source_count explains more variance than any asset
+or housing quality variable.
+
+The second strand is regional time-series forecasting. I benchmarked four neural
+architectures against classical baselines at yearly, monthly, and daily
+granularity. But I want to be direct: the monthly and daily metrics look
+artificially good because I forward-filled annual values to create them. There
+is no genuine new information — just near-perfect autocorrelation by construction.
+The only honest benchmark is yearly.
+
+And on yearly data, a zero-parameter Lag-1 baseline — just predicting next year
+equals this year — beats every neural network. That's what seven data points
+buys you.
+
+The real test of all of this is the 2022 holdout backtest. I trained on 2016
+through 2021, sealed away 2022, and only looked at it once. That's coming next."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 4 — THE RESULT  [YOU SPEAK]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT:
+  Header: The 2022 Holdout Backtest — Trained on 2016–2021 Only
+
+  TOP — Summary Table:
+  ┌──────────────────┬──────────────────┬─────────────────┬──────────────────┐
+  │ Model            │ Regional MAE     │ National Error  │ Best at          │
+  ├──────────────────┼──────────────────┼─────────────────┼──────────────────┤
+  │ Lag-1            │  5.07 pp  ✓      │ 1.07 pp         │ Regional accuracy│
+  │ Ridge AR         │  8.72 pp         │ 1.11 pp         │ —                │
+  │ Ensemble (50/50) │  6.28 pp         │ 0.02 pp  ★      │ National accuracy│
+  └──────────────────┴──────────────────┴─────────────────┴──────────────────┘
+  ★ Ensemble = 50/50 average of Lag-1 + Ridge predictions
+
+  MIDDLE — Per-Region Error Table (condensed, 2 columns side by side):
+  LEFT:                                    RIGHT:
+  Region       Actual   Lag-1 err          Region       Actual   Lag-1 err
+  Yerevan      18.5%    2.60 pp            Gegharkunik  33.9%    15.20 pp
+  Shirak       41.6%    5.30 pp            Tavush       37.4%     0.80 pp  ✓
+  Ararat       23.8%    4.20 pp            Armavir      40.8%     2.90 pp
+  Lori         18.6%    3.20 pp            Aragatsotn    7.9%     5.60 pp
+  Kotayk       26.1%    2.50 pp            Vayots Dzor  15.7%    10.90 pp
+  Syunik        5.4%    2.60 pp
+  ──────────────────────────────────────────────────────────────────────────
+  Armenia (national)   24.3% actual → 24.28% predicted → Error: 0.02 pp ★
+
+  BOTTOM HIGHLIGHT BOX (emerald green, full width):
+    "Ensemble predicted Armenia's 2022 national poverty rate: 24.28%
+     ArmStat actual: 24.3%  →  Error: 0.02 percentage points
+     Directional biases cancel under population weighting."
+
+  VALIDATION PILLS:
+    [✓ Trained only on 2016–2021]   [✓ Tested on real ArmStat 2022 data]
+    [★ National error: 0.02 pp]     [➤ Live dashboard shows all 11 marzes]
+
+DESIGN NOTES:
+  • Summary table header row in light-blue, alternating pale-gray rows
+  • "5.07 pp" row cell in emerald background, "0.02 pp" cell in emerald background
+  • Per-region table in smaller font (12pt), two-column layout to save space
+  • Gegharkunik and Vayots Dzor rows in amber tint (hardest to predict)
+  • National row in info-blue background, bold
+  • Emerald callout box prominent at bottom — this is the headline number
+  • Pills as rounded rectangles, steel-blue outline
+
+WHAT TO SAY (≈ 60 sec):
+"Here is the primary result. Three models, trained exclusively on 2016 to 2021,
+evaluated against the actual 2022 poverty rates that ArmStat published.
+
+Lag-1 — the simplest possible model, no parameters whatsoever — achieves a
+regional MAE of 5.07 percentage points across all 11 marzes. That's the best
+regional accuracy. Ridge AR, which uses lag features and a stress index built
+from crime rates and hospital density, does worse regionally but compensates
+elsewhere. When you average them 50/50 into an Ensemble, something interesting
+happens at the national level: Lag-1 tends to over-predict recovering regions,
+Ridge tends to under-predict them, and those directional biases cancel under
+population weighting.
+
+The result: the Ensemble predicts Armenia's 2022 national poverty rate at 24.28%.
+The actual number published by ArmStat was 24.3%. That's a 0.02 percentage point
+error — effectively zero.
+
+Not every region is that clean — Gegharkunik and Vayots Dzor are hard to predict
+because of year-over-year swings that no model captures well with only seven
+data points. That's an honest limitation I document explicitly.
+
+I want to be clear that this result is not lucky. It's the product of a
+carefully designed validation setup: trained on one window, tested blind on
+another. The methodology is honest, not just the result.
+
+Now let me show you where all of this lives."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 5 — WEBSITE DEMO: REGIONAL EXPLORER  [SHOW WEBSITE]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT (minimal — website is the visual):
+  Title:   "Let's Explore the Data"
+  Subtitle: armenia-poverty.vercel.app
+  Small note: Regional Atlas → Trends → Rankings
+
+DESIGN NOTES:
+  • Dark-background slide (navy or very dark gray) with white text
+  • URL in large steel-blue pill / badge
+  • Three navigation steps shown as a simple arrow sequence
+  • No other text — all attention goes to the live screen
+
+DEMO CHECKLIST (your private guide — not on the slide):
+  1. Open: armenia-poverty.vercel.app
+  2. HOMEPAGE — point out the KPI tiles (5,184 households, 11 marzes)
+     and the "Review 2022 Validation" call-to-action
+  3. Click REGIONAL → select year 2022 on choropleth map
+     → hover over Shirak (41.6%), Armavir (40.8%), Yerevan (18.5%), Syunik (5.4%)
+     → "36 percentage point spread in a country the size of Maryland"
+  4. Click TRENDS → select Shirak, Syunik, Aragatsotn
+     → "Persistent high-poverty in the north, Aragatsotn had an anomalous 2019 spike"
+  5. Click RANKINGS → year 2022, show sorted bar chart
+
+WHAT TO SAY (≈ 60 sec):
+"This is the live dashboard at armenia-poverty.vercel.app.
+
+The homepage gives the key project anchors: 5,184 households analyzed,
+11 marzes covered, and the primary evidence page is validation — not the
+household model. That framing was a deliberate design choice.
+
+If I go to the Regional section, you can see a choropleth map of Armenia
+colored by poverty rate for 2022. [Hover over marzes.] Shirak in the north
+is at 41.6%. Armavir is at 40.8% — both persistently high. Yerevan, the
+capital, is at 18.5%. And Syunik in the south is just 5.4% — the lowest in
+the country. That's a 36 percentage point spread in a country roughly the
+size of Maryland.
+
+The Trends page [click it] lets you compare regions over time. Shirak has
+been persistently high since 2016. And Aragatsotn had a dramatic spike in
+2019 — that's not a data error, it's a real outlier, and it's the same anomaly
+that caused Ridge AR to struggle in 2021 predictions.
+
+The Rankings page shows the full sorted picture for a single year."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 6 — WEBSITE DEMO: HOUSEHOLD MODEL & FEATURE IMPORTANCE  [SHOW WEBSITE]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT (minimal):
+  Title:  "Household Income — What Predicts Poverty?"
+  Arrows: Models Leaderboard → Feature Importance
+
+DESIGN NOTES:
+  • Same dark-background style as Slide 5
+  • Two-step nav shown as pill sequence
+  • Nothing else — the website is the visual
+
+DEMO CHECKLIST:
+  1. Click MODELS in nav → show the leaderboard table
+     → point out GBM as winner (R²=0.36, MAE=82K AMD)
+     → mention the amber callout directing to Validation as the primary result
+     → Bayesian tuning improved GBM from 0.341 → 0.356 test R²
+  2. Click FEATURE IMPORTANCE → show grouped bar chart
+     → income_source_count is the clear top predictor (r=0.45, importance=0.32)
+     → "Number of distinct income streams a household reports"
+     → "Single pension or wage = most vulnerable"
+     → Point out has_car / has_computer appearing negatively correlated
+       because survey encodes them as 1=Yes, 2=No (higher code = no asset)
+       → the page explains this encoding trap explicitly
+
+WHAT TO SAY (≈ 45 sec):
+"Moving to the Models section. This table shows the five household income models
+from the ILCS 2015 survey. Gradient Boosting after Bayesian tuning is the winner
+at R-squared 0.36. The amber callout here explicitly redirects you to the
+Validation page — because R-squared on a cross-sectional survey is not the same
+as a forecast, and the application is designed to make that distinction clear.
+
+The more interesting result is Feature Importance. [Click it.] The strongest
+predictor of household income — by a clear margin across all five models — is
+income_source_count: how many different income sources does the household have?
+A family with wages plus remittances plus a small business is systematically
+richer than one relying on a single pension. Diversification as a buffer against
+poverty is directly visible in this data.
+
+There's also a methodological finding worth mentioning: car ownership and computer
+ownership appear negatively correlated with income in raw correlations, because the
+survey encodes them as 1=Yes, 2=No. Higher code means no asset. The dashboard
+explains this encoding trap explicitly — it's a good lesson in why you must know
+your data encoding before trusting a correlation."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 7 — WEBSITE DEMO: 2022 VALIDATION  [SHOW WEBSITE]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT (minimal):
+  Title:  "The Real Test — 2022 Holdout Validation"
+  Note:   Models page → Validation
+
+DESIGN NOTES:
+  • Dark background, minimal text, same style as slides 5–6
+  • Optional: small "TRAIN: 2016–2021  |  TEST: 2022" timeline bar graphic
+
+DEMO CHECKLIST:
+  1. Click VALIDATION in nav
+     → show 4 methodology tiles at top:
+       Training window: 2016–2021 · Test year: 2022 · Regions: 11 marzes · Models: 3
+  2. Point to KEY INSIGHT callout: "Lag-1 wins regionally, Ensemble wins nationally"
+  3. Scroll to MODEL PERFORMANCE SUMMARY table
+     → highlight "BEST REGIONAL" badge on Lag-1 (5.07 pp), "BEST NATIONAL" on Ensemble (0.02 pp)
+  4. Use the MODEL PILLS to switch bar chart: Lag-1 → Ridge → Ensemble
+     → "Watch how the bars shift — Ridge struggles on several marzes"
+  5. Scroll to ROLLING VALIDATION chart
+     → "Ridge had a terrible 2021 — 22.19 pp MAE — because Aragatsotn's anomalous
+        2019 value of 51.4% entered the lag-2 feature. That's the spike you see here."
+     → "By 2022, Ridge recovered, but the lesson is clear: outliers in small panels
+        propagate through lag features"
+  6. Scroll to HONEST ASSESSMENT callout at bottom
+     → "This is where I explicitly state the limitations — 7 points per region,
+        monthly data is interpolated, Gegharkunik and Vayots Dzor are structural
+        outliers this model cannot handle well"
+
+WHAT TO SAY (≈ 60 sec):
+"This is the Validation page — and this is the most important page in the
+entire application.
+
+At the top, four methodology tiles establish the setup: trained on 2016 through
+2021, tested against 2022. The key insight callout already tells you the
+punchline before you scroll.
+
+[Scroll to summary table.] You can see the 'BEST REGIONAL' and 'BEST NATIONAL'
+badges side by side. Lag-1 wins on regional accuracy at 5.07 percentage points.
+Ensemble wins on national accuracy at 0.02 percentage points.
+
+[Use model pills to switch bar chart.] Here you can see all 11 marzes, actual
+2022 versus predicted, switching between the three models. Lag-1 is remarkably
+close for most regions. Ridge struggles more — especially on Aragatsotn and
+Vayots Dzor.
+
+[Scroll to rolling validation.] This chart shows why. Aragatsotn had a real
+2019 poverty rate of 51.4% — way above its baseline of roughly 16%. When that
+value entered Ridge's lag-2 feature for 2021 predictions, it blew up the error
+across multiple marzes, giving Ridge a 22-point MAE that year. That's the spike.
+By 2022, Ridge recovered, but the lesson is clear: outliers in tiny panels
+propagate.
+
+[Scroll to bottom.] And here I state the honest structural limitations
+explicitly, rather than hiding them."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 8 — WEBSITE DEMO + CLOSING  [SHOW WEBSITE → THEN WRAP UP]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SLIDE CONTENT:
+  Title:  "What Comes Next — and What I Learned"
+
+  Key Takeaways (show after demo wraps up):
+    ✓ Simplest validated model beats neural networks when data is scarce
+      (7 pts/region — Lag-1 > GRU, BiLSTM, Transformer, TCN on yearly data)
+    ✓ Income diversification is the clearest poverty signal at household level
+      (income_source_count: r = 0.45, importance = 0.32 in GBM)
+    ✓ Ensemble achieves 0.02 pp national error on fully held-out 2022 data
+    ✓ Honest about limits: forward-filled monthly data ≠ real monthly signal
+    ➤ Full system: Python pipeline + PostgreSQL + Next.js + Vercel, publicly deployed
+
+  Future Work (compact):
+    • Extend panel as ArmStat releases new annual data
+    • Add scenario sliders (adjust crime/hospitals → see projected poverty impact)
+    • Bootstrap confidence intervals on 2023–2026 projections
+    • Multi-wave ILCS panel fixed-effects for household income change
+
+DESIGN NOTES:
+  • Two-section slide: left = "Key Takeaways" (emerald-left-border cards), right = "Future Work" (info-blue cards)
+  • Takeaways are 4 numbered checkmarks — large, readable
+  • Future Work is 4 bullets, smaller text
+  • This slide is revealed after the demo is done — keep it on screen during Q&A
+
+DEMO CHECKLIST (do first, then pivot to the verbal close):
+  1. Click FORECAST in nav → show /models/forecast (future projection page)
+  2. Use region dropdown to show Shirak, Gegharkunik, Syunik
+     → solid historical line (2016–2022), dashed forecast (2023–2026)
+     → "Shirak projected to decline slowly; Gegharkunik shows more variance"
+  3. Point to the callout linking back to Validation
+     → "Before you trust a projection, check how the same model did on 2022 data"
+  4. Close browser / go back to the slide for the verbal close
+
+WHAT TO SAY — DEMO PART (≈ 30 sec):
+"Finally, the Future Projection page shows the Ridge AR model rolled forward from
+2022 to 2026 for all 11 marzes. The solid segment is historical, the dashed is
+the forecast. You can switch regions with the dropdown. The page deliberately
+links back to the 2022 Validation page — if you want to trust a projection,
+you should first see how the model performed on real data."
+
+WHAT TO SAY — CLOSING (≈ 45 sec):
+"Let me close with what I think are the actual takeaways.
+
+First, model complexity does not help when you don't have data. Seven observations
+per region means Lag-1 beats GRU and Transformer every time on the honest annual
+benchmark. Knowing when to use a simple model is a skill.
+
+Second, income diversification is the single clearest poverty signal in the ILCS
+data. More income sources equals systematically higher household welfare —
+a finding with direct policy relevance for Armenia's social protection programs.
+
+Third, the validation number that matters — 0.02 percentage points national error
+on 2022, trained blind on 2016 through 2021 — is not luck. It's the product of
+a careful validation setup and an honest communication of what the numbers mean.
+
+The full system is publicly deployed. The data, code, and paper are all available.
+I'm happy to take questions."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIMING GUIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Slide 1 — Title                         30 sec   (speak)
+  Slide 2 — Problem & Data                60 sec   (speak)
+  Slide 3 — Approach                      60 sec   (speak)
+  Slide 4 — The Result                    60 sec   (speak)
+  Slide 5 — Regional Explorer DEMO        60 sec   (website)
+  Slide 6 — Household Model DEMO          45 sec   (website)
+  Slide 7 — Validation DEMO               60 sec   (website)
+  Slide 8 — Forecast DEMO + Closing       75 sec   (website → speak)
+  ─────────────────────────────────────────────────────────────────
+  TOTAL                                 ~7.5 min   (+ Q&A)
+
+  Target: 8–10 min total with Q&A.
+  If running long: cut the per-region table walkthrough on Slide 4.
+  If running short: slow down on Slide 7 — the rolling validation chart
+    is the most technically dense moment and rewards extra explanation.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ANTICIPATED Q&A — LIKELY QUESTIONS AND STRONG ANSWERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q1: "Your R² is only 0.36 on the household model. Isn't that quite low?"
+→  "Yes, and I say so explicitly. Single-wave cross-sectional surveys routinely
+    achieve R² in the 0.3–0.5 range for income prediction because unobserved
+    heterogeneity — family networks, informal income, luck — isn't in the data.
+    The value here isn't the absolute R²; it's identifying which features matter
+    (income_source_count is far ahead of the rest) and doing so with a rigorous
+    held-out test rather than just training performance."
+
+Q2: "Why not use more recent data — after 2022?"
+→  "ArmStat's regional poverty estimates for 2023 were not publicly available
+    at the time of data collection. The 2022 holdout is the most recent data
+    available, and using it as a test set rather than training data is the
+    methodological choice that gives the validation credibility. When 2023
+    data is released, the next step is automated ingestion and re-running
+    the validation script."
+
+Q3: "The neural networks performed worse than Lag-1. Was it worth building them?"
+→  "Yes, for two reasons. First, it confirms empirically — not just theoretically —
+    that complexity doesn't help when you have 7 data points per region. That
+    finding needed to be demonstrated, not assumed. Second, the monthly- and
+    daily-granularity experiments confirmed the implementation was correct:
+    the GRU hits near-perfect monthly R² as expected on interpolated data,
+    showing the pipeline works. The lesson — that inflated metrics on
+    forward-filled data are not evidence of better forecasting — is one of the
+    most practically important findings in the project."
+
+Q4: "What's the stress index and why did you use it?"
+→  "The stress index is a composite score built from crime rate per 100k,
+    hospitals per 100k, and population. It's a rough proxy for structural
+    socioeconomic pressure at the marz level. Ridge AR uses lag features of
+    both poverty rate and the stress index. The idea was that regions with
+    deteriorating infrastructure or rising crime might show poverty increases
+    that a pure lag on poverty alone would miss. In practice, the stress index
+    didn't help Ridge beat Lag-1 regionally, but it contributed to the ensemble
+    by pulling predictions in a different direction — which is why the national
+    error cancels so cleanly."
+
+Q5: "How did you recover the interview month from ILCS?"
+→  "The public-use file didn't expose interview month directly as a column.
+    I reverse-engineered it from the household ID structure and survey wave
+    documentation, which yielded exactly 432 households per month — a
+    perfectly balanced distribution that confirmed the recovery was correct.
+    Without this, seasonal income effects would have been an uncontrolled
+    confound in the household model."
+
+Q6: "What would you do with more data or more time?"
+→  "Three things. One: extend the ArmStat panel as new annual data is released —
+    each new year materially helps the neural models. Two: add bootstrap
+    confidence bands to the 2023–2026 projections so users can see the
+    uncertainty range, not just point forecasts. Three: build a scenario
+    slider interface where users can adjust macroeconomic inputs and see the
+    projected poverty impact — turning the dashboard from an analytics tool
+    into a policy simulation tool."
+
+Q7: "Is the 0.02 percentage point national error just good luck?"
+→  "No — and the rolling validation shows why. The ensemble's near-zero
+    national error comes from a structural property: Lag-1 systematically
+    over-predicts recovering regions, Ridge under-predicts them, and population
+    weighting causes those biases to cancel at the national level. This is
+    consistent across validation years, not a one-time coincidence. What the
+    rolling validation does show is year-to-year variance — the 2021 Ridge
+    spike to 22pp MAE is a reminder that no model is robust to structural
+    outliers in small panels."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI SLIDE CREATION PROMPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use the block below as a self-contained prompt for Gamma.app, Beautiful.ai,
+Google Slides AI, or any generative slide tool. Paste it as-is.
+
+────────────────────────────────────────────────────────────────────────
+Create an 8-slide academic presentation (16:9 widescreen) with this
+design system:
+- Colors: Navy #123456 (headings), Steel Blue #2C629E (accents/subheads),
+  Light Blue #D6E6F7 (table headers), Pale Gray #F6F7F9 (card backgrounds),
+  Emerald #04643E on #D5F4E6 (key findings), Amber #8C5000 on #FFF3CD (warnings)
+- Font: Clean sans-serif (Inter or similar), no decorative fonts
+- Style: White background, data-forward, no clip art, thin steel-blue rules
+  under headers. Footer on every slide: "Hovo Sukiasyan · AUA CS 296 · May 2026
+  | armenia-poverty.vercel.app"
+
+SLIDE 1 — TITLE
+Title: "Can We Predict Armenia's Poverty Rate Before the Data Arrives?"
+Subtitle: "Validated Regional Forecasting · CS 296 Capstone · AUA · May 2026"
+Author card: Hovo Sukiasyan | Advisor: Aleksandr Hayrapetyan | Program Chair: Hayk Nersisyan
+Bottom badge: "Live dashboard → armenia-poverty.vercel.app"
+
+SLIDE 2 — THE PROBLEM AND THE DATA
+Header: "The Problem and the Data"
+Left card (amber-tinted): "The Policy Gap"
+• Armenia: 1 poverty number per region, per year
+• By publication, the policy window is already closed
+• 11 marzes, 7 years (2016–2022) — structural limit
+• 7 observations per region is not enough for complex models
+Right card (info-blue): "Two Data Assets"
+① ILCS 2015 Household Survey: 5,184 households · 29 features after cleaning
+  Target: total household income (AMD) · Key recovery: interview month
+② ArmStat Regional Panel: 11 marzes · 7 annual obs. · poverty rate, crime rate,
+  hospitals per 100k, population · augmented to monthly for neural training
+
+SLIDE 3 — TWO-STRAND MODELLING PIPELINE
+Header: "Two-Strand Modelling Pipeline"
+Left column (pale gray card, steel-blue top border): "Strand 1: Household ML"
+• Models: Random Forest, Gradient Boosting, Extra Trees, Ridge, Lasso
+• Tuning: Bayesian optimization with Optuna (50 trials, 5-fold CV)
+• Split: 80% train / 20% test — held out once at the end
+• Best: GBM + Bayesian Opt → R² = 0.36, MAE = 82K AMD
+• Top feature: income_source_count (r = 0.45, importance = 0.32)
+Right column (pale gray card, steel-blue top border): "Strand 2: Regional Forecasting"
+• Classical: Lag-1 baseline, Ridge AR, ARIMA
+• Neural (PyTorch): GRU, BiLSTM, Transformer, TCN
+• YEARLY = honest benchmark (7 real data points per marz)
+• monthly/daily = forward-filled — mechanically inflated ⚠
+• Validation: strict 2022 holdout — trained 2016–2021 only
+Bottom amber callout: "★ Monthly R²=0.999 reflects interpolated data, not real signal.
+The 2022 holdout backtest is the only number that counts."
+
+SLIDE 4 — THE 2022 HOLDOUT BACKTEST
+Header: "The 2022 Holdout Backtest — Trained on 2016–2021 Only"
+Table 1 (summary, 4 columns):
+Model | Regional MAE | National Error | Best at
+Lag-1 | 5.07 pp ✓ [emerald] | 1.07 pp | Regional accuracy
+Ridge AR | 8.72 pp | 1.11 pp | —
+Ensemble (50/50) | 6.28 pp | 0.02 pp ★ [emerald] | National accuracy
+Table 2 (per-region, small, two-column layout):
+Left: Yerevan 18.5% err=2.60 | Shirak 41.6% err=5.30 | Ararat 23.8% err=4.20 |
+      Lori 18.6% err=3.20 | Kotayk 26.1% err=2.50 | Syunik 5.4% err=2.60
+Right: Gegharkunik 33.9% err=15.20 [amber] | Tavush 37.4% err=0.80 | Armavir 40.8% err=2.90 |
+       Aragatsotn 7.9% err=5.60 | Vayots Dzor 15.7% err=10.90 [amber]
+National row: Armenia actual 24.3% → Ensemble predicted 24.28% → Error: 0.02 pp
+Emerald callout: "Ensemble predicted 24.28%. ArmStat actual: 24.3%. Error: 0.02 pp.
+Directional biases cancel under population weighting."
+4 pills: [✓ Trained on 2016–2021] [✓ Real ArmStat 2022 data] [★ 0.02 pp national error] [➤ Live dashboard: all 11 marzes]
+
+SLIDE 5 — REGIONAL DEMO (dark background)
+Title: "Let's Explore the Data"
+URL badge: armenia-poverty.vercel.app
+Navigation flow: Homepage → Regional → Trends → Rankings
+Small note below nav: "Choropleth map · Shirak 41.6% · Syunik 5.4% · 36 pp spread"
+
+SLIDE 6 — HOUSEHOLD MODEL DEMO (dark background)
+Title: "Household Income — What Predicts Poverty?"
+Navigation flow: Models → Feature Importance
+Key finding: "income_source_count: top predictor (r=0.45) across all 5 models"
+Note: "has_car / has_computer encoded 1=Yes 2=No — inverted correlation explained on page"
+
+SLIDE 7 — VALIDATION DEMO (dark background)
+Title: "The Real Test — 2022 Holdout Validation"
+Navigation flow: Models → Validation
+Two-point note:
+• "Rolling validation spike 2021: Ridge 22pp MAE ← Aragatsotn 51.4% anomaly entering lag-2"
+• "Honest assessment section explicitly states structural limitations"
+
+SLIDE 8 — FORECAST DEMO + CLOSING (white background)
+Title: "What Comes Next — and What I Learned"
+Left section header: "Key Takeaways" (emerald-left-border cards)
+① Simplest model beats neural nets when data is scarce (7 pts/region)
+② Income diversification > assets as poverty predictor (income_source_count)
+③ Ensemble: 0.02 pp national error on fully held-out 2022 data
+④ Honest about limits: monthly forward-fill ≠ real monthly signal
+→ Full system: Python + PostgreSQL + Next.js + Vercel, publicly deployed
+
+Right section header: "Future Work" (info-blue bullets)
+• Extend panel as ArmStat releases new annual data
+• Scenario sliders: adjust macroeconomic inputs → see projected poverty
+• Bootstrap confidence bands on 2023–2026 projections
+• Multi-wave ILCS panel fixed-effects model
+────────────────────────────────────────────────────────────────────────
+
+
+===========================================================================
+END OF FILE
+===========================================================================

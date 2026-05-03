@@ -37,26 +37,50 @@ GROUP B — From the Bayesian optimization notebook (2 files)
 ───────────────────────────────────────────────────────────────────────────
 
   File:     notebooks/ilcs_ml_bayesian_optimized.ipynb
-  How to:   Open in Jupyter, run all cells, then export each plot below.
-            Right-click the figure → Save Image As, or use plt.savefig().
+  How to:   Open in Jupyter, run ALL cells top-to-bottom first.
+            The plots are saved automatically via plt.savefig — no manual export needed.
+            Files land in:  data/ilcs/research/bayesian_opt/
 
   optuna-gb-history.png
   ──────────────────────
-  What:   Optuna trial history plot for the GBM study.
-          X-axis = trial number (0–49), Y-axis = CV R² score.
-  Where:  Look for the cell that calls optuna.visualization.plot_optimization_history()
-          or a manual plt scatter of trial values.
-  Export: plt.savefig('optuna-gb-history.png', dpi=150, bbox_inches='tight')
+  Status:   ALREADY GENERATED — saved at data/ilcs/research/bayesian_opt/optuna-gb-history.png
+  Cell:     The cell inserted after "## 3. Gradient Boosting" (cell id: 3ffecf9f).
+            It is the scatter + line chart titled
+            "Optuna GBM — Optimization History (50 trials)".
+  What you see in the output:
+    - Green dots (50 of them) scattered between CV R² ≈ 0.34 and 0.45
+    - A black "Best so far" line that rises steeply in trials 0–12, then plateaus at ≈ 0.451
+    - X-axis: Trial (0–49), Y-axis: CV R² (≈ 0.34–0.46)
+  Action:   Copy data/ilcs/research/bayesian_opt/optuna-gb-history.png
+            → final_paper/figures/optuna-gb-history.png
 
   gbm-residual-vs-actual.png
   ───────────────────────────
-  What:   Predicted vs actual household income for the tuned GBM.
-          Log-log scale recommended (income spans 4 orders of magnitude).
-          X-axis = actual income (AMD, log scale)
-          Y-axis = predicted income (AMD, log scale)
-          Ideal: include a y=x reference line.
-  Where:  The cell after the final GBM evaluation block.
-  Export: plt.savefig('gbm-residual-vs-actual.png', dpi=150, bbox_inches='tight')
+  Cell:     "## 6. Predicted vs Actual + Residual plots (per model)" block (cell-12).
+            It loops over all three models. The GBM panel is the second figure produced.
+            Look for the figure titled "GBM (Bayesian Optimized) — R²=0.3690".
+  What you see in that figure (it has 3 subplots, you want ONLY the first subplot):
+    - Left subplot: "Predicted vs Actual"
+      X-axis: Predicted Income (AMD, log scale)
+      Y-axis: Actual Income (AMD, log scale)
+      Dark-green dots scattered around a red dashed y=x line
+  How to save ONLY that subplot:
+    Add a new cell and run:
+      fig_gbm, ax_gbm = plt.subplots(figsize=(6, 5))
+      y_pred_gbm = BEST_MODELS['GBM'].predict(X_test_s)
+      ax_gbm.scatter(y_pred_gbm, y_test.values, alpha=0.3, s=8, color='darkgreen')
+      mn, mx = min(y_pred_gbm.min(), y_test.min()), max(y_pred_gbm.max(), y_test.max())
+      ax_gbm.plot([mn, mx], [mn, mx], 'r--', lw=1.5, label='Perfect fit')
+      ax_gbm.set_xscale('log'); ax_gbm.set_yscale('log')
+      ax_gbm.set_xlabel('Predicted Income (AMD, log scale)')
+      ax_gbm.set_ylabel('Actual Income (AMD, log scale)')
+      ax_gbm.set_title(f"GBM — Predicted vs Actual (R²={MODEL_METRICS['GBM']['R2']:.4f})")
+      ax_gbm.legend()
+      plt.tight_layout()
+      plt.savefig(OUT_DIR / 'gbm-residual-vs-actual.png', dpi=150, bbox_inches='tight')
+      plt.show()
+  Action:   Copy data/ilcs/research/bayesian_opt/gbm-residual-vs-actual.png
+            → final_paper/figures/gbm-residual-vs-actual.png
 
 
 ───────────────────────────────────────────────────────────────────────────
@@ -67,87 +91,182 @@ GROUP C — From the live website (15 files)
 
   ui-homepage.png
     URL:   /
-    What:  Hero section + 4 KPI tiles + navigation cards.
-    Note:  Include the full above-the-fold view in one screenshot.
+    Scroll: Do NOT scroll — capture exactly what loads at the top of the page.
+    Must be visible in frame:
+      - Full navbar at the top
+      - Hero headline ("Armenia Poverty Intelligence Platform" or similar)
+      - All 4 KPI tiles in one row (National Poverty Rate, Households, etc.)
+      - The row of navigation cards below the KPIs (Regional, Models, Forecast, etc.)
+    Browser width: 1440 px so all 4 KPI tiles fit in one row without wrapping.
+    Wait for: KPI numbers to load (they come from the API — give it 2–3 seconds).
 
   ── REGIONAL SECTION ────────────────────────────────────────────────────
 
   ui-regional-choropleth.png
     URL:   /regional
-    What:  Armenia choropleth map colored by poverty rate.
-    Set:   Year selector → 2022 before capturing.
-    Note:  Hover over Shirak or Armavir so a tooltip is visible (optional but nice).
+    Scroll: Do NOT scroll — capture the map as it appears above the fold.
+    Before capturing:
+      1. Set Year selector → 2022
+      2. Hover your mouse over Shirak (northwest, darkest region) so the tooltip
+         showing its poverty rate is visible
+    Must be visible in frame:
+      - The full Armenia map with all 11 marzes colored (dark = high poverty)
+      - The year selector showing "2022"
+      - The tooltip over Shirak (name + poverty %)
+      - The color legend/scale on the side of the map
 
   ui-regional-trends.png
     URL:   /regional/trends
-    What:  Multi-marz poverty rate time series (2016–2022).
-    Set:   Select at least 3–4 marzes (e.g. Shirak, Yerevan, Syunik, Aragatsotn)
-           so the chart shows diverging lines and the 2019 Aragatsotn spike.
+    Scroll: Do NOT scroll — the chart should be fully visible above the fold.
+    Before capturing:
+      1. Select these 4 marzes: Shirak, Yerevan, Syunik, Aragatsotn
+         (deselect all others if they are on by default)
+    Must be visible in frame:
+      - The line chart spanning 2016–2022 on the X-axis
+      - 4 distinct colored lines — especially the Aragatsotn spike around 2019
+      - The legend identifying each marz by color
+      - Y-axis showing poverty rate (%) values
 
   ui-regional-rankings.png
     URL:   /regional/ranking
-    What:  Sorted horizontal bar chart of all 11 marzes.
-    Set:   Year → 2022 before capturing.
+    Scroll: Do NOT scroll — all 11 bars should fit in one view.
+    Before capturing:
+      1. Set Year → 2022
+    Must be visible in frame:
+      - All 11 marz bars sorted from highest to lowest poverty rate
+      - Marz names on the Y-axis (left side)
+      - Poverty rate values on the X-axis or as bar labels
+      - The year selector showing "2022"
 
   ── HOUSEHOLD MODEL SECTION ─────────────────────────────────────────────
 
   ui-models-income.png
     URL:   /models
-    What:  Model leaderboard table (R², MAE, RMSE for all 5 models)
-           + amber callout at top directing to 2022 Validation.
-    Note:  Make sure the "BEST" badge on GBM is visible.
+    Scroll: Do NOT scroll — capture everything visible above the fold.
+    Must be visible in frame:
+      - The amber/yellow callout banner at the top of the page
+      - The full model leaderboard table with all 5 model rows
+        (columns: Model, R², MAE, RMSE)
+      - The "BEST" badge highlighted on the GBM row
+    Wait for: table data to fully load before capturing.
 
   household-feature-importance.png   ←── SAME SCREENSHOT as ui-feature-importance.png
   ui-feature-importance.png          ←── SAME SCREENSHOT (save as two filenames)
     URL:   /models/importance
-    What:  Grouped bar chart of normalized feature importance for all 5 models.
-           income_source_count should be visually at the top.
-    Note:  Take ONE screenshot, save it under BOTH filenames above.
-           The LaTeX paper uses each in a different section.
+    Scroll: Do NOT scroll — the full chart should be visible above the fold.
+    Must be visible in frame:
+      - The grouped horizontal bar chart showing all features
+      - household_income_source_count (or similar) at the TOP of the Y-axis
+        as the most important feature
+      - All 5 model groups color-coded with a visible legend
+      - Feature names on the Y-axis fully readable (don't cut off left side)
+    Note:  Take ONE screenshot, save under BOTH filenames:
+             final_paper/figures/household-feature-importance.png
+             final_paper/figures/ui-feature-importance.png
 
   ui-forecasting-diagnostics.png
+  ts-nn-vs-classical-r2.png          ←── SAME SCREENSHOT (save as two filenames)
     URL:   /models/forecasting
-    What:  Time-series diagnostics tables (R², MAE).
-    Set:   Capture with the "Classical TS (ARIMA)" tab active — OR —
-           stitch "Classical TS" + "Advanced NNs" tabs side by side.
-    Note:  Make sure poverty_rate rows are visible.
-
-  ts-nn-vs-classical-r2.png          ←── SAME SCREENSHOT as ui-forecasting-diagnostics.png
-    Same page, same capture.
-    Save as a second filename: ts-nn-vs-classical-r2.png
-    (Or stitch both tabs into one wider image for a cleaner figure.)
+    Before capturing:
+      1. Click the "Classical TS (ARIMA)" tab — exact label on the tab bar
+    Scroll: Scroll down just enough so the blue callout + full table fit in frame.
+    Must be visible in frame:
+      - Blue callout at the top: "This page shows model benchmarking... 2022 Validation page"
+      - The tab bar with "Classical TS (ARIMA)" visibly selected (dark pill)
+        — other tabs (Poverty Forecasting, Advanced NNs, etc.) visible but not selected
+      - Amber per-tab callout below the tabs (explains interpolation caveats)
+      - The metrics table: Model column + R² + MAE columns, all rows visible
+    Note:  Take ONE screenshot, save under BOTH filenames:
+             final_paper/figures/ui-forecasting-diagnostics.png
+             final_paper/figures/ts-nn-vs-classical-r2.png
 
   ── VALIDATION SECTION ──────────────────────────────────────────────────
 
   ui-validation-overview.png
     URL:   /models/validation
-    What:  TOP of the page: 4 methodology tiles + key insight callout
-           + model performance summary table with BEST REGIONAL / BEST NATIONAL badges.
-    Note:  Do NOT scroll down — capture just the upper portion.
+    Scroll: Do NOT scroll — capture exactly what is visible when the page first loads.
+    Must be visible in frame:
+      - Page header: "2022 Forecast Validation" title + subtitle mentioning GRU / R²=0.9999
+      - Blue "Methodology" box with 4 tiles:
+          "Training window: 2016–2020" · "Validation: 2021 (early stop)"
+          "Test year: 2022 (held-out)"  · "Best model: GRU · R²=0.9999"
+      - Green "Key insight" box with:
+          headline "GRU trained on 2016–2021 predicts 2022 with near-perfect accuracy"
+          + 4 stat tiles: R²=0.9999 · RMSE=0.14 pp · MAE=0.10 pp · 517 test points
+    Stop here — do NOT include the GRU chart/scatter section below the green box.
 
-  ui-validation-barchart.png
-  validation-2022-actual-vs-predicted.png   ←── SAME SCREENSHOT (save as two filenames)
-    URL:   /models/validation  (scroll down to bar chart section)
-    What:  Actual vs predicted bar chart for all 11 marzes.
-    Set:   Click the "Lag-1" model pill before capturing.
-    Note:  Take ONE screenshot, save under BOTH filenames above.
+  validation-2022-actual-vs-predicted.png
+  ────────────────────────────────────────
+  Source:  data/processed/results/forecast_validation_2022.csv  (NOT the website)
+  How to:  Run this Python snippet in a notebook or script:
 
-  ui-validation-rolling.png
-  rolling-validation-mae.png                ←── SAME SCREENSHOT (save as two filenames)
-    URL:   /models/validation  (scroll further down to rolling MAE chart)
-    What:  Line chart of regional MAE for Lag-1 vs Ridge AR (2020, 2021, 2022).
-           Should show the Ridge 2021 spike clearly.
-    Note:  Take ONE screenshot, save under BOTH filenames above.
+    import pandas as pd, matplotlib.pyplot as plt, numpy as np
+    df = pd.read_csv('../data/processed/results/forecast_validation_2022.csv')
+    lag1 = df[(df['model'] == 'Lag-1 Baseline') & (df['target'] == 'poverty_rate')]
+    lag1 = lag1.sort_values('marz')
+    x = np.arange(len(lag1))
+    w = 0.35
+    fig, ax = plt.subplots(figsize=(12, 5))
+    ax.bar(x - w/2, lag1['actual_2022'],   w, label='Actual 2022',    color='steelblue')
+    ax.bar(x + w/2, lag1['predicted_2022'], w, label='Lag-1 Predicted', color='coral')
+    ax.set_xticks(x); ax.set_xticklabels(lag1['marz'], rotation=30, ha='right')
+    ax.set_ylabel('Poverty Rate (%)'); ax.set_title('2022 Actual vs Predicted — Lag-1 Baseline (all 11 marzes)')
+    ax.legend(); plt.tight_layout()
+    plt.savefig('../final_paper/figures/validation-2022-actual-vs-predicted.png', dpi=150, bbox_inches='tight')
+    plt.show()
+
+  Must be visible in output:
+    - All 11 marzes on X-axis
+    - Two bars per marz (blue = actual, coral = predicted)
+    - Aragatsotn should show the largest gap (~5.6 pp)
+  Note:  ui-validation-barchart.png IS THE SAME FILE — copy/rename after saving:
+           cp final_paper/figures/validation-2022-actual-vs-predicted.png \
+              final_paper/figures/ui-validation-barchart.png
+
+  rolling-validation-mae.png
+  ui-validation-rolling.png   ←── SAME FILE (copy after saving)
+  ────────────────────────────
+  Source:  data/processed/results/forecast_rolling_validation.csv  (NOT the website)
+  How to:  Run this Python snippet:
+
+    import pandas as pd, matplotlib.pyplot as plt
+    df = pd.read_csv('../data/processed/results/forecast_rolling_validation.csv')
+    pr = df[df['target'] == 'poverty_rate']
+    mae = pr.groupby(['model', 'test_year'])['absolute_error'].mean().reset_index()
+    fig, ax = plt.subplots(figsize=(8, 4))
+    for model, grp in mae.groupby('model'):
+        ax.plot(grp['test_year'], grp['absolute_error'], marker='o', label=model)
+    ax.set_xlabel('Holdout Year'); ax.set_ylabel('Mean Absolute Error (pp)')
+    ax.set_title('Rolling Validation MAE — Lag-1 vs Ridge AR (poverty rate, 11 marzes)')
+    ax.set_xticks([2020, 2021, 2022]); ax.legend(); plt.tight_layout()
+    plt.savefig('../final_paper/figures/rolling-validation-mae.png', dpi=150, bbox_inches='tight')
+    plt.show()
+
+  Must be visible in output:
+    - X-axis: 2020, 2021, 2022
+    - Two lines (Lag-1 Baseline and Ridge AR)
+    - Ridge AR line spikes sharply upward at 2021
+  Note:  ui-validation-rolling.png IS THE SAME FILE — copy/rename after saving:
+           cp final_paper/figures/rolling-validation-mae.png \
+              final_paper/figures/ui-validation-rolling.png
 
   ── FORECAST SECTION ────────────────────────────────────────────────────
 
   future-projection-poverty.png
     URL:   /models/forecast
-    What:  Regional poverty trajectory: solid historical (2016–2022) line
-           + dashed projected (2023–2026) line, separated by a vertical marker.
-    Set:   Pick a visually interesting region from the dropdown
-           (e.g. Shirak or Gegharkunik — they have the most movement).
-    Note:  The dashed segment and the vertical reference line should both be visible.
+    Scroll: Do NOT scroll — the chart should be fully visible above the fold.
+    Before capturing:
+      1. Open the region dropdown and select "Shirak"
+         (it has the most dramatic movement and clearest visual story)
+      2. Wait for the chart to fully render
+    Must be visible in frame:
+      - A single continuous chart line from 2016 through 2026
+      - The LEFT portion (2016–2022): solid line = historical data
+      - The RIGHT portion (2023–2026): dashed line = projected forecast
+      - A vertical reference line or marker separating historical from projected
+      - The region name "Shirak" visible in the title or dropdown
+      - Y-axis: poverty rate (%), X-axis: years 2016–2026
+    Critical: both the solid segment AND the dashed segment must be clearly visible.
 
 
 ───────────────────────────────────────────────────────────────────────────
@@ -155,19 +274,20 @@ SUMMARY COUNT
 ───────────────────────────────────────────────────────────────────────────
 
   Total filenames needed by LaTeX:   18
-  Unique screenshots/exports needed: 13   (5 filenames are reused/duplicated)
+  Unique captures/exports needed:    13   (5 filenames are reused/duplicated)
 
   Duplicated pairs (one capture → two filenames):
-    household-feature-importance.png  =  ui-feature-importance.png
-    ts-nn-vs-classical-r2.png         =  ui-forecasting-diagnostics.png
-    ui-validation-barchart.png        =  validation-2022-actual-vs-predicted.png
-    ui-validation-rolling.png         =  rolling-validation-mae.png
-    (architecture-overview.pdf is the only non-screenshot)
+    household-feature-importance.png  =  ui-feature-importance.png      (website screenshot)
+    ts-nn-vs-classical-r2.png         =  ui-forecasting-diagnostics.png  (website screenshot)
+    ui-validation-barchart.png        =  validation-2022-actual-vs-predicted.png  (Python plot from CSV)
+    ui-validation-rolling.png         =  rolling-validation-mae.png               (Python plot from CSV)
+    (architecture-overview.pdf is the only hand-drawn diagram)
 
   Breakdown:
     1  diagram (draw yourself)
-    2  notebook exports
-    10 unique website screenshots
+    2  notebook exports  (optuna-gb-history.png — DONE; gbm-residual-vs-actual.png)
+    2  Python plots from CSV  (validation bar chart; rolling MAE)
+    8  unique website screenshots
     ──
     13 unique captures → 18 files placed in final_paper/figures/
 

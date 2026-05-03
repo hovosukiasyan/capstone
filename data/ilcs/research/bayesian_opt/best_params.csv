@@ -1,0 +1,8 @@
+,RF,GBM,ExtraTrees
+n_estimators,290.0,372,202.0
+max_depth,18.0,7,23.0
+min_samples_split,4.0,11,14.0
+min_samples_leaf,3.0,6,2.0
+max_features,0.7,sqrt,0.5
+learning_rate,,0.022460169207691574,
+subsample,,0.9103728065338949,
