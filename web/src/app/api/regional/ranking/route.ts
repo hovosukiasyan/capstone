@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRegionalRanking } from '@/lib/db';
+import { getRegionalRanking } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.14)  2 MAY 2026 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.14)  2 MAY 2026 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -384,7 +384,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@cols=\count323
 \TX@ftn=\toks31
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 146.
+Package hyperref Info: Option `colorlinks' set `true' on input line 150.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
 ef
@@ -393,24 +393,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (./capstone_report.aux)
 \openout1 = `capstone_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -446,7 +446,7 @@ LaTeX Font Info:    ... okay on input line 149.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 149.
+Package hyperref Info: Link coloring ON on input line 156.
 (./capstone_report.out) (./capstone_report.out)
 \@outlinefile=\write3
 \openout3 = `capstone_report.out'.
@@ -478,6 +478,11 @@ e
 )) [1
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (0.79596pt too wide) in paragraph at lines 250--253
+\OT1/cmr/m/n/10.95 dash-board. This doc-u-ment is the project's pri-mary tech-n
+i-cal ref-er-ence on data, method-
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -490,7 +495,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.244 \newpage
+l.255 \newpage
                [1
 
 ] (./capstone_report.toc
@@ -514,6 +519,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [3]
+Overfull \hbox (1.12244pt too wide) in paragraph at lines 280--288
+[]\OT1/cmr/m/n/12 The re-search find-ings and fore-casts are ex-posed through a
+ Next.js web ap-pli-ca-tion ([][]$\OT1/cmtt/m/n/12 https :
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -546,6 +556,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [7]
+<figures/architecture-overview.pdf, id=334, 602.55112pt x 192.52728pt>
+File: figures/architecture-overview.pdf Graphic file (type pdf)
+<use figures/architecture-overview.pdf>
+Package pdftex.def Info: figures/architecture-overview.pdf  used on input line 
+457.
+(pdftex.def)             Requested size: 432.17375pt x 138.09073pt.
+
+Underfull \hbox (badness 1178) in paragraph at lines 457--457
+[]\OT1/cmr/m/n/12 Figure 1: []High-level sys-tem ar-chi-tec-ture: data pipeline
+, Post-greSQL/CSV stor-age,
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 457--457
+\OT1/cmr/m/n/12 and Next.js web ap-pli-ca-tion. \OT1/cmr/m/it/12 Not a sin-gle 
+app screen\OT1/cmr/m/n/12 ---author di-a-gram (draw in
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -558,8 +586,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.481   \item \textbf
-                     {statsmodels} --- ARIMA fitting and ACF/PACF analysis.]
+l.489   \item \textbf
+                     {Optuna} --- Bayesian hyperparameter optimization using <.
+/figures/architecture-overview.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -568,14 +597,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [9]
-Overfull \hbox (83.61943pt too wide) in paragraph at lines 520--522
+Overfull \hbox (83.61943pt too wide) in paragraph at lines 532--534
 []\OT1/cmr/bx/n/12 Consumption ex-pen-di-tures: \OT1/cmtt/m/n/12 food[]purchase
 s[]total\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 services[]goods[]total\OT1/cmr/m/n/1
 2 , \OT1/cmtt/m/n/12 goods[]services[]total 
  []
 
 
-Overfull \hbox (11.1609pt too wide) in paragraph at lines 525--528
+Overfull \hbox (11.1609pt too wide) in paragraph at lines 537--540
 []\OT1/cmr/bx/n/12 Asset and hous-ing: \OT1/cmtt/m/n/12 household[]has[]car\OT1
 /cmr/m/n/12 , \OT1/cmtt/m/n/12 has[]computer\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 
 dwelling[]condition[]estimate\OT1/cmr/m/n/12 ,
@@ -601,7 +630,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.613 
+l.625 
       ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -611,13 +640,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [12]
-Overfull \hbox (31.76942pt too wide) in paragraph at lines 622--626
+Overfull \hbox (31.76942pt too wide) in paragraph at lines 635--639
 |  \OT1/cmr/m/n/12 Five su-per-vised re-gres-sion mod-els are trained on ILCS 2
 015 to pre-dict \OT1/cmtt/m/n/12 household[]income[]total\OT1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (50.21928pt too wide) in paragraph at lines 654--660
+Overfull \hbox (50.21928pt too wide) in paragraph at lines 667--673
 |  \OT1/cmr/m/n/12 Fea-ture im-por-tance rank-ings are con-sis-tent across all 
 five mod-els. \OT1/cmtt/m/n/12 household[]income[]source[]count
  []
@@ -634,8 +663,32 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.680 
+l.693 
       ]
+<figures/household-feature-importance.png, id=430, 765.6103pt x 419.61769pt>
+File: figures/household-feature-importance.png Graphic file (type png)
+<use figures/household-feature-importance.png>
+Package pdftex.def Info: figures/household-feature-importance.png  used on inpu
+t line 694.
+(pdftex.def)             Requested size: 432.17375pt x 236.86673pt.
+<figures/optuna-gb-history.png, id=435, 508.60013pt x 291.79013pt>
+File: figures/optuna-gb-history.png Graphic file (type png)
+<use figures/optuna-gb-history.png>
+Package pdftex.def Info: figures/optuna-gb-history.png  used on input line 728.
+
+(pdftex.def)             Requested size: 432.17375pt x 247.94263pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 728--728
+[]\OT1/cmr/m/n/12 Figure 3: []Optuna op-ti-miza-tion his-tory: CV R$[]$ across 
+tri-als for GBM.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 728--728
+\OT1/cmr/bx/n/12 Not on the web app\OT1/cmr/m/n/12 ---export from the Bayesian 
+op-ti-miza-tion note-book
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -648,20 +701,21 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.718 
+l.729 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.718 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.718 
-      ]
+l.729 
+       <./figures/household-feature-importance.png>]
+<figures/gbm-residual-vs-actual.png, id=446, 365.86688pt x 371.73882pt>
+File: figures/gbm-residual-vs-actual.png Graphic file (type png)
+<use figures/gbm-residual-vs-actual.png>
+Package pdftex.def Info: figures/gbm-residual-vs-actual.png  used on input line
+ 730.
+(pdftex.def)             Requested size: 432.17375pt x 439.13579pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -670,18 +724,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.799 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.799 
-      ]
+l.731 
+       <./figures/optuna-gb-history.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -690,20 +738,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [16
-pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.814   \item \textbf
-                     {Ensemble} --- 50/50 average of Lag-1 and Ridge predict...
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.814   \item \textbf
-                     {Ensemble} --- 50/50 average of Lag-1 and Ridge predict...
-]
+l.764 
+       <./figures/gbm-residual-vs-actual.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -712,19 +752,114 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [17
+pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.812 
+      ]
+<figures/ts-nn-vs-classical-r2.png, id=468, 520.344pt x 336.95888pt>
+File: figures/ts-nn-vs-classical-r2.png Graphic file (type png)
+<use figures/ts-nn-vs-classical-r2.png>
+Package pdftex.def Info: figures/ts-nn-vs-classical-r2.png  used on input line 
+813.
+(pdftex.def)             Requested size: 432.17375pt x 279.87631pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[18
+pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.814 
+      ]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[19
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.854 
+       <./figures/ts-nn-vs-classical-r2.png>]
+<figures/validation-2022-actual-vs-predicted.png, id=483, 719.0865pt x 383.9343
+7pt>
+File: figures/validation-2022-actual-vs-predicted.png Graphic file (type png)
+<use figures/validation-2022-actual-vs-predicted.png>
+Package pdftex.def Info: figures/validation-2022-actual-vs-predicted.png  used 
+on input line 893.
+(pdftex.def)             Requested size: 432.17375pt x 230.74904pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{table.6}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.879 
+l.894 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.7}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.879 
+l.894 
       ]
-Overfull \hbox (9.40038pt too wide) in paragraph at lines 911--919
+<figures/rolling-validation-mae.png, id=493, 555.12393pt x 318.43968pt>
+File: figures/rolling-validation-mae.png Graphic file (type png)
+<use figures/rolling-validation-mae.png>
+Package pdftex.def Info: figures/rolling-validation-mae.png  used on input line
+ 920.
+(pdftex.def)             Requested size: 432.17375pt x 247.92035pt.
+
+Underfull \hbox (badness 2662) in paragraph at lines 920--920
+[]\OT1/cmr/m/n/12 Figure 7: []Rolling val-i-da-tion: re-gional MAE for Lag-1 vs
+. Ridge AR (poverty
+ []
+
+
+Underfull \hbox (badness 3657) in paragraph at lines 920--920
+\OT1/cmr/m/n/12 rate). \OT1/cmr/bx/n/12 Cap-ture from \OT1/cmtt/m/n/12 /models/
+validation \OT1/cmr/m/n/12 (rolling sec-tion). Same data as
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[21
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.921 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.921 
+       <./figures/validation-2022-actual-vs-predicted.png>]
+Overfull \hbox (9.40038pt too wide) in paragraph at lines 924--932
 |  \OT1/cmr/m/n/12 As an ad-di-tional ex-per-i-ment, a GRU model trained on the
  daily-granularity panel ($\OT1/cmtt/m/n/12 scripts /
  []
@@ -736,83 +871,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[18
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.919 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.919 
-      
+[22
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.919 
-      ]
+l.933 \newpage
+               <./figures/rolling-validation-mae.png>]
+<figures/ui-homepage.png, id=511, 1445.4pt x 2208.25pt>
+File: figures/ui-homepage.png Graphic file (type png)
+<use figures/ui-homepage.png>
+Package pdftex.def Info: figures/ui-homepage.png  used on input line 957.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[19]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[20
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.961 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.961 
-      ]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[21
-pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.989 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.989 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.989 
-      ]
-Overfull \hbox (3.63756pt too wide) in paragraph at lines 1004--1011
-\OT1/cmtt/m/n/12 validation _ 2022 . csv$\OT1/cmr/m/n/12 ) and $\OT1/cmtt/m/n/1
-2 /api / models / rolling-[]validation$ \OT1/cmr/m/n/12 (reads $\OT1/cmtt/m/n/1
-2 forecast _ rolling _
+Underfull \hbox (badness 10000) in paragraph at lines 957--957
+[]\OT1/cmr/m/n/12 Figure 8: []Homepage (hero, KPI tiles, nav-i-ga-tion). Screen
+-shot: \OT1/cmtt/m/n/12 / \OT1/cmr/m/n/12 on
  []
 
 
@@ -822,35 +896,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[22
-pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1019   \item \textbf
-                      {Model Performance Summary} --- three-model table with...
+[23]
+Overfull \vbox (65.94778pt too high) has occurred while \output is active []
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1019   \item \textbf
-                      {Model Performance Summary} --- three-model table with...
-]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[23
-pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1038 
-       ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -859,18 +908,288 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [24
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.958 
+       <./figures/ui-homepage.png (PNG copy)>]
+<figures/ui-regional-choropleth.png, id=524, 1445.4pt x 2208.25pt>
+File: figures/ui-regional-choropleth.png Graphic file (type png)
+<use figures/ui-regional-choropleth.png>
+Package pdftex.def Info: figures/ui-regional-choropleth.png  used on input line
+ 971.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+Underfull \hbox (badness 6927) in paragraph at lines 971--971
+[]\OT1/cmr/m/n/12 Figure 9: []Regional choro-pleth (poverty rate). Screen-shot:
+ \OT1/cmtt/m/n/12 /regional \OT1/cmr/m/n/12 on
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[25]
+Overfull \vbox (65.94778pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[26
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.972 
+       <./figures/ui-regional-choropleth.png (PNG copy)>]
+<figures/ui-regional-trends.png, id=536, 1445.4pt x 2208.25pt>
+File: figures/ui-regional-trends.png Graphic file (type png)
+<use figures/ui-regional-trends.png>
+Package pdftex.def Info: figures/ui-regional-trends.png  used on input line 977
+.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+Underfull \hbox (badness 3977) in paragraph at lines 977--977
+[]\OT1/cmr/m/n/12 Figure 10: []Regional poverty time se-ries. Screen-shot: \OT1
+/cmtt/m/n/12 /regional/trends \OT1/cmr/m/n/12 on
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[27]
+Overfull \vbox (65.94778pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[28
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.978 
+       <./figures/ui-regional-trends.png (PNG copy)>]
+<figures/ui-regional-rankings.png, id=548, 1445.4pt x 2208.25pt>
+File: figures/ui-regional-rankings.png Graphic file (type png)
+<use figures/ui-regional-rankings.png>
+Package pdftex.def Info: figures/ui-regional-rankings.png  used on input line 9
+83.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[29]
+Overfull \vbox (65.94778pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[30
+pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.984 
+       <./figures/ui-regional-rankings.png (PNG copy)>]
+<figures/ui-models-income.png, id=561, 1445.4pt x 2208.25pt>
+File: figures/ui-models-income.png Graphic file (type png)
+<use figures/ui-models-income.png>
+Package pdftex.def Info: figures/ui-models-income.png  used on input line 994.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[31]
+Overfull \vbox (80.11444pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[32
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.995 
+       <./figures/ui-models-income.png (PNG copy)>]
+<figures/ui-feature-importance.png, id=573, 1445.4pt x 2208.25pt>
+File: figures/ui-feature-importance.png Graphic file (type png)
+<use figures/ui-feature-importance.png>
+Package pdftex.def Info: figures/ui-feature-importance.png  used on input line 
+1005.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[33]
+Overfull \vbox (80.11444pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[34
+pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1006 
+        <./figures/ui-feature-importance.png (PNG copy)>]
+<figures/ui-forecasting-diagnostics.png, id=585, 1445.4pt x 2208.25pt>
+File: figures/ui-forecasting-diagnostics.png Graphic file (type png)
+<use figures/ui-forecasting-diagnostics.png>
+Package pdftex.def Info: figures/ui-forecasting-diagnostics.png  used on input 
+line 1015.
+(pdftex.def)             Requested size: 432.17375pt x 660.25624pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[35]
+Overfull \vbox (80.11444pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[36
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1016 
+        <./figures/ui-forecasting-diagnostics.png (PNG copy)>]
+Overfull \hbox (3.63756pt too wide) in paragraph at lines 1019--1026
+\OT1/cmtt/m/n/12 validation _ 2022 . csv$\OT1/cmr/m/n/12 ) and $\OT1/cmtt/m/n/1
+2 /api / models / rolling-[]validation$ \OT1/cmr/m/n/12 (reads $\OT1/cmtt/m/n/1
+2 forecast _ rolling _
+ []
+
+<figures/ui-validation-overview.png, id=598, 518.08556pt x 225.84375pt>
+File: figures/ui-validation-overview.png Graphic file (type png)
+<use figures/ui-validation-overview.png>
+Package pdftex.def Info: figures/ui-validation-overview.png  used on input line
+ 1050.
+(pdftex.def)             Requested size: 432.17375pt x 188.39792pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[37]
+<figures/ui-validation-barchart.png, id=614, 719.0865pt x 383.93437pt>
+File: figures/ui-validation-barchart.png Graphic file (type png)
+<use figures/ui-validation-barchart.png>
+Package pdftex.def Info: figures/ui-validation-barchart.png  used on input line
+ 1052.
+(pdftex.def)             Requested size: 432.17375pt x 230.74904pt.
+<figures/ui-validation-rolling.png, id=617, 555.12393pt x 318.43968pt>
+File: figures/ui-validation-rolling.png Graphic file (type png)
+<use figures/ui-validation-rolling.png>
+Package pdftex.def Info: figures/ui-validation-rolling.png  used on input line 
+1054.
+(pdftex.def)             Requested size: 432.17375pt x 247.92035pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[38
+pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1055 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1054 
-       
+l.1055 
+        <./figures/ui-validation-overview.png> <./figures/ui-validation-barchar
+t.png>]
+<figures/future-projection-poverty.png, id=628, 1092.38884pt x 1273.06384pt>
+File: figures/future-projection-poverty.png Graphic file (type png)
+<use figures/future-projection-poverty.png>
+Package pdftex.def Info: figures/future-projection-poverty.png  used on input l
+ine 1068.
+(pdftex.def)             Requested size: 432.17375pt x 503.64143pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[39
 pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1054 
-       ]
+l.1069 
+        <./figures/ui-validation-rolling.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -878,13 +1197,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[25
+[40
 pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1055 \newpage
-               ]
+l.1070 \newpage
+                <./figures/future-projection-poverty.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -892,8 +1211,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[26]
-Overfull \hbox (11.72617pt too wide) in paragraph at lines 1180--1183
+[41]
+Overfull \hbox (11.72617pt too wide) in paragraph at lines 1195--1198
 \OT1/cmr/bx/n/12 Planned im-prove-ment: \OT1/cmr/m/n/12 Ob-tain multi-wave ILCS
  public-use data and im-ple-ment a difference-
  []
@@ -905,7 +1224,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[27]
+[42]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -913,7 +1232,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[28]
+[43]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.01996pt, for example:
@@ -921,8 +1240,37 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[29]
-Underfull \hbox (badness 1565) in paragraph at lines 1286--1290
+[44]
+
+Package enumitem Warning: Negative labelwidth. This does not make much
+(enumitem)                sense, on input line 1259.
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1261.
+
+
+Overfull \hbox (7.8728pt too wide) in paragraph at lines 1273--1276
+\OT1/cmr/bx/n/12 Offline: \OT1/cmr/m/n/12 ex-port from the Op-tuna op-ti-miza-t
+ion his-tory plot in $\OT1/cmtt/m/n/12 notebooks / ilcs _ ml _ bayesian _
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[45]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[46]
+Underfull \hbox (badness 1565) in paragraph at lines 1401--1405
 []\OT1/cmr/m/n/12 Pedregosa, F., et al. (2011). \OT1/cmr/m/it/12 Scikit-learn: 
 Ma-chine learn-ing in Python\OT1/cmr/m/n/12 . Jour-
  []
@@ -934,22 +1282,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[30] (./capstone_report.aux)
+[47] (./capstone_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `capstone_report.out' has not changed.
-(rerunfilecheck)             Checksum: B6D4F0760ADA61F89325FB0E14C463EB;8769.
+(rerunfilecheck)             Checksum: 1809B9F8D69A8FE54DD992ABC49F0DC6;9075.
  ) 
 Here is how much of TeX's memory you used:
- 11472 strings out of 469006
- 176918 string characters out of 5454813
- 621103 words of memory out of 5000000
- 39887 multiletter control sequences out of 15000+600000
+ 11628 strings out of 469006
+ 182443 string characters out of 5454813
+ 621351 words of memory out of 5000000
+ 40025 multiletter control sequences out of 15000+600000
  636455 words of font info for 70 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,15n,83p,468b,601s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,83p,609b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/hovosukiasyan/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jk
 nappen/ec/tcrm1200.600pk> </Users/hovosukiasyan/Library/texlive/2026basic/texmf
 -var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </Users/hovosukiasyan/Library/
@@ -969,10 +1317,10 @@ public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026basic/texmf-dist/font
 s/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026basic/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on capstone_report.pdf (31 pages, 265729 bytes).
+Output written on capstone_report.pdf (48 pages, 1288508 bytes).
 PDF statistics:
- 601 PDF objects out of 1000 (max. 8388607)
- 530 compressed objects within 6 object streams
- 146 named destinations out of 1000 (max. 500000)
- 417 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 811 PDF objects out of 1000 (max. 8388607)
+ 629 compressed objects within 7 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 515 words of extra memory for PDF output out of 10000 (max. 10000000)
 

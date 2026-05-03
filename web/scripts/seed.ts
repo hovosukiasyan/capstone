@@ -3,48 +3,95 @@
  * Seed the PostgreSQL database with all capstone data.
  *
  * Usage (from web/ directory):
- *   npx tsx scripts/seed.ts
+ *   npm run seed
  *
- * Requires DATABASE_URL in .env.local or environment.
+ * Environment:
+ *   DATABASE_URL — required; used by Next.js locally / first seed target
+ *   DATABASE_URL_REMOTE or DATABASE_URL_MIRROR — optional second target (e.g. Neon)
+ *
+ * Runs the full seed for each distinct URL so local + hosted stay in sync.
+ * Reads env from Capstone `.env` and `web/.env.local` (both optional except DATABASE_URL).
  */
 
 import { readFileSync, writeFileSync, copyFileSync } from 'fs';
-import { join } from 'path';
+import { basename, join } from 'path';
 import { parse } from 'csv-parse/sync';
 import { Pool } from 'pg';
 
-// ── Load .env.local ────────────────────────────────────────────────────────────
-try {
-  const envPath = join(__dirname, '..', '.env.local');
-  const envContent = readFileSync(envPath, 'utf-8');
-  for (const line of envContent.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const eqIdx = trimmed.indexOf('=');
-    if (eqIdx === -1) continue;
-    const key = trimmed.slice(0, eqIdx).trim();
-    const val = trimmed.slice(eqIdx + 1).trim();
-    process.env[key] = val;
-  }
-} catch {
-  // .env.local not found — DATABASE_URL must be set in environment
-}
+const PROJECT_ROOT = join(__dirname, '..', '..'); // Capstone repo root
+const WEB_DIR = join(__dirname, '..');
 
-const PROJECT_ROOT = join(__dirname, '..', '..'); // /Capstone
-const PUBLIC_DIR = join(__dirname, '..', 'public');
-
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-
-async function run(sql: string, params?: unknown[]) {
-  const client = await pool.connect();
+function loadEnvFile(envPath: string) {
   try {
-    await client.query(sql, params);
-  } finally {
-    client.release();
+    const envContent = readFileSync(envPath, 'utf-8');
+    for (const line of envContent.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eqIdx = trimmed.indexOf('=');
+      if (eqIdx === -1) continue;
+      const key = trimmed.slice(0, eqIdx).trim();
+      const val = trimmed.slice(eqIdx + 1).trim();
+      process.env[key] = val;
+    }
+  } catch {
+    // file missing — ok
   }
 }
 
-async function runReturning<T>(sql: string, params?: unknown[]): Promise<T[]> {
+// ── Env: repo root `.env`, then `web/.env.local` (later wins for same keys) ──
+loadEnvFile(join(PROJECT_ROOT, '.env'));
+loadEnvFile(join(WEB_DIR, '.env.local'));
+
+const PUBLIC_DIR = join(WEB_DIR, 'public');
+
+type SqlExec = (sql: string, params?: unknown[]) => Promise<void>;
+
+function maskDbUrl(url: string): string {
+  try {
+    const u = new URL(url.includes('://') ? url : `postgresql://${url}`);
+    if (u.password) u.password = '***';
+    const db = u.pathname.split('?')[0] ?? '';
+    return `${u.host}${db}`;
+  } catch {
+    return '(masked)';
+  }
+}
+
+function distinctSeedUrls(): string[] {
+  const primary = process.env.DATABASE_URL?.trim();
+  if (!primary) {
+    throw new Error(
+      'DATABASE_URL is not set. Add it to web/.env.local or export it before npm run seed.'
+    );
+  }
+  const extras = [
+    process.env.DATABASE_URL_REMOTE?.trim(),
+    process.env.DATABASE_URL_MIRROR?.trim(),
+  ].filter(Boolean) as string[];
+
+  const urls: string[] = [];
+  const seen = new Set<string>();
+  for (const u of [primary, ...extras]) {
+    if (!seen.has(u)) {
+      seen.add(u);
+      urls.push(u);
+    }
+  }
+  return urls;
+}
+
+function makeExec(pool: Pool): SqlExec {
+  return async (sql: string, params?: unknown[]) => {
+    const client = await pool.connect();
+    try {
+      await client.query(sql, params);
+    } finally {
+      client.release();
+    }
+  };
+}
+
+async function runReturning<T>(pool: Pool, sql: string, params?: unknown[]): Promise<T[]> {
   const client = await pool.connect();
   try {
     const res = await client.query(sql, params);
@@ -83,7 +130,7 @@ function normalizeMarzName(name: string): string {
 }
 
 // ── Schema creation ────────────────────────────────────────────────────────────
-async function createSchema() {
+async function createSchema(run: SqlExec) {
   console.log('Creating schema capstone...');
   await run('CREATE SCHEMA IF NOT EXISTS capstone');
 
@@ -207,7 +254,7 @@ async function createSchema() {
 }
 
 // ── Households ─────────────────────────────────────────────────────────────────
-async function seedHouseholds() {
+async function seedHouseholds(pool: Pool) {
   const csvPath = join(
     PROJECT_ROOT,
     'data/ilcs/research/ml_households_research_columns_imputed.csv'
@@ -221,7 +268,6 @@ async function seedHouseholds() {
     for (const r of rows) {
       const income = num(r.household_income_total);
       const logIncome = income && income > 0 ? Math.log10(income) : null;
-      // KNN-imputed data can have non-integer values in ordinal/binary columns — round them
       const ri = (v: string | undefined) => {
         const n = num(v);
         return n === null ? null : Math.round(n);
@@ -270,7 +316,7 @@ async function seedHouseholds() {
 }
 
 // ── Regional panel ─────────────────────────────────────────────────────────────
-async function seedRegionalPanel() {
+async function seedRegionalPanel(pool: Pool) {
   const monthlyPath = join(
     PROJECT_ROOT,
     'data/processed/panel/marz_monthly_panel_augmented.csv'
@@ -284,7 +330,6 @@ async function seedRegionalPanel() {
   const monthlyRows = readCsv(monthlyPath);
   const yearlyRows = readCsv(yearlyPath);
 
-  // Build stress_index lookup: marz × year → stress_index
   const stressMap = new Map<string, number | null>();
   for (const r of yearlyRows) {
     const marz = normalizeMarzName(r.marz);
@@ -329,7 +374,7 @@ async function seedRegionalPanel() {
 }
 
 // ── Feature importance ─────────────────────────────────────────────────────────
-async function seedFeatureImportance() {
+async function seedFeatureImportance(pool: Pool) {
   const baseDir = join(PROJECT_ROOT, 'data/ilcs/research/feature_importance');
   const models = ['gbm', 'rf', 'et', 'ridge', 'lasso'];
   const fileNames: Record<string, string> = {
@@ -367,7 +412,7 @@ async function seedFeatureImportance() {
 }
 
 // ── Model metrics ──────────────────────────────────────────────────────────────
-async function seedModelMetrics() {
+async function seedModelMetrics(run: SqlExec) {
   console.log('Inserting model metrics...');
   const metrics = [
     { model: 'gbm',   r2: 0.3563, mae: 82152,  rmse: 162784, opt: true },
@@ -387,10 +432,10 @@ async function seedModelMetrics() {
 }
 
 // ── Forecasting results ────────────────────────────────────────────────────────
-async function seedForecastingResults() {
+async function seedForecastingResults(pool: Pool) {
   console.log('Loading forecasting results...');
   const resultsDir = join(PROJECT_ROOT, 'data/processed/results');
-  const files: { path: string; source: string; hasFreq: boolean }[] = [
+  const files: { path: string; source: string; hasFreq: boolean; sourceFromRow?: boolean }[] = [
     {
       path: join(resultsDir, 'poverty_forecasting_results.csv'),
       source: 'poverty',
@@ -412,6 +457,18 @@ async function seedForecastingResults() {
       hasFreq: true,
     },
     {
+      path: join(resultsDir, 'ts_classical_results.csv'),
+      source: '',
+      hasFreq: true,
+      sourceFromRow: true,
+    },
+    {
+      path: join(resultsDir, 'ts_nn_results.csv'),
+      source: '',
+      hasFreq: true,
+      sourceFromRow: true,
+    },
+    {
       path: join(resultsDir, 'poverty_nn_activation_sweep.csv'),
       source: 'poverty_nn_activation',
       hasFreq: false,
@@ -426,7 +483,8 @@ async function seedForecastingResults() {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    for (const { path: csvPath, source, hasFreq } of files) {
+    for (const spec of files) {
+      const { path: csvPath, source: fixedSource, hasFreq, sourceFromRow } = spec;
       let rows: Record<string, string>[];
       try {
         rows = readCsv(csvPath);
@@ -436,11 +494,26 @@ async function seedForecastingResults() {
       }
 
       for (const r of rows) {
-        const model =
-          r.Model ?? r.model ?? r.architecture ?? `${r.activation ?? ''}-${r.hidden_dims ?? ''}`;
-        const frequency = hasFreq ? (r.frequency ?? null) : null;
+        const source = sourceFromRow
+          ? String(r.source ?? r.Source ?? '').trim()
+          : fixedSource;
+        if (sourceFromRow && !source) continue;
+
+        let model: string;
+        if (sourceFromRow) {
+          const m = r.model ?? r.Model ?? '';
+          const tgt = r.target ?? r.Target ?? '';
+          model = tgt ? `${m} (${tgt})` : m;
+        } else {
+          model =
+            r.Model ?? r.model ?? r.architecture ?? `${r.activation ?? ''}-${r.hidden_dims ?? ''}`;
+        }
+
+        const frequency = hasFreq ? (r.frequency ?? r.Frequency ?? null) : null;
         const r2 = num(r.R2 ?? r.r2);
-        const mse = num(r.MSE ?? r.mse);
+        const rmseVal = num(r.RMSE ?? r.rmse);
+        const mse =
+          num(r.MSE ?? r.mse) ?? (rmseVal !== null ? rmseVal * rmseVal : null);
         const mae = num(r.MAE ?? r.mae);
         await client.query(
           `INSERT INTO capstone.forecasting_results (source, model, frequency, r2, mse, mae)
@@ -448,7 +521,8 @@ async function seedForecastingResults() {
           [source, model, frequency, r2, mse, mae]
         );
       }
-      console.log(`  ${source}: ${rows.length} rows loaded.`);
+      const logKey = sourceFromRow ? basename(csvPath) : fixedSource;
+      console.log(`  ${logKey}: ${rows.length} rows loaded.`);
     }
     await client.query('COMMIT');
   } catch (e) {
@@ -460,7 +534,7 @@ async function seedForecastingResults() {
 }
 
 // ── t-SNE coords (optional) ────────────────────────────────────────────────────
-async function seedTsneCoords() {
+async function seedTsneCoords(pool: Pool) {
   const tsnePath = join(
     PROJECT_ROOT,
     'data/ilcs/research/tsne_coords.csv'
@@ -496,7 +570,7 @@ async function seedTsneCoords() {
 }
 
 // ── Correlation matrix ─────────────────────────────────────────────────────────
-async function computeAndWriteCorrelations() {
+async function computeAndWriteCorrelations(pool: Pool) {
   console.log('Computing correlation matrix...');
 
   const cols = [
@@ -512,7 +586,6 @@ async function computeAndWriteCorrelations() {
     'humanitarian_assistance_12m', 'has_other_dwelling',
   ];
 
-  // Fetch all data
   const client = await pool.connect();
   let data: number[][] = [];
   try {
@@ -523,7 +596,6 @@ async function computeAndWriteCorrelations() {
   }
 
   const n = data.length;
-  // Compute column means and stds
   const means = cols.map((_, ci) => {
     const sum = data.reduce((acc, row) => acc + row[ci], 0);
     return sum / n;
@@ -534,7 +606,6 @@ async function computeAndWriteCorrelations() {
     return Math.sqrt(variance);
   });
 
-  // Compute Pearson correlations
   const matrix: number[][] = [];
   for (let i = 0; i < cols.length; i++) {
     matrix[i] = [];
@@ -569,37 +640,68 @@ function copyGeoJSON() {
   }
 }
 
-// ── Main ───────────────────────────────────────────────────────────────────────
-async function main() {
-  console.log('=== Capstone DB Seed ===');
-  console.log('DATABASE_URL:', process.env.DATABASE_URL ?? '(not set)');
+async function seedOne(targetUrl: string, label: string) {
+  const pool = new Pool({ connectionString: targetUrl });
+  const run = makeExec(pool);
+
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`Target: ${label} — ${maskDbUrl(targetUrl)}`);
 
   try {
-    await createSchema();
-    await seedHouseholds();
-    await seedRegionalPanel();
-    await seedFeatureImportance();
-    await seedModelMetrics();
-    await seedForecastingResults();
-    await seedTsneCoords();
-    await computeAndWriteCorrelations();
-    copyGeoJSON();
+    await createSchema(run);
+    await seedHouseholds(pool);
+    await seedRegionalPanel(pool);
+    await seedFeatureImportance(pool);
+    await seedModelMetrics(run);
+    await seedForecastingResults(pool);
+    await seedTsneCoords(pool);
 
-    // Verify row counts
-    console.log('\n=== Row counts ===');
+    console.log(`\n=== Row counts (${label}) ===`);
     for (const table of [
       'households', 'regional_panel', 'feature_importance',
       'model_metrics', 'forecasting_results', 'tsne_coords',
     ]) {
       const rows = await runReturning<{ cnt: number }>(
+        pool,
         `SELECT COUNT(*)::int AS cnt FROM capstone.${table}`
       );
       console.log(`  capstone.${table}: ${rows[0].cnt}`);
     }
-
-    console.log('\nDone!');
   } finally {
     await pool.end();
+  }
+}
+
+// ── Main ───────────────────────────────────────────────────────────────────────
+async function main() {
+  console.log('=== Capstone DB Seed ===');
+  const urls = distinctSeedUrls();
+  console.log(`Seeding ${urls.length} distinct database URL(s)`);
+  if (urls.length > 1 && process.env.DATABASE_URL_REMOTE?.trim()) {
+    console.log('DATABASE_URL_REMOTE: set ✓');
+  }
+  if (urls.length > 1 && process.env.DATABASE_URL_MIRROR?.trim()) {
+    console.log('DATABASE_URL_MIRROR: set ✓');
+  }
+
+  try {
+    for (let i = 0; i < urls.length; i++) {
+      const tag = urls.length === 1 ? 'single' : i === 0 ? 'PRIMARY (DATABASE_URL)' : 'REMOTE / MIRROR';
+      await seedOne(urls[i], tag);
+    }
+
+    const primaryPool = new Pool({ connectionString: urls[0] });
+    try {
+      await computeAndWriteCorrelations(primaryPool);
+      copyGeoJSON();
+    } finally {
+      await primaryPool.end();
+    }
+
+    console.log('\nDone!');
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 }
 

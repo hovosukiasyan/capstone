@@ -94,19 +94,23 @@
 \newcommand{\noteblock}[2]{\callout{amberdk}{amberlt}{#1}{#2}}
 \newcommand{\infoblock}[2]{\callout{infodk}{infolt}{#1}{#2}}
 
-% ── Figure placeholder macro ──────────────────────────────────────────────────
+% ── Figures: place assets in ./figures/ (relative to this .tex file) ──────────
 \colorlet{figbg}{blue!7}
-\newcommand{\figplaceholder}[2]{%
+\newcommand{\reportfig}[3]{%
   \begin{figure}[H]%
   \centering%
-  {\setlength{\fboxsep}{8pt}\setlength{\fboxrule}{0.7pt}%
-  \fcolorbox{steelblue}{figbg}{%
-    \begin{minipage}[c][#1cm]{0.82\textwidth}%
+  \IfFileExists{figures/#1}{%
+    \includegraphics[width=0.92\textwidth]{figures/#1}%
+  }{%
+    {\setlength{\fboxsep}{8pt}\setlength{\fboxrule}{0.7pt}%
+    \fcolorbox{steelblue}{figbg}{%
+    \begin{minipage}[c][#2cm]{0.82\textwidth}%
       \centering%
-      \textcolor{steelblue}{\small\itshape --- Insert screenshot\,/\,chart here ---}%
+      \textcolor{steelblue}{\small\itshape Missing \path{figures/#1}. Add this file beside \texttt{capstone\_report.tex}, then recompile.}%
     \end{minipage}%
-  }}%
-  \caption{#2}%
+    }}%
+  }%
+  \caption{#3}%
   \end{figure}%
 }
 
@@ -144,6 +148,9 @@
   citecolor=steelblue,
   urlcolor=steelblue
 }
+
+% Live deployment (appendix~\ref{app:figure-guide})
+\newcommand{\PaperDashURL}{https://armenia-poverty.vercel.app}
 
 % =============================================================================
 \begin{document}
@@ -224,21 +231,25 @@
 \noindent
 Poverty measurement in Armenia relies heavily on periodic household surveys and
 annual regional estimates, leaving a gap between data collection cycles and timely
-policy decisions. This project addresses that gap through a regional time-series
-forecasting study on ArmStat panel data spanning 11 marzes and 84 months
-(2016--2022), benchmarking autoregressive Ridge models, classical baselines, and
-four neural architectures (GRU, BiLSTM, Transformer, TCN). Forecasting models
-are evaluated at three temporal granularities, yielding the following best-model
-results on poverty rate: daily ($R^2 = 1.0000$, MAE\,=\,0.007\,pp), monthly
-($R^2 = 0.9990$, MAE\,=\,0.229\,pp), and yearly ($R^2 = 0.7279$, MAE\,=\,5.109\,pp).
-Model credibility is established through a held-out 2022 backtest trained
-exclusively on 2016--2021 data; the Lag-1 persistence model achieves the best
-per-region accuracy (MAE\,=\,5.07\,pp), while a Lag-1/Ridge ensemble achieves
-near-zero national error (0.02\,pp). Results and forecasts are communicated
-through a Next.js interactive web dashboard covering regional analytics, model
-comparisons, validation evidence, and 2023--2026 poverty projections. This
-report documents the data, methodology, system architecture, and findings in
-full, and is intended as the primary reference for evaluating the project.
+policy decisions. This project addresses that gap in two strands: supervised
+machine learning on ILCS~2015 to predict household income, and regional
+time-series forecasting on ArmStat statistics for Armenia's eleven marzes
+(2016--2022).
+
+The most informative regional signal is available at \textbf{annual}
+(survey-based) resolution; neural sequence models benchmarked alongside
+Lag-1, Ridge autoregressive, and ARIMA baselines systematically \textbf{underperform}
+Lag-1 on yearly poverty rate because each marz supplies only seven true annual
+training points (\S\ref{sec:model-results}). Auxiliary \textbf{monthly} and
+\textbf{daily} views are obtained by forward-filling annual poverty rates; at
+those granularities goodness-of-fit is almost mechanically inflated because very
+little genuine movement occurs within survey years (\S\ref{sec:model-results}).
+
+Out-of-sample \textbf{credibility} is established by a strict \textbf{2022 holdout backtest}: models are trained exclusively on 2016--2021 data and scored against published 2022 rates. Lag-1 attains the best regional mean absolute error (5.07 percentage points); a 50/50 Lag-1/Ridge ensemble attains nearly zero population-weighted national error (0.02 percentage points).
+
+Results and 2023--2026 projections are communicated through an interactive Next.js
+dashboard. This document is the project's primary technical reference on data,
+methodology, architecture, and findings.
 \end{abstract}
 
 \newpage
@@ -267,11 +278,13 @@ credibility established through a 2022 holdout backtest trained entirely on
 2016--2021 data.
 
 The research findings and forecasts are exposed through a Next.js web application
-that allows users to explore regional trends interactively, inspect model
+(\url{https://armenia-poverty.vercel.app}) that allows users to explore regional trends interactively, inspect model
 performance metrics, review the 2022 validation evidence, and examine
 2023--2026 poverty projections. A PostgreSQL (Neon) database supports the dynamic
 data features, while validation results and forecast outputs are served as static
-CSV files for reproducibility.
+CSV files for reproducibility. Screenshots for this report should be taken from
+that deployment (or a local \path{npm run dev} build) following the file-by-file
+checklist in Appendix~\protect\ref{app:figure-guide}.
 
 \subsection{Objectives}
 
@@ -344,15 +357,14 @@ training performance.
 \subsection{Literature Context and Motivation}
 
 \indent\hspace*{1em}
-Poverty measurement in low- and middle-income countries has increasingly relied
-on proxy means tests (PMT), which estimate household welfare from observable
-characteristics rather than direct income measurement~\cite{wb2015pmt}.
-Machine learning extensions of PMT have demonstrated that ensemble tree models
-and gradient boosting approaches reliably outperform OLS on household survey
-data~\cite{mcbride2018}. The predictive ceiling is constrained by survey design:
-features available in welfare surveys (assets, consumption, demographics)
-typically capture 30--45\,\% of household income variance, consistent with the
-$R^2\approx 0.35$ found in this project.
+Poverty measurement in low- and middle-income countries often relies on proxy
+means tests (PMT): scores based on observable characteristics when direct income
+measurement is imperfect or costly~\cite{wb2015pmt}.
+Machine-learning extensions of welfare scoring have demonstrated that ensemble
+trees and gradient boosting can outperform simple linear scores out of sample
+on survey data~\cite{mcbride2018}. Absolute predictive power nonetheless remains
+modest in many applications, which is consistent with an $R^2$ of order 0.35 for
+household income on a single ILCS cross-section in this project.
 
 For regional poverty forecasting, autoregressive models remain competitive with
 neural alternatives on short panels~\cite{athey2019ml}. Armenia's annual regional
@@ -442,7 +454,7 @@ years.
 The system is organized into three layers: a data and modelling pipeline, a
 PostgreSQL data store, and a Next.js web application.
 
-\figplaceholder{3}{High-level system architecture: data pipeline, PostgreSQL/CSV storage, and Next.js web application}
+\reportfig{architecture-overview.pdf}{3}{High-level system architecture: data pipeline, PostgreSQL/CSV storage, and Next.js web application. \textit{Not a single app screen}---author diagram (draw in Figma/PowerPoint or similar); see Appendix~\protect\ref{app:figure-guide}.}
 
 The \textbf{data pipeline} runs entirely in Python. Scripts in
 \path{scripts/} handle extraction, cleaning, feature engineering, ML training,
@@ -615,6 +627,7 @@ regression models.
 
 % =============================================================================
 \section{Model Development and Results}
+\label{sec:model-results}
 % =============================================================================
 
 \subsection{Household Income Models}
@@ -678,7 +691,7 @@ across Random Forest and GBM are:
 that current consumption is a stronger welfare signal than historical asset
 accumulation in this survey.
 
-\figplaceholder{3}{Feature importance comparison across all five models (bar chart, sorted by RF importance)}
+\reportfig{household-feature-importance.png}{3}{Feature importance comparison across all five models (grouped bars). \textbf{Capture from} \texttt{/models/importance} on \texttt{https://armenia-poverty.vercel.app} (same view as Section~6.4---you may reuse one screenshot for both). See Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Bayesian Hyperparameter Optimization}
 
@@ -712,9 +725,9 @@ The best GBM configuration:
 The low learning rate with moderate tree depth prevents memorization while
 capturing interaction effects among the consumption variables.
 
-\figplaceholder{3}{Optuna optimization history: CV R\textsuperscript{2} across 50 trials for GBM}
+\reportfig{optuna-gb-history.png}{3}{Optuna optimization history: CV R\textsuperscript{2} across trials for GBM. \textbf{Not on the web app}---export from the Bayesian optimization notebook (\texttt{notebooks/ilcs\_ml\_bayesian\_optimized.ipynb}). See Appendix~\protect\ref{app:figure-guide}.}
 
-\figplaceholder{3}{Residual plot for best GBM model: predicted vs.\ actual household income (AMD, log scale)}
+\reportfig{gbm-residual-vs-actual.png}{3}{Predicted vs.\ actual household income for the tuned GBM (log--log recommended). \textbf{Not on the web app}---export from the same notebook as the Optuna run. See Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Time-Series Analysis --- Classical Models}
 
@@ -794,10 +807,10 @@ Transformer  & stress\_index & yearly  & 0.371 & 0.660 \\
 \caption{Neural network time-series results. On yearly data (the honest benchmark),
 all NNs underperform classical Lag-1 ($R^2=0.728$) due to insufficient training
 samples ($\sim$7 data points per region). The Transformer shows the most promise
-at yearly granularity. GRU approaches the Ridge baseline at monthly frequency.}
+at yearly granularity. Monthly-frequency rows reuse the filled annual signal, so strong scores there are mechanical and must not be read as richer survey evidence (see~\S\ref{sec:model-results}).}
 \end{table}
 
-\figplaceholder{3}{Model comparison chart: R\textsuperscript{2} across all architectures and frequencies (poverty\_rate target)}
+\reportfig{ts-nn-vs-classical-r2.png}{3}{Summary of $R^2$ for poverty rate across frequencies and model families. \textbf{Primary web source:} \texttt{/models/forecasting} on \texttt{https://armenia-poverty.vercel.app}---capture the \textit{Classical TS (ARIMA)} tab and the \textit{Advanced NNs} tab (stack or composite into one image, or paste side-by-side). A custom heatmap is optional if it matches the same underlying metrics as Tables~5.4--5.5. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{2022 Forecast Validation (Primary Evidence)}
 
@@ -877,7 +890,7 @@ swings.}
 vs.\ Armenia actual 24.3\%) because Lag-1's upward bias and Ridge's downward bias
 for recovering regions partially cancel under population weighting.}
 
-\figplaceholder{3}{Bar chart: actual vs.\ predicted 2022 poverty rate for all 11 marzes under each model}
+\reportfig{validation-2022-actual-vs-predicted.png}{3}{Actual vs.\ predicted 2022 poverty rate by marz (holdout trained on 2016--2021). \textbf{Capture from} \texttt{/models/validation} on \texttt{https://armenia-poverty.vercel.app}---use the bar chart and model pills (Lag-1 / Ridge AR / Ensemble) as needed. Same numbers as \texttt{forecast\_validation\_2022.csv}. Appendix~\protect\ref{app:figure-guide}.}
 
 \vspace{0.4em}
 \noindent\textbf{Rolling validation}
@@ -904,7 +917,7 @@ Ridge's 2021 spike is caused by Aragatsotn's anomalous 2019 value (51.4\%)
 entering the lag-2 feature.}
 \end{table}
 
-\figplaceholder{3}{Rolling validation line chart: MAE across 2020 → 2021 → 2022 for Lag-1 and Ridge AR}
+\reportfig{rolling-validation-mae.png}{3}{Rolling validation: regional MAE for Lag-1 vs.\ Ridge AR (poverty rate). \textbf{Capture from} \texttt{/models/validation} (rolling section). Same data as \texttt{forecast\_rolling\_validation.csv}. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{GRU Daily Validation}
 
@@ -925,9 +938,11 @@ and provides a basis for scenario-based future projections.
 
 \indent\hspace*{1em}
 The project's findings are communicated through a publicly deployed Next.js
-web application organized into two navigation areas: \textbf{Regional}
+web application at \url{https://armenia-poverty.vercel.app}, organized into two navigation areas: \textbf{Regional}
 (exploratory data views of Armenia's 11 marzes) and \textbf{Models} (ML model
 metrics, validation evidence, and forecasts).
+
+\infoblock{Figures in this report}{Every \texttt{figures/} filename expected by this \texttt{.tex} file is listed in Appendix~\protect\ref{app:figure-guide} with the exact \textbf{route} (\path{/models/validation}, etc.) or \textbf{notebook} to export from. Prefer live dashboard captures for regional views, validation, forecasting tables, and future projections; only the architecture diagram and Optuna/GBM notebook plots are off-site.}
 
 \subsection{Homepage}
 
@@ -939,7 +954,7 @@ the household model. Key elements: a hero card showing ``Validation year: 2022''
 KPI tiles for dataset size (5,184 households), regions covered (11 marzes); and
 navigation cards for Regional Analytics and Models.
 
-\figplaceholder{4}{Homepage: hero section with KPI tiles and navigation cards}
+\reportfig{ui-homepage.png}{4}{Homepage (hero, KPI tiles, navigation). Screenshot: \texttt{/} on \texttt{https://armenia-poverty.vercel.app}. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Regional Explorer}
 
@@ -953,19 +968,19 @@ by poverty rate for a user-selected year (2016--2022). Users can hover over
 individual marzes to see exact values. Data is served from the Neon PostgreSQL
 instance via \path{/api/regional/choropleth}.
 
-\figplaceholder{4}{Regional Overview: choropleth map of Armenia colour-coded by poverty rate (2022)}
+\reportfig{ui-regional-choropleth.png}{4}{Regional choropleth (poverty rate). Screenshot: \texttt{/regional} on \texttt{https://armenia-poverty.vercel.app}; set year \textbf{2022} before capture. Appendix~\protect\ref{app:figure-guide}.}
 
 The \textbf{Regional Trends} page displays per-region time-series line charts
 for poverty\_rate and stress\_index from 2016 to 2022. A multi-select control
 allows overlaying any subset of marzes on the same chart for direct comparison.
 
-\figplaceholder{3}{Regional Trends: multi-region poverty rate time-series (2016--2022)}
+\reportfig{ui-regional-trends.png}{3}{Regional poverty time series. Screenshot: \texttt{/regional/trends} on \texttt{https://armenia-poverty.vercel.app}; show several marzes on one chart. Appendix~\protect\ref{app:figure-guide}.}
 
 The \textbf{Regional Rankings} page renders a sorted horizontal bar chart of
 poverty rates for a selected year, allowing rapid identification of the highest-
 and lowest-poverty marzes.
 
-\figplaceholder{3}{Regional Rankings: bar chart of 2022 poverty rate by marz, sorted descending}
+\reportfig{ui-regional-rankings.png}{3}{Ranked regional poverty (single year). Screenshot: \texttt{/regional/ranking} on \texttt{https://armenia-poverty.vercel.app}; year \textbf{2022}. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Household Income Model}
 
@@ -976,7 +991,7 @@ primary evidence, positioning this page as a micro-level benchmark. The model
 comparison table is rendered interactively, allowing sorting by $R^2$, MAE, or
 RMSE.
 
-\figplaceholder{3}{Household Model page: model comparison table with R\textsuperscript{2}, MAE, RMSE for all five models}
+\reportfig{ui-models-income.png}{3}{Household income model leaderboard (ILCS 2015). Screenshot: \texttt{/models} on \texttt{https://armenia-poverty.vercel.app}---include the comparison table and amber validation callout if visible. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Feature Importance Page}
 
@@ -987,7 +1002,7 @@ charts. A model selector allows users to highlight a specific model's ranking.
 The page includes a prose explanation of the encoding trap for binary asset
 variables.
 
-\figplaceholder{3}{Feature Importance page: grouped bar chart of top-10 features across RF, GBM, Ridge, Lasso, ET}
+\reportfig{ui-feature-importance.png}{3}{Feature importance (five models). Screenshot: \texttt{/models/importance} on \texttt{https://armenia-poverty.vercel.app}. May match the file used in Section~5.2. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Forecasting Diagnostics}
 
@@ -997,7 +1012,7 @@ classical and neural model results tables from Sections~5.4--5.5, with a blue
 callout linking to the 2022 Validation page as the real holdout test. Tabs allow
 switching between classical and neural results.
 
-\figplaceholder{3}{Forecasting Diagnostics: classical vs.\ neural model R\textsuperscript{2} comparison table with frequency selector}
+\reportfig{ui-forecasting-diagnostics.png}{3}{Time-series diagnostics ($R^2$, MAE tables). Screenshot: \texttt{/models/forecasting} on \texttt{https://armenia-poverty.vercel.app}---e.g.\ \textit{Classical TS (ARIMA)} and/or \textit{Advanced NNs} tabs with poverty-rate rows visible. Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{2022 Forecast Validation}
 
@@ -1032,11 +1047,11 @@ The page contains the following sections in sequence:
         limitations and when national vs.\ regional figures are reliable.
 \end{enumerate}
 
-\figplaceholder{5}{2022 Validation page: methodology tiles, key insight callout, and model performance table}
+\reportfig{ui-validation-overview.png}{5}{2022 validation---methodology tiles, key insight, summary table. Screenshot: top of \texttt{/models/validation} on \texttt{https://armenia-poverty.vercel.app}. Appendix~\protect\ref{app:figure-guide}.}
 
-\figplaceholder{4}{2022 Validation page: actual vs.\ predicted bar chart (Lag-1 selected) across 11 marzes}
+\reportfig{ui-validation-barchart.png}{4}{2022 validation---actual vs.\ predicted bars. Screenshot: same page, bar-chart block; pick model with pills to match discussion. Appendix~\protect\ref{app:figure-guide}.}
 
-\figplaceholder{4}{2022 Validation page: rolling validation MAE chart with Ridge 2021 spike annotation}
+\reportfig{ui-validation-rolling.png}{4}{Rolling validation MAE. Screenshot: \texttt{/models/validation} (scroll to rolling chart; include Ridge 2021 annotation if shown). Appendix~\protect\ref{app:figure-guide}.}
 
 \subsection{Future Projection 2023--2026}
 
@@ -1050,7 +1065,7 @@ projections. Key visual elements: a region selector dropdown; a line chart with
 solid historical (2016--2022) and dashed forecast (2023--2026) segments separated
 by a vertical reference line; and a projected values table by region and year.
 
-\figplaceholder{5}{Future Projection page: per-region line chart with historical and 2023--2026 forecast segments}
+\reportfig{future-projection-poverty.png}{5}{Regional poverty trajectory with historical and projected segment. \textbf{Primary capture:} \texttt{/models/forecast} on \texttt{https://armenia-poverty.vercel.app} (line chart + year control). Pipeline script \texttt{scripts/08\_forecast\_future.py} can also export \texttt{data/processed/results/forecast\_plots/poverty\_forecast.png}. Appendix~\protect\ref{app:figure-guide}.}
 
 \newpage
 
@@ -1134,15 +1149,15 @@ releases and re-run validation scripts to track model calibration over time.
 \subsection{Improved Household Income Models}
 
 \indent\hspace*{1em}
-The current $R^2 \approx 0.35$ can be improved through: (i)~adding region and
-area type (urban/rural) back as features (+0.03--0.05 expected); (ii)~using a
-log-transformed target ($\log(\text{household\_income\_total})$), more
-appropriate for log-normal income distributions and expected to reach
-$R^2 \approx 0.45\text{--}0.55$; (iii)~adding interaction features
-(\texttt{household\_size} $\times$ \texttt{income\_source\_count});
-(iv)~running Optuna with 200 trials rather than 50.
+The current $R^2 \approx 0.35$ may improve if additional covariates are added
+(e.g.\ region and urban/rural strata), if a log-transformed target
+($\log(\text{household\_income\_total})$) better matches the skewed income
+distribution, if simple interaction terms are included
+(e.g.\ \texttt{household\_size} $\times$ \texttt{income\_source\_count}), or if
+hyperparameter search is extended (e.g.\ more Optuna trials). Any change should
+be judged on the same strict held-out test fold used in this report.
 
-\noindent\textbf{Planned improvement:} Re-run feature importance analysis on
+\noindent\textbf{Planned improvement:} Re-run feature importance analysis on a
 log-scale target and compare to current linear-scale results.
 
 \subsection{Scenario Forecasting}
@@ -1197,8 +1212,9 @@ At the household level, the ILCS 2015 analysis reveals that income source
 diversification (\texttt{household\_income\_source\_count}) is the single
 strongest predictor of household welfare, explaining more variance than assets
 or housing quality. Gradient Boosting with Bayesian optimization achieves the
-best household model result on a held-out test set, consistent with the published
-range for proxy means testing on welfare surveys. The analysis also uncovers two
+best household model result on a held-out test set, in line with the modest
+cross-sectional explanatory power often seen for welfare proxies on single
+survey waves. The analysis also uncovers two
 methodological lessons: the survey coding trap (assets coded 1=Yes/2=No creating
 inverted correlations), and the seasonal confound requiring interview month
 recovery.
@@ -1208,8 +1224,10 @@ credibility: trained on 2016--2021 data, the Lag-1 model achieves a regional MAE
 of 5.07 percentage points, while a Lag-1/Ridge ensemble reaches near-zero
 national error (0.02\,pp). Neural architectures (GRU, BiLSTM, Transformer, TCN)
 underperform classical models on annual data due to the structural limitation of
-seven training observations per region, but are competitive at monthly granularity
-and provide a foundation for future work with larger panels.
+seven training observations per region (\S\ref{sec:model-results}). On
+forward-filled monthly intervals reported in the same experiments, the networks
+can attain much higher scores mechanically, because within-year variation largely
+reflects interpolation rather than new survey signal (\S\ref{sec:model-results}).
 
 \keyresult{Primary contribution}{The project's main contribution is a validated
 regional poverty forecasting pipeline for Armenia, benchmarked on held-out 2022
@@ -1225,6 +1243,103 @@ continuous updates as new ArmStat data becomes available.
 
 \newpage
 
+\appendix
+
+\section{Figure checklist (dashboard and offline sources)}
+\label{app:figure-guide}
+
+\indent\hspace*{1em}
+Figures are resolved from \path{final_paper/figures/} relative to the compiled
+\texttt{.tex} file. The production deployment for screenshots is
+\url{https://armenia-poverty.vercel.app}; for a local build use \path{http://localhost:3000} with the
+same routes after \texttt{npm run dev} in \path{web/}. Use a wide browser window
+(\(\approx\)\,1280--1600\,px) and wait for charts to finish loading; full-page
+captures are easiest to crop.
+
+\begin{description}[style=nextline, leftmargin=0pt, labelsep=1em, itemsep=0.45em, font=\normalfont\bfseries]
+
+\item[\path{architecture-overview.pdf}]
+Not available as one routed screen. Draw the three-layer diagram (Python pipeline;
+Neon PostgreSQL + static CSV under \path{data/processed/results/}; Next.js on
+Vercel) in any vector tool and export PDF, or keep a generated diagram from your
+tooling.
+
+\item[\path{household-feature-importance.png}]
+Web: \path{/models/importance}. Capture the grouped importance chart (top of
+page). You may use the \textbf{same PNG} as \path{ui-feature-importance.png} if
+the crop matches Section~5.2.
+
+\item[\path{optuna-gb-history.png}]
+\textbf{Offline:} export from the Optuna optimization history plot in
+\path{notebooks/ilcs_ml_bayesian_optimized.ipynb} (GBM study, 50 trials in the
+report text). Not exposed on the dashboard.
+
+\item[\path{gbm-residual-vs-actual.png}]
+\textbf{Offline:} predicted vs.\ actual (or residual) plot for the tuned GBM from
+the same Bayesian optimization notebook. Not on the dashboard.
+
+\item[\path{ts-nn-vs-classical-r2.png}]
+Web: \path{/models/forecasting}. Switch to the \textbf{Classical TS (ARIMA)} tab
+and capture the poverty-rate $R^2$ table; then the \textbf{Advanced NNs} tab.
+Combine into one figure (stacked or side-by-side). Optional: build a custom
+heatmap from \path{data/processed/results/ts_classical_results.csv} and
+\path{ts_nn_results.csv} so it matches Tables~5.4--5.5.
+
+\item[\path{validation-2022-actual-vs-predicted.png}]
+Web: \path{/models/validation}. Bar chart block; use model pills for Lag-1,
+Ridge AR, or Ensemble. Data source: \path{forecast_validation_2022.csv}.
+
+\item[\path{rolling-validation-mae.png}]
+Web: \path{/models/validation}---scroll to rolling MAE chart. Data source:
+\path{forecast_rolling_validation.csv}.
+
+\item[\path{ui-homepage.png}]
+Web: \path{/}. Include hero, KPI tiles, and main navigation cards.
+
+\item[\path{ui-regional-choropleth.png}]
+Web: \path{/regional}. Select poverty rate and year \textbf{2022} before capture.
+
+\item[\path{ui-regional-trends.png}]
+Web: \path{/regional/trends}. Multi-marz poverty series visible on one chart.
+
+\item[\path{ui-regional-rankings.png}]
+Web: \path{/regional/ranking}. Year \textbf{2022}.
+
+\item[\path{ui-models-income.png}]
+Web: \path{/models}. Table of $R^2$, MAE, RMSE; include callout to validation if
+visible.
+
+\item[\path{ui-feature-importance.png}]
+Web: \path{/models/importance} (can match Section~5.2 file).
+
+\item[\path{ui-forecasting-diagnostics.png}]
+Web: \path{/models/forecasting}. At least one tab with poverty-rate rows
+(classical and/or neural), or two captures merged.
+
+\item[\path{ui-validation-overview.png}]
+Web: \path{/models/validation}---upper part: methodology tiles, key insight,
+summary table.
+
+\item[\path{ui-validation-barchart.png}]
+Web: \path{/models/validation}---bar chart region (choose pill to match prose).
+
+\item[\path{ui-validation-rolling.png}]
+Web: \path{/models/validation}---rolling MAE chart (Ridge 2021 note if shown).
+
+\item[\path{future-projection-poverty.png}]
+\textbf{Prefer web:} \path{/models/forecast}---main timeline or map-linked chart
+for poverty. \textbf{Alternative pipeline export:}
+\path{data/processed/results/forecast_plots/poverty_forecast.png}.
+
+\item[(Optional narrative)]
+GRU daily validation visuals live at the bottom of \path{/models/validation};
+they are documented in prose in Section~5.7 but no separate figure slot is
+required unless you extend the report.
+
+\end{description}
+
+\newpage
+
 % =============================================================================
 \section*{References}
 % =============================================================================
@@ -1232,10 +1347,10 @@ continuous updates as new ArmStat data becomes available.
 \begin{thebibliography}{99}
 
 \bibitem{wb2015pmt}
-World Bank. (2015).
+World Bank Group. (2015).
 \textit{A Proxy Means Test for Armenia: Methodology and Implementation}.
-World Bank Technical Report.
-\url{https://documents.worldbank.org}
+Technical report (World Bank Documents \& Reports; search by title or country).
+\url{https://documents.worldbank.org/en/search?query=Armenia\%20proxy\%20means}
 
 \bibitem{mcbride2018}
 McBride, L., \& Nichols, A. (2018).

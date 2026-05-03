@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRegionalPanel } from '@/lib/db';
+import { getRegionalPanel } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

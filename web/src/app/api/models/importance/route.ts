@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getFeatureImportance } from '@/lib/db';
+import { getFeatureImportance } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

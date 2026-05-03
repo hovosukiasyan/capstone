@@ -1,18 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getForecastingResults } from '@/lib/db';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-type SweepRow = {
+type ForecastRow = {
   source: string;
   model: string;
   frequency: string | null;
   r2: number | null;
   mae: number | null;
 };
+
+function parseNum(v: string | undefined): number | null {
+  if (v === undefined || v === '' || v.toLowerCase() === 'na') return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
 
 function parseCsvLine(line: string): string[] {
   const values: string[] = [];
@@ -40,51 +45,99 @@ function parseCsvLine(line: string): string[] {
   return values;
 }
 
-function loadSweepResults(source: 'poverty_nn_activation' | 'poverty_nn_layer'): SweepRow[] {
-  const fileName =
-    source === 'poverty_nn_activation'
-      ? 'poverty_nn_activation_sweep.csv'
-      : 'poverty_nn_layer_size_sweep.csv';
-  const csvPath = join(process.cwd(), '..', 'data', 'processed', 'results', fileName);
-
-  if (!existsSync(csvPath)) {
-    throw new Error(`Sweep CSV not found: ${csvPath}`);
-  }
-
-  const text = readFileSync(csvPath, 'utf8').trim();
+function readCsv(filePath: string): Record<string, string>[] {
+  if (!existsSync(filePath)) throw new Error(`CSV not found: ${filePath}`);
+  const text = readFileSync(filePath, 'utf8').trim();
   const [headerLine, ...lines] = text.split(/\r?\n/);
   const headers = parseCsvLine(headerLine);
-
-  const rows = lines
+  return lines
     .filter(Boolean)
     .map((line) => {
       const values = parseCsvLine(line);
-      const row = Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ''])) as Record<string, string>;
-      const hiddenDims = row.hidden_dims === 'na' ? '' : row.hidden_dims.replace(/x/g, '→');
-      const activation = row.activation === 'na' ? '' : row.activation.toUpperCase();
-      const layerCount = row.layer_count ? Number(row.layer_count) : hiddenDims ? hiddenDims.split('→').length : 0;
+      return Object.fromEntries(headers.map((h, i) => [h, values[i] ?? '']));
+    });
+}
 
-      let modelLabel = row.model;
-      if (row.model === 'baseline') {
-        modelLabel = 'Lag-1 Baseline';
-      } else if (source === 'poverty_nn_activation') {
-        modelLabel = `MLP · ${activation} · ${hiddenDims}`;
-      } else {
-        const units = row.total_units ? ` · ${row.total_units} units` : '';
-        modelLabel = `MLP · ${layerCount} layer${layerCount === 1 ? '' : 's'} · ${activation} · ${hiddenDims}${units}`;
+const RESULTS_DIR = join(process.cwd(), '..', 'data', 'processed', 'results');
+
+function loadFromCsv(source: string): ForecastRow[] {
+  const csvMap: Record<string, string> = {
+    poverty:              'poverty_forecasting_results.csv',
+    stress:               'stress_forecasting_results.csv',
+    augmentation_baseline:'augmentation_baseline_results.csv',
+    augmentation_nn:      'augmentation_nn_results.csv',
+    time_series_classical:'ts_classical_results.csv',
+    time_series_nn:       'ts_nn_results.csv',
+    poverty_nn_activation:'poverty_nn_activation_sweep.csv',
+    poverty_nn_layer:     'poverty_nn_layer_size_sweep.csv',
+  };
+
+  const fileName = csvMap[source];
+  if (!fileName) throw new Error(`Unknown source: ${source}`);
+  const rows = readCsv(join(RESULTS_DIR, fileName));
+
+  return rows
+    .map((r): ForecastRow => {
+      // sources where model name comes from the row's own source column
+      if (source === 'time_series_classical' || source === 'time_series_nn') {
+        const m = r.model ?? r.Model ?? '';
+        const tgt = r.target ?? r.Target ?? '';
+        return {
+          source: r.source ?? source,
+          model: tgt ? `${m} (${tgt})` : m,
+          frequency: r.frequency ?? r.Frequency ?? null,
+          r2: parseNum(r.R2 ?? r.r2),
+          mae: parseNum(r.MAE ?? r.mae),
+        };
       }
 
+      if (source === 'augmentation_baseline') {
+        return {
+          source,
+          model: 'Lag-1 Baseline',
+          frequency: r.frequency ?? null,
+          r2: parseNum(r.r2),
+          mae: parseNum(r.mae),
+        };
+      }
+
+      if (source === 'augmentation_nn') {
+        return {
+          source,
+          model: String(r.architecture ?? ''),
+          frequency: r.frequency ?? null,
+          r2: parseNum(r.r2),
+          mae: parseNum(r.mae),
+        };
+      }
+
+      if (source === 'poverty_nn_activation') {
+        const hiddenDims = r.hidden_dims === 'na' ? '' : (r.hidden_dims ?? '').replace(/x/g, '→');
+        const activation = r.activation === 'na' ? '' : (r.activation ?? '').toUpperCase();
+        const model = r.model === 'baseline' ? 'Lag-1 Baseline' : `MLP · ${activation} · ${hiddenDims}`;
+        return { source, model, frequency: null, r2: parseNum(r.r2), mae: parseNum(r.mae) };
+      }
+
+      if (source === 'poverty_nn_layer') {
+        const hiddenDims = r.hidden_dims === 'na' ? '' : (r.hidden_dims ?? '').replace(/x/g, '→');
+        const activation = r.activation === 'na' ? '' : (r.activation ?? '').toUpperCase();
+        const layerCount = r.layer_count ? Number(r.layer_count) : hiddenDims ? hiddenDims.split('→').length : 0;
+        const units = r.total_units ? ` · ${r.total_units} units` : '';
+        const model = r.model === 'baseline' ? 'Lag-1 Baseline'
+          : `MLP · ${layerCount} layer${layerCount === 1 ? '' : 's'} · ${activation} · ${hiddenDims}${units}`;
+        return { source, model, frequency: null, r2: parseNum(r.r2), mae: parseNum(r.mae) };
+      }
+
+      // poverty, stress — simple Model/R2/MAE columns, no frequency
       return {
         source,
-        model: modelLabel,
+        model: r.Model ?? r.model ?? '',
         frequency: null,
-        r2: row.r2 ? Number(row.r2) : null,
-        mae: row.mae ? Number(row.mae) : null,
+        r2: parseNum(r.R2 ?? r.r2),
+        mae: parseNum(r.MAE ?? r.mae),
       };
     })
     .sort((a, b) => (b.r2 ?? -Infinity) - (a.r2 ?? -Infinity));
-
-  return rows;
 }
 
 export async function GET(req: NextRequest) {
@@ -92,14 +145,10 @@ export async function GET(req: NextRequest) {
   const source = searchParams.get('source') ?? 'poverty';
 
   try {
-    if (source === 'poverty_nn_activation' || source === 'poverty_nn_layer') {
-      return NextResponse.json(loadSweepResults(source));
-    }
-    const data = await getForecastingResults(source);
-    return NextResponse.json(data);
+    return NextResponse.json(loadFromCsv(source));
   } catch (err) {
-    const e = err as Error & { code?: string; detail?: string };
-    console.error('[api/models/forecasting]', { message: e?.message, code: e?.code, detail: e?.detail, stack: e?.stack });
-    return NextResponse.json({ error: e?.message ?? String(err), code: e?.code, detail: e?.detail }, { status: 500 });
+    const e = err as Error;
+    console.error('[api/models/forecasting]', e?.message);
+    return NextResponse.json({ error: e?.message ?? String(err) }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getHouseholdList } from '@/lib/db';
+import { getHouseholdList } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

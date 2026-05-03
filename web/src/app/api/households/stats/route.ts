@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getHouseholdStats } from '@/lib/db';
+import { getHouseholdStats } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

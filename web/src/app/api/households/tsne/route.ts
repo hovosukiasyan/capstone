@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getTsnePoints } from '@/lib/db';
+import { getTsnePoints } from '@/lib/csv-data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

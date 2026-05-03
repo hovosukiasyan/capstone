@@ -23,30 +23,31 @@
 \contentsline {subsection}{\numberline {6.1}Household Income Models}{13}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Feature Importance}{13}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Bayesian Hyperparameter Optimization}{14}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Time-Series Analysis --- Classical Models}{15}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Time-Series Analysis --- Neural Network Models}{15}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation (Primary Evidence)}{16}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}GRU Daily Validation}{19}{subsection.6.7}%
-\contentsline {section}{\numberline {7}Application and Functionality}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Homepage}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Regional Explorer}{20}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Household Income Model}{21}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Feature Importance Page}{22}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Forecasting Diagnostics}{22}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}2022 Forecast Validation}{22}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Future Projection 2023--2026}{24}{subsection.7.7}%
-\contentsline {section}{\numberline {8}Challenges Encountered}{26}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Data Quality and Panel Size}{26}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Anomalous Regional Observations}{26}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Interview Month Recovery}{26}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Web Application Data Architecture}{26}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Model Evidence Communication}{26}{subsection.8.5}%
-\contentsline {section}{\numberline {9}Future Work}{27}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Larger Regional Panels}{27}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Improved Household Income Models}{27}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Scenario Forecasting}{27}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Confidence Intervals on Projections}{27}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}ILCS Longitudinal Analysis}{27}{subsection.9.5}%
-\contentsline {section}{\numberline {10}Conclusion}{29}{section.10}%
-\contentsline {section}{\numberline {11}*}{30}{section.11}%
-\contentsline {section}{\numberline {12}*}{30}{section.12}%
+\contentsline {subsection}{\numberline {6.4}Time-Series Analysis --- Classical Models}{16}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Time-Series Analysis --- Neural Network Models}{17}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}2022 Forecast Validation (Primary Evidence)}{19}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}GRU Daily Validation}{22}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Application and Functionality}{23}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Homepage}{23}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Regional Explorer}{25}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Household Income Model}{31}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Feature Importance Page}{33}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Forecasting Diagnostics}{35}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}2022 Forecast Validation}{37}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Future Projection 2023--2026}{39}{subsection.7.7}%
+\contentsline {section}{\numberline {8}Challenges Encountered}{41}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data Quality and Panel Size}{41}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Anomalous Regional Observations}{41}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Interview Month Recovery}{41}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Web Application Data Architecture}{41}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Model Evidence Communication}{41}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Future Work}{42}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Larger Regional Panels}{42}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Improved Household Income Models}{42}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Scenario Forecasting}{42}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Confidence Intervals on Projections}{42}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}ILCS Longitudinal Analysis}{42}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Conclusion}{44}{section.10}%
+\contentsline {section}{\numberline {A}Figure checklist (dashboard and offline sources)}{45}{appendix.A}%
+\contentsline {section}{\numberline {B}*}{47}{appendix.B}%
+\contentsline {section}{\numberline {C}*}{47}{appendix.C}%
