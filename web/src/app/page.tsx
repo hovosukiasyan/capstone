@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import KpiCard from '@/components/cards/KpiCard';
-import { getHouseholdStats, getModelMetrics, getRegionalYears } from '@/lib/db';
+import { getHouseholdStats, getModelMetrics, getRegionalYears } from '@/lib/csv-data';
 import { formatAMD } from '@/lib/utils';
 
 export const dynamic = 'force-dynamic';

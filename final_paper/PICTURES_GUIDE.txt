@@ -1,0 +1,177 @@
+===========================================================================
+  FIGURES GUIDE — capstone_report.tex
+  All 18 images go into:  final_paper/figures/
+  Live site:              https://armenia-poverty.vercel.app
+  Local build:            http://localhost:3000  (cd web && npm run dev)
+
+  TIP: Use a 1280-1440 px wide browser window.
+       Wait for all charts to finish loading before screenshotting.
+       A full-page capture tool (browser devtools → "Capture full size") is easiest.
+===========================================================================
+
+
+───────────────────────────────────────────────────────────────────────────
+GROUP A — You draw this yourself (1 file)
+───────────────────────────────────────────────────────────────────────────
+
+  architecture-overview.pdf
+  ──────────────────────────
+  What:   Three-layer system architecture diagram.
+  Content (left to right):
+    Box 1 "Python Pipeline"
+      scripts/ and notebooks/
+      outputs: model CSVs, validation CSVs, forecast CSVs
+    Box 2 "Data Storage"
+      Neon PostgreSQL (households, regional panel — dynamic)
+      Static CSV in data/processed/results/ (model outputs — read-only)
+    Box 3 "Next.js on Vercel"
+      API routes → components
+      URL: armenia-poverty.vercel.app
+    Arrows: pipeline → storage → web app
+  Tool:   Figma, draw.io, PowerPoint, or Canva — export as PDF.
+  Note:   This is the ONLY figure NOT from the website or notebooks.
+
+
+───────────────────────────────────────────────────────────────────────────
+GROUP B — From the Bayesian optimization notebook (2 files)
+───────────────────────────────────────────────────────────────────────────
+
+  File:     notebooks/ilcs_ml_bayesian_optimized.ipynb
+  How to:   Open in Jupyter, run all cells, then export each plot below.
+            Right-click the figure → Save Image As, or use plt.savefig().
+
+  optuna-gb-history.png
+  ──────────────────────
+  What:   Optuna trial history plot for the GBM study.
+          X-axis = trial number (0–49), Y-axis = CV R² score.
+  Where:  Look for the cell that calls optuna.visualization.plot_optimization_history()
+          or a manual plt scatter of trial values.
+  Export: plt.savefig('optuna-gb-history.png', dpi=150, bbox_inches='tight')
+
+  gbm-residual-vs-actual.png
+  ───────────────────────────
+  What:   Predicted vs actual household income for the tuned GBM.
+          Log-log scale recommended (income spans 4 orders of magnitude).
+          X-axis = actual income (AMD, log scale)
+          Y-axis = predicted income (AMD, log scale)
+          Ideal: include a y=x reference line.
+  Where:  The cell after the final GBM evaluation block.
+  Export: plt.savefig('gbm-residual-vs-actual.png', dpi=150, bbox_inches='tight')
+
+
+───────────────────────────────────────────────────────────────────────────
+GROUP C — From the live website (15 files)
+───────────────────────────────────────────────────────────────────────────
+
+  ── HOMEPAGE ────────────────────────────────────────────────────────────
+
+  ui-homepage.png
+    URL:   /
+    What:  Hero section + 4 KPI tiles + navigation cards.
+    Note:  Include the full above-the-fold view in one screenshot.
+
+  ── REGIONAL SECTION ────────────────────────────────────────────────────
+
+  ui-regional-choropleth.png
+    URL:   /regional
+    What:  Armenia choropleth map colored by poverty rate.
+    Set:   Year selector → 2022 before capturing.
+    Note:  Hover over Shirak or Armavir so a tooltip is visible (optional but nice).
+
+  ui-regional-trends.png
+    URL:   /regional/trends
+    What:  Multi-marz poverty rate time series (2016–2022).
+    Set:   Select at least 3–4 marzes (e.g. Shirak, Yerevan, Syunik, Aragatsotn)
+           so the chart shows diverging lines and the 2019 Aragatsotn spike.
+
+  ui-regional-rankings.png
+    URL:   /regional/ranking
+    What:  Sorted horizontal bar chart of all 11 marzes.
+    Set:   Year → 2022 before capturing.
+
+  ── HOUSEHOLD MODEL SECTION ─────────────────────────────────────────────
+
+  ui-models-income.png
+    URL:   /models
+    What:  Model leaderboard table (R², MAE, RMSE for all 5 models)
+           + amber callout at top directing to 2022 Validation.
+    Note:  Make sure the "BEST" badge on GBM is visible.
+
+  household-feature-importance.png   ←── SAME SCREENSHOT as ui-feature-importance.png
+  ui-feature-importance.png          ←── SAME SCREENSHOT (save as two filenames)
+    URL:   /models/importance
+    What:  Grouped bar chart of normalized feature importance for all 5 models.
+           income_source_count should be visually at the top.
+    Note:  Take ONE screenshot, save it under BOTH filenames above.
+           The LaTeX paper uses each in a different section.
+
+  ui-forecasting-diagnostics.png
+    URL:   /models/forecasting
+    What:  Time-series diagnostics tables (R², MAE).
+    Set:   Capture with the "Classical TS (ARIMA)" tab active — OR —
+           stitch "Classical TS" + "Advanced NNs" tabs side by side.
+    Note:  Make sure poverty_rate rows are visible.
+
+  ts-nn-vs-classical-r2.png          ←── SAME SCREENSHOT as ui-forecasting-diagnostics.png
+    Same page, same capture.
+    Save as a second filename: ts-nn-vs-classical-r2.png
+    (Or stitch both tabs into one wider image for a cleaner figure.)
+
+  ── VALIDATION SECTION ──────────────────────────────────────────────────
+
+  ui-validation-overview.png
+    URL:   /models/validation
+    What:  TOP of the page: 4 methodology tiles + key insight callout
+           + model performance summary table with BEST REGIONAL / BEST NATIONAL badges.
+    Note:  Do NOT scroll down — capture just the upper portion.
+
+  ui-validation-barchart.png
+  validation-2022-actual-vs-predicted.png   ←── SAME SCREENSHOT (save as two filenames)
+    URL:   /models/validation  (scroll down to bar chart section)
+    What:  Actual vs predicted bar chart for all 11 marzes.
+    Set:   Click the "Lag-1" model pill before capturing.
+    Note:  Take ONE screenshot, save under BOTH filenames above.
+
+  ui-validation-rolling.png
+  rolling-validation-mae.png                ←── SAME SCREENSHOT (save as two filenames)
+    URL:   /models/validation  (scroll further down to rolling MAE chart)
+    What:  Line chart of regional MAE for Lag-1 vs Ridge AR (2020, 2021, 2022).
+           Should show the Ridge 2021 spike clearly.
+    Note:  Take ONE screenshot, save under BOTH filenames above.
+
+  ── FORECAST SECTION ────────────────────────────────────────────────────
+
+  future-projection-poverty.png
+    URL:   /models/forecast
+    What:  Regional poverty trajectory: solid historical (2016–2022) line
+           + dashed projected (2023–2026) line, separated by a vertical marker.
+    Set:   Pick a visually interesting region from the dropdown
+           (e.g. Shirak or Gegharkunik — they have the most movement).
+    Note:  The dashed segment and the vertical reference line should both be visible.
+
+
+───────────────────────────────────────────────────────────────────────────
+SUMMARY COUNT
+───────────────────────────────────────────────────────────────────────────
+
+  Total filenames needed by LaTeX:   18
+  Unique screenshots/exports needed: 13   (5 filenames are reused/duplicated)
+
+  Duplicated pairs (one capture → two filenames):
+    household-feature-importance.png  =  ui-feature-importance.png
+    ts-nn-vs-classical-r2.png         =  ui-forecasting-diagnostics.png
+    ui-validation-barchart.png        =  validation-2022-actual-vs-predicted.png
+    ui-validation-rolling.png         =  rolling-validation-mae.png
+    (architecture-overview.pdf is the only non-screenshot)
+
+  Breakdown:
+    1  diagram (draw yourself)
+    2  notebook exports
+    10 unique website screenshots
+    ──
+    13 unique captures → 18 files placed in final_paper/figures/
+
+
+===========================================================================
+END OF FILE
+===========================================================================

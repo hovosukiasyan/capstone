@@ -465,6 +465,11 @@ export async function getRegionalRanking(
     .map((r, i) => ({ ...r, rank: i + 1 }));
 }
 
+export async function getRegionalYears(): Promise<number[]> {
+  const years = [...new Set(loadPanel().map((r) => r.year))].sort((a, b) => a - b);
+  return years;
+}
+
 // ── Model functions ───────────────────────────────────────────────────────────
 export async function getModelMetrics(): Promise<ModelMetrics[]> {
   return [
