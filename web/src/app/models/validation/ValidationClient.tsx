@@ -21,6 +21,17 @@ interface GRUDailyRow {
   predicted: number;
 }
 
+interface AnnualValidationRow {
+  marz: string;
+  target: string;
+  actual_2022: number;
+  predicted_2022: number;
+  signed_error: number;
+  absolute_error: number;
+  percent_error: number;
+  model: string;
+}
+
 const MARZ_COLORS: Record<string, string> = {
   Aragatsotn:    '#4A6FA5',
   Ararat:        '#C07A2A',
@@ -34,6 +45,107 @@ const MARZ_COLORS: Record<string, string> = {
   'Vayots Dzor': '#7A4AC0',
   Yerevan:       '#C04A8A',
 };
+
+// ── Annual 2022 Holdout ───────────────────────────────────────────────────────
+
+function AnnualHoldoutBenchmark() {
+  const { data, error, isLoading } = useSWR<AnnualValidationRow[]>('/api/models/validation', apiFetcher);
+
+  if (isLoading) return <div className="py-6 text-center text-sm text-slate-400">Loading annual holdout benchmark…</div>;
+  if (error || !data) return null;
+
+  const povertyRows = data.filter(r => r.target === 'poverty_rate');
+  const modelOrder = ['Lag-1 Baseline', 'Ridge AR', 'Ensemble'];
+  const summaries = modelOrder.map(model => {
+    const regionalRows = povertyRows.filter(r => r.model === model && r.marz !== 'Armenia');
+    const nationalRow = povertyRows.find(r => r.model === model && r.marz === 'Armenia');
+    const regionalMae = regionalRows.reduce((sum, r) => sum + r.absolute_error, 0) / regionalRows.length;
+    return {
+      model,
+      regionalMae,
+      nationalActual: nationalRow?.actual_2022 ?? null,
+      nationalPredicted: nationalRow?.predicted_2022 ?? null,
+      nationalError: nationalRow?.absolute_error ?? null,
+    };
+  });
+  const bestRegional = summaries.reduce((best, current) =>
+    current.regionalMae < best.regionalMae ? current : best
+  );
+  const bestNational = summaries.reduce((best, current) =>
+    (current.nationalError ?? Number.POSITIVE_INFINITY) < (best.nationalError ?? Number.POSITIVE_INFINITY) ? current : best
+  );
+
+  return (
+    <div className="rounded-xl border border-amber-100 bg-gradient-to-br from-amber-50 to-white p-5 shadow-sm">
+      <div className="mb-5 grid gap-4 lg:grid-cols-[1fr_auto]">
+        <div>
+          <h3 className="text-sm font-semibold text-amber-900">Annual 2022 Holdout Benchmark</h3>
+          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-amber-800">
+            This is the main credibility test: models train on 2016–2021 annual ArmStat observations and predict the fully held-out 2022 poverty rate.
+            The GRU below validates the high-frequency neural pipeline, but this annual benchmark is the honest forecasting comparison.
+          </p>
+        </div>
+        <div className="grid min-w-[300px] gap-2 sm:grid-cols-2">
+          <div className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-center">
+            <p className="text-[10px] uppercase tracking-widest text-blue-600">Best regional</p>
+            <p className="text-base font-bold text-blue-950">{bestRegional.model}</p>
+            <p className="text-xs text-blue-700">{bestRegional.regionalMae.toFixed(2)} pp MAE</p>
+          </div>
+          <div className="rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 text-center">
+            <p className="text-[10px] uppercase tracking-widest text-emerald-600">Best national</p>
+            <p className="text-base font-bold text-emerald-950">{bestNational.model}</p>
+            <p className="text-xs text-emerald-700">{bestNational.nationalError?.toFixed(2)} pp error</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="overflow-hidden rounded-lg border border-amber-100 bg-white">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-slate-100 text-sm">
+            <thead className="bg-slate-50 text-left text-[11px] uppercase tracking-widest text-slate-400">
+              <tr>
+                <th className="px-4 py-3 font-semibold">Model</th>
+                <th className="px-4 py-3 font-semibold">Regional MAE</th>
+                <th className="px-4 py-3 font-semibold">National Error</th>
+                <th className="px-4 py-3 font-semibold">Armenia 2022</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {summaries.map(summary => {
+                const isBestRegional = summary.model === bestRegional.model;
+                const isBestNational = summary.model === bestNational.model;
+                return (
+                  <tr key={summary.model} className={isBestNational ? 'bg-emerald-50/70' : 'bg-white'}>
+                    <td className="px-4 py-3 font-semibold text-slate-800">{summary.model}</td>
+                    <td className="px-4 py-3 text-slate-700">
+                      {summary.regionalMae.toFixed(2)} pp
+                      {isBestRegional && (
+                        <span className="ml-2 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                          best regional
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-slate-700">
+                      {summary.nationalError?.toFixed(2)} pp
+                      {isBestNational && (
+                        <span className="ml-2 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
+                          best national
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-slate-600">
+                      predicted {summary.nationalPredicted?.toFixed(2)}% · actual {summary.nationalActual?.toFixed(2)}%
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // ── GRU Daily Validation ──────────────────────────────────────────────────────
 
@@ -288,7 +400,10 @@ export default function ValidationClient() {
         </p>
       </div>
 
-      {/* Key insight */}
+      {/* Annual holdout benchmark */}
+      <AnnualHoldoutBenchmark />
+
+      {/* GRU key insight */}
       <div className="rounded-xl border border-emerald-100 bg-emerald-50 p-5">
         <div className="flex items-start gap-4 flex-wrap">
           <div className="flex-1 min-w-0">
@@ -298,8 +413,7 @@ export default function ValidationClient() {
             <p className="text-sm text-emerald-700 leading-relaxed">
               The GRU (Gated Recurrent Unit) model captures temporal dynamics across all 11 marzes —
               517 daily predictions in the fully held-out 2022 test set, RMSE of only 0.14 pp.
-              Training on the complete 2016–2021 panel (vs. 2016–2019) pushed R² from 0.9998 to 0.9999,
-              confirming that the extra two years of socioeconomic context materially improve precision.
+              This validates the high-frequency neural pipeline, while the annual benchmark above remains the main honest forecasting comparison.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-2 shrink-0">
